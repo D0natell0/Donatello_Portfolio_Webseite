@@ -171,18 +171,7 @@
         </div>
       </div>
 
-    <!-- Trenner -->
-
-      <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
-        <video class="w-full aspect-video" src="Bilder/Logo Animation MachHalt.webm" autoplay muted playsinline loop></video>
-        <div class="p-4">
-          <h3 class="text-lg font-semibold">Logo Animation "MachHalt"</h3>
-          <p class="text-sm text-gray-400">Für die Webseite <a href="https://machhalt.webflow.io/"></a> wurde eine Logo Animation benötigt.</p>
-        </div>
-      </div>
-
-    <!-- Trenner -->
-
+    <!-- Beispiel-Portfolio-Block -->
       <div class="relative group bg-gray-900 rounded-lg shadow-lg overflow-hidden">
 
         <!-- Titelbild -->
@@ -194,26 +183,25 @@
           data-gallery="projektEispalastLudwigslust"
         />
 
-        <!-- Bildanzahl Overlay -->
-        <div class="absolute top-2 left-2 bg-black/60 text-white text-xs px-2 py-1 rounded">
-          🖼️ +4
-        </div>
+        <!-- Unsichtbare Bilder (werden per JS für Galerie und Thumbnails verwendet) -->
+          <img src="Bilder/Eispalast/Outdoor Steele.jpg" alt="" class="hidden" data-index="1" data-gallery="projektEispalastLudwigslust" />
+          <img src="Bilder/Eispalast/Plakate.jpg" alt="" class="hidden" data-index="2" data-gallery="projektEispalastLudwigslust" />
+          <img src="Bilder/Eispalast/Visitenkarte und Brief.jpg" alt="" class="hidden" data-index="3" data-gallery="projektEispalastLudwigslust" />
+          <img src="Bilder/Eispalast/Cafe_Tasse.jpg" alt="" class="hidden" data-index="4" data-gallery="projektEispalastLudwigslust" />
 
-        <!-- Miniaturbilder rechts -->
-        <div class="absolute top-2 right-2 space-y-1 hidden sm:flex flex-col">
-          <img src="Bilder/Eispalast/Outdoor Steele.jpg" class="w-12 h-12 rounded shadow cursor-pointer border-2 border-white" data-index="1" data-gallery="projektEispalastLudwigslust" alt="Miniatur 1" />
-          <img src="Bilder/Eispalast/Plakate.jpg" class="w-12 h-12 rounded shadow cursor-pointer border-2 border-white" data-index="2" data-gallery="projektEispalastLudwigslust" alt="Miniatur 2" />
-          <img src="Bilder/Eispalast/Visitenkarte und Brief.jpg" class="w-12 h-12 rounded shadow cursor-pointer border-2 border-white" data-index="3" data-gallery="projektEispalastLudwigslust" alt="Miniatur 3" />
-          <img src="Bilder/Eispalast/Cafe_Tasse.jpg" class="w-12 h-12 rounded shadow cursor-pointer border-2 border-white" data-index="4" data-gallery="projektEispalastLudwigslust" alt="Miniatur 4" />
-        </div>
+        <!-- Miniaturbilder-Container -->
+        <div class="miniatures absolute top-2 right-2 space-y-1 hidden sm:flex flex-col" data-gallery="projektEispalastLudwigslust"></div>
 
         <!-- Textinfo -->
         <div class="p-4">
           <h3 class="text-lg font-semibold">CI-Entwicklung für</h3>
           <h3 class="text-lg font-semibold">Eispalast Ludwigslust</h3>
-          <p class="text-sm text-gray-400">Für das Eiskaffee "Eispalast Ludwigslust" musste von Grund auf eine Corporate Identity aufgebaut werden. Hierzu gehört die Logoentwicklung, aber auch die Gestaltung von sämtlichen Werbemitteln.</p>
+          <p class="text-sm text-gray-400">
+            Für das Eiskaffee "Eispalast Ludwigslust" musste von Grund auf eine Corporate Identity aufgebaut werden. Hierzu gehört die Logoentwicklung, aber auch die Gestaltung von sämtlichen Werbemitteln.
+          </p>
         </div>
       </div>
+
 
     <!-- Trenner -->
 
@@ -343,11 +331,11 @@
   </a>
 
   <!-- Lightbox-Galerie (ein div nur) -->
-  <div id="lightbox" class="fixed inset-0 bg-black/90 flex items-center justify-center z-[9999] hidden">
-    <button id="lightbox-close" class="absolute top-4 right-6 text-white text-3xl hover:opacity-80 z-50">&times;</button>
-    <button id="prevBtn" class="absolute left-6 text-white text-4xl hover:opacity-80 z-50">&larr;</button>
-    <img id="lightbox-image" src="" alt="Galeriebild" class="max-w-full max-h-[90vh] rounded-lg shadow-lg transition-transform duration-300" loading="lazy" />
-    <button id="nextBtn" class="absolute right-6 text-white text-4xl hover:opacity-80 z-50">&rarr;</button>
+  <div id="lightbox" class="fixed inset-0 bg-black/80 flex items-center justify-center hidden z-50">
+    <button id="lightbox-close" class="absolute top-4 right-4 text-white text-2xl">×</button>
+    <button id="prevBtn" class="absolute left-4 text-white text-3xl">‹</button>
+    <img id="lightbox-image" src="" class="max-h-[90%] max-w-[90%] object-contain" />
+    <button id="nextBtn" class="absolute right-4 text-white text-3xl">›</button>
   </div>
 
   <!-- JS Scripts -->
@@ -385,18 +373,19 @@
     }, 5000);
   }
 
-  // Lightbox Logik
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightbox-image');
   const closeBtn = document.getElementById('lightbox-close');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
 
-  // Alle Bilder mit data-gallery sammeln (mehrere Galerien möglich)
-  const allGalleryImages = Array.from(document.querySelectorAll('[data-gallery]'));
+  // **Nur Bilder mit gültigem src auswählen (filtert leere oder fehlerhafte Bilder raus)**
+  const allGalleryImages = Array.from(document.querySelectorAll('[data-gallery]'))
+    .filter(img => img.src && img.src.trim() !== '');
+
   const galleries = {};
 
-  // Gruppen nach Galerie-Name
+  // Galeriegruppen nach Name sammeln
   allGalleryImages.forEach(img => {
     const galleryName = img.dataset.gallery;
     if (!galleries[galleryName]) galleries[galleryName] = [];
@@ -406,7 +395,6 @@
   let currentGallery = null;
   let currentIndex = 0;
 
-  // Bild anzeigen und speichern
   function showLightbox(galleryName, index) {
     const gallery = galleries[galleryName];
     if (!gallery || index < 0 || index >= gallery.length) return;
@@ -417,7 +405,6 @@
     lightbox.classList.remove('hidden');
   }
 
-  // Navigation
   function showNext() {
     if (!currentGallery) return;
     const gallery = galleries[currentGallery];
@@ -432,7 +419,6 @@
     showLightbox(currentGallery, currentIndex);
   }
 
-  // Event Listener für alle Galerie-Bilder
   allGalleryImages.forEach(img => {
     img.addEventListener('click', () => {
       const galleryName = img.dataset.gallery;
@@ -441,13 +427,11 @@
     });
   });
 
-  // Schließen
   closeBtn.addEventListener('click', () => {
     lightbox.classList.add('hidden');
     lightboxImage.src = '';
   });
 
-  // Navigation Buttons
   nextBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     showNext();
@@ -458,7 +442,6 @@
     showPrev();
   });
 
-  // Lightbox bei Klick außerhalb Bild schließen
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) {
       lightbox.classList.add('hidden');
@@ -466,7 +449,6 @@
     }
   });
 
-  // Tastatur-Steuerung
   document.addEventListener('keydown', (e) => {
     if (lightbox.classList.contains('hidden')) return;
 
@@ -474,13 +456,50 @@
       lightbox.classList.add('hidden');
       lightboxImage.src = '';
     }
-    if (e.key === 'ArrowRight') {
-      showNext();
-    }
-    if (e.key === 'ArrowLeft') {
-      showPrev();
-    }
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
   });
-</script>
+
+// Dynamische Thumbnails mit Overlay
+  Object.keys(galleries).forEach(galleryName => {
+    const images = galleries[galleryName];
+    const miniatureContainer = document.querySelector(`.miniatures[data-gallery="${galleryName}"]`);
+    const maxThumbs = 3;
+    const extraImages = images.length - 1; // ohne Titelbild
+
+    if (!miniatureContainer || extraImages <= 0) return;
+
+    const hiddenCount = extraImages - maxThumbs;
+
+    images.slice(1, 1 + maxThumbs).forEach((img, i) => {
+      const clone = img.cloneNode(true);
+      clone.classList.remove("hidden");
+      clone.classList.add("w-12", "h-12", "rounded", "shadow", "cursor-pointer", "border-2", "border-white");
+      
+      // Eltern-Element auf relative setzen, damit Overlay absolut funktioniert
+      clone.classList.add("relative");
+
+      const isLastVisible = i === maxThumbs - 1;
+
+      if (isLastVisible && hiddenCount > 0) {
+        const overlay = document.createElement("div");
+        overlay.className = "absolute inset-0 bg-black/60 text-white text-xs flex items-center justify-center rounded";
+        overlay.style.pointerEvents = "none"; // Klick nicht blockieren
+        overlay.style.padding = "2px";
+        overlay.textContent = `+${hiddenCount}`;
+        clone.appendChild(overlay);
+      }
+
+      clone.addEventListener("click", () => {
+        const index = parseInt(clone.dataset.index);
+        showLightbox(galleryName, index);
+      });
+
+      miniatureContainer.appendChild(clone);
+    });
+
+    miniatureContainer.classList.remove("hidden");
+  });
+  </script>
 </body>
 </html>
