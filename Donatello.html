@@ -36,19 +36,16 @@
   <!-- Sticky Header -->
   <header class="sticky top-0 z-50 bg-[#1A1A1A] border-b border-gray-700">
     <div class="flex items-center justify-between px-4 py-4 max-w-6xl mx-auto">
-      <!-- Logo -->
       <a href="#top" class="flex items-center space-x-2">
         <img src="Logo/Donatello_Logo_Wort_Bildmarke_Horizontal.svg" alt="Logo" class="h-10 w-auto">
       </a>
 
-      <!-- Desktop Navigation -->
       <nav class="hidden md:flex space-x-6 text-sm uppercase">
         <a href="#about" class="hover:underline">Über mich</a>
         <a href="#portfolio" class="hover:underline">Portfolio</a>
         <a href="#contact" class="hover:underline">Kontakt</a>
       </nav>
 
-      <!-- Mobile Burger -->
       <button id="menu-btn" class="md:hidden focus:outline-none" aria-label="Menü öffnen">
         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -57,7 +54,6 @@
       </button>
     </div>
 
-    <!-- Mobile Navigation -->
     <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
       <a href="#about" class="block py-2 text-sm border-b border-gray-700">Über mich</a>
       <a href="#portfolio" class="block py-2 text-sm border-b border-gray-700">Portfolio</a>
@@ -65,31 +61,26 @@
     </div>
   </header>
 
-  <!-- Top Anchor -->
   <div id="top" class="scroll-mt-16"></div>
 
   <!-- Hero -->
   <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden" data-aos="fade-up">
-  <!-- Hintergrundbild -->
-  <img 
-    src="Logo/Donatello_Logo_Bildmarke.svg" 
-    alt="Portrait von Donatello" 
-    class="absolute inset-0 w-full h-full object-contain opacity-10 z-0 pointer-events-none"
-  >
-
-  <!-- Text-Inhalt -->
-  <div class="relative z-10">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">Willkommen bei<br> Donatello-Media</h1>
-    <p class="text-lg md:text-xl mb-6">Mediengestalter aus Leidenschaft</p>
-    <a href="#about" class="bg-accent px-6 py-3 rounded-full text-white hover:opacity-80 transition">Mehr erfahren</a>
-  </div>
-</section>
+    <video autoplay muted loop playsinline
+          class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
+      <source src="Bilder/AdobeStock_480460719.webm" type="video/webm">
+    </video>
+    <div class="relative z-10">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Willkommen bei<br> Donatello-Media</h1>
+      <p class="text-lg md:text-xl mb-6">Mediengestalter aus Leidenschaft</p>
+      <a href="#about" class="bg-accent px-6 py-3 rounded-full text-white shadow-lg hover:opacity-80 transition">Mehr erfahren</a>
+    </div>
+  </section>
 
 
   <!-- Über mich -->
   <section id="about" class="max-w-4xl mx-auto px-4 py-16 scroll-mt-16" data-aos="fade-right">
     <h2 class="text-3xl font-semibold mb-6 accent">Über mich</h2>
-    <p class="mb-4 text-gray-300">Mein Name ist Niklas, die meisten nennen mich Nik oder Donatello. Ich bin gelernter Mediengestalter und möglicherweise dein neuer Partner in Sachen Gestaltung und Produktion.</p>
+    <p class="mb-4 text-gray-300">Mein Name ist Niklas. Ich bin gelernter Mediengestalter und möglicherweise dein neuer Partner in Sachen Gestaltung und Produktion.</p>
     <p class="mb-4 text-gray-300">Das sind meine Stärken:</p>
     <ul class="list-disc pl-6 text-gray-300">
       <li>CI/CD Entwicklung</li>
@@ -105,13 +96,17 @@
 
   <!-- Portfolio -->
 <section id="portfolio" class="bg-violet-950 py-16 px-4 scroll-mt-16" data-aos="fade-left">
+      <video autoplay muted loop playsinline
+          class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
+      <source src="Bilder/AdobeStock_480460719.webm" type="video/webm">
+    </video>
   <div class="max-w-5xl mx-auto">
     <h2 class="text-3xl font-semibold mb-10 accent text-center">Portfolio</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
-    <!-- Trenner -->
+    <!-- Trenner 3 Punkt Beleuchtung-->
 
-      <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+      <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
         <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/2LXXZqp4U1Y" frameborder="0" allowfullscreen></iframe>
         <div class="p-4">
           <h3 class="text-lg font-semibold">3-Punkt-Beleuchtung</h3>
@@ -120,9 +115,9 @@
         </div>
       </div>
 
-    <!-- Trenner -->
+    <!-- Trenner Twitch -->
 
-      <div class="relative group bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+      <div class="relative group bg-zinc-900 rounded-lg shadow-lg overflow-hidden">
 
         <!-- Titelbild -->
         <img
@@ -151,9 +146,9 @@
         </div>
       </div>
 
-    <!-- Trenner -->
+    <!-- Trenner RUVAAK -->
 
-      <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+      <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
         <iframe class="w-full aspect-video" src="https://youtube.com/embed/p98MeZRP9G0" frameborder="0" allowfullscreen></iframe>
         <div class="p-4">
           <h3 class="text-lg font-semibold">Beispiel YouTube Video</h3>
@@ -161,18 +156,29 @@
         </div>
       </div>
 
-    <!-- Trenner -->
+    <!-- Trenner DOOH Werbekampagne -->
 
-      <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+      <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
         <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/vlUaC03uNxA" frameborder="0" allowfullscreen></iframe>
         <div class="p-4">
-          <h3 class="text-lg font-semibold">Beispiel YouTube Video</h3>
-          <p class="text-sm text-gray-400">Ich habe für Testzwecke ein random Video eingebettet, was nicht von mir stammt. Dieses Video wird noch ersetzt.</p>
+          <h3 class="text-lg font-semibold">DOOH Werbekampagne</h3>
+          <p class="text-sm text-gray-400">Digitale Medien wirken. Ob informierend, aktionistisch oder unterhaltend, sie erfüllen ihren Zweck. Egal wann, egal wo.</p>
         </div>
       </div>
 
-    <!-- Beispiel-Portfolio-Block -->
-      <div class="relative group bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+    <!-- Trenner MachHalt -->
+
+      <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
+        <video class="w-full aspect-video" src="Bilder/Logo Animation MachHalt.webm" autoplay muted playsinline loop></video>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">Logo Animation "MachHalt"</h3>
+          <p class="text-sm text-gray-400">Für die Webseite <a href="https://machhalt.webflow.io/"></a> wurde eine Logo Animation benötigt.</p>
+        </div>
+      </div>  
+
+    <!-- Trenner Eispalast Ludwigslust -->
+
+      <div class="relative group bg-zinc-900 rounded-lg shadow-lg overflow-hidden">
 
         <!-- Titelbild -->
         <img
@@ -203,9 +209,9 @@
       </div>
 
 
-    <!-- Trenner -->
+    <!-- Trenner Donut Tutorial -->
 
-      <div class="relative group bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+      <div class="relative group bg-zinc-900 rounded-lg shadow-lg overflow-hidden">
 
         <!-- Titelbild -->
         <img
@@ -242,7 +248,6 @@
 <section id="contact" class="py-16 px-4 max-w-xl mx-auto scroll-mt-16" data-aos="fade-up">
   <h2 class="text-3xl font-semibold mb-6 accent text-center">Kontakt</h2>
 
-<!-- Slide-in-Popup (zentriert) -->
   <div
     id="popup"
     class="fixed bottom-6 left-1/2 transform -translate-x-1/2 translate-y-6 opacity-0 transition-all duration-500 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50"
@@ -250,7 +255,6 @@
     ✅ Vielen Dank für deine Nachricht!
   </div>
 
-  <!-- Unsichtbares IFrame -->
   <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
   <form
@@ -265,21 +269,21 @@
       name="name"
       placeholder="Name"
       required
-      class="w-full px-4 py-2 bg-gray-800 text-white rounded"
+      class="w-full px-4 py-2 bg-zinc-800 text-white rounded"
     />
     <input
       type="email"
       name="email"
       placeholder="E-Mail"
       required
-      class="w-full px-4 py-2 bg-gray-800 text-white rounded"
+      class="w-full px-4 py-2 bg-zinc-800 text-white rounded"
     />
     <textarea
       name="message"
       rows="5"
       placeholder="Nachricht"
       required
-      class="w-full px-4 py-2 bg-gray-800 text-white rounded"
+      class="w-full px-4 py-2 bg-zinc-800 text-white rounded"
     ></textarea>
     <button
       type="submit"
@@ -301,27 +305,24 @@
   <footer class="text-center text-sm py-6 border-t border-gray-700 text-gray-500">
     <div class="flex justify-center space-x-8 mt-8 mb-12">
     <a href="https://www.instagram.com/niklas_donatello" target="_blank" rel="noopener" aria-label="Instagram" class="text-gray-400 hover:text-pink-500 transition">
-      <!-- Instagram Icon SVG -->
       <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 fill-current" viewBox="0 0 24 24">
         <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zm8.13 2.5a1.12 1.12 0 110 2.25 1.12 1.12 0 010-2.25zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7z"/>
       </svg>
     </a>
 
     <a href="https://www.youtube.com/@Donatello-Media" target="_blank" rel="noopener" aria-label="YouTube" class="text-gray-400 hover:text-red-600 transition">
-      <!-- YouTube Icon SVG -->
       <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 fill-current" viewBox="0 0 24 24">
         <path d="M21.8 7.2a2.8 2.8 0 00-1.97-1.97C18.4 5 12 5 12 5s-6.4 0-7.83.23a2.8 2.8 0 00-1.97 1.97A29.44 29.44 0 002 12a29.44 29.44 0 00.23 4.8 2.8 2.8 0 001.97 1.97C5.6 19 12 19 12 19s6.4 0 7.83-.23a2.8 2.8 0 001.97-1.97A29.44 29.44 0 0022 12a29.44 29.44 0 00-.2-4.8zM10 15.5v-7l6 3.5-6 3.5z"/>
       </svg>
     </a>
 
     <a href="https://www.pinterest.de/DonatelloMedia" target="_blank" rel="noopener" aria-label="Pinterest" class="text-gray-400 hover:text-red-500 transition">
-      <!-- Pinterest Icon SVG -->
       <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 fill-current" viewBox="0 0 24 24">
         <path d="M12 2a10 10 0 00-3.48 19.39c-.05-.43-.1-1.1.02-1.57.11-.47.74-3.02.74-3.02s-.18-.35-.18-.87c0-.82.48-1.43 1.08-1.43.51 0 .76.38.76.84 0 .51-.33 1.28-.5 2-.14.61.3 1.1.9 1.1 1.08 0 1.92-1.14 1.92-2.78 0-1.45-1.04-2.46-2.53-2.46-1.73 0-2.75 1.3-2.75 2.64 0 .52.2 1.08.45 1.38.05.06.05.11.04.17-.05.19-.16.61-.18.69-.03.1-.11.13-.24.08-.9-.42-1.46-1.72-1.46-2.77 0-2.26 1.64-4.34 4.75-4.34 2.49 0 4.43 1.78 4.43 4.16 0 2.48-1.56 4.48-3.73 4.48-.73 0-1.42-.38-1.66-.82l-.45 1.73c-.16.63-.59 1.43-.88 1.92.66.2 1.37.31 2.1.31A10 10 0 0012 2z"/>
       </svg>
     </a>
   </div>
-    © Donatello – Mediengestaltung 2025 · <a href="#" class="underline">Impressum</a>
+    © Donatello-Media – Mediengestaltung 2025 · <a href="#" class="underline">Impressum</a>
   </footer>
 
   <!-- Back to Top Button -->
@@ -338,7 +339,6 @@
     <button id="nextBtn" class="absolute right-4 text-white text-3xl">›</button>
   </div>
 
-  <!-- JS Scripts -->
 <script>
   AOS.init({ duration: 800, once: true });
 
@@ -472,30 +472,45 @@
     const hiddenCount = extraImages - maxThumbs;
 
     images.slice(1, 1 + maxThumbs).forEach((img, i) => {
+      const isLastVisible = i === maxThumbs - 1 && hiddenCount > 0;
+
+      // Wrapper für Thumbnail + Overlay
+      const wrapper = document.createElement("div");
+      wrapper.className = "relative";
+
+      // Klonen des Bildes
       const clone = img.cloneNode(true);
+      clone.dataset.index = img.dataset.index;
+      clone.dataset.gallery = img.dataset.gallery;
       clone.classList.remove("hidden");
-      clone.classList.add("w-12", "h-12", "rounded", "shadow", "cursor-pointer", "border-2", "border-white");
-      
-      // Eltern-Element auf relative setzen, damit Overlay absolut funktioniert
-      clone.classList.add("relative");
+      clone.classList.add(
+  "w-12",
+  "h-12",
+  "object-cover", // ✅ skaliert und beschneidet das Bild im Quadrat
+  "rounded",
+  "shadow",
+  "cursor-pointer",
+  "border-2",
+  "border-white"
+);
 
-      const isLastVisible = i === maxThumbs - 1;
-
-      if (isLastVisible && hiddenCount > 0) {
+      // Overlay nur beim letzten sichtbaren Thumbnail
+      if (isLastVisible) {
         const overlay = document.createElement("div");
         overlay.className = "absolute inset-0 bg-black/60 text-white text-xs flex items-center justify-center rounded";
         overlay.style.pointerEvents = "none"; // Klick nicht blockieren
-        overlay.style.padding = "2px";
         overlay.textContent = `+${hiddenCount}`;
-        clone.appendChild(overlay);
+        wrapper.appendChild(overlay);
       }
 
+      // Klick öffnet Lightbox
       clone.addEventListener("click", () => {
         const index = parseInt(clone.dataset.index);
         showLightbox(galleryName, index);
       });
 
-      miniatureContainer.appendChild(clone);
+      wrapper.appendChild(clone);
+      miniatureContainer.appendChild(wrapper);
     });
 
     miniatureContainer.classList.remove("hidden");
