@@ -17,6 +17,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Montserrat', sans-serif;
       background-color: #1A1A1A;
@@ -28,6 +32,45 @@
     .bg-accent {
       background-color: #552586;
     }
+
+    .move_it {
+      display: inline-block;
+      will-change: transform;
+      transition: transform 0.05s linear;
+    }
+
+  .skeleton {
+    background: linear-gradient(90deg, #1f1f1f 25%, #2b2b2b 50%, #1f1f1f 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 0.5rem;
+  }
+
+  @keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  .skeleton-card {
+    height: 300px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .skeleton-text {
+    height: 1rem;
+    width: 80%;
+  }
+
+  .skeleton-thumbnail {
+    height: 170px;
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+
+  .hidden { display: none; }
   </style>
 </head>
 
@@ -46,36 +89,48 @@
         <a href="#contact" class="hover:underline">Kontakt</a>
       </nav>
 
-      <button id="menu-btn" class="md:hidden focus:outline-none" aria-label="Menü öffnen">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
+      <!-- Hamburger Button -->
+      <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none" aria-label="Menü öffnen">
+        <span class="block w-6 h-0.5 bg-white transition-transform duration-300 ease-in-out origin-left"></span>
+        <span class="block w-6 h-0.5 bg-white transition-opacity duration-300 ease-in-out"></span>
+        <span class="block w-6 h-0.5 bg-white transition-transform duration-300 ease-in-out origin-left"></span>
       </button>
     </div>
-
-    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
-      <a href="#about" class="block py-2 text-sm border-b border-gray-700">Über mich</a>
-      <a href="#portfolio" class="block py-2 text-sm border-b border-gray-700">Portfolio</a>
-      <a href="#contact" class="block py-2 text-sm">Kontakt</a>
-    </div>
   </header>
+
+  <!-- Overlay -->
+  <div id="menu-overlay" class="fixed inset-0 z-40 bg-black bg-opacity-50 hidden md:hidden"></div>
+
+  <!-- Sidebar Menü -->
+  <div id="mobile-menu" class="fixed right-0 top-15 h-full w-64 bg-[#1A1A1A] text-white z-40 transform translate-x-full transition-transform duration-300 md:hidden">
+    <div class="flex justify-between items-center px-4 py-4 border-b border-gray-700">
+      <span class="text-lg font-semibold">Menü</span>
+    </div>
+    <nav class="flex flex-col px-4 py-4 space-y-4 text-sm uppercase">
+      <a href="#about" class="hover:underline">Über mich</a>
+      <a href="#portfolio" class="hover:underline">Portfolio</a>
+      <a href="#contact" class="hover:underline">Kontakt</a>
+    </nav>
+  </div>
 
   <div id="top" class="scroll-mt-16"></div>
 
   <!-- Hero -->
-  <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden" data-aos="fade-up">
+  <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden" data-aos="fade-up">
     <video autoplay muted loop playsinline
-          class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
+      class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
       <source src="Bilder/AdobeStock_480460719.webm" type="video/webm">
     </video>
-    <div class="relative z-10">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">Willkommen bei<br> Donatello-Media</h1>
+
+    <div id="heroText" class="relative z-10 ">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 flex flex-col items-center gap-2 scroll-animate-headline">
+        <span class="move_it" data-multiplier="-0.5">Willkommen bei</span>
+        <span class="move_it" data-multiplier="0.5">Donatello-Media</span>
+      </h1>
       <p class="text-lg md:text-xl mb-6">Mediengestalter aus Leidenschaft</p>
       <a href="#about" class="bg-accent px-6 py-3 rounded-full text-white shadow-lg hover:opacity-80 transition">Mehr erfahren</a>
     </div>
   </section>
-
 
   <!-- Über mich -->
   <section id="about" class="max-w-4xl mx-auto px-4 py-16 scroll-mt-16" data-aos="fade-right">
@@ -95,11 +150,32 @@
   </section>
 
   <!-- Portfolio -->
-<section id="portfolio" class="bg-violet-950 py-16 px-4 scroll-mt-16" data-aos="fade-left">
+  <section id="portfolio" class="bg-violet-950 py-16 px-4 scroll-mt-16" data-aos="fade-left">
       <video autoplay muted loop playsinline
           class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
       <source src="Bilder/AdobeStock_480460719.webm" type="video/webm">
     </video>
+<!--
+              <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+               
+                <div class="skeleton-card skeleton">
+                  <div class="skeleton-thumbnail skeleton"></div>
+                  <div class="skeleton-text skeleton"></div>
+                  <div class="skeleton-text skeleton" style="width: 60%;"></div>
+                </div>
+                <div class="skeleton-card skeleton">
+                  <div class="skeleton-thumbnail skeleton"></div>
+                  <div class="skeleton-text skeleton"></div>
+                  <div class="skeleton-text skeleton" style="width: 50%;"></div>
+                </div>
+                <div class="skeleton-card skeleton">
+                  <div class="skeleton-thumbnail skeleton"></div>
+                  <div class="skeleton-text skeleton"></div>
+                  <div class="skeleton-text skeleton" style="width: 70%;"></div>
+                </div>
+              </div>
+-->
+
   <div class="max-w-5xl mx-auto">
     <h2 class="text-3xl font-semibold mb-10 accent text-center">Portfolio</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -298,11 +374,13 @@
       </svg>
     </a>
 
+    <!-- 
     <a href="https://www.pinterest.de/DonatelloMedia" target="_blank" rel="noopener" aria-label="Pinterest" class="text-gray-400 hover:text-red-500 transition">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 fill-current" viewBox="0 0 24 24">
         <path d="M12 2a10 10 0 00-3.48 19.39c-.05-.43-.1-1.1.02-1.57.11-.47.74-3.02.74-3.02s-.18-.35-.18-.87c0-.82.48-1.43 1.08-1.43.51 0 .76.38.76.84 0 .51-.33 1.28-.5 2-.14.61.3 1.1.9 1.1 1.08 0 1.92-1.14 1.92-2.78 0-1.45-1.04-2.46-2.53-2.46-1.73 0-2.75 1.3-2.75 2.64 0 .52.2 1.08.45 1.38.05.06.05.11.04.17-.05.19-.16.61-.18.69-.03.1-.11.13-.24.08-.9-.42-1.46-1.72-1.46-2.77 0-2.26 1.64-4.34 4.75-4.34 2.49 0 4.43 1.78 4.43 4.16 0 2.48-1.56 4.48-3.73 4.48-.73 0-1.42-.38-1.66-.82l-.45 1.73c-.16.63-.59 1.43-.88 1.92.66.2 1.37.31 2.1.31A10 10 0 0012 2z"/>
       </svg>
     </a>
+  -->
   </div>
     © Donatello-Media – Mediengestaltung 2025 · <a href="#" class="underline">Impressum</a>
   </footer>
@@ -321,15 +399,75 @@
     <button id="nextBtn" class="absolute right-4 text-white text-3xl">›</button>
   </div>
 
+  <style>
+    #heroText {
+      transition: transform 0s ease, opacity 0s ease;
+      will-change: transform, opacity;
+    }
+
+    /* Wenn Button offen ist */
+    #menu-btn.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    #menu-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    #menu-btn.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  </style>
+
 <script>
   AOS.init({ duration: 800, once: true });
 
-  // Mobile Menu Toggle
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
+
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuOverlay = document.getElementById('menu-overlay');
+
+  // Öffnen des Menüs
+  const openMenu = () => {
+    mobileMenu.classList.remove('translate-x-full');
+    menuOverlay.classList.remove('hidden');
+    menuBtn.classList.add('open');
+  };
+
+  // Schließen des Menüs
+  const closeMenu = () => {
+    mobileMenu.classList.add('translate-x-full');
+    menuOverlay.classList.add('hidden');
+    menuBtn.classList.remove('open');
+  };
+
+  // Toggle beim Klick auf Burger-Button
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // verhindert Klickweitergabe
+    const isOpen = !mobileMenu.classList.contains('translate-x-full');
+    isOpen ? closeMenu() : openMenu();
   });
+
+  // Klick auf Overlay → Menü schließen
+  menuOverlay.addEventListener('click', closeMenu);
+
+  // Klick auf Link → Menü schließen
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // ✅ NEU: Klick außerhalb des Menüs schließt es
+  document.addEventListener('click', (event) => {
+    const isMenuOpen = !mobileMenu.classList.contains('translate-x-full');
+    const clickedInsideMenu = mobileMenu.contains(event.target);
+    const clickedMenuBtn = menuBtn.contains(event.target);
+
+    if (isMenuOpen && !clickedInsideMenu && !clickedMenuBtn) {
+      closeMenu();
+    }
+  });
+
+  
 
   // Back to Top Button
   const backBtn = document.getElementById('backToTop');
@@ -355,6 +493,54 @@
     }, 5000);
   }
 
+  // Parallax Scroll Effekt
+  document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll('.move_it');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+
+      elements.forEach(el => {
+        const multiplier = parseFloat(el.dataset.multiplier) || 0;
+        const offset = scrollY * multiplier;
+        el.style.transform = `translate3d(${offset}px, 0, 0)`;
+      });
+    });
+  });
+
+  // Hero Animation
+  const heroText = document.getElementById('heroText');
+  let latestScrollY = 0;
+  let ticking = false;
+
+  const fadeDistance = 500;
+
+  function updateHeroEffects(scrollY) {
+    const progress = Math.min(scrollY / fadeDistance, 1);
+
+    const scale = 1 + progress * 0.5; // Max 5% größer
+    const opacity = 1 - progress * 1; // Mindestens 60% sichtbar
+
+    heroText.style.transform = `scale(${scale})`;
+    heroText.style.opacity = opacity;
+  }
+
+  function onScroll() {
+    latestScrollY = window.scrollY;
+
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateHeroEffects(latestScrollY);
+        ticking = false;
+      });
+
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll);
+
+  // Lightbox
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightbox-image');
   const closeBtn = document.getElementById('lightbox-close');
@@ -442,61 +628,96 @@
     if (e.key === 'ArrowLeft') showPrev();
   });
 
-// Dynamische Thumbnails mit Overlay
-  Object.keys(galleries).forEach(galleryName => {
-    const images = galleries[galleryName];
-    const miniatureContainer = document.querySelector(`.miniatures[data-gallery="${galleryName}"]`);
-    const maxThumbs = 3;
-    const extraImages = images.length - 1; // ohne Titelbild
+  // Dynamische Thumbnails mit Overlay
+    Object.keys(galleries).forEach(galleryName => {
+      const images = galleries[galleryName];
+      const miniatureContainer = document.querySelector(`.miniatures[data-gallery="${galleryName}"]`);
+      const maxThumbs = 3;
+      const extraImages = images.length - 1; // ohne Titelbild
 
-    if (!miniatureContainer || extraImages <= 0) return;
+      if (!miniatureContainer || extraImages <= 0) return;
 
-    const hiddenCount = extraImages - maxThumbs;
+      const hiddenCount = extraImages - maxThumbs;
 
-    images.slice(1, 1 + maxThumbs).forEach((img, i) => {
-      const isLastVisible = i === maxThumbs - 1 && hiddenCount > 0;
+      images.slice(1, 1 + maxThumbs).forEach((img, i) => {
+        const isLastVisible = i === maxThumbs - 1 && hiddenCount > 0;
 
-      // Wrapper für Thumbnail + Overlay
-      const wrapper = document.createElement("div");
-      wrapper.className = "relative";
+        // Wrapper für Thumbnail + Overlay
+        const wrapper = document.createElement("div");
+        wrapper.className = "relative";
 
-      // Klonen des Bildes
-      const clone = img.cloneNode(true);
-      clone.dataset.index = img.dataset.index;
-      clone.dataset.gallery = img.dataset.gallery;
-      clone.classList.remove("hidden");
-      clone.classList.add(
-  "w-12",
-  "h-12",
-  "object-cover", // ✅ skaliert und beschneidet das Bild im Quadrat
-  "rounded",
-  "shadow",
-  "cursor-pointer",
-  "border-2",
-  "border-white"
-);
+        // Klonen des Bildes
+        const clone = img.cloneNode(true);
+        clone.dataset.index = img.dataset.index;
+        clone.dataset.gallery = img.dataset.gallery;
+        clone.classList.remove("hidden");
+        clone.classList.add(
+    "w-12",
+    "h-12",
+    "object-cover", // ✅ skaliert und beschneidet das Bild im Quadrat
+    "rounded",
+    "shadow",
+    "cursor-pointer",
+    "border-2",
+    "border-white"
+  );
 
-      // Overlay nur beim letzten sichtbaren Thumbnail
-      if (isLastVisible) {
-        const overlay = document.createElement("div");
-        overlay.className = "absolute inset-0 bg-black/60 text-white text-xs flex items-center justify-center rounded";
-        overlay.style.pointerEvents = "none"; // Klick nicht blockieren
-        overlay.textContent = `+${hiddenCount}`;
-        wrapper.appendChild(overlay);
-      }
+        // Overlay nur beim letzten sichtbaren Thumbnail
+        if (isLastVisible) {
+          const overlay = document.createElement("div");
+          overlay.className = "absolute inset-0 bg-black/60 text-white text-xs flex items-center justify-center rounded";
+          overlay.style.pointerEvents = "none"; // Klick nicht blockieren
+          overlay.textContent = `+${hiddenCount}`;
+          wrapper.appendChild(overlay);
+        }
 
-      // Klick öffnet Lightbox
-      clone.addEventListener("click", () => {
-        const index = parseInt(clone.dataset.index);
-        showLightbox(galleryName, index);
+        // Klick öffnet Lightbox
+        clone.addEventListener("click", () => {
+          const index = parseInt(clone.dataset.index);
+          showLightbox(galleryName, index);
+        });
+
+        wrapper.appendChild(clone);
+        miniatureContainer.appendChild(wrapper);
       });
 
-      wrapper.appendChild(clone);
-      miniatureContainer.appendChild(wrapper);
+      miniatureContainer.classList.remove("hidden");
     });
+    
+    // Skeleton Loader
+    document.addEventListener('DOMContentLoaded', () => {
+      const portfolioGrid = document.getElementById('portfolio-grid');
 
-    miniatureContainer.classList.remove("hidden");
-  });
-  </script>
-</body>
+      // Simuliere "Ladezeit"
+      setTimeout(() => {
+        portfolioGrid.innerHTML = `
+          <!-- Beispiel echtes Portfolio-Item -->
+          <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
+            <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/2LXXZqp4U1Y" frameborder="0" allowfullscreen></iframe>
+            <div class="p-4">
+              <h3 class="text-lg font-semibold">3-Punkt-Beleuchtung</h3>
+              <p class="text-sm text-gray-400">In dieser Animation wird bildlich dargestellt, wie die 3-Punkt-Beleuchtung funktioniert.</p>
+            </div>
+          </div>
+
+          <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
+            <img src="Bilder/Stream Kanal/NinStationTV_YouTube_Banner.jpg" class="w-full object-cover" />
+            <div class="p-4">
+              <h3 class="text-lg font-semibold">YouTube Banner</h3>
+              <p class="text-sm text-gray-400">Banner meines YouTube-Kanals</p>
+            </div>
+          </div>
+
+          <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
+            <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/p98MeZRP9G0" frameborder="0" allowfullscreen></iframe>
+            <div class="p-4">
+              <h3 class="text-lg font-semibold">RUVAAK Werbevideo</h3>
+              <p class="text-sm text-gray-400">Für RUVAAK sollte ein Werbevideo erstellt werden.</p>
+            </div>
+          </div>
+        `;
+      }, 2000); // 2 Sekunden Ladezeit
+    });
+    </script>
+  </body>
 </html>
