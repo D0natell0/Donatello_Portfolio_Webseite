@@ -77,12 +77,46 @@
     text-align: center;
   }
 
+  .skills-slider-wrapper {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
   .skill-card {
     background: #ECDAFF;
     border-radius: 1rem;
     padding: 2rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     width: 280px; /* wichtig für Coverflow */
+    height: 300px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Größerer mittlerer Slide */
+  .swiper-slide-active {
+    transform: scale(1.15);
+    z-index: 2;
+  }
+
+  /* Fade-Overlays links und rechts */
+  .fade-overlay {
+    position: absolute;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .fade-overlay.left {
+    left: 0;
+    background: linear-gradient(to right, #1A1A1A 0%, transparent 100%);
+  }
+
+  .fade-overlay.right {
+    right: 0;
+    background: linear-gradient(to left, #1A1A1A 0%, transparent 100%);
   }
 
   .skill-card .icon {
@@ -214,6 +248,10 @@
 
         <!-- Pagination -->
         <div class="swiper-pagination"></div>
+
+        <!-- Gradient Overlays -->
+        <div class="fade-overlay left"></div>
+        <div class="fade-overlay right"></div>
       </div>
     </section>
   </section>
@@ -797,8 +835,8 @@
         coverflowEffect: {
           rotate: 0,
           stretch: 0,
-          depth: 100,
-          modifier: 2,
+          depth: 200,
+          modifier: 1.5,
           slideShadows: false,
         },
         autoplay: {
@@ -808,11 +846,7 @@
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
-        },
-        breakpoints: {
-          640: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-        },
+        }
       });
     </script>
   </body>
