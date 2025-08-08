@@ -6,14 +6,14 @@
   <title>Donatello–Media</title>
   <link rel="icon" type="image/png" href="Logo/Donatello_Logo_Bildmarke.svg">
 
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- AOS Animationen -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -71,6 +71,34 @@
   }
 
   .hidden { display: none; }
+
+  .skills-section {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .skill-card {
+    background: #ECDAFF;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    width: 280px; /* wichtig für Coverflow */
+  }
+
+  .skill-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .swiper-pagination-bullet {
+    background: #552586;
+    opacity: 0.6;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #552586;
+    opacity: 1;
+  }
   </style>
 </head>
 
@@ -134,16 +162,60 @@
 
   <!-- Über mich -->
   <section id="about" class="max-w-4xl mx-auto px-4 py-16 scroll-mt-16" data-aos="fade-right">
-    <h2 class="text-3xl font-semibold mb-6 accent">Über mich</h2>
-    <p class="mb-4 text-gray-300">Mein Name ist Niklas. Ich bin gelernter Mediengestalter und möglicherweise dein neuer Partner in Sachen Gestaltung und Produktion.</p>
-    <p class="mb-4 text-gray-300">Das sind meine Stärken:</p>
+    <h2 class="text-3xl font-semibold mb-6 accent">Hi, ich bin Niklas – Mediengestalter mit Fokus auf Motion, Marken und mehr.</h2>
+    <p class="mb-4 text-gray-300">Ich bringe Bewegung in Marken, visuelle Klarheit in Ideen und ein bisschen Charakter in jedes Projekt. Egal ob 3D, Schnitt oder Branding – bei mir trifft Design auf Gefühl und Technik auf Kreativität. Klick dich rein und schau dir an, was passiert, wenn Gestaltung mehr will als nur gut aussehen.</p>
+    <p class="mb-4 text-gray-300">Seit ich das erste Mal einen Donut in Blender modelliert habe, wusste ich: Da geht mehr. Heute kombiniere ich 3D, Motion Design, Videoschnitt und Branding zu kreativen Lösungen, die hängen bleiben. Ich liebe es, wenn Technik auf Emotion trifft – wenn ein Logo in Bewegung kommt oder ein Video eine Marke spürbar macht. Tools? Sitzen. Ideen? Viele. Und wenn du jemanden suchst, der mitdenkt, statt nur umzusetzen – let's go.</p>
+    <!--<p class="mb-4 text-gray-300">Das sind meine Stärken:</p>
     <ul class="list-disc pl-6 text-gray-300">
-      <li >Motion Design</li>
+      <li>Motion Design</li>
       <li>Videoschnitt</li>
       <li>3D-Modellierung und Animation</li>
       <li>Bildbearbeitung</li>
       <li>Logogestaltung</li>
-    </ul>
+      <li>Corporate Identity Entwicklung</li>
+    </ul>-->
+    <section class="skills-section">
+      <h2>Was ich kann</h2>
+
+      <!-- Swiper Container -->
+      <div class="swiper skills-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide skill-card">
+            <div class="icon">🎞️</div>
+            <h3 class="text-2xl font-semibold mb-6 text-zinc-900">Motion Design</h3>
+            <p class="mb-4 text-zinc-900">Marken bewegen – mit Stil, Dynamik und Timing.</p>
+          </div>
+          <div class="swiper-slide skill-card">
+            <div class="icon">✂️</div>
+            <h3 class="text-2xl font-semibold mb-6 text-zinc-900">Videoschnitt</h3>
+            <p class="mb-4 text-zinc-900">Vom Rohmaterial zum Video mit Stimmung – Story first, Effekte second.</p>
+          </div>
+          <div class="swiper-slide skill-card">
+            <div class="icon">🧊</div>
+            <h3 class="text-2xl font-semibold mb-6 text-zinc-900">3D-Modellierung & Animation</h3>
+            <p class="mb-4 text-zinc-900">Formen, Texturen, Licht – und plötzlich wirkt alles echt.</p>
+          </div>
+          <div class="swiper-slide skill-card">
+            <div class="icon">🖼️</div>
+            <h3 class="text-2xl font-semibold mb-6 text-zinc-900">Bildbearbeitung</h3>
+            <p class="mb-4 text-zinc-900">Farben, Kontraste, Retusche – perfekt bis ins Detail.</p>
+          </div>
+          <div class="swiper-slide skill-card">
+            <div class="icon">✒️</div>
+            <h3 class="text-2xl font-semibold mb-6 text-zinc-900">Logogestaltung</h3>
+            <p class="mb-4 text-zinc-900">Individuell, einprägsam, wiedererkennbar – dein Markenzeichen.</p>
+          </div>
+          <div class="swiper-slide skill-card">
+            <div class="icon">🧠</div>
+            <h3 class="text-2xl font-semibold mb-6 text-zinc-900">Corporate Identity</h3>
+            <p class="mb-4 text-zinc-900">Vom Logo bis zur Visitenkarte – ein roter Faden, der bleibt.</p>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
   </section>
 
   <!-- Portfolio -->
@@ -174,7 +246,8 @@
 -->
 
   <div class="max-w-5xl mx-auto">
-    <h2 class="text-3xl font-semibold mb-10 accent text-center">Portfolio</h2>
+    <h2 class="text-3xl font-semibold mb-10 accent text-left">Was ich mache – und wie es aussieht</h2>
+    <p class="mb-4 text-gray-300">Ob Animation, Branding oder Bewegtbild: In meinem Portfolio findest du Projekte, bei denen Ideen nicht nur gestaltet, sondern lebendig werden. Jedes Projekt erzählt eine Geschichte – mal laut, mal leise, aber immer mit Fokus auf Design, Wirkung und einem klaren Ziel. Scroll dich durch – und mach dir selbst ein Bild.</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
     <!-- Trenner 3 Punkt Beleuchtung-->
@@ -182,9 +255,8 @@
       <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
         <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/2LXXZqp4U1Y" frameborder="0" allowfullscreen></iframe>
         <div class="p-4">
-          <h3 class="text-lg font-semibold">3-Punkt-Beleuchtung</h3>
-          <h3 class="text-lg font-semibold">Blender Animation</h3>
-          <p class="text-sm text-gray-400">Erklärvideo für 3-Punkt-Beleuchtung</p>
+          <h3 class="text-lg font-semibold">Licht verständlich gemacht – 3-Punkt-Beleuchtung einfach erklärt</h3>
+          <p class="text-sm text-gray-400">In dieser 3D-Animation habe ich das klassische Prinzip der 3-Punkt-Beleuchtung Schritt für Schritt visualisiert. Key Light, Fill Light, Back Light – alles verständlich aufbereitet und so gestaltet, dass es nicht nur logisch, sondern auch visuell Spaß macht. Learning by watching.</p>
         </div>
       </div>
 
@@ -206,8 +278,8 @@
         <div class="miniatures absolute top-2 right-2 space-y-1 hidden sm:flex flex-col" data-gallery="projektTwitchBanner"></div>
 
         <div class="p-4">
-          <h3 class="text-lg font-semibold">YouTube/Twitch Profilgrafiken</h3>
-          <p class="text-sm text-gray-400">Hier werden Beispielgrafiken abgebildet. Dieser Block wird wahrscheinlich noch entfernt.</p>
+          <h3 class="text-lg font-semibold">YouTube & Twitch Profilgrafiken</h3>
+          <p class="text-sm text-gray-400">Ein kleiner Einblick in mein Grafik-Playground. Hier findest du Designs für Streamer:innen, die auffallen wollen – clean, individuell, ready to go. (Hinweis: Dieser Block ist eventuell noch in Bearbeitung.)</p>
         </div>       
       </div>
 
@@ -216,8 +288,8 @@
       <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
         <iframe class="w-full aspect-video" src="https://youtube.com/embed/p98MeZRP9G0" frameborder="0" allowfullscreen></iframe>
         <div class="p-4">
-          <h3 class="text-lg font-semibold">RUVAAK Werbevideo</h3>
-          <p class="text-sm text-gray-400">Mit diesem Short-Video soll die Marke RUVAAK beworben werden.</p>
+          <h3 class="text-lg font-semibold">Vom Rohmaterial zum Werbeclip mit Stimmung</h3>
+          <p class="text-sm text-gray-400">Schnitt, Transitions, Effekte und die richtige Musik – wenn alles zusammenpasst, entsteht mehr als nur ein Video: Es entsteht ein Gefühl. Genau darum geht’s bei meinen Werbeclips – Marken so rüberzubringen, dass sie nicht nur sichtbar, sondern spürbar sind.</p>
         </div>
       </div>
 
@@ -226,8 +298,8 @@
       <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
         <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/vlUaC03uNxA" frameborder="0" allowfullscreen></iframe>
         <div class="p-4">
-          <h3 class="text-lg font-semibold">DOOH Werbekampagne</h3>
-          <p class="text-sm text-gray-400">Digitale Medien wirken. Ob informierend, aktionistisch oder unterhaltend, sie erfüllen ihren Zweck. Egal wann, egal wo.</p>
+          <h3 class="text-lg font-semibold">"More than waiting." – Bewegte Botschaft wirkt</h3>
+          <p class="text-sm text-gray-400">Für diese DOOH-Kampagne (Digital Out of Home) habe ich ein Konzept entwickelt, das zeigt, wie stark Bewegtbild auf öffentlichen Screens wirken kann. Informativ, unterhaltend oder aktivierend – digitale Medien sind immer on point. Und das zu jeder Zeit, an jedem Ort.</p>
         </div>
       </div>
 
@@ -236,8 +308,8 @@
       <!--<div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
         <video class="w-full aspect-video" src="Bilder/Logo Animation MachHalt.webm" autoplay muted playsinline loop></video>
         <div class="p-4">
-          <h3 class="text-lg font-semibold">Markeninszenierung mit Charakter</h3>
-          <p class="text-sm text-gray-400">Für die Webseite eines guten Freundes durfte ich das Logo zum Leben erwecken. Das Ziel: Eine cleane Animation, die direkt ins Auge fällt und einen dynamischen Einstieg ins Web-Erlebnis bietet.</p>
+          <h3 class="text-lg font-semibold">Logo-Animation mit Persönlichkeit</h3>
+          <p class="text-sm text-gray-400">Für den Webauftritt eines Freundes durfte ich sein Logo animieren – simpel, clean, aber mit Charakter. Ziel war eine kurze Animation, die direkt auffällt und den Einstieg ins Webdesign-Erlebnis dynamisch eröffnet. Kurz gesagt: Motion mit Message.</p>
         </div>
       </div>-->  
 
@@ -265,9 +337,9 @@
 
         <!-- Textinfo -->
         <div class="p-4">
-          <h3 class="text-lg font-semibold">Markenentwicklung - von der Idee bis zur Anwendung</h3>
+          <h3 class="text-lg font-semibold">Branding, das hängen bleibt – der Eispalast Ludwigslust</h3>
           <p class="text-sm text-gray-400">
-            Für das fiktive Projekt "Eispalast Ludwigslust" habe ich ein kompless visuelles Erscheinungsbild entwickelt. Vom Logo über Geschäftsbrief, bis hin zu Werbemitteln wie Visitenkarten, Plakaten wurde ein komplettes Corporate Identity entwickelt. Auch wenn der Kunde nur auf dem Bildschirm existiert - das Ergebnis ist echt.
+            Ein komplett durchdachtes Markenbild für ein fiktives Unternehmen: Vom Logo bis zu Visitenkarten, Plakaten und Briefpapier – hier ist ein Corporate Design entstanden, das trotz „Fake-Kunde“ absolut real wirkt. Idee, Gestaltung, Anwendung – alles aus einer Hand.
           </p>
         </div>
       </div>
@@ -291,8 +363,8 @@
         <div class="miniatures absolute top-2 right-2 space-y-1 hidden sm:flex flex-col" data-gallery="projektDonut"></div>
 
         <div class="p-4">
-          <h3 class="text-lg font-semibold">Der legendäre Blender Donut</h3>
-          <p class="text-sm text-gray-400">Dieser Donut war für viele der erste Schritt in die 3D-Modellierung. Das bekannte Blender Guru Tutorial war auch für mich der Einstieg in die Welt von Blender. Modelling, Shading, Lighting und Rendering - all das gehört zu den Grundlagen von Blender, die mit dieser Tutorial Reihe perfekt abgedeckt werden. Auch wenn das Motiv simpel scheint, sind das meine ersten Schritte in die 3D-Welt gewesen.</p>
+          <h3 class="text-lg font-semibold">Der ikonische Blender Donut – mein Einstieg in 3D</h3>
+          <p class="text-sm text-gray-400">Der Donut – legendär und süß zugleich. Mein erstes Projekt in Blender, basierend auf dem bekannten Blender Guru Tutorial. Von Modeling über Shading bis zum finalen Render – dieser Donut war mein Sprungbrett in die Welt der 3D-Gestaltung. Simpel, aber vollgepackt mit Basics.</p>
         </div>
     </div>
   </div>
@@ -714,6 +786,34 @@
         `;
       }, 2000); // 2 Sekunden Ladezeit
     });
+
+    //Swiper
+      const swiper = new Swiper(".skills-slider", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        loop: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 2,
+          slideShadows: false,
+        },
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        },
+      });
     </script>
   </body>
 </html>
