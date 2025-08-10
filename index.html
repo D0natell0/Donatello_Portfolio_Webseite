@@ -39,6 +39,24 @@
       transition: transform 0.05s linear;
     }
 
+    #heroText {
+      transition: transform 0s ease, opacity 0s ease;
+      will-change: transform, opacity;
+    }
+
+    #menu-btn.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    #menu-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    #menu-btn.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+  /* Skeleton */    
   .skeleton {
     background: linear-gradient(90deg, #1f1f1f 25%, #2b2b2b 50%, #1f1f1f 75%);
     background-size: 200% 100%;
@@ -72,6 +90,7 @@
 
   .hidden { display: none; }
 
+  /* Skills */
   .skills-section {
     padding: 2rem;
     text-align: center;
@@ -84,39 +103,19 @@
   }
 
   .skill-card {
-    background: #ECDAFF;
+    background: #e9d4ff;
     border-radius: 1rem;
     padding: 2rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    width: 280px; /* wichtig für Coverflow */
+    width: 280px; 
     height: 300px;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
   }
 
-  /* Größerer mittlerer Slide */
   .swiper-slide-active {
     transform: scale(1.15);
+    background: #ECDAFF;
     z-index: 2;
-  }
-
-  /* Fade-Overlays links und rechts */
-  .fade-overlay {
-    position: absolute;
-    top: 0;
-    width: 10%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 5;
-  }
-
-  .fade-overlay.left {
-    left: 0;
-    background: linear-gradient(to right, #1A1A1A 0%, transparent 100%);
-  }
-
-  .fade-overlay.right {
-    right: 0;
-    background: linear-gradient(to left, #1A1A1A 0%, transparent 100%);
   }
 
   .skill-card .icon {
@@ -132,6 +131,28 @@
   .swiper-pagination-bullet-active {
     background: #552586;
     opacity: 1;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    background-color: #1A1A1A;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } 
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 18px;
+    color: #ECDAFF;
+  }
+
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    background-color: #2b2b2b;
   }
   </style>
 </head>
@@ -199,20 +220,12 @@
     <h2 class="text-3xl font-semibold mb-6 accent">Hi, ich bin Niklas – Mediengestalter mit Fokus auf Motion, Marken und mehr.</h2>
     <p class="mb-4 text-gray-300">Ich bringe Bewegung in Marken, visuelle Klarheit in Ideen und ein bisschen Charakter in jedes Projekt. Egal ob 3D, Schnitt oder Branding – bei mir trifft Design auf Gefühl und Technik auf Kreativität. Klick dich rein und schau dir an, was passiert, wenn Gestaltung mehr will als nur gut aussehen.</p>
     <p class="mb-4 text-gray-300">Seit ich das erste Mal einen Donut in Blender modelliert habe, wusste ich: Da geht mehr. Heute kombiniere ich 3D, Motion Design, Videoschnitt und Branding zu kreativen Lösungen, die hängen bleiben. Ich liebe es, wenn Technik auf Emotion trifft – wenn ein Logo in Bewegung kommt oder ein Video eine Marke spürbar macht. Tools? Sitzen. Ideen? Viele. Und wenn du jemanden suchst, der mitdenkt, statt nur umzusetzen – let's go.</p>
-    <!--<p class="mb-4 text-gray-300">Das sind meine Stärken:</p>
-    <ul class="list-disc pl-6 text-gray-300">
-      <li>Motion Design</li>
-      <li>Videoschnitt</li>
-      <li>3D-Modellierung und Animation</li>
-      <li>Bildbearbeitung</li>
-      <li>Logogestaltung</li>
-      <li>Corporate Identity Entwicklung</li>
-    </ul>-->
+
     <section class="skills-section">
-      <h2>Was ich kann</h2>
+      <h2 class="text-3xl font-semibold mb-6 accent">Was ich kann</h2>
 
       <!-- Swiper Container -->
-      <div class="swiper skills-slider">
+      <div class="swiper skills-slider" space-between="30">
         <div class="swiper-wrapper">
           <div class="swiper-slide skill-card">
             <div class="icon">🎞️</div>
@@ -246,12 +259,9 @@
           </div>
         </div>
 
-        <!-- Pagination -->
         <div class="swiper-pagination"></div>
-
-        <!-- Gradient Overlays -->
-        <div class="fade-overlay left"></div>
-        <div class="fade-overlay right"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
     </section>
   </section>
@@ -479,14 +489,6 @@
         <path d="M21.8 7.2a2.8 2.8 0 00-1.97-1.97C18.4 5 12 5 12 5s-6.4 0-7.83.23a2.8 2.8 0 00-1.97 1.97A29.44 29.44 0 002 12a29.44 29.44 0 00.23 4.8 2.8 2.8 0 001.97 1.97C5.6 19 12 19 12 19s6.4 0 7.83-.23a2.8 2.8 0 001.97-1.97A29.44 29.44 0 0022 12a29.44 29.44 0 00-.2-4.8zM10 15.5v-7l6 3.5-6 3.5z"/>
       </svg>
     </a>
-
-    <!-- 
-    <a href="https://www.pinterest.de/DonatelloMedia" target="_blank" rel="noopener" aria-label="Pinterest" class="text-gray-400 hover:text-red-500 transition">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 fill-current" viewBox="0 0 24 24">
-        <path d="M12 2a10 10 0 00-3.48 19.39c-.05-.43-.1-1.1.02-1.57.11-.47.74-3.02.74-3.02s-.18-.35-.18-.87c0-.82.48-1.43 1.08-1.43.51 0 .76.38.76.84 0 .51-.33 1.28-.5 2-.14.61.3 1.1.9 1.1 1.08 0 1.92-1.14 1.92-2.78 0-1.45-1.04-2.46-2.53-2.46-1.73 0-2.75 1.3-2.75 2.64 0 .52.2 1.08.45 1.38.05.06.05.11.04.17-.05.19-.16.61-.18.69-.03.1-.11.13-.24.08-.9-.42-1.46-1.72-1.46-2.77 0-2.26 1.64-4.34 4.75-4.34 2.49 0 4.43 1.78 4.43 4.16 0 2.48-1.56 4.48-3.73 4.48-.73 0-1.42-.38-1.66-.82l-.45 1.73c-.16.63-.59 1.43-.88 1.92.66.2 1.37.31 2.1.31A10 10 0 0012 2z"/>
-      </svg>
-    </a>
-  -->
   </div>
     © Donatello-Media – Mediengestaltung 2025 · <a href="#" class="underline">Impressum</a>
   </footer>
@@ -497,33 +499,13 @@
     ↑ Zurück nach oben
   </a>
 
-  <!-- Lightbox-Galerie (ein div nur) -->
+  <!-- Lightbox-Galerie -->
   <div id="lightbox" class="fixed inset-0 bg-black/80 flex items-center justify-center hidden z-50">
     <button id="lightbox-close" class="absolute top-4 right-4 text-white text-2xl">×</button>
     <button id="prevBtn" class="absolute left-4 text-white text-3xl">‹</button>
     <img id="lightbox-image" src="" class="max-h-[90%] max-w-[90%] object-contain" />
     <button id="nextBtn" class="absolute right-4 text-white text-3xl">›</button>
   </div>
-
-  <style>
-    #heroText {
-      transition: transform 0s ease, opacity 0s ease;
-      will-change: transform, opacity;
-    }
-
-    /* Wenn Button offen ist */
-    #menu-btn.open span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    #menu-btn.open span:nth-child(2) {
-      opacity: 0;
-    }
-
-    #menu-btn.open span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
-  </style>
 
 <script>
   AOS.init({ duration: 800, once: true });
@@ -572,8 +554,6 @@
       closeMenu();
     }
   });
-
-  
 
   // Back to Top Button
   const backBtn = document.getElementById('backToTop');
@@ -734,64 +714,64 @@
     if (e.key === 'ArrowLeft') showPrev();
   });
 
-  // Dynamische Thumbnails mit Overlay
-    Object.keys(galleries).forEach(galleryName => {
-      const images = galleries[galleryName];
-      const miniatureContainer = document.querySelector(`.miniatures[data-gallery="${galleryName}"]`);
-      const maxThumbs = 3;
-      const extraImages = images.length - 1; // ohne Titelbild
+      // Dynamische Thumbnails mit Overlay
+      Object.keys(galleries).forEach(galleryName => {
+        const images = galleries[galleryName];
+        const miniatureContainer = document.querySelector(`.miniatures[data-gallery="${galleryName}"]`);
+        const maxThumbs = 3;
+        const extraImages = images.length - 1; // ohne Titelbild
 
-      if (!miniatureContainer || extraImages <= 0) return;
+        if (!miniatureContainer || extraImages <= 0) return;
 
-      const hiddenCount = extraImages - maxThumbs;
+        const hiddenCount = extraImages - maxThumbs;
 
-      images.slice(1, 1 + maxThumbs).forEach((img, i) => {
-        const isLastVisible = i === maxThumbs - 1 && hiddenCount > 0;
+        images.slice(1, 1 + maxThumbs).forEach((img, i) => {
+          const isLastVisible = i === maxThumbs - 1 && hiddenCount > 0;
 
-        // Wrapper für Thumbnail + Overlay
-        const wrapper = document.createElement("div");
-        wrapper.className = "relative";
+          // Wrapper für Thumbnail + Overlay
+          const wrapper = document.createElement("div");
+          wrapper.className = "relative";
 
-        // Klonen des Bildes
-        const clone = img.cloneNode(true);
-        clone.dataset.index = img.dataset.index;
-        clone.dataset.gallery = img.dataset.gallery;
-        clone.classList.remove("hidden");
-        clone.classList.add(
-    "w-12",
-    "h-12",
-    "object-cover", // ✅ skaliert und beschneidet das Bild im Quadrat
-    "rounded",
-    "shadow",
-    "cursor-pointer",
-    "border-2",
-    "border-white"
-  );
+          // Klonen des Bildes
+          const clone = img.cloneNode(true);
+          clone.dataset.index = img.dataset.index;
+          clone.dataset.gallery = img.dataset.gallery;
+          clone.classList.remove("hidden");
+          clone.classList.add(
+      "w-12",
+      "h-12",
+      "object-cover", // ✅ skaliert und beschneidet das Bild im Quadrat
+      "rounded",
+      "shadow",
+      "cursor-pointer",
+      "border-2",
+      "border-white"
+    );
 
-        // Overlay nur beim letzten sichtbaren Thumbnail
-        if (isLastVisible) {
-          const overlay = document.createElement("div");
-          overlay.className = "absolute inset-0 bg-black/60 text-white text-xs flex items-center justify-center rounded";
-          overlay.style.pointerEvents = "none"; // Klick nicht blockieren
-          overlay.textContent = `+${hiddenCount}`;
-          wrapper.appendChild(overlay);
-        }
+          // Overlay nur beim letzten sichtbaren Thumbnail
+          if (isLastVisible) {
+            const overlay = document.createElement("div");
+            overlay.className = "absolute inset-0 bg-black/60 text-white text-xs flex items-center justify-center rounded";
+            overlay.style.pointerEvents = "none"; // Klick nicht blockieren
+            overlay.textContent = `+${hiddenCount}`;
+            wrapper.appendChild(overlay);
+          }
 
-        // Klick öffnet Lightbox
-        clone.addEventListener("click", () => {
-          const index = parseInt(clone.dataset.index);
-          showLightbox(galleryName, index);
+          // Klick öffnet Lightbox
+          clone.addEventListener("click", () => {
+            const index = parseInt(clone.dataset.index);
+            showLightbox(galleryName, index);
+          });
+
+          wrapper.appendChild(clone);
+          miniatureContainer.appendChild(wrapper);
         });
 
-        wrapper.appendChild(clone);
-        miniatureContainer.appendChild(wrapper);
+        miniatureContainer.classList.remove("hidden");
       });
-
-      miniatureContainer.classList.remove("hidden");
-    });
-    
-    // Skeleton Loader
-    document.addEventListener('DOMContentLoaded', () => {
+      
+      // Skeleton Loader
+      document.addEventListener('DOMContentLoaded', () => {
       const portfolioGrid = document.getElementById('portfolio-grid');
 
       // Simuliere "Ladezeit"
@@ -827,7 +807,7 @@
 
     //Swiper
       const swiper = new Swiper(".skills-slider", {
-        effect: "coverflow",
+        effect: "cards",
         grabCursor: true,
         centeredSlides: true,
         loop: true,
@@ -840,13 +820,17 @@
           slideShadows: false,
         },
         autoplay: {
-          delay: 2500,
+          delay: 5000,
           disableOnInteraction: false,
         },
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
-        }
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },      
       });
     </script>
   </body>
