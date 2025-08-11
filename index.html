@@ -33,6 +33,10 @@
       background-color: #552586;
     }
 
+    .hidden {
+      display: none !important;
+    }
+
     .move_it {
       display: inline-block;
       will-change: transform;
@@ -56,40 +60,6 @@
       transform: rotate(-45deg) translate(5px, -5px);
     }
 
-  /* Skeleton */    
-  .skeleton {
-    background: linear-gradient(90deg, #1f1f1f 25%, #2b2b2b 50%, #1f1f1f 75%);
-    background-size: 200% 100%;
-    animation: skeleton-loading 1.5s infinite;
-    border-radius: 0.5rem;
-  }
-
-  @keyframes skeleton-loading {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-  }
-
-  .skeleton-card {
-    height: 300px;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .skeleton-text {
-    height: 1rem;
-    width: 80%;
-  }
-
-  .skeleton-thumbnail {
-    height: 170px;
-    width: 100%;
-    border-radius: 0.5rem;
-  }
-
-  .hidden { display: none; }
-
   /* Skills */
   .skills-section {
     padding: 2rem;
@@ -98,7 +68,7 @@
 
   .skills-slider-wrapper {
     position: relative;
-    max-width: 1000px;
+    max-width: 100%;
     margin: 0 auto;
   }
 
@@ -135,7 +105,7 @@
 
   .swiper-button-prev,
   .swiper-button-next {
-    background-color: #1a1a1a55;
+    background-color: #55258655;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -154,7 +124,7 @@
 
   .swiper-button-prev:hover,
   .swiper-button-next:hover {
-    background-color: #2b2b2b55;
+    background-color: #552586;
   }
 
   .swiper-button-prev {
@@ -164,6 +134,83 @@
   .swiper-button-next {
     right: 20%;
   }
+
+  /* Lightbox-Container */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Medien im Vollbild */
+#lightbox-media img,
+#lightbox-media svg,
+#lightbox-media video,
+#lightbox-media iframe {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+}
+
+/* SVG skalieren */
+#lightbox-media svg {
+  width: 90%;
+  height: auto;
+}
+
+/* Keine Hover-Effekte im Vollbild */
+#lightbox-media img:hover,
+#lightbox-media svg:hover,
+#lightbox-media video:hover {
+  filter: none !important;
+}
+
+/* Navigation */
+#prevBtn, #nextBtn, #lightbox-close {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  margin: 0 0.5rem;
+  border-radius: 9999px; /* voll rund */
+  transition: background 0.2s ease;
+}
+
+#prevBtn:hover, #nextBtn:hover, #lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.lightbox-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: rgba(255 255 255 / 0.2);
+  border: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+.lightbox-btn:hover {
+  background: rgba(255 255 255 / 0.4);
+}
+
+.lightbox-btn svg {
+  pointer-events: none;
+}
+
   </style>
 </head>
 
@@ -212,7 +259,7 @@
   <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden" data-aos="fade-up">
     <video autoplay muted loop playsinline
       class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
-      <source src="Bilder/AdobeStock_480460719.webm" type="video/webm">
+      <source src="Bilder/BackgroundLoop.webm" type="video/webm">
     </video>
 
     <div id="heroText" class="relative z-10 ">
@@ -234,7 +281,6 @@
     <section class="skills-section" data-aos="fade-up">
       <h2 class="text-3xl font-semibold mb-6 accent">Was ich kann</h2>
 
-      <!-- Swiper Container -->
       <div class="swiper skills-slider" space-between="30">
         <div class="swiper-wrapper">
           <div class="swiper-slide skill-card">
@@ -278,10 +324,9 @@
 
   <!-- Portfolio -->
   <section id="portfolio" class="bg-violet-950 py-16 px-4 scroll-mt-16" data-aos="fade-left">
-      <video autoplay muted loop playsinline
-          class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
-      <source src="Bilder/AdobeStock_480460719.webm" type="video/webm">
-    </video>
+      <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
+        <source src="Bilder/BackgroundLoop.webm" type="video/webm" alt="Hintergrund Video">
+      </video>
 <!--
               <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                
@@ -320,7 +365,7 @@
 
     <!-- Trenner Twitch -->
 
-      <div class="relative group bg-zinc-900 rounded-lg shadow-lg overflow-hidden">
+     <div class="relative group bg-zinc-900 rounded-lg shadow-lg overflow-hidden">
 
         <img
           src="Bilder/Stream Kanal/YouTube_Banner.webp"
@@ -361,15 +406,23 @@
         </div>
       </div>
 
-    <!-- Trenner MachHalt -->
+    <!-- Trenner Logo Animation -->
 
-      <!--<div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
-        <video class="w-full aspect-video" src="Bilder/Logo Animation MachHalt.webm" autoplay muted playsinline loop></video>
+      <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
+        <video 
+          class="w-full aspect-video portfolio-preview cursor-pointer hover:brightness-75" 
+          src="Bilder/Logo Animation/Logo_Animation.webm" 
+          alt="Logo Animation" 
+          autoplay muted playsinline loop
+          data-index="0"
+          data-gallery="projektLogoAnimation">
+          Dein Browser unterstützt das Videoformat nicht.
+        </video>
         <div class="p-4">
           <h3 class="text-lg font-semibold">Logo-Animation mit Persönlichkeit</h3>
-          <p class="text-sm text-gray-400">Für den Webauftritt eines Freundes durfte ich sein Logo animieren – simpel, clean, aber mit Charakter. Ziel war eine kurze Animation, die direkt auffällt und den Einstieg ins Webdesign-Erlebnis dynamisch eröffnet. Kurz gesagt: Motion mit Message.</p>
+          <p class="text-sm text-gray-400">Eine animierte Logo-Animation bringt mehr Leben und Charakter in jedes Design. Im Vergleich zu einem statischen Logo, das nur visuell steht, zieht eine dynamische Animation die Aufmerksamkeit. So wird das Logo nicht nur gesehen, sondern auch wirklich erlebt und hinterlässt einen bleibenden Eindruck.</p>
         </div>
-      </div>-->  
+      </div>
 
     <!-- Trenner Eispalast Ludwigslust -->
 
@@ -377,7 +430,7 @@
 
         <!-- Titelbild -->
         <img
-          src="Bilder/Eispalast/Logo Eispalast Ludwigslust.svg"
+          src="Bilder/Eispalast/Eispalast_Ludwigslust_Logo.svg"
           alt="Logo Eispalast Ludwigslust"
           class="w-auto portfolio-preview cursor-pointer hover:brightness-75"
           data-index="0"
@@ -513,48 +566,42 @@
   <div id="lightbox" class="fixed inset-0 bg-black/80 flex items-center justify-center hidden z-50">
     <button id="lightbox-close" class="absolute top-4 right-4 text-white text-2xl">×</button>
     <button id="prevBtn" class="absolute left-4 text-white text-3xl">‹</button>
-    <img id="lightbox-image" src="" class="max-h-[90%] max-w-[90%] object-contain" />
+    <div id="lightbox-media" class="max-h-[90%] max-w-[90%] object-contain"></div>
     <button id="nextBtn" class="absolute right-4 text-white text-3xl">›</button>
   </div>
 
 <script>
   AOS.init({ duration: 800, once: true });
 
-
+  // Burger Menu
   const menuBtn = document.getElementById('menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const menuOverlay = document.getElementById('menu-overlay');
 
-  // Öffnen des Menüs
   const openMenu = () => {
     mobileMenu.classList.remove('translate-x-full');
     menuOverlay.classList.remove('hidden');
     menuBtn.classList.add('open');
   };
 
-  // Schließen des Menüs
   const closeMenu = () => {
     mobileMenu.classList.add('translate-x-full');
     menuOverlay.classList.add('hidden');
     menuBtn.classList.remove('open');
   };
 
-  // Toggle beim Klick auf Burger-Button
   menuBtn.addEventListener('click', (e) => {
     e.stopPropagation(); // verhindert Klickweitergabe
     const isOpen = !mobileMenu.classList.contains('translate-x-full');
     isOpen ? closeMenu() : openMenu();
   });
 
-  // Klick auf Overlay → Menü schließen
   menuOverlay.addEventListener('click', closeMenu);
 
-  // Klick auf Link → Menü schließen
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', closeMenu);
   });
 
-  // ✅ NEU: Klick außerhalb des Menüs schließt es
   document.addEventListener('click', (event) => {
     const isMenuOpen = !mobileMenu.classList.contains('translate-x-full');
     const clickedInsideMenu = mobileMenu.contains(event.target);
@@ -614,8 +661,8 @@
   function updateHeroEffects(scrollY) {
     const progress = Math.min(scrollY / fadeDistance, 1);
 
-    const scale = 1 + progress * 0.5; // Max 5% größer
-    const opacity = 1 - progress * 1; // Mindestens 60% sichtbar
+    const scale = 1 + progress * 0.5;
+    const opacity = 1 - progress * 1;
 
     heroText.style.transform = `scale(${scale})`;
     heroText.style.opacity = opacity;
@@ -636,191 +683,184 @@
 
   window.addEventListener('scroll', onScroll);
 
-  // Lightbox
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImage = document.getElementById('lightbox-image');
-  const closeBtn = document.getElementById('lightbox-close');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const mediaContainer = document.getElementById('lightbox-media');
+const closeBtn = document.getElementById('lightbox-close');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
 
-  // **Nur Bilder mit gültigem src auswählen (filtert leere oder fehlerhafte Bilder raus)**
-  const allGalleryImages = Array.from(document.querySelectorAll('[data-gallery]'))
-    .filter(img => img.src && img.src.trim() !== '');
+// Runde Buttons mit Swiper-Pfeilen per JS aufbauen
+function createArrowSVG(isPrev) {
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNS, "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("width", "20");
+  svg.setAttribute("height", "20");
+  svg.setAttribute("fill", "none");
+  svg.setAttribute("stroke", "white");
+  svg.setAttribute("stroke-width", "2");
+  svg.setAttribute("stroke-linecap", "round");
+  svg.setAttribute("stroke-linejoin", "round");
 
-  const galleries = {};
-
-  // Galeriegruppen nach Name sammeln
-  allGalleryImages.forEach(img => {
-    const galleryName = img.dataset.gallery;
-    if (!galleries[galleryName]) galleries[galleryName] = [];
-    galleries[galleryName].push(img);
-  });
-
-  let currentGallery = null;
-  let currentIndex = 0;
-
-  function showLightbox(galleryName, index) {
-    const gallery = galleries[galleryName];
-    if (!gallery || index < 0 || index >= gallery.length) return;
-
-    currentGallery = galleryName;
-    currentIndex = index;
-    lightboxImage.src = gallery[index].src || gallery[index].dataset.src;
-    lightbox.classList.remove('hidden');
+  const polyline = document.createElementNS(svgNS, "polyline");
+  if (isPrev) {
+    polyline.setAttribute("points", "15 18 9 12 15 6");
+  } else {
+    polyline.setAttribute("points", "9 18 15 12 9 6");
   }
+  svg.appendChild(polyline);
+  return svg;
+}
 
-  function showNext() {
-    if (!currentGallery) return;
-    const gallery = galleries[currentGallery];
-    currentIndex = (currentIndex + 1) % gallery.length;
-    showLightbox(currentGallery, currentIndex);
-  }
+[prevBtn, nextBtn].forEach((btn, i) => {
+  btn.classList.add('lightbox-btn');
+  btn.innerHTML = '';
+  btn.appendChild(createArrowSVG(i === 0));
+});
 
-  function showPrev() {
-    if (!currentGallery) return;
-    const gallery = galleries[currentGallery];
-    currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
-    showLightbox(currentGallery, currentIndex);
-  }
+// Galerie-Elemente sammeln (ohne SVG)
+const allGalleryItems = Array.from(document.querySelectorAll('[data-gallery]'))
+  .filter(item =>
+    (item.tagName.toLowerCase() === 'img' && item.getAttribute('src')) ||
+    item.tagName.toLowerCase() === 'video' ||
+    (item.tagName.toLowerCase() === 'a' && item.href?.includes('youtube.com'))
+  );
 
-  allGalleryImages.forEach(img => {
-    img.addEventListener('click', () => {
-      const galleryName = img.dataset.gallery;
-      const index = parseInt(img.dataset.index);
-      showLightbox(galleryName, index);
-    });
-  });
+// Nach Galerie gruppieren
+const galleries = {};
+allGalleryItems.forEach(item => {
+  const name = item.dataset.gallery;
+  if (!galleries[name]) galleries[name] = [];
+  galleries[name].push(item);
+});
 
-  closeBtn.addEventListener('click', () => {
-    lightbox.classList.add('hidden');
-    lightboxImage.src = '';
-  });
+let currentGallery = null;
+let currentIndex = 0;
 
-  nextBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    showNext();
-  });
+function showLightbox(galleryName, index) {
+  const gallery = galleries[galleryName];
+  if (!gallery) return;
 
-  prevBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    showPrev();
-  });
+  currentGallery = galleryName;
+  currentIndex = index;
+  const currentItem = gallery[index];
 
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      lightbox.classList.add('hidden');
-      lightboxImage.src = '';
+  mediaContainer.innerHTML = '';
+
+  const tag = currentItem.tagName.toLowerCase();
+
+  if (tag === 'video') {
+    const video = currentItem.cloneNode(true);
+    mediaContainer.appendChild(video);
+    video.play();
+  } else if (tag === 'img') {
+    const img = currentItem.cloneNode(true);
+    img.classList.remove('hidden');
+    img.style.filter = 'none'; // Hover im Vollbild aus
+    mediaContainer.appendChild(img);
+  } else if (tag === 'a') {
+    const match = currentItem.href.match(/v=([^&]+)/);
+    if (match) {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${match[1]}?autoplay=1`;
+      iframe.frameBorder = "0";
+      iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
+      iframe.allowFullscreen = true;
+      mediaContainer.appendChild(iframe);
     }
+  }
+
+  lightbox.classList.remove('hidden');
+}
+
+function showNext() {
+  const gallery = galleries[currentGallery];
+  currentIndex = (currentIndex + 1) % gallery.length;
+  showLightbox(currentGallery, currentIndex);
+}
+
+function showPrev() {
+  const gallery = galleries[currentGallery];
+  currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
+  showLightbox(currentGallery, currentIndex);
+}
+
+allGalleryItems.forEach(item => {
+  item.addEventListener('click', () => {
+    showLightbox(item.dataset.gallery, parseInt(item.dataset.index));
   });
+});
 
-  document.addEventListener('keydown', (e) => {
-    if (lightbox.classList.contains('hidden')) return;
+prevBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  showPrev();
+});
 
-    if (e.key === 'Escape') {
-      lightbox.classList.add('hidden');
-      lightboxImage.src = '';
-    }
-    if (e.key === 'ArrowRight') showNext();
-    if (e.key === 'ArrowLeft') showPrev();
-  });
+nextBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  showNext();
+});
 
-      // Dynamische Thumbnails mit Overlay
-      Object.keys(galleries).forEach(galleryName => {
-        const images = galleries[galleryName];
-        const miniatureContainer = document.querySelector(`.miniatures[data-gallery="${galleryName}"]`);
-        const maxThumbs = 3;
-        const extraImages = images.length - 1; // ohne Titelbild
+function closeLightbox() {
+  lightbox.classList.add('hidden');
+  mediaContainer.innerHTML = '';
+}
 
-        if (!miniatureContainer || extraImages <= 0) return;
+closeBtn.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => {
+  if (e.target === lightbox) closeLightbox();
+});
 
-        const hiddenCount = extraImages - maxThumbs;
+document.addEventListener('keydown', e => {
+  if (lightbox.classList.contains('hidden')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') showNext();
+  if (e.key === 'ArrowLeft') showPrev();
+});
 
-        images.slice(1, 1 + maxThumbs).forEach((img, i) => {
-          const isLastVisible = i === maxThumbs - 1 && hiddenCount > 0;
+// Dynamische Thumbnails (unverändert)
+Object.entries(galleries).forEach(([name, items]) => {
+  const container = document.querySelector(`.miniatures[data-gallery="${name}"]`);
+  if (!container || items.length <= 1) return;
 
-          // Wrapper für Thumbnail + Overlay
-          const wrapper = document.createElement("div");
-          wrapper.className = "relative";
+  const maxThumbs = 3;
+  const hiddenCount = items.length - 1 - maxThumbs;
 
-          // Klonen des Bildes
-          const clone = img.cloneNode(true);
-          clone.dataset.index = img.dataset.index;
-          clone.dataset.gallery = img.dataset.gallery;
-          clone.classList.remove("hidden");
-          clone.classList.add(
-      "w-12",
-      "h-12",
-      "object-cover", // ✅ skaliert und beschneidet das Bild im Quadrat
-      "rounded",
-      "shadow",
-      "cursor-pointer",
-      "border-2",
-      "border-white"
-    );
+  items.slice(1, 1 + maxThumbs).forEach((item, i) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "relative";
 
-          // Overlay nur beim letzten sichtbaren Thumbnail
-          if (isLastVisible) {
-            const overlay = document.createElement("div");
-            overlay.className = "absolute inset-0 bg-black/60 text-white text-xs flex items-center justify-center rounded";
-            overlay.style.pointerEvents = "none"; // Klick nicht blockieren
-            overlay.textContent = `+${hiddenCount}`;
-            wrapper.appendChild(overlay);
-          }
-
-          // Klick öffnet Lightbox
-          clone.addEventListener("click", () => {
-            const index = parseInt(clone.dataset.index);
-            showLightbox(galleryName, index);
-          });
-
-          wrapper.appendChild(clone);
-          miniatureContainer.appendChild(wrapper);
-        });
-
-        miniatureContainer.classList.remove("hidden");
-      });
-      
-      // Skeleton Loader
-      document.addEventListener('DOMContentLoaded', () => {
-      const portfolioGrid = document.getElementById('portfolio-grid');
-
-      // Simuliere "Ladezeit"
-      setTimeout(() => {
-        portfolioGrid.innerHTML = `
-          <!-- Beispiel echtes Portfolio-Item -->
-          <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
-            <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/2LXXZqp4U1Y" frameborder="0" allowfullscreen></iframe>
-            <div class="p-4">
-              <h3 class="text-lg font-semibold">3-Punkt-Beleuchtung</h3>
-              <p class="text-sm text-gray-400">In dieser Animation wird bildlich dargestellt, wie die 3-Punkt-Beleuchtung funktioniert.</p>
-            </div>
-          </div>
-
-          <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
-            <img src="Bilder/Stream Kanal/NinStationTV_YouTube_Banner.jpg" class="w-full object-cover" />
-            <div class="p-4">
-              <h3 class="text-lg font-semibold">YouTube Banner</h3>
-              <p class="text-sm text-gray-400">Banner meines YouTube-Kanals</p>
-            </div>
-          </div>
-
-          <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
-            <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/p98MeZRP9G0" frameborder="0" allowfullscreen></iframe>
-            <div class="p-4">
-              <h3 class="text-lg font-semibold">RUVAAK Werbevideo</h3>
-              <p class="text-sm text-gray-400">Für RUVAAK sollte ein Werbevideo erstellt werden.</p>
-            </div>
-          </div>
-        `;
-      }, 2000); // 2 Sekunden Ladezeit
+    const thumb = item.cloneNode(true);
+    thumb.classList.remove("hidden");
+    thumb.classList.add("w-12", "h-12", "object-cover", "rounded", "shadow", "cursor-pointer", "border-2", "border-white");
+    thumb.addEventListener("click", () => {
+      showLightbox(name, parseInt(thumb.dataset.index));
     });
+
+    wrapper.appendChild(thumb);
+
+    if (i === maxThumbs - 1 && hiddenCount > 0) {
+      const overlay = document.createElement("div");
+      overlay.className = "absolute inset-0 bg-black/60 text-white text-xs flex items-center justify-center rounded";
+      overlay.style.pointerEvents = "none";
+      overlay.textContent = `+${hiddenCount}`;
+      wrapper.appendChild(overlay);
+    }
+
+    container.appendChild(wrapper);
+  });
+
+  container.classList.remove("hidden");
+});
+
 
     //Swiper
       const swiper = new Swiper(".skills-slider", {
         effect: "cards",
         grabCursor: true,
         centeredSlides: true,
-        loop: true,
+        rewind: true,
         slidesPerView: "auto",
         coverflowEffect: {
           rotate: 0,
