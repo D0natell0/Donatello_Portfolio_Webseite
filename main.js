@@ -171,15 +171,16 @@
 
 // --- Lightbox & Gallery -------------------------------------------------
 function initLightbox() {
-  const lightbox = $('#lightbox');
-  const mediaContainer = $('#lightbox-media');
-  const closeBtn = $('#lightbox-close');
-  const prevBtn = $('#prevBtn');
-  const nextBtn = $('#nextBtn');
+  const lightbox = document.getElementById('lightbox');
+  const mediaContainer = document.getElementById('lightbox-media');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const counter = document.getElementById('lightbox-counter');
 
-  // Build galleries (ignore miniatures)
   const items = Array.from(document.querySelectorAll('[data-gallery]'))
-    .filter(el => !el.closest('.miniatures')); // Miniaturen ausschließen
+    .filter(el => !el.closest('.miniatures'));
+
   const galleries = {};
   items.forEach(item => {
     const name = item.dataset.gallery;
@@ -212,24 +213,37 @@ function initLightbox() {
       mediaContainer.appendChild(img);
     }
 
+    // Counter anzeigen
+    if (gallery.length > 1) {
+      counter.textContent = `${currentIndex + 1} / ${gallery.length}`;
+      counter.classList.remove('hidden');
+    } else {
+      counter.classList.add('hidden');
+    }
+
+    prevBtn.style.display = gallery.length <= 1 ? 'none' : 'block';
+    nextBtn.style.display = gallery.length <= 1 ? 'none' : 'block';
+
     lightbox.setAttribute('aria-hidden', 'false');
     lightbox.classList.remove('hidden');
   }
 
   function showNext() {
     const gallery = galleries[currentGallery] || [];
+    if (gallery.length <= 1) return;
     currentIndex = (currentIndex + 1) % gallery.length;
     showLightbox(currentGallery, currentIndex);
   }
+
   function showPrev() {
     const gallery = galleries[currentGallery] || [];
+    if (gallery.length <= 1) return;
     currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
     showLightbox(currentGallery, currentIndex);
   }
 
-  // Attach click listeners (inklusive Miniaturen)
   items.forEach(item => {
-    item.addEventListener('click', (e) => {
+    item.addEventListener('click', () => {
       const gallery = item.dataset.gallery;
       const idx = parseInt(item.dataset.index || items.indexOf(item), 10);
       showLightbox(gallery, idx);
@@ -246,8 +260,8 @@ function initLightbox() {
   }
 
   closeBtn?.addEventListener('click', closeLightbox);
-  lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', (e) => {
+  lightbox?.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => {
     if (lightbox.classList.contains('hidden')) return;
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowRight') showNext();
@@ -255,25 +269,28 @@ function initLightbox() {
   });
 }
 
-// --- Thumbnails for galleries -------------------------------------------
+// --- Thumbnails for galleries ------------------------------------------
 function initThumbnails() {
-  const galleryEntries = Object.entries(
-    Array.from(document.querySelectorAll('[data-gallery]'))
-      .filter(el => !el.classList.contains('miniatures'))
-      .reduce((acc, el) => {
-        const name = el.dataset.gallery;
-        if (!name) return acc;
-        if (!acc[name]) acc[name] = [];
-        acc[name].push(el);
-        return acc;
-      }, {})
-  );
+  const galleryMap = Array.from(document.querySelectorAll('[data-gallery]'))
+    .filter(el => !el.classList.contains('miniatures'))
+    .reduce((acc, el) => {
+      const name = el.dataset.gallery;
+      if (!name) return acc;
+      if (!acc[name]) acc[name] = [];
+      acc[name].push(el);
+      return acc;
+    }, {});
 
-  galleryEntries.forEach(([name, items]) => {
+  Object.entries(galleryMap).forEach(([name, items]) => {
     const container = document.querySelector(`.miniatures[data-gallery="${name}"]`);
     if (!container || items.length <= 1) return;
+
+    // Container vorher leeren, damit keine Duplikate entstehen
+    container.innerHTML = '';
+
     const maxThumbs = 3;
     const hiddenCount = items.length - 1 - maxThumbs;
+
     items.slice(1, 1 + maxThumbs).forEach((item, i) => {
       const wrapper = document.createElement('div');
       wrapper.className = 'relative';
@@ -281,9 +298,8 @@ function initThumbnails() {
       thumb.classList.remove('hidden');
       thumb.classList.add('w-12', 'h-12', 'object-cover', 'rounded', 'shadow', 'cursor-pointer', 'border-2', 'border-white');
       thumb.addEventListener('click', () => {
-        // Öffne direkt das Originalbild im Lightbox
-        const idx = parseInt(item.dataset.index || items.indexOf(item), 10);
-        item.click(); // klickt auf das Original, nicht die Miniatur selbst
+        const idx = items.indexOf(item);
+        item.click();
       });
       wrapper.appendChild(thumb);
 
@@ -294,11 +310,14 @@ function initThumbnails() {
         overlay.textContent = `+${hiddenCount}`;
         wrapper.appendChild(overlay);
       }
+
       container.appendChild(wrapper);
     });
+
     container.classList.remove('hidden');
   });
 }
+
 
 
   // --- YouTube lazy embeds (nocookie) ------------------------------------
