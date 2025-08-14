@@ -34,7 +34,7 @@
 <body class="bg-[#1A1A1A] text-[#ECDAFF] overflow-x-hidden scroll-smooth">
 
 <!-- Header -->
-<header class="sticky top-0 z-50 bg-[#1A1A1A] border-b border-gray-700">
+<header class="fixed top-0 left-0 w-full z-50 bg-[#1A1A1A] border-b border-gray-700">
   <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
     <a href="#top" class="flex items-center gap-3" aria-label="Startseite">
       <img src="img/logo/Donatello_Logo_Wort_Bildmarke_Horizontal.svg" alt="Donatello-Media Logo" class="h-10 w-auto" loading="lazy">
@@ -69,7 +69,7 @@
     <!-- HERO -->
     <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden" data-aos="fade-up">
       <video aria-hidden="true" autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
-        <source src="img/background/BackgroundLoop.webm" type="video/webm">
+        <source src="img/background/BackgroundLoop.webm" type="video/webm" loading="lazy">
       </video>
 
       <div id="heroText" class="relative z-10 transform-gpu will-change-transform">
@@ -147,9 +147,9 @@
     </section>
 
     <!-- PORTFOLIO -->
-    <section id="portfolio" class="bg-violet-950 py-16 px-4 scroll-mt-16" data-aos="fade-left">
+    <section id="portfolio" class="relative bg-violet-950 py-16 px-4 scroll-mt-16" data-aos="fade-up">
       <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
-        <source src="img/background/BackgroundLoop.webm" type="video/webm" alt="Hintergrund Video">
+        <source src="img/background/BackgroundLoop.webm" type="video/webm" alt="Hintergrund Video" loading="lazy">
       </video>
       <div class="max-w-5xl mx-auto">
         <h2 class="text-3xl font-semibold mb-10 accent text-left">Was ich mache – und wie es aussieht</h2>
@@ -160,7 +160,7 @@
     <!-- Trenner 3 Punkt Beleuchtung-->
 
       <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
-        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/2LXXZqp4U1Y" frameborder="0" allowfullscreen></iframe>
+        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/2LXXZqp4U1Y" frameborder="0" loading="lazy" allowfullscreen></iframe>
         <div class="p-4">
           <h3 class="text-lg font-semibold">Licht verständlich gemacht – 3-Punkt-Beleuchtung einfach erklärt</h3>
           <p class="text-sm text-gray-400">In dieser 3D-Animation habe ich das klassische Prinzip der 3-Punkt-Beleuchtung Schritt für Schritt visualisiert. Key Light, Fill Light, Back Light – alles verständlich aufbereitet und so gestaltet, dass es nicht nur logisch, sondern auch visuell Spaß macht. Learning by watching.</p>
@@ -177,10 +177,11 @@
           class="w-auto portfolio-preview cursor-pointer hover:brightness-75"
           data-index="0"
           data-gallery="projektTwitchBanner"
+          loading="lazy"
         />
 
-          <img src="img/portfolio/gengar.webp" alt="YouTube und Twitch Profilbild" class="hidden hover:brightness-75" data-index="1" data-gallery="projektTwitchBanner" />
-          <img src="img/portfolio/overlay.webp" alt="Twitch Stream Overlay" class="hidden hover:brightness-75" data-index="2" data-gallery="projektTwitchBanner" />
+          <img src="img/portfolio/gengar.webp" alt="YouTube und Twitch Profilbild" class="hidden hover:brightness-75" data-index="1" data-gallery="projektTwitchBanner" loading="lazy"/>
+          <img src="img/portfolio/overlay.webp" alt="Twitch Stream Overlay" class="hidden hover:brightness-75" data-index="2" data-gallery="projektTwitchBanner" loading="lazy"/>
 
         <div class="miniatures absolute top-2 right-2 space-y-1 hidden sm:flex flex-col" data-gallery="projektTwitchBanner"></div>
 
@@ -193,7 +194,7 @@
     <!-- Trenner RUVAAK -->
 
       <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
-        <iframe class="w-full aspect-video" src="https://youtube.com/embed/p98MeZRP9G0" frameborder="0" allowfullscreen></iframe>
+        <iframe class="w-full aspect-video" src="https://youtube.com/embed/p98MeZRP9G0" frameborder="0" allowfullscreen loading="lazy"></iframe>
         <div class="p-4">
           <h3 class="text-lg font-semibold">Vom Rohmaterial zum Werbeclip mit Stimmung</h3>
           <p class="text-sm text-gray-400">Schnitt, Transitions, Effekte und die richtige Musik – wenn alles zusammenpasst, entsteht mehr als nur ein Video: Es entsteht ein Gefühl. Genau darum geht’s bei meinen Werbeclips – Marken so rüberzubringen, dass sie nicht nur sichtbar, sondern spürbar sind.</p>
@@ -203,7 +204,7 @@
     <!-- Trenner DOOH Werbekampagne -->
 
       <div class="relative group bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
-        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/vlUaC03uNxA" frameborder="0" allowfullscreen></iframe>
+        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/vlUaC03uNxA" frameborder="0" allowfullscreen loading="lazy"></iframe>
         <div class="p-4">
           <h3 class="text-lg font-semibold">"More than waiting." – Bewegte Botschaft wirkt</h3>
           <p class="text-sm text-gray-400">Für diese DOOH-Kampagne (Digital Out of Home) habe ich ein Konzept entwickelt, das zeigt, wie stark Bewegtbild auf öffentlichen Screens wirken kann. Informativ, unterhaltend oder aktivierend – digitale Medien sind immer on point. Und das zu jeder Zeit, an jedem Ort.</p>
@@ -219,7 +220,8 @@
           alt="Logo Animation" 
           autoplay muted playsinline loop
           data-index="0"
-          data-gallery="projektLogoAnimation">
+          data-gallery="projektLogoAnimation"
+          loading="lazy">          
           Dein Browser unterstützt das Videoformat nicht.
         </video>
         <div class="p-4">
@@ -239,13 +241,14 @@
           class="w-auto portfolio-preview cursor-pointer hover:brightness-75"
           data-index="0"
           data-gallery="projektEispalastLudwigslust"
+          loading="lazy"
         />
 
         <!-- Unsichtbare Bilder (werden per JS für Galerie und Thumbnails verwendet) -->
-          <img src="img/portfolio/eispalast_outdoor.webp" alt="Eispalast Ludwigslust MockUp Outdoorsteele" class="hidden hover:brightness-75" data-index="1" data-gallery="projektEispalastLudwigslust" />
-          <img src="img/portfolio/eispalast_plakate.webp" alt="Eispalast Ludwigslust MockUp Plakate" class="hidden hover:brightness-75" data-index="2" data-gallery="projektEispalastLudwigslust" />
-          <img src="img/portfolio/Eispalast_Ludwigslust_Visitenkarte_und_Brief.webp" alt="Eispalast Ludwigslust MockUp Geschäftsbrief und Visitenkarte" class="hidden hover:brightness-75" data-index="3" data-gallery="projektEispalastLudwigslust" />
-          <img src="img/portfolio/Eispalast_Ludwigslust_Cafe_Tasse.webp" alt="Eispalast Ludwigslust MockUp Kaffeetasse" class="hidden hover:brightness-75" data-index="4" data-gallery="projektEispalastLudwigslust" />
+          <img src="img/portfolio/eispalast_outdoor.webp" alt="Eispalast Ludwigslust MockUp Outdoorsteele" class="hidden hover:brightness-75" data-index="1" data-gallery="projektEispalastLudwigslust" loading="lazy"/>
+          <img src="img/portfolio/eispalast_plakate.webp" alt="Eispalast Ludwigslust MockUp Plakate" class="hidden hover:brightness-75" data-index="2" data-gallery="projektEispalastLudwigslust" loading="lazy"/>
+          <img src="img/portfolio/Eispalast_Ludwigslust_Visitenkarte_und_Brief.webp" alt="Eispalast Ludwigslust MockUp Geschäftsbrief und Visitenkarte" class="hidden hover:brightness-75" data-index="3" data-gallery="projektEispalastLudwigslust" loading="lazy"/>
+          <img src="img/portfolio/Eispalast_Ludwigslust_Cafe_Tasse.webp" alt="Eispalast Ludwigslust MockUp Kaffeetasse" class="hidden hover:brightness-75" data-index="4" data-gallery="projektEispalastLudwigslust" loading="lazy"/>
 
         <!-- Miniaturbilder-Container -->
         <div class="miniatures absolute top-2 right-2 space-y-1 hidden sm:flex flex-col" data-gallery="projektEispalastLudwigslust"></div>
@@ -270,10 +273,11 @@
           class="w-auto portfolio-preview cursor-pointer hover:brightness-75"
           data-index="0"
           data-gallery="projektDonut"
+          loading="lazy"
         />
 
-          <img src="img/portfolio/donut.webp" alt="" class="hidden hover:brightness-75" data-index="1" data-gallery="projektDonut" />
-          <img src="img/portfolio/tasse.webp" alt="" class="hidden hover:brightness-75" data-index="2" data-gallery="projektDonut" />
+          <img src="img/portfolio/donut.webp" alt="" class="hidden hover:brightness-75" data-index="1" data-gallery="projektDonut" loading="lazy"/>
+          <img src="img/portfolio/tasse.webp" alt="" class="hidden hover:brightness-75" data-index="2" data-gallery="projektDonut" loading="lazy"/>
 
         <div class="miniatures absolute top-2 right-2 space-y-1 hidden sm:flex flex-col" data-gallery="projektDonut"></div>
 

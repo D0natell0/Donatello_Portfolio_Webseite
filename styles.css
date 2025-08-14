@@ -16,6 +16,10 @@ html,body {
   scroll-behavior: smooth;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 /* Accent */
 .accent { color: var(--accent-foreground); }
 .bg-accent { background-color: var(--accent); }
