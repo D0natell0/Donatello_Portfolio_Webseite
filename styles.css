@@ -57,9 +57,17 @@ html {
 
 /* Skill cards (used by swiper slides) */
 .skills-section {
-  width: 400px;
+  width: 100%;                /* statt 400px */
+  max-width: 600px;          /* maximale Breite setzen */
+  margin: 0 auto;             /* horizontal zentrieren */
   padding: 2rem;
   text-align: center;
+}
+
+.skills-slider {
+  display: flex;
+  height: 250px;
+  justify-content: center;    /* Swiper mittig ausrichten */
 }
 
 .skill-card {
