@@ -156,7 +156,7 @@
     if (window.Swiper) {
       // eslint-disable-next-line no-unused-vars
       const swiper = new Swiper('.skills-slider', {
-        effect: 'cards',
+        effect: 'cube',
         grabCursor: true,
         centeredSlides: true,
         rewind: true,
