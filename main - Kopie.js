@@ -15,46 +15,69 @@
     if (window.AOS) AOS.init({ duration: 800, once: true });
   }
 
-  // --- Mobile menu --------------------------------------------------------
+  // --- Burger Menu -----------------------------------------------------------
   function initMenu() {
-    const menuBtn = $('#menu-btn');
-    const mobileMenu = $('#mobile-menu');
-    const menuOverlay = $('#menu-overlay');
-    const mobileClose = $('#mobile-close');
+    const menuBtn = document.getElementById('menu-btn');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    if (!menuBtn || !menuOverlay || !mobileNav) return;
+
+    let menuOpen = false;
 
     function openMenu() {
-      mobileMenu.classList.remove('translate-x-full');
-      menuOverlay.classList.remove('hidden');
-      menuBtn.classList.add('open');
-      mobileMenu.setAttribute('aria-hidden', 'false');
-    }
-    function closeMenu() {
-      mobileMenu.classList.add('translate-x-full');
-      menuOverlay.classList.add('hidden');
-      menuBtn.classList.remove('open');
-      mobileMenu.setAttribute('aria-hidden', 'true');
-    }
+    menuOverlay.classList.remove('hidden');
+    menuBtn.classList.add('open');
+    menuOpen = true;
 
-    if (!menuBtn || !mobileMenu) return;
+    // Body scroll sperren
+    document.body.style.overflow = 'hidden';
 
-    menuBtn.addEventListener('click', e => {
-      e.stopPropagation();
-      const isOpen = !mobileMenu.classList.contains('translate-x-full');
-      isOpen ? closeMenu() : openMenu();
+    // Animation starten
+    requestAnimationFrame(() => {
+      mobileNav.classList.remove('scale-95', 'opacity-0');
+      mobileNav.classList.add('scale-100', 'opacity-100');
     });
-    mobileClose?.addEventListener('click', closeMenu);
-    menuOverlay?.addEventListener('click', closeMenu);
-
-    // close when clicking outside
-    document.addEventListener('click', (e) => {
-      const isOpen = !mobileMenu.classList.contains('translate-x-full');
-      if (!isOpen) return;
-      if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu();
-    });
-
-    // close on navigation
-    $$('#mobile-menu a').forEach(a => a.addEventListener('click', closeMenu));
   }
+
+  function closeMenu() {
+    mobileNav.classList.remove('scale-100', 'opacity-100');
+    mobileNav.classList.add('scale-95', 'opacity-0');
+
+    setTimeout(() => {
+      menuOverlay.classList.add('hidden');
+      menuOpen = false;
+
+      // Body scroll wieder erlauben
+      document.body.style.overflow = '';
+    }, 300);
+
+    menuBtn.classList.remove('open');
+  }
+
+
+    // Toggle Menü
+    menuBtn.addEventListener('click', e => {
+      e.stopPropagation(); // verhindert sofortiges Schließen
+      menuOpen ? closeMenu() : openMenu();
+    });
+
+    // Klick auf Overlay schließt Menü
+    menuOverlay.addEventListener('click', closeMenu);
+
+    // Klick auf Navigation schließt Menü
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    // Klick außerhalb schließt Menü
+    document.addEventListener('click', e => {
+      if (!menuOpen) return;
+      if (!menuOverlay.contains(e.target) && !menuBtn.contains(e.target)) {
+        closeMenu();
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initMenu);
 
   // --- Back to top button -------------------------------------------------
   function initBackToTop() {
@@ -133,7 +156,7 @@
     if (window.Swiper) {
       // eslint-disable-next-line no-unused-vars
       const swiper = new Swiper('.skills-slider', {
-        effect: 'cards',
+        effect: 'cube',
         grabCursor: true,
         centeredSlides: true,
         rewind: true,
@@ -146,143 +169,156 @@
     }
   }
 
-  // --- Lightbox & Gallery -------------------------------------------------
-  function initLightbox() {
-    const lightbox = $('#lightbox');
-    const mediaContainer = $('#lightbox-media');
-    const closeBtn = $('#lightbox-close');
-    const prevBtn = $('#prevBtn');
-    const nextBtn = $('#nextBtn');
+// --- Lightbox & Gallery -------------------------------------------------
+function initLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  const mediaContainer = document.getElementById('lightbox-media');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const counter = document.getElementById('lightbox-counter');
 
-    // Build galleries
-    const items = Array.from(document.querySelectorAll('[data-gallery]'));
-    const galleries = {};
-    items.forEach(item => {
-      const name = item.dataset.gallery;
-      if (!name) return;
-      if (!galleries[name]) galleries[name] = [];
-      galleries[name].push(item);
-    });
+  const items = Array.from(document.querySelectorAll('[data-gallery]'))
+    .filter(el => !el.closest('.miniatures'));
 
-    let currentGallery = null;
-    let currentIndex = 0;
+  const galleries = {};
+  items.forEach(item => {
+    const name = item.dataset.gallery;
+    if (!name) return;
+    if (!galleries[name]) galleries[name] = [];
+    galleries[name].push(item);
+  });
 
-    function showLightbox(name, index) {
-      const gallery = galleries[name];
-      if (!gallery || !gallery[index]) return;
-      currentGallery = name;
-      currentIndex = index;
-      const item = gallery[index];
-      mediaContainer.innerHTML = '';
+  let currentGallery = null;
+  let currentIndex = 0;
 
-      const tag = item.tagName.toLowerCase();
-      if (tag === 'video') {
-        const v = item.cloneNode(true);
-        v.controls = true;
-        v.autoplay = true;
-        mediaContainer.appendChild(v);
-      } else if (tag === 'img') {
-        const img = item.cloneNode(true);
-        img.classList.remove('hidden');
-        img.style.filter = 'none';
-        mediaContainer.appendChild(img);
-      } else if (tag === 'a') {
-        // legacy handling (not used currently)
-        const iframe = document.createElement('iframe');
-        iframe.src = item.href;
-        iframe.frameBorder = 0;
-        iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
-        iframe.allowFullscreen = true;
-        mediaContainer.appendChild(iframe);
-      } else {
-        // fallback: clone whatever is inside
-        const clone = item.cloneNode(true);
-        mediaContainer.appendChild(clone);
-      }
+  function showLightbox(name, index) {
+    const gallery = galleries[name];
+    if (!gallery || !gallery[index]) return;
+    currentGallery = name;
+    currentIndex = index;
+    const item = gallery[index];
+    mediaContainer.innerHTML = '';
 
-      lightbox.setAttribute('aria-hidden', 'false');
-      lightbox.classList.remove('hidden');
+    const tag = item.tagName.toLowerCase();
+    if (tag === 'video') {
+      const v = item.cloneNode(true);
+      v.controls = true;
+      v.autoplay = true;
+      mediaContainer.appendChild(v);
+    } else if (tag === 'img') {
+      const img = item.cloneNode(true);
+      img.classList.remove('hidden');
+      img.style.filter = 'none';
+      mediaContainer.appendChild(img);
     }
 
-    function showNext() {
-      const gallery = galleries[currentGallery] || [];
-      currentIndex = (currentIndex + 1) % gallery.length;
-      showLightbox(currentGallery, currentIndex);
-    }
-    function showPrev() {
-      const gallery = galleries[currentGallery] || [];
-      currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
-      showLightbox(currentGallery, currentIndex);
+    // Counter anzeigen
+    if (gallery.length > 1) {
+      counter.textContent = `${currentIndex + 1} / ${gallery.length}`;
+      counter.classList.remove('hidden');
+    } else {
+      counter.classList.add('hidden');
     }
 
-    // Attach click listeners
-    items.forEach(item => {
-      item.addEventListener('click', (e) => {
-        // if item has dataset.index use it, else fallback to indexOf
-        const gallery = item.dataset.gallery;
-        const idx = item.dataset.index ? parseInt(item.dataset.index, 10) : (galleries[gallery]?.indexOf(item) || 0);
-        showLightbox(gallery, idx);
-      });
-    });
+    prevBtn.style.display = gallery.length <= 1 ? 'none' : 'block';
+    nextBtn.style.display = gallery.length <= 1 ? 'none' : 'block';
 
-    prevBtn?.addEventListener('click', e => { e.stopPropagation(); showPrev(); });
-    nextBtn?.addEventListener('click', e => { e.stopPropagation(); showNext(); });
-
-    function closeLightbox() {
-      lightbox.setAttribute('aria-hidden', 'true');
-      mediaContainer.innerHTML = '';
-      lightbox.classList.add('hidden');
-    }
-
-    closeBtn?.addEventListener('click', closeLightbox);
-    lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', (e) => {
-      if (lightbox.classList.contains('hidden')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') showNext();
-      if (e.key === 'ArrowLeft') showPrev();
-    });
+    lightbox.setAttribute('aria-hidden', 'false');
+    lightbox.classList.remove('hidden');
   }
 
-  // --- Thumbnails for galleries -------------------------------------------
-  function initThumbnails() {
-    const galleryEntries = Object.entries(document.querySelectorAll('[data-gallery]').reduce((acc, el) => {
+  function showNext() {
+    const gallery = galleries[currentGallery] || [];
+    if (gallery.length <= 1) return;
+    currentIndex = (currentIndex + 1) % gallery.length;
+    showLightbox(currentGallery, currentIndex);
+  }
+
+  function showPrev() {
+    const gallery = galleries[currentGallery] || [];
+    if (gallery.length <= 1) return;
+    currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
+    showLightbox(currentGallery, currentIndex);
+  }
+
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      const gallery = item.dataset.gallery;
+      const idx = parseInt(item.dataset.index || items.indexOf(item), 10);
+      showLightbox(gallery, idx);
+    });
+  });
+
+  prevBtn?.addEventListener('click', e => { e.stopPropagation(); showPrev(); });
+  nextBtn?.addEventListener('click', e => { e.stopPropagation(); showNext(); });
+
+  function closeLightbox() {
+    lightbox.setAttribute('aria-hidden', 'true');
+    mediaContainer.innerHTML = '';
+    lightbox.classList.add('hidden');
+  }
+
+  closeBtn?.addEventListener('click', closeLightbox);
+  lightbox?.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+  });
+}
+
+// --- Thumbnails for galleries ------------------------------------------
+function initThumbnails() {
+  const galleryMap = Array.from(document.querySelectorAll('[data-gallery]'))
+    .filter(el => !el.classList.contains('miniatures'))
+    .reduce((acc, el) => {
       const name = el.dataset.gallery;
       if (!name) return acc;
       if (!acc[name]) acc[name] = [];
       acc[name].push(el);
       return acc;
-    }, {}));
+    }, {});
 
-    galleryEntries.forEach(([name, items]) => {
-      const container = document.querySelector(`.miniatures[data-gallery="${name}"]`);
-      if (!container || items.length <= 1) return;
-      const maxThumbs = 3;
-      const hiddenCount = items.length - 1 - maxThumbs;
-      items.slice(1, 1 + maxThumbs).forEach((item, i) => {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'relative';
-        const thumb = item.cloneNode(true);
-        thumb.classList.remove('hidden');
-        thumb.classList.add('w-12', 'h-12', 'object-cover', 'rounded', 'shadow', 'cursor-pointer', 'border-2', 'border-white');
-        thumb.addEventListener('click', () => {
-          const idx = parseInt(thumb.dataset.index, 10);
-          document.querySelectorAll(`[data-gallery="${name}"]`)[idx].click();
-        });
-        wrapper.appendChild(thumb);
+  Object.entries(galleryMap).forEach(([name, items]) => {
+    const container = document.querySelector(`.miniatures[data-gallery="${name}"]`);
+    if (!container || items.length <= 1) return;
 
-        if (i === maxThumbs - 1 && hiddenCount > 0) {
-          const overlay = document.createElement('div');
-          overlay.className = 'absolute inset-0 bg-black/60 text-white text-xs flex items-center justify-center rounded';
-          overlay.style.pointerEvents = 'none';
-          overlay.textContent = `+${hiddenCount}`;
-          wrapper.appendChild(overlay);
-        }
-        container.appendChild(wrapper);
+    // Container vorher leeren, damit keine Duplikate entstehen
+    container.innerHTML = '';
+
+    const maxThumbs = 3;
+    const hiddenCount = items.length - 1 - maxThumbs;
+
+    items.slice(1, 1 + maxThumbs).forEach((item, i) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'relative';
+      const thumb = item.cloneNode(true);
+      thumb.classList.remove('hidden');
+      thumb.classList.add('w-12', 'h-12', 'object-cover', 'rounded', 'shadow', 'cursor-pointer', 'border-2', 'border-white');
+      thumb.addEventListener('click', () => {
+        const idx = items.indexOf(item);
+        item.click();
       });
-      container.classList.remove('hidden');
+      wrapper.appendChild(thumb);
+
+      if (i === maxThumbs - 1 && hiddenCount > 0) {
+        const overlay = document.createElement('div');
+        overlay.className = 'absolute inset-0 bg-black/60 text-white text-xs flex items-center justify-center rounded';
+        overlay.style.pointerEvents = 'none';
+        overlay.textContent = `+${hiddenCount}`;
+        wrapper.appendChild(overlay);
+      }
+
+      container.appendChild(wrapper);
     });
-  }
+
+    container.classList.remove('hidden');
+  });
+}
+
+
 
   // --- YouTube lazy embeds (nocookie) ------------------------------------
   function initYouTubeEmbeds() {

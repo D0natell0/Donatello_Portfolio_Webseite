@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="vendor/aos.css" />
   <!--<link rel="stylesheet" href="vendor/tailwind.min.css">-->
 
+
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"> -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -34,23 +35,24 @@
 <body class="bg-[#1A1A1A] text-[#ECDAFF] overflow-x-hidden scroll-smooth">
 
 <!-- Header -->
-<header class="fixed top-0 left-0 w-full z-50 bg-[#1A1A1A] border-b border-gray-700">
-  <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
+<header class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md border-2 border-violet-900/40">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
     <a href="#top" class="flex items-center gap-3" aria-label="Startseite">
-      <img src="img/logo/Donatello_Logo_Wort_Bildmarke_Horizontal.svg" alt="Donatello-Media Logo" class="h-10 w-auto" loading="lazy">
+      <img src="img/logo/Donatello_Logo_Wort_Bildmarke_Horizontal.svg" alt="Donatello-Media Logo" class="h-10 w-auto drop-shadow-lg" loading="lazy">
     </a>
 
-    <nav class="hidden md:flex space-x-6 text-sm uppercase" aria-label="Hauptnavigation">
-      <a href="#about" class="hover:underline">Über mich</a>
-      <a href="#portfolio" class="hover:underline">Portfolio</a>
-      <a href="#contact" class="hover:underline">Kontakt</a>
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-wide" aria-label="Hauptnavigation">
+      <a href="#about" class="text-gray-200 hover:text-violet-400 transition-colors">Über mich</a>
+      <a href="#portfolio" class="text-gray-200 hover:text-violet-400 transition-colors">Portfolio</a>
+      <a href="#contact" class="text-gray-200 hover:text-violet-400 transition-colors">Kontakt</a>
     </nav>
 
     <!-- Burger Button -->
-    <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none" aria-label="Menü öffnen">
-      <span class="block w-6 h-0.5 bg-white transition-transform duration-300 origin-center"></span>
-      <span class="block w-6 h-0.5 bg-white transition-opacity duration-300"></span>
-      <span class="block w-6 h-0.5 bg-white transition-transform duration-300 origin-center"></span>
+    <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none group" aria-label="Menü öffnen">
+      <span class="block w-6 h-0.5 bg-white rounded transition-transform duration-300 origin-center group-[.open]:rotate-45 group-[.open]:translate-y-2"></span>
+      <span class="block w-6 h-0.5 bg-white rounded transition-opacity duration-300 group-[.open]:opacity-0"></span>
+      <span class="block w-6 h-0.5 bg-white rounded transition-transform duration-300 origin-center group-[.open]:-rotate-45 group-[.open]:-translate-y-2"></span>
     </button>
   </div>
 </header>
@@ -67,23 +69,23 @@
   <main id="top" class="scroll-smooth">
 
     <!-- HERO -->
-    <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden" data-aos="fade-up">
-      <video aria-hidden="true" autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
+    <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden border-2 border-violet-900/40 bg-[#0D0D0D] bg-gradient-to-b from-[#0D0D0D] via-[#1A1A1A] to-[#0D0D0D]" data-aos="fade-up">
+      <!--<video aria-hidden="true" autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
         <source src="img/background/BackgroundLoop.webm" type="video/webm" loading="lazy">
-      </video>
+      </video>-->
 
       <div id="heroText" class="relative z-10 transform-gpu will-change-transform">
         <h1 class="text-4xl md:text-6xl font-bold mb-4 flex flex-col items-center gap-2">
           <span class="move_it" data-multiplier="-0.5">Willkommen bei</span>
           <span class="move_it" data-multiplier="0.5">Donatello-Media</span>
         </h1>
-        <p class="text-lg md:text-xl mb-6 text-gray-300">Mediengestalter aus Leidenschaft</p>
+        <p class="text-lg md:text-xl mb-6 text-white-300">Mediengestalter aus Leidenschaft</p>
 
         <a href="#about" class="flex flex-col items-center gap-1" aria-label="Zum Bereich Über mich">
-          <svg class="w-6 h-6 text-white animate-bounceDown" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <svg class="w-6 h-6 text-white animate-bounceDown" fill="none" stroke="#552586" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
-          <svg class="w-6 h-6 text-white animate-bounceDown delay-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <svg class="w-6 h-6 text-white animate-bounceDown delay-200" fill="none" stroke="#552586" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </a>
@@ -92,62 +94,64 @@
 
     <!-- ABOUT -->
     <section id="about" class="max-w-4xl mx-auto px-4 py-16 scroll-mt-16" data-aos="fade-right">
-      <h2 class="text-3xl font-semibold mb-6 accent">Hi, ich bin Niklas – Mediengestalter mit Fokus auf Motion, Marken und mehr.</h2>
-      <p class="mb-4 text-gray-300">Ich bringe Bewegung in Marken, visuelle Klarheit in Ideen und ein bisschen Charakter in jedes Projekt. Egal ob 3D, Schnitt oder Branding – bei mir trifft Design auf Gefühl und Technik auf Kreativität.</p>
-      <p class="mb-4 text-gray-300">Seit ich das erste Mal einen Donut in Blender modelliert habe, wusste ich: Da geht mehr. Heute kombiniere ich 3D, Motion Design, Videoschnitt und Branding zu kreativen Lösungen, die hängen bleiben.</p>
+      <h2 class="text-4xl font-semibold mb-6 accent">Hi, ich bin Niklas – Mediengestalter mit Fokus auf Motion, Marken und mehr.</h2>
+      <p class="mb-3 text-gray-300">Ich bringe Bewegung in Marken, visuelle Klarheit in Ideen und ein bisschen Charakter in jedes Projekt. Egal ob 3D, Schnitt oder Branding – bei mir trifft Design auf Gefühl und Technik auf Kreativität.</p>
+      <p class="mb-3 text-gray-300">Seit ich das erste Mal einen Donut in Blender modelliert habe, wusste ich: Da geht mehr. Heute kombiniere ich 3D, Motion Design, Videoschnitt und Branding zu kreativen Lösungen, die hängen bleiben.</p>
 
-      <!-- Skills / Swiper -->
-      <section class="skills-section" data-aos="fade-up">
-        <h3 class="text-3xl font-semibold mb-6 accent">Was ich kann</h3>
-
-        <div class="swiper skills-slider" data-swiper-space-between="30">
-          <div class="swiper-wrapper">
-            <article class="swiper-slide skill-card" aria-hidden="false">
-              <div class="icon" aria-hidden="true">🎞️</div>
-              <h4 class="text-2xl font-semibold mb-4 text-white-900">Motion Design</h4>
-              <p class="text-white-900">Marken bewegen – mit Stil, Dynamik und Timing.</p>
-            </article>
-
-            <article class="swiper-slide skill-card">
-              <div class="icon" aria-hidden="true">✂️</div>
-              <h4 class="text-2xl font-semibold mb-4 text-white-900">Videoschnitt</h4>
-              <p class="text-white-900">Vom Rohmaterial zum Video mit Stimmung – Story first.</p>
-            </article>
-
-            <article class="swiper-slide skill-card">
-              <div class="icon" aria-hidden="true">🧊</div>
-              <h4 class="text-2xl font-semibold mb-4 text-white-900">3D-Modellierung</h4>
-              <p class="text-white-900">Formen, Texturen, Licht – und plötzlich wirkt alles echt.</p>
-            </article>
-
-            <article class="swiper-slide skill-card">
-              <div class="icon" aria-hidden="true">🖼️</div>
-              <h4 class="text-2xl font-semibold mb-4 text-white-900">Bildbearbeitung</h4>
-              <p class="text-white-900">Farben, Kontraste, Retusche – perfekt bis ins Detail.</p>
-            </article>
-
-            <article class="swiper-slide skill-card">
-              <div class="icon" aria-hidden="true">✒️</div>
-              <h4 class="text-2xl font-semibold mb-4 text-white-900">Logogestaltung</h4>
-              <p class="text-white-900">Individuell, einprägsam, wiedererkennbar.</p>
-            </article>
-
-            <article class="swiper-slide skill-card">
-              <div class="icon" aria-hidden="true">🧠</div>
-              <h4 class="text-2xl font-semibold mb-4 text-white-900">Corporate Identity</h4>
-              <p class="text-white-900">Vom Logo bis zur Visitenkarte – ein roter Faden.</p>
-            </article>
+      <h3 class="text-3xl font-semibold mb-8 text-purple-400">Was ich kann</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <article class="bg-[#1A1A1A] rounded-2xl p-6 shadow-lg hover:shadow-purple-900/20 transition border border-violet-900/40">
+          <div class="mb-4">
+            <i data-lucide="monitor-play" class="w-12 h-12 text-purple-600"></i>
           </div>
+          <h4 class="text-xl font-semibold mb-2 text-white">Motion Design</h4>
+          <p class="text-gray-400">Marken bewegen – mit Stil, Dynamik und Timing.</p>
+        </article>
 
-          <div class="swiper-pagination" aria-hidden="true"></div>
-          <div class="swiper-button-prev" aria-hidden="true"></div>
-          <div class="swiper-button-next" aria-hidden="true"></div>
-        </div>
-      </section>
+        <article class="bg-[#1A1A1A] rounded-2xl p-6 shadow-lg hover:shadow-purple-900/20 transition border border-violet-900/40">
+          <div class="mb-4">
+            <i data-lucide="scissors" class="w-12 h-12 text-purple-600"></i>
+          </div>
+          <h4 class="text-xl font-semibold mb-2 text-white">Videoschnitt</h4>
+          <p class="text-gray-400">Vom Rohmaterial zum Video mit Stimmung – Story first.</p>
+        </article>
+
+        <article class="bg-[#1A1A1A] rounded-2xl p-6 shadow-lg hover:shadow-purple-900/20 transition border border-violet-900/40">
+          <div class="mb-4">
+            <i data-lucide="box" class="w-12 h-12 text-purple-600"></i>
+          </div>
+          <h4 class="text-xl font-semibold mb-2 text-white">3D-Modellierung</h4>
+          <p class="text-gray-400">Formen, Texturen, Licht – und plötzlich wirkt alles echt.</p>
+        </article>
+
+        <article class="bg-[#1A1A1A] rounded-2xl p-6 shadow-lg hover:shadow-purple-900/20 transition border border-violet-900/40">
+          <div class="mb-4">
+            <i data-lucide="image" class="w-12 h-12 text-purple-600"></i>
+          </div>
+          <h4 class="text-xl font-semibold mb-2 text-white">Bildbearbeitung</h4>
+          <p class="text-gray-400">Farben, Kontraste, Retusche – perfekt bis ins Detail.</p>
+        </article>
+
+        <article class="bg-[#1A1A1A] rounded-2xl p-6 shadow-lg hover:shadow-purple-900/20 transition border border-violet-900/40">
+          <div class="mb-4">
+            <i data-lucide="pen-tool" class="w-12 h-12 text-purple-600"></i>
+          </div>
+          <h4 class="text-xl font-semibold mb-2 text-white">Logogestaltung</h4>
+          <p class="text-gray-400">Individuell, einprägsam, wiedererkennbar.</p>
+        </article>
+
+        <article class="bg-[#1A1A1A] rounded-2xl p-6 shadow-lg hover:shadow-purple-900/20 transition border border-violet-900/40">
+          <div class="mb-4">
+            <i data-lucide="brain" class="w-12 h-12 text-purple-600"></i>
+          </div>
+          <h4 class="text-xl font-semibold mb-2 text-white">Corporate Identity</h4>
+          <p class="text-gray-400">Vom Logo bis zur Visitenkarte – ein roter Faden.</p>
+        </article>
+      </div>
     </section>
 
     <!-- PORTFOLIO -->
-    <section id="portfolio" class="relative bg-violet-950 py-8 px-4 scroll-mt-16" data-aos="fade-up">
+    <section id="portfolio" class="relative border-2 border-violet-900/40 bg-violet-950 py-8 px-4 scroll-mt-16" data-aos="fade-up">
       <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
         <source src="img/background/BackgroundLoop.webm" type="video/webm" alt="Hintergrund Video" loading="lazy">
       </video>
@@ -165,7 +169,7 @@
           <div>
             <div class="h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent mb-8"></div>
             <div class="flex flex-col md:flex-row items-center gap-8">
-              <div class="w-full md:w-1/2 relative">
+              <div class="w-full md:w-1/2 relative border-2 border-white-900 shadow-lg">
                 <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/2LXXZqp4U1Y" frameborder="0" loading="lazy" allowfullscreen></iframe>
               </div>
               <div class="w-full md:w-1/2">
@@ -179,7 +183,7 @@
           <div>
             <div class="h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent mb-8"></div>
             <div class="flex flex-col md:flex-row-reverse items-center gap-8">
-              <div class="w-full md:w-1/2 relative">
+              <div class="w-full md:w-1/2 relative border-2 border-white-900 shadow-lg">
                 <img src="img/portfolio/twitch_banner.webp" alt="Titelbild YouTube Banner" class="w-auto portfolio-preview cursor-pointer hover:brightness-75" data-index="0" data-gallery="projektTwitchBanner" loading="lazy"/>
                 <img src="img/portfolio/gengar.webp" alt="YouTube und Twitch Profilbild" class="hidden hover:brightness-75" data-index="1" data-gallery="projektTwitchBanner" loading="lazy"/>
                 <img src="img/portfolio/overlay.webp" alt="Twitch Stream Overlay" class="hidden hover:brightness-75" data-index="2" data-gallery="projektTwitchBanner" loading="lazy"/>
@@ -196,7 +200,7 @@
           <div>
             <div class="h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent mb-8"></div>
             <div class="flex flex-col md:flex-row items-center gap-8">
-              <div class="w-full md:w-1/2 relative">
+              <div class="w-full md:w-1/2 relative border-2 border-white-900 shadow-lg">
                 <iframe class="w-full aspect-video" src="https://youtube.com/embed/p98MeZRP9G0" frameborder="0" allowfullscreen loading="lazy"></iframe>
               </div>
               <div class="w-full md:w-1/2">
@@ -210,7 +214,7 @@
           <div>
             <div class="h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent mb-8"></div>
             <div class="flex flex-col md:flex-row-reverse items-center gap-8">
-              <div class="w-full md:w-1/2 relative">
+              <div class="w-full md:w-1/2 relative border-2 border-white-900 shadow-lg">
                 <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/vlUaC03uNxA" frameborder="0" allowfullscreen loading="lazy"></iframe>
               </div>
               <div class="w-full md:w-1/2">
@@ -224,7 +228,7 @@
           <div>
             <div class="h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent mb-8"></div>
             <div class="flex flex-col md:flex-row items-center gap-8">
-              <div class="w-full md:w-1/2 relative">
+              <div class="w-full md:w-1/2 relative border-2 border-white-900 shadow-lg">
                 <video class="w-full aspect-video portfolio-preview cursor-pointer hover:brightness-75" src="img/portfolio/logo_animation.webm" alt="Logo Animation" autoplay muted playsinline loop data-index="0" data-gallery="projektLogoAnimation" loading="lazy">
                   Dein Browser unterstützt das Videoformat nicht.
                 </video>
@@ -240,7 +244,7 @@
           <div>
             <div class="h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent mb-8"></div>
             <div class="flex flex-col md:flex-row-reverse items-center gap-8">
-              <div class="w-full md:w-1/2 relative">
+              <div class="w-full md:w-1/2 relative border-2 border-white-900 shadow-lg">
                 <img src="img/portfolio/eispalast_logo.webp" alt="Logo Eispalast Ludwigslust" class="w-auto portfolio-preview cursor-pointer hover:brightness-75" data-index="0" data-gallery="projektEispalastLudwigslust" loading="lazy"/>
                 <img src="img/portfolio/eispalast_outdoor.webp" alt="Eispalast Ludwigslust MockUp Outdoorsteele" class="hidden hover:brightness-75" data-index="1" data-gallery="projektEispalastLudwigslust" loading="lazy"/>
                 <img src="img/portfolio/eispalast_plakate.webp" alt="Eispalast Ludwigslust MockUp Plakate" class="hidden hover:brightness-75" data-index="2" data-gallery="projektEispalastLudwigslust" loading="lazy"/>
@@ -259,7 +263,7 @@
           <div>
             <div class="h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent mb-8"></div>
             <div class="flex flex-col md:flex-row items-center gap-8">
-              <div class="w-full md:w-1/2 relative">
+              <div class="w-full md:w-1/2 relative border-2 border-white-900 shadow-lg">
                 <img src="img/portfolio/donut_tasse.webp" alt="3D-Donut" class="w-auto portfolio-preview cursor-pointer hover:brightness-75" data-index="0" data-gallery="projektDonut" loading="lazy"/>
                 <img src="img/portfolio/donut.webp" alt="" class="hidden hover:brightness-75" data-index="1" data-gallery="projektDonut" loading="lazy"/>
                 <img src="img/portfolio/tasse.webp" alt="" class="hidden hover:brightness-75" data-index="2" data-gallery="projektDonut" loading="lazy"/>
@@ -320,7 +324,7 @@
   </footer>
 
   <!-- Back to top -->
-  <a href="#top" id="backToTop" class="hidden fixed bottom-12 right-6 bg-accent text-white px-4 py-2 rounded-full text-sm shadow-lg hover:opacity-80 transition" aria-label="Zurück nach oben">↑ Zurück nach oben</a>
+  <a href="#top" id="backToTop" class="hidden fixed bottom-12 right-6 bg-accent text-white px-3 py-2 rounded-full text-sm shadow-lg hover:opacity-80 transition" aria-label="Zurück nach oben">↑</a>
 
   <!-- Lightbox -->
   <div id="lightbox" class="fixed inset-0 bg-black/80 flex items-center justify-center hidden z-50" role="dialog" aria-modal="true" aria-hidden="true">
@@ -335,5 +339,9 @@
   <script src="vendor/swiper-bundle.min.js" defer></script>
   <script src="vendor/aos.js" defer></script>
   <script src="main.js" defer></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
 </html>

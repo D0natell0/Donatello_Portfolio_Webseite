@@ -5,8 +5,8 @@
 /* Basic */
 :root {
   --accent: #552586;
-  --accent-foreground: #f0f0f0;
-  --bg: #0D0D0D;
+  --accent-foreground: #ECDAFF;
+  --bg: #1A1A1A;
 }
 
 html,body {
