@@ -142,27 +142,13 @@
   // --- Swiper ----------------
 
 function initSwiper() {
-  // Thumbs + Media Swiper verbinden
-  document.querySelectorAll(".thumbs-swiper").forEach((thumbsEl) => {
-    const mediaEl = thumbsEl.previousElementSibling;
-
-    const thumbs = new Swiper(thumbsEl, {
-      slidesPerView: 4,
-      spaceBetween: 10,
-      loop: true,
-      watchSlidesProgress: true,
-      breakpoints: {
-        640: { slidesPerView: 3 },
-        480: { slidesPerView: 2 },
-      },
-    });
-
+  // Media Swiper ohne Thumbs
+  document.querySelectorAll(".media-swiper").forEach((mediaEl) => {
     new Swiper(mediaEl, {
       loop: true,
       spaceBetween: 10,
       zoom: true,
       fullscreen: { enabled: true },
-      thumbs: { swiper: thumbs },
     });
   });
 
@@ -182,9 +168,9 @@ function initSwiper() {
     autoplay: { delay: 5000, disableOnInteraction: false },
     pagination: { el: ".swiper-pagination", type: "progressbar" },
     breakpoints: {
-      1024: { slidesPerView: 2 },   // ab Tablet
-      768: { slidesPerView: 1.2 },  // ab Mobile
-      480: { slidesPerView: 1 },    // kleine Handys
+      1024: { slidesPerView: 2 },
+      768: { slidesPerView: 1.2 },
+      480: { slidesPerView: 1 },
     },
   });
 }

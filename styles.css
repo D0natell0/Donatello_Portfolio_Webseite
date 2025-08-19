@@ -142,15 +142,14 @@ html {
   height: 100%;
   object-fit: contain;
   border-radius: 0.5rem;
-  aspect-ratio: 16/9;  /* erzwingt 16:9 */
-  max-height: 500px;   /* Desktop */
+  aspect-ratio: 16/9;
+  max-height: 500px;
 }
 
-/* Mobile Anpassung */
 @media (max-width: 768px) {
   .media-swiper .swiper-slide img,
   .media-swiper .swiper-slide video,
   .media-swiper .swiper-slide iframe {
-    max-height: none;   /* Höhe passt sich automatisch an */
+    max-height: none;
   }
 }
