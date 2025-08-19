@@ -142,19 +142,21 @@
   // --- Swiper ----------------
 
 function initSwiper() {
-  // Alle Thumbs + Media Swiper verbinden
+  // Thumbs + Media Swiper verbinden
   document.querySelectorAll(".thumbs-swiper").forEach((thumbsEl) => {
     const mediaEl = thumbsEl.previousElementSibling;
 
-    // Thumbs-Swiper
     const thumbs = new Swiper(thumbsEl, {
       slidesPerView: 4,
       spaceBetween: 10,
       loop: true,
       watchSlidesProgress: true,
+      breakpoints: {
+        640: { slidesPerView: 3 },
+        480: { slidesPerView: 2 },
+      },
     });
 
-    // Media-Swiper
     new Swiper(mediaEl, {
       loop: true,
       spaceBetween: 10,
@@ -179,5 +181,10 @@ function initSwiper() {
     },
     autoplay: { delay: 5000, disableOnInteraction: false },
     pagination: { el: ".swiper-pagination", type: "progressbar" },
+    breakpoints: {
+      1024: { slidesPerView: 2 },   // ab Tablet
+      768: { slidesPerView: 1.2 },  // ab Mobile
+      480: { slidesPerView: 1 },    // kleine Handys
+    },
   });
 }
