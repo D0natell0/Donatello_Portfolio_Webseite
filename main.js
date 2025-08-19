@@ -113,55 +113,6 @@
     }, { passive: true });
   }
 
-  // === Swiper ===
-  function initSwiper() {
-    if (!window.Swiper) return;
-    const outerEl = document.querySelector('.portfolioCarousel');
-    if (!outerEl) return;
-
-    const outer = new Swiper(outerEl, {
-      slidesPerView: 'auto',
-      centeredSlides: true,
-      spaceBetween: 24,
-      loop: true,
-      speed: 650,
-      autoplay: { delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true },
-      pagination: { el: '.portfolioCarousel .swiper-pagination', type: 'progressbar' },
-      navigation: {
-        nextEl: '.portfolioCarousel .swiper-button-next',
-        prevEl: '.portfolioCarousel .swiper-button-prev'
-      }
-    });
-
-    const originalSlides = outerEl.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)');
-    originalSlides.forEach(slide => {
-      const media = slide.querySelector('.mediaSwiper');
-      const thumbs = slide.querySelector('.mediaThumbs');
-      if (!media) return;
-      const count = media.querySelectorAll('.swiper-slide').length;
-      let thumbsSwiper = null;
-      if (thumbs && count > 1) {
-        thumbsSwiper = new Swiper(thumbs, {
-          spaceBetween: 8,
-          slidesPerView: Math.min(5, count),
-          freeMode: true,
-          watchSlidesProgress: true,
-          slideToClickedSlide: true
-        });
-      }
-      new Swiper(media, {
-        loop: count > 1,
-        spaceBetween: 16,
-        centeredSlides: true,
-        slidesPerView: 1.2,
-        breakpoints: { 640:{slidesPerView:1.3}, 1024:{slidesPerView:1.6} },
-        preloadImages: false,
-        lazy: { loadOnTransitionStart: true, loadPrevNext: true, loadPrevNextAmount: 2 },
-        thumbs: thumbsSwiper ? { swiper: thumbsSwiper } : undefined
-      });
-    });
-  }
-
   // --- Lightbox, Thumbs, YouTube etc. bleiben unverändert ----------------
   function initLightbox() { /* ... dein bestehender Lightbox-Code ... */ }
   function initThumbnails() { /* ... dein bestehender Thumbnails-Code ... */ }
@@ -187,3 +138,46 @@
   }
 
 })();
+
+  // --- Swiper ----------------
+
+function initSwiper() {
+  // Alle Thumbs + Media Swiper verbinden
+  document.querySelectorAll(".thumbs-swiper").forEach((thumbsEl) => {
+    const mediaEl = thumbsEl.previousElementSibling;
+
+    // Thumbs-Swiper
+    const thumbs = new Swiper(thumbsEl, {
+      slidesPerView: 4,
+      spaceBetween: 10,
+      loop: true,
+      watchSlidesProgress: true,
+    });
+
+    // Media-Swiper
+    new Swiper(mediaEl, {
+      loop: true,
+      spaceBetween: 10,
+      zoom: true,
+      fullscreen: { enabled: true },
+      thumbs: { swiper: thumbs },
+    });
+  });
+
+  // Haupt-Swiper (Portfolio Coverflow)
+  new Swiper(".portfolio-swiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    coverflowEffect: {
+      rotate: 30,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: false,
+    },
+    autoplay: { delay: 5000, disableOnInteraction: false },
+    pagination: { el: ".swiper-pagination", type: "progressbar" },
+  });
+}

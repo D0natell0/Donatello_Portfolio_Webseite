@@ -17,13 +17,12 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Local vendor CSS -->
-  <link rel="stylesheet" href="vendor/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <link rel="stylesheet" href="vendor/aos.css" />
   <!--<link rel="stylesheet" href="vendor/tailwind.min.css">-->
 
 
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"> -->
+  <!-- <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"> -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <link rel="stylesheet" href="styles.css" />
@@ -150,119 +149,186 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO SWIPER -->
-    <section id="portfolio" class="py-16 bg-gray-900 text-white">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-8 text-center">Portfolio</h2>
+    <!-- PORTFOLIO Test -->
+<section id="portfolio-swiper-test" class="relative py-16 bg-violet-950 border-b-2 border-violet-900/40 scroll-mt-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-semibold mb-8 accent text-center">Portfolio (Swiper-Test mit Fullscreen)</h2>
 
-        <div class="swiper portfolioCarousel">
-          <div class="swiper-wrapper">
+    <!-- Haupt-Swiper -->
+    <div class="swiper portfolio-swiper">
+      <div class="swiper-wrapper">
 
-            <!-- Donut -->
-            <div class="swiper-slide">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <div class="swiper mediaSwiper">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                        <img src="img/portfolio/donut.webp" alt="Donut" loading="lazy" data-gallery="donut">
-                      </div>
-                      <div class="swiper-slide">
-                        <img src="img/portfolio/donut_alt.webp" alt="Donut Alt" loading="lazy" data-gallery="donut">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper mediaThumbs mt-2">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                        <img src="img/portfolio/donut.webp" alt="Donut Thumb" loading="lazy">
-                      </div>
-                      <div class="swiper-slide">
-                        <img src="img/portfolio/donut_alt.webp" alt="Donut Thumb Alt" loading="lazy">
-                      </div>
+        <!-- 1. 3-Punkt Beleuchtung -->
+        <div class="swiper-slide">
+          <div class="grid md:grid-cols-2 gap-8 bg-zinc-800 rounded-2xl p-6 border-2 border-violet-900/40 shadow-lg">
+            <div>
+              <div class="swiper media-swiper rounded-lg overflow-hidden">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="swiper-zoom-container">
+                      <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/2LXXZqp4U1Y" frameborder="0" allowfullscreen></iframe>
                     </div>
                   </div>
                 </div>
-                <div class="portfolio-text">
-                  <p class="text-lg leading-relaxed">
-                    Ein Projekt rund um einen animierten Donut – Beispieltext für Slide 1.
-                  </p>
-                </div>
+                <div class="swiper-button-fullscreen"></div>
               </div>
             </div>
-
-            <!-- Twitch -->
-            <div class="swiper-slide">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <div class="swiper mediaSwiper">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                        <img src="img/portfolio/twitch.webp" alt="Twitch" loading="lazy" data-gallery="twitch">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="portfolio-text">
-                  <p class="text-lg leading-relaxed">
-                    Twitch-Banner Design und Animation – Beispieltext für Slide 2.
-                  </p>
-                </div>
-              </div>
+            <div class="flex flex-col justify-center text-center px-4">
+              <h3 class="text-xl font-semibold mb-3">Licht verständlich gemacht – 3-Punkt-Beleuchtung</h3>
+              <p class="text-sm text-gray-300">In dieser 3D-Animation habe ich das klassische Prinzip der 3-Punkt-Beleuchtung Schritt für Schritt visualisiert.</p>
             </div>
-
-            <!-- DOOH Video -->
-            <div class="swiper-slide">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <div class="swiper mediaSwiper">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                        <video src="img/portfolio/dooh.mp4" preload="none" controls data-gallery="dooh"></video>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="portfolio-text">
-                  <p class="text-lg leading-relaxed">
-                    DOOH-Werbevideo in 3D – Beispieltext für Slide 3.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Logo Animation -->
-            <div class="swiper-slide">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <div class="swiper mediaSwiper">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                        <video src="img/portfolio/logo.mp4" preload="none" controls data-gallery="logo"></video>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="portfolio-text">
-                  <p class="text-lg leading-relaxed">
-                    Logo-Animation für ein Branding-Projekt – Beispieltext für Slide 4.
-                  </p>
-                </div>
-              </div>
-            </div>
-
           </div>
-
-          <!-- Pagination & Navigation -->
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
         </div>
+
+        <!-- 2. Twitch Projekt -->
+        <div class="swiper-slide">
+          <div class="grid md:grid-cols-2 gap-8 bg-zinc-800 rounded-2xl p-6 border-2 border-violet-900/40 shadow-lg">
+            <div>
+              <div class="swiper media-swiper rounded-lg overflow-hidden">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><div class="swiper-zoom-container"><img src="img/portfolio/twitch_banner.webp" /></div></div>
+                  <div class="swiper-slide"><div class="swiper-zoom-container"><img src="img/portfolio/gengar.webp" /></div></div>
+                  <div class="swiper-slide"><div class="swiper-zoom-container"><img src="img/portfolio/overlay.webp" /></div></div>
+                </div>
+                <div class="swiper-button-fullscreen"></div>
+              </div>
+              <!-- Thumbs -->
+              <div class="swiper thumbs-swiper mt-3">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><img src="img/portfolio/twitch_banner.webp" class="h-20 w-full object-cover rounded"/></div>
+                  <div class="swiper-slide"><img src="img/portfolio/gengar.webp" class="h-20 w-full object-cover rounded"/></div>
+                  <div class="swiper-slide"><img src="img/portfolio/overlay.webp" class="h-20 w-full object-cover rounded"/></div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col justify-center text-center px-4">
+              <h3 class="text-xl font-semibold mb-3">YouTube & Twitch Grafiken</h3>
+              <p class="text-sm text-gray-300">Ein kleiner Einblick in mein Grafik-Playground. Designs für Streamer:innen, die auffallen wollen – clean, individuell, ready to go.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. RUVAAK -->
+        <div class="swiper-slide">
+          <div class="grid md:grid-cols-2 gap-8 bg-zinc-800 rounded-2xl p-6 border-2 border-violet-900/40 shadow-lg">
+            <div>
+              <div class="swiper media-swiper rounded-lg overflow-hidden">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><div class="swiper-zoom-container"><iframe class="w-full aspect-video" src="https://youtube.com/embed/p98MeZRP9G0" frameborder="0" allowfullscreen></iframe></div></div>
+                </div>
+                <div class="swiper-button-fullscreen"></div>
+              </div>
+            </div>
+            <div class="flex flex-col justify-center text-center px-4">
+              <h3 class="text-xl font-semibold mb-3">Vom Rohmaterial zum Werbeclip</h3>
+              <p class="text-sm text-gray-300">Schnitt, Transitions, Effekte und Musik – wenn alles passt, entsteht mehr als ein Video: Es entsteht ein Gefühl.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. DOOH Kampagne -->
+        <div class="swiper-slide">
+          <div class="grid md:grid-cols-2 gap-8 bg-zinc-800 rounded-2xl p-6 border-2 border-violet-900/40 shadow-lg">
+            <div>
+              <div class="swiper media-swiper rounded-lg overflow-hidden">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><div class="swiper-zoom-container"><iframe class="w-full aspect-video" src="https://www.youtube.com/embed/vlUaC03uNxA" frameborder="0" allowfullscreen></iframe></div></div>
+                </div>
+                <div class="swiper-button-fullscreen"></div>
+              </div>
+            </div>
+            <div class="flex flex-col justify-center text-center px-4">
+              <h3 class="text-xl font-semibold mb-3">"More than waiting." – Bewegte Botschaft</h3>
+              <p class="text-sm text-gray-300">Digitale Out-of-Home Kampagne: zeigt, wie stark Bewegtbild auf öffentlichen Screens wirken kann.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Logo Animation -->
+        <div class="swiper-slide">
+          <div class="grid md:grid-cols-2 gap-8 bg-zinc-800 rounded-2xl p-6 border-2 border-violet-900/40 shadow-lg">
+            <div>
+              <div class="swiper media-swiper rounded-lg overflow-hidden">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><div class="swiper-zoom-container"><video src="img/portfolio/logo_animation.webm" autoplay muted loop playsinline class="w-full aspect-video"></video></div></div>
+                </div>
+                <div class="swiper-button-fullscreen"></div>
+              </div>
+            </div>
+            <div class="flex flex-col justify-center text-center px-4">
+              <h3 class="text-xl font-semibold mb-3">Logo-Animation</h3>
+              <p class="text-sm text-gray-300">Eine animierte Logo-Animation bringt mehr Leben und Charakter in jedes Design.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Eispalast -->
+        <div class="swiper-slide">
+          <div class="grid md:grid-cols-2 gap-8 bg-zinc-800 rounded-2xl p-6 border-2 border-violet-900/40 shadow-lg">
+            <div>
+              <div class="swiper media-swiper rounded-lg overflow-hidden">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><div class="swiper-zoom-container"><img src="img/portfolio/eispalast_logo.webp"/></div></div>
+                  <div class="swiper-slide"><div class="swiper-zoom-container"><img src="img/portfolio/eispalast_outdoor.webp"/></div></div>
+                  <div class="swiper-slide"><div class="swiper-zoom-container"><img src="img/portfolio/eispalast_plakate.webp"/></div></div>
+                  <div class="swiper-slide"><div class="swiper-zoom-container"><img src="img/portfolio/Eispalast_Ludwigslust_Visitenkarte_und_Brief.webp"/></div></div>
+                  <div class="swiper-slide"><div class="swiper-zoom-container"><img src="img/portfolio/Eispalast_Ludwigslust_Cafe_Tasse.webp"/></div></div>
+                </div>
+                <div class="swiper-button-fullscreen"></div>
+              </div>
+              <!-- Thumbs -->
+              <div class="swiper thumbs-swiper mt-3">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><img src="img/portfolio/eispalast_logo.webp" class="h-20 w-full object-cover rounded"/></div>
+                  <div class="swiper-slide"><img src="img/portfolio/eispalast_outdoor.webp" class="h-20 w-full object-cover rounded"/></div>
+                  <div class="swiper-slide"><img src="img/portfolio/eispalast_plakate.webp" class="h-20 w-full object-cover rounded"/></div>
+                  <div class="swiper-slide"><img src="img/portfolio/Eispalast_Ludwigslust_Visitenkarte_und_Brief.webp" class="h-20 w-full object-cover rounded"/></div>
+                  <div class="swiper-slide"><img src="img/portfolio/Eispalast_Ludwigslust_Cafe_Tasse.webp" class="h-20 w-full object-cover rounded"/></div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col justify-center text-center px-4">
+              <h3 class="text-xl font-semibold mb-3">Branding – Eispalast Ludwigslust</h3>
+              <p class="text-sm text-gray-300">Komplett durchdachtes Markenbild: Logo, Visitenkarten, Plakate, Briefpapier, Mockups – alles aus einer Hand.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Donut -->
+        <div class="swiper-slide">
+          <div class="grid md:grid-cols-2 gap-8 bg-zinc-800 rounded-2xl p-6 border-2 border-violet-900/40 shadow-lg">
+            <div>
+              <div class="swiper media-swiper rounded-lg overflow-hidden">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><div class="swiper-zoom-container"><img src="img/portfolio/donut_tasse.webp"/></div></div>
+                  <div class="swiper-slide"><div class="swiper-zoom-container"><img src="img/portfolio/donut.webp"/></div></div>
+                  <div class="swiper-slide"><div class="swiper-zoom-container"><img src="img/portfolio/tasse.webp"/></div></div>
+                </div>
+                <div class="swiper-button-fullscreen"></div>
+              </div>
+              <!-- Thumbs -->
+              <div class="swiper thumbs-swiper mt-3">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><img src="img/portfolio/donut_tasse.webp" class="h-20 w-full object-cover rounded"/></div>
+                  <div class="swiper-slide"><img src="img/portfolio/donut.webp" class="h-20 w-full object-cover rounded"/></div>
+                  <div class="swiper-slide"><img src="img/portfolio/tasse.webp" class="h-20 w-full object-cover rounded"/></div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col justify-center text-center px-4">
+              <h3 class="text-xl font-semibold mb-3">Der ikonische Blender Donut</h3>
+              <p class="text-sm text-gray-300">Mein erstes Projekt in Blender, basierend auf dem Blender Guru Tutorial – Modeling, Shading, Rendering.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
-    </section>
-
-
-
+      <!-- Progressbar -->
+      <div class="swiper-pagination mt-6"></div>
+    </div>
+  </div>
+</section>
+    
     <!-- PORTFOLIO -->
     <section id="portfolio" class="relative border-b-2 border-violet-900/40 bg-violet-950 py-8 px-4 scroll-mt-16" data-aos="fade-up">
       <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
@@ -449,9 +515,9 @@
   </div>
 
   <!-- scripts -->
-  <script src="vendor/swiper-bundle.min.js" defer></script>
   <script src="vendor/aos.js" defer></script>
-  <script src="main.js" defer></script>
+  <script src="main.js" defer></script>  
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
