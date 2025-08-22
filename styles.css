@@ -85,6 +85,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 200px;
 }
 
 .media-swiper .swiper-slide img,
@@ -166,29 +167,27 @@ button:active, img:active {
 
 /* Fullscreen-Container */
 .fullscreen-wrapper {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9); /* Dunkler Hintergrund */
-  display: flex;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.8);
   justify-content: center;
   align-items: center;
-  visibility: hidden; /* Zu Beginn unsichtbar */
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  overflow: hidden;
 }
 
 .fullscreen-wrapper.visible {
-  visibility: visible;
-  opacity: 1;
+  display: flex;
 }
 
 .fullscreen-container {
   position: relative;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -201,12 +200,19 @@ button:active, img:active {
   height: 100%;
 }
 
-.swiper-slide img {
-  object-fit: contain; /* Erhält das Bildverhältnis */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Zentriert die Medien im Slide */
+}
+
+.swiper-slide img, .swiper-slide video {
+  object-fit: contain; /* Stellt sicher, dass das Bild/Video innerhalb des Containers bleibt, ohne Verzerrung */
   max-width: 100%;
   max-height: 100%;
   width: auto;
   height: auto;
+  margin: auto; /* Zentriert das Bild/Video innerhalb des Containers */
 }
 
 /* 16:9 Aspect Ratio für Bilder im Fullscreen */
@@ -214,14 +220,13 @@ button:active, img:active {
   aspect-ratio: 16 / 9; /* Bildverhältnis auf 16:9 setzen */
 }
 
-/* Für die Schaltflächen */
+/* Schaltflächen */
 .swiper-button-prev, .swiper-button-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
   color: #552586;
-  border-radius: 50%;
   padding: 10px;
   cursor: pointer;
 }
@@ -235,6 +240,6 @@ button:active, img:active {
 }
 
 .swiper-pagination-bullet-active {
-     background-color: #552586 !important;
-     box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5)
+  background-color: #552586 !important;
+  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5);
 }
