@@ -104,6 +104,7 @@ html {
   .media-swiper .swiper-slide video,
   .media-swiper .swiper-slide iframe {
     max-height: none;
+    max-width: 500px;
   }
 }
 
