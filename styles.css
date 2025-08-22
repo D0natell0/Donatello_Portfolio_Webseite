@@ -55,54 +55,6 @@ html {
 .animate-bounceDown { animation: bounceDown 1.5s infinite; }
 .delay-200 { animation-delay: 0.2s; }
 
-/* Lightbox */
-#lightbox { display: none; }
-#lightbox[aria-hidden="false"] { display: flex; }
-#lightbox-media img,
-#lightbox-media video,
-#lightbox-media iframe { max-width: 90vw; max-height: 90vh; object-fit: contain; display:block; }
-
-/* Lightbox buttons */
-#prevBtn, #nextBtn, #lightbox-close {
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: white;
-  font-size: 2rem;
-  width: 3rem;
-  height: 3rem;
-  line-height: 3rem;
-  text-align: center;
-  margin: 0 0.5rem;
-  border-radius: 9999px; /* voll rund */
-  transition: background 0.2s ease;
-}
-
-#prevBtn:hover, #nextBtn:hover, #lightbox-close:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.lightbox-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background: rgba(255 255 255 / 0.2);
-  border: none;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 9999px;
-  transition: background 0.2s ease;
-}
-
-.lightbox-btn:hover {
-  background: rgba(255 255 255 / 0.4);
-}
-
-.lightbox-btn svg {
-  pointer-events: none;
-}
-
 /* Small play button overlay for youtube-embed thumbnails */
 .youtube-embed { position: relative; display: block; }
 .youtube-embed img { display:block; width:100%; height:auto; }
@@ -152,4 +104,137 @@ html {
   .media-swiper .swiper-slide iframe {
     max-height: none;
   }
+}
+
+.fullscreen-wrapper {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.fullscreen-wrapper.visible {
+  display: flex;
+}
+
+.fullscreen-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #552586;
+
+  padding: 10px;
+}
+
+.fullscreen-close {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  color: #552586;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Entfernt den blauen Fokusrahmen bei Klick */
+img:focus, button:focus, a:focus {
+  outline: none; /* Entfernt den Fokusrahmen */
+  box-shadow: none; /* Entfernt Schatten */
+}
+
+/* Entfernt das Markieren von Bildern und Links */
+a, button, img {
+  user-select: none;
+}
+
+/* Für den Fall, dass du nur das visuelle Markieren bei Klick verhindern willst */
+button:active, img:active {
+  outline: none;
+}
+
+/* Fullscreen-Container */
+.fullscreen-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9); /* Dunkler Hintergrund */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden; /* Zu Beginn unsichtbar */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fullscreen-wrapper.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.fullscreen-container {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  border-radius: 10px;
+}
+
+.fullscreen-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide img {
+  object-fit: contain; /* Erhält das Bildverhältnis */
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+/* 16:9 Aspect Ratio für Bilder im Fullscreen */
+.fullscreen-swiper .swiper-slide img {
+  aspect-ratio: 16 / 9; /* Bildverhältnis auf 16:9 setzen */
+}
+
+/* Für die Schaltflächen */
+.swiper-button-prev, .swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  color: #552586;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+.swiper-pagination-bullet-active {
+     background-color: #552586 !important;
+     box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5)
 }

@@ -114,7 +114,6 @@
   }
 
   // --- Lightbox, Thumbs, YouTube etc. bleiben unverändert ----------------
-  function initLightbox() { /* ... dein bestehender Lightbox-Code ... */ }
   function initThumbnails() { /* ... dein bestehender Thumbnails-Code ... */ }
   function initYouTubeEmbeds() { /* ... dein bestehender YT-Code ... */ }
   function initLazyImages() { }
@@ -124,7 +123,6 @@
     initMenu();
     initParallax();
     initSwiper();
-    initLightbox();
     initThumbnails();
     initYouTubeEmbeds();
     initBackToTop();
@@ -142,35 +140,242 @@
   // --- Swiper ----------------
 
 function initSwiper() {
-  // Media Swiper ohne Thumbs
+  // Media Swiper (Videos, Bilder, iFrames)
   document.querySelectorAll(".media-swiper").forEach((mediaEl) => {
-    new Swiper(mediaEl, {
+    const swiper = new Swiper(mediaEl, {
       loop: true,
       spaceBetween: 10,
       zoom: true,
-      fullscreen: { enabled: true },
+      navigation: {
+        nextEl: mediaEl.querySelector(".swiper-button-next"),
+        prevEl: mediaEl.querySelector(".swiper-button-prev"),
+      },
+      pagination: {
+        el: mediaEl.querySelector(".swiper-pagination"),
+        clickable: true,
+      },
+      on: {
+        init: function () {
+          lazyLoadMedia(this.slides[this.activeIndex]);
+        },
+        slideChange: function () {
+          lazyLoadMedia(this.slides[this.activeIndex]);
+        },
+      },
     });
   });
 
-  // Haupt-Swiper (Portfolio Coverflow)
+  // Haupt-Swiper (Portfolio)
   new Swiper(".portfolio-swiper", {
     effect: "coverflow",
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: "auto",
+    loop: true,
     coverflowEffect: {
       rotate: 30,
       stretch: 0,
       depth: 100,
       modifier: 1,
-      slideShadows: false,
+      slideShadows: true,
     },
-    autoplay: { delay: 5000, disableOnInteraction: false },
-    pagination: { el: ".swiper-pagination", type: "progressbar" },
+    autoplay: { delay: 10000, disableOnInteraction: true },
+    pagination: { el: ".swiper-pagination" },
     breakpoints: {
       1024: { slidesPerView: 2 },
-      768: { slidesPerView: 1.2 },
-      480: { slidesPerView: 1 },
+      768: { slidesPerView: 1.5 },
+      480: { slidesPerView: 1.2 },
     },
   });
+
+function lazyLoadMedia(slideEl) {
+  if (!slideEl) return;
+
+  // Lade Videos
+  slideEl.querySelectorAll("video[data-src]").forEach((video) => {
+    if (!video.src) {
+      video.src = video.getAttribute("data-src");
+      video.load();
+    }
+  });
+
+  // Lade Iframes
+  slideEl.querySelectorAll("iframe[data-src]").forEach((iframe) => {
+    if (!iframe.src) {
+      iframe.src = iframe.getAttribute("data-src");
+    }
+  });
+
+  // Lade Bilder
+  slideEl.querySelectorAll("img[data-src]").forEach((img) => {
+    if (!img.src) {
+      img.src = img.getAttribute("data-src");
+    }
+  });
+}
+
+
+// Funktion zum Starten des Fullscreens
+function enableFullscreenOnClick() {
+  let currentGroup = null;  // Speichert die aktuelle Gruppe
+  let fullscreenSwiper = null; // Die Instanz des Fullscreen-Swipers
+
+  // Klick-Event für Bilder/Videos
+  document.querySelectorAll("img, video").forEach((media) => {
+    media.addEventListener("click", (event) => {
+      // Verhindere das Öffnen des Fullscreens für Iframes
+      if (media.tagName.toLowerCase() === "iframe") return;
+
+      // Bestimme die Gruppe des angeklickten Bildes
+      currentGroup = media.closest('.swiper-slide').dataset.group;
+
+      // Alle Medien der Gruppe finden
+      const mediaItems = [...document.querySelectorAll(`.swiper-slide[data-group="${currentGroup}"]`)];
+
+      // Verhindere doppelte Duplikation, wenn der Fullscreen bereits offen ist
+      if (!fullscreenSwiper) {
+        fullscreenSwiper = new Swiper('.fullscreen-swiper', {
+          loop: true,
+          zoom: true,
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          on: {
+            init: function () {
+              // Entferne alle vorherigen Slides im Fullscreen-Swiper
+              this.removeAllSlides();
+
+              // Dupliziere die Bilder/Videos
+              mediaItems.forEach((item, index) => {
+                // Dupliziere den Slide (inklusive der Daten)
+                const slideClone = item.cloneNode(true);
+
+                // Lazy Load für das duplizierte Bild/Video
+                lazyLoadMedia(slideClone);
+
+                // Passe das Seitenverhältnis des Bildes an (16:9)
+                adjustImageAspectRatio(slideClone);
+
+                // Füge den duplizierten Slide dem Fullscreen-Swiper hinzu
+                this.appendSlide(slideClone);
+
+                // Initiale Auswahl des angeklickten Bildes im Fullscreen
+                if (item === media.closest('.swiper-slide')) {
+                  this.slideTo(index);
+                }
+              });
+            },
+            slideChange: function () {
+              // Lazy Loading für das aktuelle Slide im Fullscreen
+              lazyLoadMedia(this.slides[this.activeIndex]);
+              adjustImageAspectRatio(this.slides[this.activeIndex]); // Anpassung des Bildverhältnisses
+            },
+          }
+        });
+      }
+
+      // Zeige den Fullscreen-Wrapper
+      document.querySelector('.fullscreen-wrapper').classList.add('visible');
+    });
+  });
+
+  // Schließen-Button
+  document.querySelector('.fullscreen-close').addEventListener('click', () => {
+    document.querySelector('.fullscreen-wrapper').classList.remove('visible');
+    
+    if (fullscreenSwiper) {
+      // Zerstöre nur den Fullscreen-Swiper (entfernt alle duplizierten Slides)
+      fullscreenSwiper.destroy(true, true);  // Der zweite Parameter sorgt dafür, dass auch die Slides entfernt werden
+      fullscreenSwiper = null;  // Setze auf null, um beim nächsten Öffnen neu zu erstellen
+    }
+  });
+}
+
+// Funktion für Lazy Loading (Bilder, Videos, iFrames)
+function lazyLoadMedia(slideEl) {
+  if (!slideEl) return;
+
+  // Lade Videos
+  slideEl.querySelectorAll("video[data-src]").forEach((video) => {
+    if (!video.src) {
+      video.src = video.getAttribute("data-src");
+      video.load();
+    }
+  });
+
+  // Lade Iframes
+  slideEl.querySelectorAll("iframe[data-src]").forEach((iframe) => {
+    if (!iframe.src) {
+      iframe.src = iframe.getAttribute("data-src");
+    }
+  });
+
+  // Lade Bilder
+  slideEl.querySelectorAll("img[data-src]").forEach((img) => {
+    if (!img.src) {
+      img.src = img.getAttribute("data-src");
+    }
+  });
+}
+
+// Funktion für das 16:9 Seitenverhältnis (Bilder und Videos anpassen)
+function adjustImageAspectRatio(slideEl) {
+  if (!slideEl) return;
+
+  const media = slideEl.querySelector("img, video");
+
+  if (media) {
+    // Berechne das Seitenverhältnis für Bilder und Videos
+    const aspectRatio = 16 / 9;
+    const width = media.width || media.videoWidth;
+    const height = media.height || media.videoHeight;
+
+    if (width && height) {
+      const mediaAspect = width / height;
+
+      // Wenn das Bild/Video nicht im 16:9-Verhältnis ist, passt es sich an
+      if (mediaAspect > aspectRatio) {
+        media.style.width = '100%';
+        media.style.height = 'auto'; // Höhe anpassen
+      } else {
+        media.style.height = '100%';
+        media.style.width = 'auto'; // Breite anpassen
+      }
+    }
+  }
+}
+
+// Lazy Load für die Medien
+function lazyLoadMedia(slideEl) {
+  if (!slideEl) return;
+
+  // Lade Videos
+  slideEl.querySelectorAll("video[data-src]").forEach((video) => {
+    if (!video.src) {
+      video.src = video.getAttribute("data-src");
+      video.load();
+    }
+  });
+
+  // Lade Iframes
+  slideEl.querySelectorAll("iframe[data-src]").forEach((iframe) => {
+    if (!iframe.src) {
+      iframe.src = iframe.getAttribute("data-src");
+    }
+  });
+
+  // Lade Bilder
+  slideEl.querySelectorAll("img[data-src]").forEach((img) => {
+    if (!img.src) {
+      img.src = img.getAttribute("data-src");
+    }
+  });
+}
+
+// Initialisieren der Fullscreen-Funktion
+document.addEventListener("DOMContentLoaded", function () {
+  enableFullscreenOnClick(); // Klick-Event für Fullscreen
+});
+
 }
