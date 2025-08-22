@@ -104,6 +104,12 @@ html {
   .media-swiper .swiper-slide video,
   .media-swiper .swiper-slide iframe {
     max-height: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-swiper {
+    max-height: none;
     max-width: 70%;
   }
 }
