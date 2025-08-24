@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 5000);
   };
 
-  // Formular Submit mit hCaptcha
+  // Formular Submit
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -421,3 +421,25 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector('iframe[name="hidden_iframe"]').addEventListener('load', function() {
     showPopup();
   });
+
+  // DSGVO-konformes Laden von hCaptcha erst beim Benutzerinteresse
+  let hcaptchaLoaded = false;
+  function loadHCaptcha() {
+    if (hcaptchaLoaded) return;
+    hcaptchaLoaded = true;
+
+    const script = document.createElement('script');
+    script.src = 'https://hcaptcha.com/1/api.js';
+    script.async = true;
+    script.defer = true;
+    script.onload = function() {
+      hcaptcha.render('hcaptcha-container', {
+        sitekey: '1e5c66a6-139c-4e86-8fbc-91cc8bbebb58'
+      });
+    };
+    document.body.appendChild(script);
+  }
+
+  // Trigger: Nutzer klickt in ein Feld
+  const formFields = document.querySelectorAll('#myForm input, #myForm textarea');
+  formFields.forEach(field => field.addEventListener('focus', loadHCaptcha, { once: true }));
