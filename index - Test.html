@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lebenslauf</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 40px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        border-radius: 10px;
+    }
+
+    h1, h2, h3 {
+        margin: 0;
+        padding: 0;
+        color: #2c3e50;
+    }
+
+    h1 {
+        font-size: 32px;
+        margin-bottom: 5px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #27ae60;
+    }
+
+    h3 {
+        font-size: 18px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #27ae60;
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+
+    p, li {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    ul {
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    .section {
+        margin-bottom: 30px;
+    }
+
+    .skills .skill {
+        margin-bottom: 15px;
+    }
+
+    .skill-name {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .skill-bar {
+        background: #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+        height: 10px;
+    }
+
+    .skill-level {
+        height: 10px;
+        background: #27ae60;
+        width: 0;
+        animation: fillBar 1s forwards;
+    }
+
+    @keyframes fillBar {
+        from { width: 0; }
+        to { width: var(--level); }
+    }
+
+    .contact {
+        margin-bottom: 20px;
+    }
+
+    .contact span {
+        display: inline-block;
+        margin-right: 15px;
+        font-weight: bold;
+    }
+
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Max Mustermann</h1>
+    <h2>Mediengestalter & Webdesigner</h2>
+
+    <div class="contact">
+        <span>Email: max@beispiel.de</span>
+        <span>Tel: +49 170 1234567</span>
+        <span>Web: www.maxmustermann.de</span>
+    </div>
+
+    <div class="section">
+        <h3>Über mich</h3>
+        <p>Kreativer Mediengestalter mit Leidenschaft für Webdesign, Branding und visuelle Kommunikation. Erfahrung in der Umsetzung von Projekten für Print, Digital und Social Media.</p>
+    </div>
+
+    <div class="section">
+        <h3>Berufserfahrung</h3>
+        <ul>
+            <li><strong>Mediengestalter | Kreativagentur Berlin</strong> (2020 – heute)<br>Konzeption und Gestaltung von Kampagnen, Webseiten und Social Media Inhalten.</li>
+            <li><strong>Junior Designer | Webstudio Muster</strong> (2018 – 2020)<br>Unterstützung bei Webprojekten, Layoutdesign und Branding.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>Ausbildung</h3>
+        <ul>
+            <li><strong>Ausbildung Mediengestalter Digital & Print</strong> – Berufskolleg Mediengestaltung, Berlin (2015 – 2018)</li>
+            <li><strong>Abitur</strong> – Gymnasium Musterstadt (2012 – 2015)</li>
+        </ul>
+    </div>
+
+    <div class="section skills">
+        <h3>Fähigkeiten</h3>
+        <div class="skill">
+            <div class="skill-name">Adobe Photoshop</div>
+            <div class="skill-bar"><div class="skill-level" style="--level:90%;"></div></div>
+        </div>
+        <div class="skill">
+            <div class="skill-name">Adobe Illustrator</div>
+            <div class="skill-bar"><div class="skill-level" style="--level:85%;"></div></div>
+        </div>
+        <div class="skill">
+            <div class="skill-name">HTML & CSS</div>
+            <div class="skill-bar"><div class="skill-level" style="--level:80%;"></div></div>
+        </div>
+        <div class="skill">
+            <div class="skill-name">JavaScript</div>
+            <div class="skill-bar"><div class="skill-level" style="--level:70%;"></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

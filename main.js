@@ -405,21 +405,35 @@ document.addEventListener("DOMContentLoaded", function () {
   function handleSubmit(e) {
     e.preventDefault();
 
-    // hCaptcha Token prüfen
     const token = hcaptcha.getResponse();
     if (!token) {
       alert('Bitte bestätige, dass du kein Roboter bist!');
       return false;
     }
 
+    const form = document.getElementById('myForm');
+    const button = document.getElementById('submitBtn');
+
+    // Button deaktivieren
+    button.disabled = true;
+    button.innerText = "Wird gesendet...";
+
     // Formular absenden
-    document.getElementById('myForm').submit();
+    form.submit();
     return true;
   }
 
-  // Popup anzeigen, wenn iFrame lädt
+  // Popup anzeigen, wenn iFrame lädt + Button zurücksetzen
   document.querySelector('iframe[name="hidden_iframe"]').addEventListener('load', function() {
     showPopup();
+    const button = document.getElementById('submitBtn');
+    if (button) {
+      button.disabled = false;
+      button.innerText = "Senden";
+    }
+    // Optional: Formular zurücksetzen
+    document.getElementById('myForm').reset();
+    hcaptcha.reset(); // hCaptcha nach Senden zurücksetzen
   });
 
   // DSGVO-konformes Laden von hCaptcha erst beim Benutzerinteresse
