@@ -70,20 +70,6 @@
     };
   }
 
-  window.showPopup = function showPopup() {
-    const popup = $('#popup');
-    if (!popup) return;
-    popup.classList.remove('hidden');
-    popup.style.pointerEvents = 'auto';
-    popup.classList.add('opacity-100');
-    popup.classList.remove('opacity-0');
-    setTimeout(() => {
-      popup.classList.remove('opacity-100');
-      popup.classList.add('opacity-0');
-      popup.style.pointerEvents = 'none';
-    }, 5000);
-  };
-
   function initParallax() {
     const elements = $$('.move_it');
     const heroText = $('#heroText');
@@ -379,3 +365,59 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 }
+
+  const articles = document.querySelectorAll("#skills article");
+
+  articles.forEach(article => {
+    article.addEventListener("click", () => {
+      // erst ALLE Artikel schließen
+      articles.forEach(a => {
+        const text = a.querySelector("p");
+        const icon = a.querySelector("[data-lucide='chevron-down']");
+        if (text) text.classList.add("hidden");
+        if (icon) icon.classList.remove("rotate-180");
+      });
+
+      // dann nur den geklickten öffnen (falls vorhanden)
+      const text = article.querySelector("p");
+      const icon = article.querySelector("[data-lucide='chevron-down']");
+      if (text) text.classList.remove("hidden");
+      if (icon) icon.classList.add("rotate-180");
+    });
+  });
+
+ // Dein Popup Befehl
+  window.showPopup = function showPopup() {
+    const popup = document.getElementById('popup');
+    if (!popup) return;
+    popup.classList.remove('hidden');
+    popup.style.pointerEvents = 'auto';
+    popup.classList.add('opacity-100');
+    popup.classList.remove('opacity-0');
+    setTimeout(() => {
+      popup.classList.remove('opacity-100');
+      popup.classList.add('opacity-0');
+      popup.style.pointerEvents = 'none';
+    }, 5000);
+  };
+
+  // Formular Submit mit hCaptcha
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    // hCaptcha Token prüfen
+    const token = hcaptcha.getResponse();
+    if (!token) {
+      alert('Bitte bestätige, dass du kein Roboter bist!');
+      return false;
+    }
+
+    // Formular absenden
+    document.getElementById('myForm').submit();
+    return true;
+  }
+
+  // Popup anzeigen, wenn iFrame lädt
+  document.querySelector('iframe[name="hidden_iframe"]').addEventListener('load', function() {
+    showPopup();
+  });
