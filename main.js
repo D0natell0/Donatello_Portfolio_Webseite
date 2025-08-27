@@ -1,7 +1,99 @@
 /* main.js — bereinigt, nur neuer Portfolio-Swiper bleibt */
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 (() => {
   'use strict';
+
+  function initThreeModel() {
+  const container = document.getElementById("threejs-container");
+  const canvas = document.getElementById("three-canvas");
+
+  // Szene, Kamera, Renderer
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+  camera.position.set(0, 1.2, 2);
+
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+
+  // Licht
+  const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.2);
+  scene.add(hemiLight);
+  const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+  dirLight.position.set(3, 10, 10);
+  scene.add(dirLight);
+
+  // Loader & Animation
+  const loader = new GLTFLoader();
+  let mixer, actions = {}, activeAction;
+
+  loader.load("models/untitled.glb", gltf => {
+    const model = gltf.scene;
+    scene.add(model);
+
+    mixer = new THREE.AnimationMixer(model);
+
+    gltf.animations.forEach(clip => {
+      actions[clip.name] = mixer.clipAction(clip);
+    });
+
+    // Standardanimation starten
+    if (actions["Idle"]) {
+      activeAction = actions["Idle"];
+      activeAction.play();
+    }
+
+    createButtons(Object.keys(actions));
+  });
+
+  // Buttons erstellen
+  function createButtons(names) {
+    const buttonContainer = document.getElementById("animation-buttons");
+    buttonContainer.innerHTML = "";
+
+    // Erste Animation (Idle) überspringen
+    names.slice(1).forEach(name => {
+      const btn = document.createElement("button");
+      btn.textContent = name;
+      btn.className = "bg-purple-700 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-500 transition";
+      btn.addEventListener("click", () => {
+        if (activeAction) activeAction.fadeOut(0.5);
+
+        const action = actions[name];
+        action.reset().setLoop(THREE.LoopOnce, 1).fadeIn(0.5).play();
+        activeAction = action;
+
+        // Warten bis die Animation fertig ist → zurück zu Idle
+        mixer.addEventListener("finished", () => {
+          if (activeAction === action) {
+            activeAction.fadeOut(0.5);
+            activeAction = actions["Idle"];
+            activeAction.reset().setLoop(THREE.LoopRepeat).fadeIn(0.5).play();
+          }
+        });
+      });
+      buttonContainer.appendChild(btn);
+    });
+  }
+
+  // Resize
+  window.addEventListener("resize", () => {
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+  });
+
+  // Loop
+  const clock = new THREE.Clock();
+  function animate() {
+    requestAnimationFrame(animate);
+    if (mixer) mixer.update(clock.getDelta());
+    renderer.render(scene, camera);
+  }
+  animate();
+}
 
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
@@ -113,6 +205,7 @@
     initYouTubeEmbeds();
     initBackToTop();
     initLazyImages();
+    initThreeModel();
   }
 
   if (document.readyState === 'loading') {
@@ -457,3 +550,4 @@ document.addEventListener("DOMContentLoaded", function () {
   // Trigger: Nutzer klickt in ein Feld
   const formFields = document.querySelectorAll('#myForm input, #myForm textarea');
   formFields.forEach(field => field.addEventListener('focus', loadHCaptcha, { once: true }));
+
