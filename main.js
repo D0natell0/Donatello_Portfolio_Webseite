@@ -29,7 +29,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
   const loader = new GLTFLoader();
   let mixer, actions = {}, activeAction;
 
-  loader.load("models/untitled.glb", gltf => {
+  loader.load("./models/untitled.glb", gltf => {
     const model = gltf.scene;
     scene.add(model);
 
