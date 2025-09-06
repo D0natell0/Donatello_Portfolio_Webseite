@@ -57,7 +57,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
     names.slice(1).forEach(name => {
       const btn = document.createElement("button");
       btn.textContent = name;
-      btn.className = "bg-purple-700 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-500 transition";
+      btn.className = "bg-purple-900 text-white px-4 py-2 rounded-bl-2xl rounded-tr-2xl shadow hover:bg-purple-700 transition hover:-translate-y-1";
       btn.addEventListener("click", () => {
         if (activeAction) activeAction.fadeOut(0.5);
 
@@ -191,6 +191,30 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
     }, { passive: true });
   }
 
+  function initResumeToggle() {
+  const toggleButton = document.getElementById('toggleResume');
+
+  if (!toggleButton) return;
+
+  toggleButton.addEventListener('click', () => {
+    const hiddenEntries = document.querySelectorAll('.hidden-resume-entry');
+
+    hiddenEntries.forEach(entry => {
+      entry.classList.toggle('hidden');
+    });
+
+    // Button-Text ändern
+    if (toggleButton.innerText === 'Mehr anzeigen') {
+      toggleButton.innerText = 'Weniger anzeigen';
+    } else {
+      toggleButton.innerText = 'Mehr anzeigen';
+    }
+    if (window.AOS && typeof AOS.refresh === 'function') {
+      AOS.refresh();
+    }
+  });
+}
+
   // --- Lightbox, Thumbs, YouTube etc. bleiben unverändert ----------------
   function initThumbnails() { /* ... dein bestehender Thumbnails-Code ... */ }
   function initYouTubeEmbeds() { /* ... dein bestehender YT-Code ... */ }
@@ -206,6 +230,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
     initBackToTop();
     initLazyImages();
     initThreeModel();
+    initResumeToggle();
   }
 
   if (document.readyState === 'loading') {
@@ -550,4 +575,3 @@ document.addEventListener("DOMContentLoaded", function () {
   // Trigger: Nutzer klickt in ein Feld
   const formFields = document.querySelectorAll('#myForm input, #myForm textarea');
   formFields.forEach(field => field.addEventListener('focus', loadHCaptcha, { once: true }));
-
