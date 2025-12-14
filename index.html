@@ -607,7 +607,9 @@
   <div id="disclaimer-banner" class="fixed bottom-0 left-0 w-full z-40 bg-black/70 backdrop-blur-md border-t-2 border-violet-900/40">
     <p class="mx-auto text-center">
       Diese Webseite befindet sich derzeit im Aufbau. Inhalte, Texte und Grafiken können Platzhalter sein und dienen ausschließlich zur vorläufigen Darstellung. Es können Tippfehler oder inhaltliche Ungenauigkeiten auftreten.
+    <button id="disclaimer-accept" class="underline">Hinweis schließen</button>
     </p>
+    
   </div>
 
   <!-- scripts -->
@@ -618,5 +620,21 @@
   <script>
     lucide.createIcons();
   </script>
+
+  <script>
+  const banner = document.getElementById('disclaimer-banner');
+  const button = document.getElementById('disclaimer-accept');
+
+  // Banner nur anzeigen, wenn noch nicht akzeptiert
+  if (sessionStorage.getItem('disclaimerAccepted')) {
+    banner.style.display = 'none';
+  }
+
+  button.addEventListener('click', () => {
+    sessionStorage.setItem('disclaimerAccepted', 'true');
+    banner.style.display = 'none';
+  });
+
+</script>
 </body>
 </html>
