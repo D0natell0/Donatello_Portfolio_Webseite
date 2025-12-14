@@ -252,3 +252,32 @@ button:active, img:active {
   background-color: #552586 !important;
   box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5);
 }
+
+#disclaimer-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #222;
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+  font-size: 14px;
+}
+
+#disclaimer-banner a {
+  color: #4da3ff;
+  text-decoration: underline;
+}
+
+#disclaimer-banner button {
+  background-color: #4da3ff;
+  border: none;
+  color: #fff;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
