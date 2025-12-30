@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat-latin-wght-normal.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
 
 * {
     font-family: 'Montserrat', sans-serif;
@@ -13,13 +19,17 @@
 }
 
 /* Dark mode styles */
+body, header, button, nav {
+    transition: background-color 0.8s ease, color 0.8s ease;
+}
+
 body.dark-mode {
     background-color: #10071A;
     color: #ECDAFF;
 }
 
 body.light-mode {
-    background-color: #ECDAFF;
+    background-color: #bb92e3;
     color: #10071A;
 }
 
@@ -27,6 +37,21 @@ body.light-mode {
 html {
     scroll-behavior: smooth;
 }
+
+/* Move effects */
+.move_it { display: inline-block; will-change: transform, opacity; transition: transform 0.05s linear; }
+
+/* Hero animations */
+@keyframes bounceDown {
+  0%,20%,50%,80%,100% { transform: translateY(0); }
+  40% { transform: translateY(6px); }
+  60% { transform: translateY(3px); }
+}
+.animate-bounceDown { animation: bounceDown 1.5s infinite; }
+.delay-200 { animation-delay: 0.2s; }
+
+.fade-left { opacity: 0; transform: translateX(-50px); }
+.fade-right { opacity: 0; transform: translateX(50px); }
 
 /* Animations */
 @keyframes bounce-arrow {
@@ -105,7 +130,7 @@ body.dark-mode .navbar-scrolled {
 }
 
 body.light-mode .navbar-scrolled {
-    background-color: rgba(236, 218, 255, 0.8);
+    background-color: #bb92e3; 
     border-bottom: 1px solid rgba(125, 55, 195, 0.1);
 }
 

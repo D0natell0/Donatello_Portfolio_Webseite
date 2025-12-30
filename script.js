@@ -36,7 +36,7 @@ const translations = {
         'portfolio.project4': 'UI Design',
         'portfolio.project5': 'Video Production',
         'portfolio.project6': 'Social Media',
-        'portfolio.view': 'View Project',
+        'portfolio.view': 'Show More',
         'skills.badge': 'Skills',
         'skills.title1': 'What I',
         'skills.title2': 'Do Best',
@@ -46,17 +46,17 @@ const translations = {
         'skills.skill2': 'Motion Graphics',
         'skills.skill2desc': 'Bringing ideas to life through captivating animations',
         'skills.skill3': 'UI/UX Design',
-        'skills.skill3desc': 'Designing intuitive and beautiful user experiences',
+        'skills.skill3desc': 'Modelling and animation for 3D-objects',
         'skills.skill4': 'Illustration',
-        'skills.skill4desc': 'Custom illustrations that tell unique stories',
+        'skills.skill4desc': 'Custom illustrations that fits your style',
         'skills.skill5': 'Web Design',
         'skills.skill5desc': 'Modern, responsive designs for digital platforms',
         'skills.skill6': 'Video Production',
-        'skills.skill6desc': 'Professional video content from concept to delivery',
+        'skills.skill6desc': 'Professional video content from storyboard to the final product',
         'contact.badge': 'Contact',
         'contact.title1': "Let's",
         'contact.title2': 'Connect',
-        'contact.subtitle': "Have a project in mind? Let's create something amazing together",
+        'contact.subtitle': "Wanna create a project together? Use the formular or contact me directly!",
         'contact.getintouch': 'Get in Touch',
         'contact.email': 'Email',
         'contact.location': 'Location',
@@ -65,7 +65,7 @@ const translations = {
         'contact.name': 'Your Name',
         'contact.emailaddress': 'Email Address',
         'contact.message': 'Your Message',
-        'contact.placeholder': 'Tell me about your project...',
+        'contact.placeholder': 'Tell me about your idea...',
         'contact.send': 'Send Message',
         'footer.copyright': '© 2025 Donatello Media. All rights reserved.',
         'impressum.footer': 'Imprint',
@@ -75,6 +75,47 @@ const translations = {
         'impressum.address': 'Mariusstraße 16, 86199 Augsburg',
         'impressum.email': 'Email',
         'impressum.close': 'Close',
+        'datenschutz.footer': 'Privacy Policy',
+        'datenschutz.title': 'Privacy Policy',
+        'datenschutz.hl1': '1. General Information',
+        'datenschutz.text1': 'The protection of your personal data is important to me. Personal data on this website is processed only to the extent necessary for technical operation and for handling inquiries. No data is shared with third parties.',
+        'datenschutz.hl2': '2. Data Controller',
+        'datenschutz.text2': 'The controller responsible for data processing on this website is:',
+        'datenschutz.name': 'Donatello Media',
+        'datenschutz.owner': 'Owner',
+        'datenschutz.address': 'Mariusstraße 16, 86199 Augsburg',
+        'datenschutz.email': 'Email',
+        'datenschutz.hl3': '3. Server Log Files',
+        'datenschutz.text3p1': 'When visiting this website, the hosting provider automatically collects information in so-called server log files, including:',
+        'datenschutz.text3p2': '\u00A0\u00A0\u00A0\u00A0• IP address (shortened or anonymized)',
+        'datenschutz.text3p3': '\u00A0\u00A0\u00A0\u00A0• Date and time of the request',
+        'datenschutz.text3p4': '\u00A0\u00A0\u00A0\u00A0• Browser type and version',
+        'datenschutz.text3p5': '\u00A0\u00A0\u00A0\u00A0• Operating system',
+        'datenschutz.text3p6': 'These data are used exclusively for technical monitoring and security purposes and are not merged with other data sources.',
+        'datenschutz.hl4': '4. Contact Form',
+        'datenschutz.text4p1': 'If you send inquiries via the contact form, your details including the contact data you provide will be transmitted to me by email and stored for the purpose of processing your request.',
+        'datenschutz.text4p2': 'Processed data:',
+        'datenschutz.text4p3': '\u00A0\u00A0\u00A0\u00A0• Name (if provided)',
+        'datenschutz.text4p4': '\u00A0\u00A0\u00A0\u00A0• Email address',
+        'datenschutz.text4p5': '\u00A0\u00A0\u00A0\u00A0• Message',
+        'datenschutz.text4p6': 'Purpose of processing:',
+        'datenschutz.text4p7': 'Handling and responding to your inquiry',
+        'datenschutz.text4p8': 'Legal basis:',
+        'datenschutz.text4p9': 'Art. 6 (1) (b) GDPR (pre-contractual measures or contract performance)',
+        'datenschutz.text4p10': 'The data will be deleted once your request has been fully processed, provided there are no statutory retention obligations.',
+        'datenschutz.hl5': '5. Google Fonts',
+        'datenschutz.text5': 'This website uses Google Fonts hosted locally. No connection to Google servers is established, and no personal data is transferred to Google.',
+        'datenschutz.hl6': '6. Social Media Links',
+        'datenschutz.text6p1': 'This website contains links to external social media profiles (e.g. Instagram, YouTube). When clicking these links, you leave this website. From that point on, the privacy policies of the respective platforms apply.',
+        'datenschutz.text6p2': 'No social media plugins or tracking tools are used on this website.',
+        'datenschutz.hl7': '7. Your Rights',
+        'datenschutz.text7p1': 'You have the right at any time to:',
+        'datenschutz.text7p2': '\u00A0\u00A0\u00A0\u00A0• Access your stored personal data',
+        'datenschutz.text7p3': '\u00A0\u00A0\u00A0\u00A0• Request correction or deletion',
+        'datenschutz.text7p4': '\u00A0\u00A0\u00A0\u00A0• Restrict processing',
+        'datenschutz.text7p5': '\u00A0\u00A0\u00A0\u00A0• Object to processing',
+        'datenschutz.text7p6': 'For this purpose, an informal email to the address listed above is sufficient.',
+        'datenschutz.close': 'Close',
         'cookie.text': 'This site uses cookies to improve your experience.',
         'cookie.decline': 'Decline',
     },
@@ -114,27 +155,27 @@ const translations = {
         'portfolio.project4': 'UI Design',
         'portfolio.project5': 'Videoproduktion',
         'portfolio.project6': 'Social Media',
-        'portfolio.view': 'Projekt ansehen',
+        'portfolio.view': 'Mehr anzeigen',
         'skills.badge': 'Fähigkeiten',
         'skills.title1': 'Was ich',
-        'skills.title2': 'am besten kann',
+        'skills.title2': 'alles kann',
         'skills.subtitle': 'Ein vielseitiges Fähigkeitsspektrum, verfeinert durch Jahre kreativer Erkundung',
         'skills.skill1': 'Markendesign',
         'skills.skill1desc': 'Erstellung einprägsamer Markenidentitäten, die beim Publikum ankommen',
         'skills.skill2': 'Motion Graphics',
         'skills.skill2desc': 'Ideen durch fesselnde Animationen zum Leben erwecken',
-        'skills.skill3': 'UI/UX Design',
-        'skills.skill3desc': 'Gestaltung intuitiver und schöner Benutzererlebnisse',
+        'skills.skill3': '3D-Visualisierung',
+        'skills.skill3desc': 'Modellierung und Animation von 3D-Objekten',
         'skills.skill4': 'Illustration',
-        'skills.skill4desc': 'Individuelle Illustrationen, die einzigartige Geschichten erzählen',
+        'skills.skill4desc': 'Individuelle Illustrationen, passend zu deinem Stil',
         'skills.skill5': 'Webdesign',
         'skills.skill5desc': 'Moderne, responsive Designs für digitale Plattformen',
         'skills.skill6': 'Videoproduktion',
-        'skills.skill6desc': 'Professionelle Videoinhalte vom Konzept bis zur Auslieferung',
+        'skills.skill6desc': 'Professionelle Videoinhalte vom Storyboard bis zum finalen Produkt',
         'contact.badge': 'Kontakt',
-        'contact.title1': 'Lass uns',
-        'contact.title2': 'reden',
-        'contact.subtitle': 'Du möchtest ein Projekt umsetzen? Melde dich bei mir!',
+        'contact.title1': 'Melde dich',
+        'contact.title2': 'bei mir',
+        'contact.subtitle': 'Du möchtest gemeinsam ein Projekt umsetzen? Dann nutze das Kontaktformular oder schreibe mir direkt!',
         'contact.getintouch': 'Kontakt aufnehmen',
         'contact.email': 'E-Mail',
         'contact.location': 'Standort',
@@ -143,7 +184,7 @@ const translations = {
         'contact.name': 'Name',
         'contact.emailaddress': 'E-Mail-Adresse',
         'contact.message': 'Nachricht',
-        'contact.placeholder': 'Erzählen Sie mir von Ihrem Projekt...',
+        'contact.placeholder': 'Erzähle mir von Deiner Idee...',
         'contact.send': 'Nachricht senden',
         'footer.copyright': '© 2025 Donatello Media. Alle Rechte vorbehalten.',
         'impressum.footer': 'Impressum',
@@ -153,6 +194,47 @@ const translations = {
         'impressum.address': 'Mariusstraße 16, 86199 Augsburg',
         'impressum.email': 'E-Mail',
         'impressum.close': 'Schließen',
+        'datenschutz.footer': 'Datenschutz',
+        'datenschutz.title': 'Datenschutzerklärung',
+        'datenschutz.hl1': '1. Allgemeine Hinweise',
+        'datenschutz.text1': 'Der Schutz Ihrer persönlichen Daten ist mir ein wichtiges Anliegen. Personenbezogene Daten werden auf dieser Website nur im technisch notwendigen Umfang sowie zur Bearbeitung von Anfragen verarbeitet. Eine Weitergabe an Dritte erfolgt nicht.',
+        'datenschutz.hl2': '2. Verantwortlicher',
+        'datenschutz.text2': 'Verantwortlich für die Datenverarbeitung auf dieser Website ist:',
+        'datenschutz.name': 'Donatello Media',
+        'datenschutz.owner': 'Inhaber',
+        'datenschutz.address': 'Mariusstraße 16, 86199 Augsburg',
+        'datenschutz.email': 'Email',
+        'datenschutz.hl3': '3. Zugriffsdaten (Server-Logfiles)',
+        'datenschutz.text3p1': 'Beim Besuch dieser Website werden durch den Hostinganbieter automatisch Informationen erfasst (sogenannte Server-Logfiles), z. B.:',
+        'datenschutz.text3p2': '\u00A0\u00A0\u00A0\u00A0• IP-Adresse (gekürzt oder anonymisiert)',
+        'datenschutz.text3p3': '\u00A0\u00A0\u00A0\u00A0• Datum und Uhrzeit der Anfrage',
+        'datenschutz.text3p4': '\u00A0\u00A0\u00A0\u00A0• Browsertyp und -version',
+        'datenschutz.text3p5': '\u00A0\u00A0\u00A0\u00A0• Betriebssystem',
+        'datenschutz.text3p6': 'Diese Daten dienen ausschließlich der technischen Überwachung und Sicherheit der Website und werden nicht mit anderen Datenquellen zusammengeführt.',
+        'datenschutz.hl4': '4. Kontaktformular',
+        'datenschutz.text4p1': 'Wenn Sie mir über das Kontaktformular Anfragen senden, werden Ihre Angaben aus dem Formular inklusive der von Ihnen angegebenen Kontaktdaten per E-Mail an mich übermittelt und zur Bearbeitung der Anfrage gespeichert.',
+        'datenschutz.text4p2': 'Verarbeitete Daten:',
+        'datenschutz.text4p3': '\u00A0\u00A0\u00A0\u00A0• Name (falls angegeben)',
+        'datenschutz.text4p4': '\u00A0\u00A0\u00A0\u00A0• E-Mail-Adresse',
+        'datenschutz.text4p5': '\u00A0\u00A0\u00A0\u00A0• Nachricht',
+        'datenschutz.text4p6': 'Zweck der Verarbeitung:',
+        'datenschutz.text4p7': 'Beantwortung Ihrer Anfrage',
+        'datenschutz.text4p8': 'Rechtsgrundlage:',
+        'datenschutz.text4p9': 'Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen bzw. Vertragserfüllung)',
+        'datenschutz.text4p10': 'Die Daten werden gelöscht, sobald Ihre Anfrage abschließend bearbeitet wurde und keine gesetzlichen Aufbewahrungspflichten bestehen.',
+        'datenschutz.hl5': '5. Google Fonts',
+        'datenschutz.text5': 'Auf dieser Website werden Schriftarten (Google Fonts) lokal eingebunden. Es findet keine Verbindung zu Servern von Google statt. Eine Übertragung personenbezogener Daten an Google erfolgt nicht.',
+        'datenschutz.hl6': '6. Social-Media-Links',
+        'datenschutz.text6p1': 'Diese Website enthält Links zu externen Social-Media-Profilen (z. B. Instagram, YouTube). Beim Anklicken dieser Links verlassen Sie meine Website. Erst dann gelten die Datenschutzbestimmungen der jeweiligen Plattformen.',
+        'datenschutz.text6p2': 'Es werden keine Social-Media-Plugins oder Tracking-Tools eingesetzt.',
+        'datenschutz.hl7': '7. Ihre Rechte',
+        'datenschutz.text7p1': 'Sie haben jederzeit das Recht auf:',
+        'datenschutz.text7p2': '\u00A0\u00A0\u00A0\u00A0• Auskunft über Ihre gespeicherten Daten',
+        'datenschutz.text7p3': '\u00A0\u00A0\u00A0\u00A0• Berichtigung oder Löschung',
+        'datenschutz.text7p4': '\u00A0\u00A0\u00A0\u00A0• Einschränkung der Verarbeitung',
+        'datenschutz.text7p5': '\u00A0\u00A0\u00A0\u00A0• Widerspruch gegen die Verarbeitung',
+        'datenschutz.text7p6': 'Hierzu genügt eine formlose E-Mail an die oben genannte Adresse.',
+        'datenschutz.close': 'Schließen',
         'cookie.text': 'Diese Seite verwendet Cookies um Ihre Erfahrung zu verbessern.',
         'cookie.decline': 'Ablehnen',
     },
@@ -363,6 +445,34 @@ const impressumModal = document.getElementById("impressumModal");
         }
 });
 
+//Datenschutz
+const datenschutzModal = document.getElementById("datenschutzModal");
+
+    function openDatenschutz() {
+    datenschutzModal.classList.remove("hidden");
+    document.body.classList.add("overflow-hidden");
+    requestAnimationFrame(() => {
+        datenschutzModal.classList.add("flex", "opacity-100");
+        datenschutzContent.classList.add("scale-100");
+    });
+}
+
+    function closeDatenschutz() {
+    datenschutzModal.classList.remove("opacity-100");
+    datenschutzContent.classList.remove("scale-100");
+    setTimeout(() => {
+        datenschutzModal.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+    }, 300);
+}
+
+    // ESC-Taste schließt Datenschutz
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && datenschutzModal && !datenschutzModal.classList.contains("hidden")) {
+            closeDatenschutz();
+        }
+});
+
 //Cookies
 function acceptCookies() {
     localStorage.setItem("cookiesAccepted", "true");
@@ -378,3 +488,17 @@ window.addEventListener("DOMContentLoaded", () => {
         document.getElementById("cookieBanner").classList.remove("hidden");
     }
 });
+
+const moveElements = document.querySelectorAll('.move_it');
+
+function updateMove() {
+  const scrollY = window.scrollY;
+  moveElements.forEach(el => {
+    const multiplier = parseFloat(el.dataset.multiplier);
+    el.style.transform = `translateX(${scrollY * multiplier}px)`;
+    el.style.opacity = Math.max(0, 1 - Math.abs(scrollY * multiplier) / 200);
+  });
+}
+
+window.addEventListener('scroll', updateMove);
+updateMove();
