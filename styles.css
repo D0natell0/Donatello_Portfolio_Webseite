@@ -1,283 +1,204 @@
-/* styles.css — custom styles
-   Ergänzt Tailwind (lokal) mit einigen gezielten Regeln.
-   Keep colors and animations here. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-/* Basic */
-:root {
-  --accent: #552586;
-  --accent-foreground: #f0f0f0;
-  --bg: #0D0D0D;
+* {
+    font-family: 'Montserrat', sans-serif;
 }
 
-html,body {
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: var(--bg);
-  color: var(--accent-foreground);
-  scroll-behavior: smooth;
+.primary-color {
+    color: #7D37C3;
 }
 
+.bg-primary {
+    background-color: #7D37C3;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #10071A;
+    color: #ECDAFF;
+}
+
+body.light-mode {
+    background-color: #ECDAFF;
+    color: #10071A;
+}
+
+/* Smooth scrolling */
 html {
-  overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
-/* Accent */
-.accent { color: var(--accent-foreground); }
-.bg-accent { background-color: var(--accent); }
-
-/* Small helpers */
-.sr-only {
-  position: absolute !important;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px; overflow: hidden;
-  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+/* Animations */
+@keyframes bounce-arrow {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(8px);
+    }
 }
 
-/* Burger Menu Animation */
-#menu-btn.open span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-#menu-btn.open span:nth-child(2) {
-  opacity: 0;
-}
-#menu-btn.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+.animate-bounce-arrow {
+    animation: bounce-arrow 1.5s ease-in-out infinite;
 }
 
-/* Move effects */
-.move_it { display: inline-block; will-change: transform; transition: transform 0.05s linear; }
-
-/* Hero animations */
-@keyframes bounceDown {
-  0%,20%,50%,80%,100% { transform: translateY(0); }
-  40% { transform: translateY(6px); }
-  60% { transform: translateY(3px); }
-}
-.animate-bounceDown { animation: bounceDown 1.5s infinite; }
-.delay-200 { animation-delay: 0.2s; }
-
-/* Small play button overlay for youtube-embed thumbnails */
-.youtube-embed { position: relative; display: block; }
-.youtube-embed img { display:block; width:100%; height:auto; }
-.youtube-embed .play-button {
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%,-50%);
-  background: rgba(85,37,134,0.9);
-  border: none;
-  color: white;
-  width:56px; height:56px;
-  border-radius: 9999px;
-  font-size: 20px;
-  cursor:pointer;
+.animate-bounce-arrow-delayed {
+    animation: bounce-arrow 1.5s ease-in-out infinite;
+    animation-delay: 0.15s;
 }
 
-/* Thumbnails container */
-.miniatures img { width:48px; height:48px; object-fit:cover; border-radius:.5rem; }
-
-/* Back to top visibility handled by JS */
-#backToTop.hidden { display:none; }
-
-/* Misc */
-.portfolio-preview { display:block; width:100%; height:auto; }
-
-/* Einheitliche Höhe für Hauptbilder/-videos im Portfolio-Swiper */
-.media-swiper .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 200px;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.media-swiper .swiper-slide img,
-.media-swiper .swiper-slide video,
-.media-swiper .swiper-slide iframe {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 0.5rem;
-  aspect-ratio: 16/9;
-  max-height: 500px;
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
 }
 
-@media (max-width: 768px) {
-  .media-swiper .swiper-slide img,
-  .media-swiper .swiper-slide video,
-  .media-swiper .swiper-slide iframe {
-    max-height: none;
-  }
+/* Custom gradient background */
+.hero-gradient {
+    position: relative;
+    overflow: hidden;
 }
 
-@media (max-width: 768px) {
-  .swiper.portfolio-swiper {
-  max-width: 800px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 0 2rem;
-  }
+.hero-gradient::before {
+    content: '';
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 384px;
+    height: 384px;
+    background: #7D37C3;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15;
 }
 
-.fullscreen-wrapper {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 999;
-  background: rgba(0, 0, 0, 0.8);
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+.hero-gradient::after {
+    content: '';
+    position: absolute;
+    bottom: 25%;
+    right: 25%;
+    width: 320px;
+    height: 320px;
+    background: #A855F7;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.1;
 }
 
-.fullscreen-wrapper.visible {
-  display: flex;
+/* Navbar scroll effect */
+.navbar-scrolled {
+    backdrop-filter: blur(20px);
 }
 
-.fullscreen-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
+body.dark-mode .navbar-scrolled {
+    background-color: rgba(16, 7, 26, 0.8);
+    border-bottom: 1px solid rgba(125, 55, 195, 0.2);
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  color: #552586;
-
-  padding: 10px;
+body.light-mode .navbar-scrolled {
+    background-color: rgba(236, 218, 255, 0.8);
+    border-bottom: 1px solid rgba(125, 55, 195, 0.1);
 }
 
-.fullscreen-close {
-  position: absolute;
-  top: 10px;
-  right: 0px;
-  color: #552586;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 1000;
+/* Hide mobile menu by default */
+.mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
 }
 
-/* Entfernt den blauen Fokusrahmen bei Klick */
-img:focus, button:focus, a:focus {
-  outline: none; /* Entfernt den Fokusrahmen */
-  box-shadow: none; /* Entfernt Schatten */
+.mobile-menu.open {
+    max-height: 500px;
 }
 
-/* Entfernt das Markieren von Bildern und Links */
-a, button, img {
-  user-select: none;
+/* Language dropdown */
+.language-dropdown {
+    position: relative;
 }
 
-/* Für den Fall, dass du nur das visuelle Markieren bei Klick verhindern willst */
-button:active, img:active {
-  outline: none;
+.language-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    min-width: 120px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 50;
 }
 
-/* Fullscreen-Container */
-.fullscreen-wrapper {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 999;
-  background: rgba(0, 0, 0, 0.8);
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+.language-dropdown:hover .language-menu,
+.language-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
-.fullscreen-wrapper.visible {
-  display: flex;
+body.dark-mode .language-menu {
+    background-color: rgba(26, 13, 46, 0.95);
+    border: 1px solid rgba(125, 55, 195, 0.3);
 }
 
-.fullscreen-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #000;
-  border-radius: 10px;
+body.light-mode .language-menu {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(125, 55, 195, 0.2);
 }
 
-.fullscreen-swiper {
-  width: 100%;
-  height: 100%;
+/* Skill bar animation */
+.skill-bar {
+    transition: width 1s ease-out;
+    transition-delay: 0.5s;
 }
 
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Zentriert die Medien im Slide */
+/* Hover effects */
+.project-card {
+    position: relative;
+    overflow: hidden;
 }
 
-.swiper-slide img, .swiper-slide video {
-  object-fit: contain; /* Stellt sicher, dass das Bild/Video innerhalb des Containers bleibt, ohne Verzerrung */
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  margin: auto; /* Zentriert das Bild/Video innerhalb des Containers */
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(16, 7, 26, 0.9), rgba(16, 7, 26, 0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
-/* 16:9 Aspect Ratio für Bilder im Fullscreen */
-.fullscreen-swiper .swiper-slide img {
-  aspect-ratio: 16 / 9; /* Bildverhältnis auf 16:9 setzen */
+.project-card:hover .project-overlay {
+    opacity: 1;
 }
 
-/* Schaltflächen */
-.swiper-button-prev, .swiper-button-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  color: #552586;
-  padding: 10px;
-  cursor: pointer;
+.project-card:hover img {
+    transform: scale(1.1);
 }
 
-.swiper-button-prev {
-  left: 10px;
+.project-card img {
+    transition: transform 0.7s ease;
 }
 
-.swiper-button-next {
-  right: 10px;
+.project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease;
 }
 
-.swiper-pagination-bullet-active {
-  background-color: #552586 !important;
-  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5);
-}
-
-#disclaimer-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #222;
-  color: #fff;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 9999;
-  font-size: 14px;
-}
-
-#disclaimer-banner a {
-  color: #4da3ff;
-  text-decoration: underline;
-}
-
-#disclaimer-banner button {
-  background-color: #4da3ff;
-  border: none;
-  color: #fff;
-  padding: 8px 14px;
-  cursor: pointer;
-  border-radius: 4px;
+.project-card:hover .project-content {
+    transform: translateY(0);
+    opacity: 1;
 }

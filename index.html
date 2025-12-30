@@ -1,640 +1,665 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Donatello–Media</title>
-  <meta name="description" content="Donatello-Media — Mediengestalter: Motion Design, 3D, Videoschnitt & Branding. Portfolio und Kontakt." />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Donatello–Media" />
-  <meta property="og:description" content="Mediengestalter: Motion Design, 3D, Videoschnitt & Branding." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/img/logo/Donatello_Logo_Bildmarke_social.png" />
-  <meta property="og:url" content="" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Local vendor CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="./assets/Donatello_Logo_Bildmarke-DAAw0oHX-D1yx6XlA-D1yx6XlA-D1yx6XlA-D1yx6XlA.svg">
-
-
-  <script type="module" crossorigin src="./assets/index-BQZj8RBP.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-CdSLD9Nb.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donatello Media</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/svg+xml" href="img/logo/Donatello_Logo_Bildmarke.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
+<body class="dark-mode">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href__="#" class="flex items-center gap-3 group" onclick="scrollToTop(event)">
+                    <div class="h-6 flex items-center justify-center">
+                        <img src="img/logo/Donatello_Logo_Wort_Bildmarke_Horizontal.svg" alt="Donatello Media Logo" class="w-full h-full object-contain">
+                    </div>
+                </a>
 
-<body class="bg-[#1A1A1A] text-[#ECDAFF] overflow-x-hidden scroll-smooth">
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center gap-2">
+                    <button onclick="scrollToSection('about')" class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.about">
+                        About me
+                    </button>
+                    <button onclick="scrollToSection('portfolio')" class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.portfolio">
+                        Portfolio
+                    </button>
+                    <button onclick="scrollToSection('skills')" class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.skills">
+                        Skills
+                    </button>
+                    <button onclick="scrollToSection('contact')" class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.contact">
+                        Contact
+                    </button>
+                    
+                    <!-- Language Selector -->
+                    <div class="language-dropdown ml-2">
+                        <button onclick="scrollToSection('language')" class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.language">
+                            Language
+                        </button>
+                        <div class="language-menu rounded-bl-xl rounded-tr-xl shadow-2xl backdrop-blur-xl overflow-hidden">
+                            <button onclick="changeLanguage('de')" class="lang-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20 flex items-center gap-2">
+                                🇩🇪 Deutsch
+                            </button>
+                            <button onclick="changeLanguage('en')" class="lang-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20 flex items-center gap-2">
+                                🇬🇧 English
+                            </button>  
+                        </div>
+                    </div>
+                    
+                    <!-- Dark Mode Toggle -->
+                    <button onclick="toggleDarkMode()" class="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)] dark-mode-btn">
+                        <svg class="w-5 h-5 sun-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <svg class="w-5 h-5 moon-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </button>
+                </div>
 
-<!-- Header -->
-<header class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md border-2 border-violet-900/40">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-    <a href="#top" class="flex items-center gap-3" aria-label="Startseite">
-      <img src="./assets/Donatello_Logo_Wort_Bildmarke_Horizontal-DFG-eBiV-CA1qZjNv-CA1qZjNv-CA1qZjNv-CA1qZjNv.svg" alt="Donatello-Media Logo" class="h-10 w-auto drop-shadow-lg" loading="lazy">
-    </a>
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center gap-3 md:hidden">
+                    <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 dark-mode-btn-mobile">
+                        <svg class="w-4 h-4 sun-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <svg class="w-4 h-4 moon-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 burger-btn">
+                        <svg class="w-5 h-5 hamburger-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="w-5 h-5 close-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-    <!-- Desktop Navigation -->
-    <nav class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-wide" aria-label="Hauptnavigation">
-      <a href="#about" class="text-gray-300 hover:text-violet-400 transition-colors">Über mich</a>
-      <a href="#resume" class="text-gray-300 hover:text-violet-400 transition-colors">Lebenslauf</a>
-      <a href="#skills" class="text-gray-300 hover:text-violet-400 transition-colors">Skills</a>
-      <a href="#portfolio" class="text-gray-300 hover:text-violet-400 transition-colors">Portfolio</a>
-      <a href="#contact" class="text-gray-300 hover:text-violet-400 transition-colors">Kontakt</a>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu md:hidden mobile-menu-bg">
+            <div class="px-6 py-6 space-y-2">
+                <button onclick="scrollToSection('about'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300" data-i18n="nav.about">
+                    About me
+                </button>
+                <button onclick="scrollToSection('portfolio'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300" data-i18n="nav.portfolio">
+                    Portfolio
+                </button>
+                <button onclick="scrollToSection('skills'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300" data-i18n="nav.skills">
+                    Skills
+                </button>
+                <button onclick="scrollToSection('contact'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300" data-i18n="nav.contact">
+                    Contact
+                </button>
+                
+                <!-- Language selection in mobile menu -->
+                <div class="pt-4 border-t border-[#7D37C3]/20 space-y-2">
+                    <button onclick="changeLanguage('de'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300">
+                        🇩🇪 Deutsch
+                    </button>
+                    <button onclick="changeLanguage('en'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300">
+                        🇬🇧 English
+                    </button>
+                </div>
+            </div>
+        </div>
     </nav>
 
-    <!-- Burger Button -->
-    <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none group" aria-label="Menü öffnen">
-      <span class="block w-6 h-0.5 bg-[#552586] rounded transition-transform duration-300 origin-center group-[.open]:rotate-45 group-[.open]:translate-y-2"></span>
-      <span class="block w-6 h-0.5 bg-[#552586] rounded transition-opacity duration-300 group-[.open]:opacity-0"></span>
-      <span class="block w-6 h-0.5 bg-[#552586] rounded transition-transform duration-300 origin-center group-[.open]:-rotate-45 group-[.open]:-translate-y-2"></span>
-    </button>
-  </div>
-</header>
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex flex-col items-center justify-center relative px-6">
+        <div class="relative z-10 text-center max-w-4xl mx-auto">
+            <div class="mb-6 fade-in-up" style="animation-delay: 0.2s;">
+                <span class="hero-badge inline-block px-4 py-2 rounded-bl-xl rounded-tr-xl text-sm font-medium bg-gradient-to-r from-[#7D37C3] via-[#7D37C3] to-purple-500 shadow-[0_0_0_1px_rgba(139,92,246,0.4),0_8px_20px_rgba(124,58,237,0.35)] tracking-wide whitespace-nowrap" data-i18n="hero.badge">
+                    Creative Designer
+                </span>
+            </div>
 
-<!-- Mobile Overlay Menü -->
-<div id="menu-overlay" class="fixed inset-0 z-40 bg-black bg-opacity-95 hidden flex justify-center items-center md:hidden">
-  <nav id="mobile-nav" class="flex flex-col space-y-8 text-2xl uppercase text-white text-center transform scale-95 opacity-0 transition-all duration-300">
-    <a href="#about" class="hover:underline">Über mich</a>
-    <a href="#resume" class="hover:underline">Lebenslauf</a>
-    <a href="#skills" class="hover:underline">Skills</a>
-    <a href="#portfolio" class="hover:underline">Portfolio</a>
-    <a href="#contact" class="hover:underline">Kontakt</a>
-  </nav>
-</div>
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight fade-in-up" style="animation-delay: 0.4s;">
+                <span class="text-[#7D37C3]" data-i18n="hero.title">Welcome to</span>
+                <br />
+                <span class="text-[#7D37C3]">Donatello Media</span>
+            </h1>
 
-  <main id="top" class="scroll-smooth">
+            <p class="hero-subtitle text-xl sm:text-2xl md:text-3xl font-light tracking-wide fade-in-up" style="animation-delay: 0.6s;" data-i18n="hero.subtitle">
+                Media designer with passion.
+            </p>
 
-    <!-- HERO -->
-    <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden border-b-2 border-violet-900/40 bg-[#0D0D0D] bg-gradient-to-b from-[#0D0D0D] via-[#1A1A1A] to-[#0D0D0D]" data-aos="fade-left">
-      <video aria-hidden="true" autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
-        <source src="./assets/BackgroundLoop--PNHliQ0--PNHliQ0--PNHliQ0--PNHliQ0--PNHliQ0.webm" type="video/webm" loading="lazy">
-      </video>
-
-      <div id="heroText" class="relative z-10 transform-gpu will-change-transform">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4 flex flex-col items-center gap-2">
-          <span class="move_it" data-multiplier="-0.5">Willkommen bei</span>
-          <span class="move_it" data-multiplier="0.5">Donatello-Media</span>
-        </h1>
-        <p class="text-lg md:text-xl mb-6 text-white-300">Mediengestalter aus Leidenschaft</p>
-
-        <a href="#about" class="flex flex-col items-center gap-1" aria-label="Zum Bereich Über mich">
-          <svg class="w-6 h-6 text-white animate-bounceDown" fill="none" stroke="#552586" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-          <svg class="w-6 h-6 text-white animate-bounceDown delay-200" fill="none" stroke="#552586" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </a>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="max-w-4xl mx-auto px-4 py-16 scroll-mt-16" data-aos="fade-right">
-      <h2 class="text-4xl font-semibold mb-6 accent text-center">Hi, ich bin Niklas!</h2>
-      <div id="threejs-container" class="w-full h-[400px] mb-6 relative">
-        <canvas id="three-canvas"></canvas>
-        <div id="animation-buttons" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 z-10"></div>
-      </div>
-      <h3 class="text-2xl font-semibold mb-6 accent">Mediengestalter mit Fokus auf Motion, 3D-Visualisierung und mehr.</h3>
-      <p class="mb-3 text-gray-300">Ich bringe Bewegung in Marken, visuelle Klarheit in Ideen und ein bisschen Charakter in jedes Projekt. Ich kombiniere 3D, Motion Design, Videoschnitt und Branding zu kreativen Lösungen, die hängen bleiben.</p>
-    </section>
-
-    <!-- Lebenslauf -->
-    <section id="resume" class="relative min-h-screen px-4 py-16 scroll-mt-16 flex flex-col justify-center items-center text-center overflow-hidden border-b-2 border-violet-900/40 bg-[#0D0D0D] bg-gradient-to-b from-[#0D0D0D] via-[#1A1A1A] to-[#0D0D0D]">
-      <div class="container max-w-5xl mx-auto">
-        <h1 class="text-4xl font-bold mb-16 accent">Meine Vergangenheit</h1>
-
-        <!-- Timeline -->
-        <div class="relative">
-          <!-- Zentrale Linie -->
-          <div aria-hidden="true" class="absolute top-0 left-1/2 -translate-x-1/2 h-full w-[5px] bg-violet-900/40"></div>
-
-          <div class="max-w-4xl mx-auto px-4 py-16 scroll-mt-16 flex flex-col space-y-16">
-
-            <div class="relative flex justify-center sm:justify-start" data-aos="fade-left">
-              <div class="bg-black/50 p-6 rounded-bl-3xl rounded-tr-3xl shadow-lg border border-violet-900/40 w-full sm:w-[45%] text-left">
-                <h3 class="text-2xl font-semibold accent mb-2">Motion Graphic Designer</h3>
-                <p class="text-gray-300 mb-1">2023 – heute <br>echion Corporate Communication AG</p>
-                <div class="text-gray-300 space-y-2 mt-2">
-                  <div class="flex items-start">
-                    <span class="w-4 text-left">•</span>
-                    <span class="flex-1">Beratung, Betreuung und Verwaltung von internen und externen Projekten</span>
-                  </div>
-                  <div class="flex items-start">
-                    <span class="w-4 text-left">•</span>
-                    <span class="flex-1">Contentproduktion für Instore-TV und Digital Sigange am POS</span>
-                  </div>
-                  <div class="flex items-start">
-                    <span class="w-4 text-left">•</span>
-                    <span class="flex-1">Grafik- und Bildbearbeitung, sowie Illustration und Layoutsetzung</span>
-                  </div>
-                  <div class="flex items-start">
-                    <span class="w-4 text-left">•</span>
-                    <span class="flex-1">Produktion von Printmedien</span>
-                  </div>
+            <!-- Animated Arrows -->
+            <button onclick="scrollToSection('about')" class="mt-16 flex flex-col items-center gap-1 group cursor-pointer mx-auto fade-in-up" style="animation-delay: 1s;" aria-label="Scroll to About section">
+                <div class="animate-bounce-arrow">
+                    <svg class="arrow-icon w-8 h-8 transition-colors duration-300 group-hover:text-[#7D37C3] group-hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
                 </div>
-              </div>
-            </div>
-
-            <div class="relative flex justify-center sm:justify-end" data-aos="fade-right">
-              <div class="bg-black/50 p-6 rounded-bl-3xl rounded-tr-3xl shadow-lg border border-violet-900/40 w-full sm:w-[45%] text-left">
-                <h3 class="text-2xl font-semibold accent mb-2">Ausbildung Mediengestalter Digital & Print</h3>
-                <p class="text-gray-300 mb-1">2020 – 2023 <br>echion Corporate Communication AG</p>
-                <p class="text-gray-300">Berufsausbildung in der Berufsschule 2, Augsburg, mit Schwerpunkt Digital.</p>
-                <a href="public/pdf/IHK Ausbildungszeugnis.pdf" target="_blank" class="inline-block mt-3 bg-purple-900 hover:bg-purple-700 text-white font-semibold px-6 py-2 rounded-bl-2xl rounded-tr-2xl shadow-lg transition transform hover:-translate-y-1">
-                  IHK Prüfungszeugnis
-                </a>
-              </div>
-            </div>
-
-            <div class="relative flex justify-center sm:justify-start hidden-resume-entry hidden" data-aos="fade-left">
-              <div class="bg-black/50 p-6 rounded-bl-3xl rounded-tr-3xl shadow-lg border border-violet-900/40 w-full sm:w-[45%] text-left">
-                <h3 class="text-2xl font-semibold accent mb-2">Warenlogistik und Regalpflege</h3>
-                <p class="text-gray-300 mb-1">2020 <br>real GmbH</p>
-                <div class="text-gray-300 space-y-2 mt-2">
-                  <div class="flex items-start">
-                    <span class="w-4 text-left">•</span>
-                    <span class="flex-1">Präsentation und ansprechende Platzierung von Obst- und Gemüsewaren</span>
-                  </div>
-                  <div class="flex items-start">
-                    <span class="w-4 text-left">•</span>
-                    <span class="flex-1">Kontrolle der Frische, Qualität und Haltbarkeit der Produkte</span>
-                  </div>
-                  <div class="flex items-start">
-                    <span class="w-4 text-left">•</span>
-                    <span class="flex-1">Unterstützung bei der Warenbestellung und -annahme</span>
-                  </div>
+                <div class="animate-bounce-arrow-delayed -mt-4">
+                    <svg class="arrow-icon-secondary w-8 h-8 transition-colors duration-300 group-hover:text-[#7D37C3] group-hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
                 </div>
-              </div>
-            </div>
-
-            <div class="relative flex justify-center sm:justify-start hidden-resume-entry hidden" data-aos="fade-left">
-              <div class="bg-black/50 p-6 rounded-bl-3xl rounded-tr-3xl shadow-lg border border-violet-900/40 w-full sm:w-[45%] text-left">
-                <h3 class="text-2xl font-semibold accent mb-2">Fertigungsmitarbeiter in der IT-Hardware-Produktion</h3>
-                <p class="text-gray-300 mb-1">2019 – 2020 <br>Fujitsu Technology Solutions GmbH</p>
-                <div class="text-gray-300 space-y-2 mt-2">
-                  <div class="flex items-start">
-                    <span class="w-4 text-left">•</span>
-                    <span class="flex-1">Durchführung der Endkontrolle von Festplatten vor dem Versand</span>
-                  </div>
-                  <div class="flex items-start">
-                    <span class="w-4 text-left">•</span>
-                    <span class="flex-1">Montage von Prozessoren (CPUs) in Computersysteme</span>
-                  </div>
-                  <div class="flex items-start">
-                    <span class="w-4 text-left">•</span>
-                    <span class="flex-1">Visuelle Prüfung und Funktionstest von Hardware-Komponenten</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="relative flex justify-center sm:justify-end hidden-resume-entry hidden" data-aos="fade-right">
-              <div class="bg-black/50 p-6 rounded-bl-3xl rounded-tr-3xl shadow-lg border border-violet-900/40 w-full sm:w-[45%] text-left">
-                <h3 class="text-2xl font-semibold accent mb-2">Allgemeine Hochschulreife</h3>
-                <p class="text-gray-300 mb-1">2018 – 2019 <br>Fachoberschule Friedberg</p>
-                <p class="text-gray-300">Allgemeine Hochschulreife mit Schwerpunkt Pädagogik & Psychologie.</p>
-              </div>
-            </div>
-
-            <div class="relative flex justify-center sm:justify-end hidden-resume-entry hidden" data-aos="fade-right">
-              <div class="bg-black/50 p-6 rounded-bl-3xl rounded-tr-3xl shadow-lg border border-violet-900/40 w-full sm:w-[45%] text-left">
-                <h3 class="text-2xl font-semibold accent mb-2">Mittlere Reife</h3>
-                <p class="text-gray-300 mb-1">2010 – 2018 <br>Heinrich-von-Buz Realschule</p>
-                <p class="text-gray-300">Mittlere Reife mit Schwerpunkt Gestaltung.</p>
-              </div>
-            </div>
-
-          </div>
-          <button
-            id="toggleResume"
-            class="mt-8 bg-purple-900 hover:bg-purple-700 text-white font-semibold px-6 py-2 rounded-bl-2xl rounded-tr-2xl shadow-lg transition transform hover:-translate-y-1"
-          >
-            Mehr anzeigen
-          </button>
+            </button>
         </div>
     </section>
 
-        <!-- SKILLS -->
-    <section id="skills" class="max-w-4xl mx-auto px-4 py-16 scroll-mt-16" data-aos="fade-right">
-      <h3 class="text-3xl font-semibold mb-8 accent text-center">Meine Skills</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 items-start">
-        
-        <article class="bg-black rounded-bl-3xl rounded-tr-3xl p-6 shadow-lg hover:shadow-purple-900/20 transition border-2 border-violet-900/40 cursor-pointer relative group">
-          <div class="flex items-center justify-center space-x-2 mb-4">
-            <svg class="w-8 h-8" viewBox="0 0 128 128">
-              <path d="M66.332 70.032c.24-4.242 2.327-7.987 5.485-10.634 3.094-2.602 7.248-4.193 11.809-4.193 4.537 0 8.69 1.59 11.78 4.193 3.163 2.647 5.237 6.392 5.485 10.634.24 4.35-1.523 8.41-4.605 11.417-3.158 3.05-7.627 4.977-12.66 4.977-5.037 0-9.526-1.915-12.664-4.977-3.094-3.006-4.853-7.044-4.606-11.397zm0 0" fill="#235785"></path><path d="M39.245 79.002c.028 1.66.564 4.89 1.36 7.404 1.682 5.336 4.537 10.273 8.49 14.599 4.062 4.465 9.074 8.055 14.85 10.61 6.073 2.67 12.665 4.037 19.505 4.037 6.84-.009 13.432-1.4 19.504-4.102 5.776-2.582 10.79-6.168 14.85-10.657 3.974-4.374 6.82-9.307 8.491-14.647a37 37 0 001.595-8.163c.208-2.69.12-5.405-.263-8.12a37.535 37.535 0 00-5.417-14.714c-2.574-4.15-5.916-7.76-9.89-10.813l.012-.004-39.955-30.506c-.036-.028-.068-.056-.104-.08-2.619-2.002-7.044-1.994-9.91.008-2.914 2.031-3.25 5.385-.656 7.496l-.012.008 16.682 13.484-50.789.051h-.068c-4.197.004-8.239 2.739-9.03 6.213-.82 3.521 2.035 6.46 6.412 6.46l-.008.016 25.736-.048L4.58 82.524c-.056.044-.12.088-.176.132C.069 85.95-1.33 91.446 1.4 94.9c2.778 3.522 8.666 3.546 13.047.02L39.505 74.51s-.368 2.758-.336 4.397zm64.56 9.219c-5.168 5.228-12.416 8.21-20.227 8.21-7.831.012-15.079-2.918-20.248-8.142-2.526-2.559-4.377-5.473-5.528-8.591a22.202 22.202 0 01-1.271-9.602 22.446 22.446 0 012.778-9.039c1.507-2.714 3.59-5.18 6.14-7.267 5.033-4.058 11.42-6.28 18.1-6.28 6.709-.008 13.097 2.174 18.13 6.236 2.55 2.075 4.625 4.529 6.14 7.243a22.302 22.302 0 012.774 9.043 22.313 22.313 0 01-1.271 9.598c-1.147 3.142-3.002 6.056-5.533 8.615zm0 0" fill="#e87500"></path>
-            </svg>          
-            <h4 class="text-xl font-semibold accent">Blender 3D</h4>
-          </div>
-          <div class="h-3 bg-violet-900/40 rounded-full overflow-hidden">
-            <div class="bg-purple-700 h-3 rounded-full w-[95%] transition-all duration-700"></div>
-          </div>
-          <p class="text-gray-300 mt-4 hidden">Erfahrung in der 3D-Modellierung, Animation und Visualisierung. Ich erstelle realistische Szenen, Objekte und Animationen für verschiedenste Anwendungen.</p>
-          <div class="absolute bottom left-1/2 transform -translate-x-1/2">
-            <i data-lucide="chevron-down" class="w-6 h-6 text-purple-900 transition-transform duration-300"></i>
-          </div>
-        </article>
-
-        <article class="bg-black rounded-bl-3xl rounded-tr-3xl p-6 shadow-lg hover:shadow-purple-900/20 transition border-2 border-violet-900/40 cursor-pointer relative group">
-          <div class="flex items-center justify-center space-x-2 mb-4">
-            <svg class="w-8 h-8" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-              <rect width="64" height="64" rx="8" fill="#1A0B2E"/>
-              <text x="12" y="44" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" fill="#D291FF">Ae</text>
-            </svg>
-            <h4 class="text-xl font-semibold accent">After Effects</h4>
-          </div>
-          <div class="h-3 bg-violet-900/40 rounded-full overflow-hidden">
-            <div class="bg-purple-700 h-3 rounded-full w-[100%] transition-all duration-700"></div>
-          </div>
-          <p class="text-gray-300 mt-4 hidden">Kompetent in Motion Design, Animation und Compositing. Ich setze visuelle Effekte um und nutze Color Grading für die finale Bildästhetik komplexer Szenen.</p>
-          <div class="absolute bottom left-1/2 transform -translate-x-1/2">
-            <i data-lucide="chevron-down" class="w-6 h-6 text-purple-900 transition-transform duration-300"></i>
-          </div>
-        </article>
-
-        <article class="bg-black rounded-bl-3xl rounded-tr-3xl p-6 shadow-lg hover:shadow-purple-900/20 transition border-2 border-violet-900/40 cursor-pointer relative group">
-          <div class="flex items-center justify-center space-x-2 mb-4">
-            <svg class="w-8 h-8" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-              <rect width="64" height="64" rx="8" fill="#1A0B2E"/>
-              <text x="12" y="44" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" fill="#9999FF">Pr</text>
-            </svg>
-            <h4 class="text-xl font-semibold accent">Premiere Pro</h4>
-          </div>
-          <div class="h-3 bg-violet-900/40 rounded-full overflow-hidden">
-            <div class="bg-purple-700 h-3 rounded-full w-[90%] transition-all duration-700"></div>
-          </div>
-          <p class="text-gray-300 mt-4 hidden">Sicherer Videoschnitt von der Rohaufnahme bis zum fertigen Clip. Ich bearbeite Bild, Ton, Übergänge und führe präzises Color Grading für einen professionellen Look durch.</p>
-          <div class="absolute bottom left-1/2 transform -translate-x-1/2">
-            <i data-lucide="chevron-down" class="w-6 h-6 text-purple-900 transition-transform duration-300"></i>
-          </div>
-        </article>
-
-        <article class="bg-black rounded-bl-3xl rounded-tr-3xl p-6 shadow-lg hover:shadow-purple-900/20 transition border-2 border-violet-900/40 cursor-pointer relative group">
-          <div class="flex items-center justify-center space-x-2 mb-4">
-            <svg class="w-8 h-8" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-              <rect width="64" height="64" rx="8" fill="#001E36"/>
-              <text x="12" y="44" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" fill="#31A8FF">Ps</text>
-            </svg>
-            <h4 class="text-xl font-semibold accent">Photoshop</h4>
-          </div>
-          <div class="h-3 bg-violet-900/40 rounded-full overflow-hidden">
-            <div class="bg-purple-700 h-3 rounded-full w-[85%] transition-all duration-700"></div>
-          </div>
-          <p class="text-gray-300 mt-4 hidden">Bildbearbeitung, Retusche und Compositing auf professionellem Niveau. Ich optimiere Bilder für Web, Print und Social Media.</p>
-          <div class="absolute bottom left-1/2 transform -translate-x-1/2">
-            <i data-lucide="chevron-down" class="w-6 h-6 text-purple-900 transition-transform duration-300"></i>
-          </div>
-        </article>
-
-        <article class="bg-black rounded-bl-3xl rounded-tr-3xl p-6 shadow-lg hover:shadow-purple-900/20 transition border-2 border-violet-900/40 cursor-pointer relative group">
-          <div class="flex items-center justify-center space-x-2 mb-4">
-            <svg class="w-8 h-8" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-              <rect width="64" height="64" rx="8" fill="#330000"/>
-              <text x="12" y="44" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" fill="#FF9A00">Ai</text>
-            </svg>
-            <h4 class="text-xl font-semibold accent">Adobe Illustrator</h4>
-          </div>
-          <div class="h-3 bg-violet-900/40 rounded-full overflow-hidden">
-            <div class="bg-purple-700 h-3 rounded-full w-[80%] transition-all duration-700"></div>
-          </div>
-          <p class="text-gray-300 mt-4 hidden">Erstellung von Vektor-Grafiken, Logos und Icons. Ich kombiniere kreative Ideen mit technischer Genauigkeit.</p>
-          <div class="absolute bottom left-1/2 transform -translate-x-1/2">
-            <i data-lucide="chevron-down" class="w-6 h-6 text-purple-900 transition-transform duration-300"></i>
-          </div>
-        </article>
-
-        <article class="bg-black rounded-bl-3xl rounded-tr-3xl p-6 shadow-lg hover:shadow-purple-900/20 transition border-2 border-violet-900/40 cursor-pointer relative group">
-          <div class="flex items-center justify-center space-x-2 mb-4">
-            <svg class="w-8 h-8" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-              <rect width="64" height="64" rx="8" fill="#330000"/>
-              <text x="14" y="44" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" fill="#FF3366">Id</text>
-            </svg>   
-            <h4 class="text-xl font-semibold accent">Adobe InDesign</h4>
-          </div>
-          <div class="h-3 bg-violet-900/40 rounded-full overflow-hidden">
-            <div class="bg-purple-700 h-3 rounded-full w-[88%] transition-all duration-700"></div>
-          </div>
-          <p class="text-gray-300 mt-4 hidden">Layout-Erstellung für Print- und Digitalmedien. Ich gestalte professionelle Broschüren, Magazine und Flyer mit einem Auge für Typografie und Struktur.</p>
-          <div class="absolute bottom left-1/2 transform -translate-x-1/2">
-            <i data-lucide="chevron-down" class="w-6 h-6 text-purple-900 transition-transform duration-300"></i>
-          </div>
-        </article>
-
-        <article class="bg-black rounded-bl-3xl rounded-tr-3xl p-6 shadow-lg hover:shadow-purple-900/20 transition border-2 border-violet-900/40 cursor-pointer relative group">
-          <div class="flex items-center justify-center space-x-2 mb-4">
-            <svg class="w-8 h-8" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-              <rect width="64" height="64" rx="8" fill="#2E001E"/>
-              <text x="12" y="44" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" fill="#FF2BC2">XD</text>
-            </svg>     
-            <h4 class="text-xl font-semibold accent">Adobe XD</h4>
-          </div>
-          <div class="h-3 bg-violet-900/40 rounded-full overflow-hidden">
-            <div class="bg-purple-700 h-3 rounded-full w-[65%] transition-all duration-700"></div>
-          </div>
-          <p class="text-gray-300 mt-4 hidden">Professionelles UI/UX-Design für Web und App-Projekte. Ich erstelle interaktive Prototypen und durchdachte Benutzeroberflächen mit Fokus auf Usability und Designsysteme.</p>
-          <div class="absolute bottom left-1/2 transform -translate-x-1/2">
-            <i data-lucide="chevron-down" class="w-6 h-6 text-purple-900 transition-transform duration-300"></i>
-          </div>
-        </article>
-
-        <article class="bg-black rounded-bl-3xl rounded-tr-3xl p-6 shadow-lg hover:shadow-purple-900/20 transition border-2 border-violet-900/40 cursor-pointer relative group">
-          <div class="flex items-center justify-center space-x-2 mb-4">
-            <svg class="w-8 h-8" viewBox="0 0 128 128">
-              <path fill="#E44D26" d="M19.037 113.876L9.032 1.661h109.936l-10.016 112.198-45.019 12.48z"></path><path fill="#F16529" d="M64 116.8l36.378-10.086 8.559-95.878H64z"></path><path fill="#EBEBEB" d="M64 52.455H45.788L44.53 38.361H64V24.599H29.489l.33 3.692 3.382 37.927H64zm0 35.743l-.061.017-15.327-4.14-.979-10.975H33.816l1.928 21.609 28.193 7.826.063-.017z"></path><path fill="#fff" d="M63.952 52.455v13.763h16.947l-1.597 17.849-15.35 4.143v14.319l28.215-7.82.207-2.325 3.234-36.233.335-3.696h-3.708zm0-27.856v13.762h33.244l.276-3.092.628-6.978.329-3.692z"></path>
-            </svg>
-            <svg class="w-8 h-8" viewBox="0 0 128 128">
-              <path fill="#1572B6" d="M18.814 114.123L8.76 1.352h110.48l-10.064 112.754-45.243 12.543-45.119-12.526z"></path><path fill="#33A9DC" d="M64.001 117.062l36.559-10.136 8.601-96.354h-45.16v106.49z"></path><path fill="#fff" d="M64.001 51.429h18.302l1.264-14.163H64.001V23.435h34.682l-.332 3.711-3.4 38.114h-30.95V51.429z"></path><path fill="#EBEBEB" d="M64.083 87.349l-.061.018-15.403-4.159-.985-11.031H33.752l1.937 21.717 28.331 7.863.063-.018v-14.39z"></path><path fill="#fff" d="M81.127 64.675l-1.666 18.522-15.426 4.164v14.39l28.354-7.858.208-2.337 2.406-26.881H81.127z"></path><path fill="#EBEBEB" d="M64.048 23.435v13.831H30.64l-.277-3.108-.63-7.012-.331-3.711h34.646zm-.047 27.996v13.831H48.792l-.277-3.108-.631-7.012-.33-3.711h16.447z"></path>
-            </svg>
-            <h4 class="text-xl font-semibold accent">HTML & CSS</h4>
-          </div>
-          <div class="h-3 bg-violet-900/40 rounded-full overflow-hidden">
-            <div class="bg-purple-700 h-3 rounded-full w-[65%] transition-all duration-700"></div>
-          </div>
-          <p class="text-gray-300 mt-4 hidden">Fundierte Kenntnisse in Webentwicklung mit sauberem, responsivem Code. Ich setze Designvorgaben pixelgenau um und achte auf moderne Standards.</p>
-          <div class="absolute bottom left-1/2 transform -translate-x-1/2">
-            <i data-lucide="chevron-down" class="w-6 h-6 text-purple-900 transition-transform duration-300"></i>
-          </div>
-        </article>
-
-        <article class="bg-black rounded-bl-3xl rounded-tr-3xl p-6 shadow-lg hover:shadow-purple-900/20 transition border-2 border-violet-900/40 cursor-pointer relative group">
-          <div class="flex items-center justify-center space-x-2 mb-4">
-            <svg class="w-8 h-8" viewBox="0 0 128 128">
-              <path fill="#F0DB4F" d="M1.408 1.408h125.184v125.185H1.408z"></path><path fill="#323330" d="M116.347 96.736c-.917-5.711-4.641-10.508-15.672-14.981-3.832-1.761-8.104-3.022-9.377-5.926-.452-1.69-.512-2.642-.226-3.665.821-3.32 4.784-4.355 7.925-3.403 2.023.678 3.938 2.237 5.093 4.724 5.402-3.498 5.391-3.475 9.163-5.879-1.381-2.141-2.118-3.129-3.022-4.045-3.249-3.629-7.676-5.498-14.756-5.355l-3.688.477c-3.534.893-6.902 2.748-8.877 5.235-5.926 6.724-4.236 18.492 2.975 23.335 7.104 5.332 17.54 6.545 18.873 11.531 1.297 6.104-4.486 8.08-10.234 7.378-4.236-.881-6.592-3.034-9.139-6.949-4.688 2.713-4.688 2.713-9.508 5.485 1.143 2.499 2.344 3.63 4.26 5.795 9.068 9.198 31.76 8.746 35.83-5.176.165-.478 1.261-3.666.38-8.581zM69.462 58.943H57.753l-.048 30.272c0 6.438.333 12.34-.714 14.149-1.713 3.558-6.152 3.117-8.175 2.427-2.059-1.012-3.106-2.451-4.319-4.485-.333-.584-.583-1.036-.667-1.071l-9.52 5.83c1.583 3.249 3.915 6.069 6.902 7.901 4.462 2.678 10.459 3.499 16.731 2.059 4.082-1.189 7.604-3.652 9.448-7.401 2.666-4.915 2.094-10.864 2.07-17.444.06-10.735.001-21.468.001-32.237z"></path>
-            </svg>
-            <h4 class="text-xl font-semibold accent">JavaScript</h4>
-          </div>
-          <div class="h-3 bg-violet-900/40 rounded-full overflow-hidden">
-            <div class="bg-purple-700 h-3 rounded-full w-[50%] transition-all duration-700"></div>
-          </div>
-          <p class="text-gray-300 mt-4 hidden">Interaktive Funktionen und dynamische Inhalte für Webseiten. Ich nutze JavaScript, um die Benutzererfahrung gezielt zu verbessern.</p>
-          <div class="absolute bottom left-1/2 transform -translate-x-1/2">
-            <i data-lucide="chevron-down" class="w-6 h-6 text-purple-900 transition-transform duration-300"></i>
-          </div>
-        </article>
-        
-      </div>
-    </section>
-
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="relative min-h-screen py-16 bg-violet-950 border-b-2 border-violet-900/40  scroll-mt-16">
-      <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none">
-        <source src="./assets/BackgroundLoop--PNHliQ0--PNHliQ0--PNHliQ0--PNHliQ0--PNHliQ0.webm" type="video/webm" alt="Hintergrund Video" loading="lazy">
-      </video>
-      <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-semibold mb-8 accent text-center">Meine Arbeiten</h2>
-
-        <!-- Haupt-Swiper -->
-        <div class="swiper portfolio-swiper flex items-center justify-center" data-aos="fade-left">
-          <div class="swiper-wrapper">
-
-            <!-- 1. 3-Punkt Beleuchtung -->
-            <div class="swiper-slide">
-              <div class="grid grid-cols-1 gap-8 bg-black rounded-bl-3xl rounded-tr-3xl p-6 border-2 border-violet-900/40 shadow-lg">
-                <div>
-                  <div class="swiper media-swiper rounded-lg overflow-hidden">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                        <div >
-                          <iframe class="w-full aspect-video" data-src="https://www.youtube.com/embed/2LXXZqp4U1Y" frameborder="0" allowfullscreen></iframe>
+    <!-- About Section -->
+    <section id="about" class="py-24 md:py-32 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+                <!-- Image/Visual -->
+                <div class="relative order-2 md:order-1">
+                    <div class="relative">
+                        <div class="about-img-container aspect-[4/5] rounded-bl-3xl rounded-tr-3xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80" alt="Creative Design" class="w-full h-full object-cover opacity-80" />
+                            <div class="absolute inset-0"></div>
                         </div>
-                      </div>
+                        
+                        <!-- Floating Card -->
+                        <div class="about-floating-card absolute -bottom-6 -right-6 md:bottom-8 md:-right-8 p-6 rounded-bl-2xl rounded-tr-2xl bg-[#7D37C390] shadow-2xl duration-500 hover:-translate-y-0.5">
+                            <div class="text-4xl font-bold text-[#fff]" data-i18n="about.hello">Hello</div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-                <div class="flex flex-col justify-center text-center px-4">
-                  <h3 class="text-xl font-semibold mb-3">Licht verständlich gemacht<br>3-Punkt-Beleuchtung</h3>
-                  <p class="text-sm text-gray-300">In dieser 3D-Animation habe ich das klassische Prinzip der 3-Punkt-Beleuchtung Schritt für Schritt visualisiert.</p>
-                </div>
-              </div>
-            </div>
 
-            <!-- 2. Twitch Projekt -->
-            <div class="swiper-slide">
-              <div class="grid grid-cols-1 gap-8 bg-black rounded-bl-3xl rounded-tr-3xl p-6 border-2 border-violet-900/40 shadow-lg">
-                <div>
-                  <div class="swiper media-swiper rounded-lg overflow-hidden">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide" data-group="twitch"><div ><img data-src="img/portfolio/twitch_banner.webp" class="swiper-lazy"/></div></div>
-                      <div class="swiper-slide" data-group="twitch"><div ><img data-src="img/portfolio/gengar.webp" class="swiper-lazy"/></div></div>
-                      <div class="swiper-slide" data-group="twitch"><div ><img data-src="img/portfolio/overlay.webp" class="swiper-lazy"/></div></div>
+                <!-- Content -->
+                <div class="order-1 md:order-2">
+                    <span class="section-badge inline-block px-4 py-2 rounded-bl-xl rounded-tr-xl text-sm font-medium mb-6 bg-gradient-to-r from-[#7D37C3] via-[#7D37C3] to-purple-500 shadow-[0_0_0_1px_rgba(139,92,246,0.4),0_8px_20px_rgba(124,58,237,0.35)] tracking-wide whitespace-nowrap" data-i18n="about.badge">
+                        About Me
+                    </span>
+
+                    <h2 class="section-title text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                        <span data-i18n="about.title1">Crafting Visual</span> <span class="text-[#7D37C3]" data-i18n="about.title2">Experiences</span>
+                    </h2>
+
+                    <p class="section-text text-lg leading-relaxed mb-6" data-i18n="about.text1">
+                        I'm a passionate media designer dedicated to creating stunning visual content 
+                        that captivates and inspires. With expertise in branding, motion graphics, 
+                        and digital design, I transform ideas into compelling visual stories.
+                    </p>
+
+                    <p class="section-text text-lg leading-relaxed mb-8" data-i18n="about.text2">
+                        Every project is an opportunity to push creative boundaries and deliver 
+                        exceptional results that exceed expectations.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <span class="skill-tag px-4 py-2 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl text-sm font-medium duration-500 hover:-translate-y-0.5" data-i18n="about.skill1">Branding</span>
+                        <span class="skill-tag px-4 py-2 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl text-sm font-medium duration-500 hover:-translate-y-0.5" data-i18n="about.skill2">Motion Design</span>
+                        <span class="skill-tag px-4 py-2 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl text-sm font-medium duration-500 hover:-translate-y-0.5" data-i18n="about.skill3">3D Animation</span>
+                        <span class="skill-tag px-4 py-2 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl text-sm font-medium duration-500 hover:-translate-y-0.5" data-i18n="about.skill4">Video Production</span>
+                        <span class="skill-tag px-4 py-2 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl text-sm font-medium duration-500 hover:-translate-y-0.5" data-i18n="about.skill5">Image Editing</span>
                     </div>
-                      <div class="swiper-button-prev"></div>
-                      <div class="swiper-button-next"></div>
-                      <div class="swiper-pagination"></div>
-                  </div>
                 </div>
-                <div class="flex flex-col justify-center text-center px-4">
-                  <h3 class="text-xl font-semibold mb-3">YouTube & Twitch Grafiken</h3>
-                  <p class="text-sm text-gray-300">Ein kleiner Einblick in mein Grafik-Playground. Designs für Streamer:innen, die auffallen wollen – clean, individuell, ready to go.</p>
-                </div>
-              </div>
             </div>
-
-            <!-- 3. Matchday -->
-            <div class="swiper-slide">
-              <div class="grid grid-cols-1 gap-8 bg-black rounded-bl-3xl rounded-tr-3xl p-6 border-2 border-violet-900/40 shadow-lg">
-                <div>
-                  <div class="swiper media-swiper rounded-lg overflow-hidden">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide"><div ><iframe class="w-full aspect-video" data-src="https://youtube.com/embed/MflBItkDd9A" frameborder="0" allowfullscreen></iframe></div></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex flex-col justify-center text-center px-4">
-                  <h3 class="text-xl font-semibold mb-3">Matchday Animation für Sportverein</h3>
-                  <p class="text-sm text-gray-300">Schnitt, Transitions, Effekte und Musik – wenn alles passt, entsteht mehr als ein Video: Es entsteht ein Gefühl.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- 4. DOOH Kampagne -->
-            <div class="swiper-slide">
-              <div class="grid grid-cols-1 gap-8 bg-black rounded-bl-3xl rounded-tr-3xl p-6 border-2 border-violet-900/40 shadow-lg">
-                <div>
-                  <div class="swiper media-swiper rounded-lg overflow-hidden">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide"><div ><iframe class="w-full aspect-video" data-src="https://www.youtube.com/embed/vlUaC03uNxA" frameborder="0" allowfullscreen></iframe></div></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex flex-col justify-center text-center px-4">
-                  <h3 class="text-xl font-semibold mb-3">"More than waiting."<br>Bewegte Botschaft</h3>
-                  <p class="text-sm text-gray-300">Digitale Out-of-Home Kampagne: zeigt, wie stark Bewegtbild auf öffentlichen Screens wirken kann.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- 5. Logo Animation -->
-            <div class="swiper-slide">
-              <div class="grid grid-cols-1 gap-8 bg-black rounded-bl-3xl rounded-tr-3xl p-6 border-2 border-violet-900/40 shadow-lg">
-                <div>
-                  <div class="swiper media-swiper rounded-lg overflow-hidden">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide" data-group="logo_animation"><div ><video data-src="img/portfolio/logo_animation.webm" autoplay muted loop playsinline class="w-full aspect-video"></video></div></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex flex-col justify-center text-center px-4">
-                  <h3 class="text-xl font-semibold mb-3">Logo-Animation</h3>
-                  <p class="text-sm text-gray-300">Eine animierte Logo-Animation bringt mehr Leben und Charakter in jedes Design.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- 6. Eispalast -->
-            <div class="swiper-slide">
-              <div class="grid grid-cols-1 gap-8 bg-black rounded-bl-3xl rounded-tr-3xl p-6 border-2 border-violet-900/40 shadow-lg">
-                <div>
-                  <div class="swiper media-swiper rounded-lg overflow-hidden">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide" data-group="eispalast"><div ><img data-src="img/portfolio/eispalast_logo.webp" class="swiper-lazy"/></div></div>
-                      <div class="swiper-slide" data-group="eispalast"><div ><img data-src="img/portfolio/eispalast_outdoor.webp" class="swiper-lazy"/></div></div>
-                      <div class="swiper-slide" data-group="eispalast"><div ><img data-src="img/portfolio/eispalast_plakate.webp" class="swiper-lazy"/></div></div>
-                      <div class="swiper-slide" data-group="eispalast"><div ><img data-src="img/portfolio/Eispalast_Ludwigslust_Visitenkarte_und_Brief.webp" class="swiper-lazy"/></div></div>
-                      <div class="swiper-slide" data-group="eispalast"><div ><img data-src="img/portfolio/Eispalast_Ludwigslust_Cafe_Tasse.webp" class="swiper-lazy"/></div></div>
-                    </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-pagination"></div>
-                  </div>
-                </div>
-                <div class="flex flex-col justify-center text-center px-4">
-                  <h3 class="text-xl font-semibold mb-3">CI-Entwicklung<br>Eispalast Ludwigslust</h3>
-                  <p class="text-sm text-gray-300">Komplett durchdachtes Markenbild: Logo, Visitenkarten, Plakate, Briefpapier, Mockups – alles aus einer Hand.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- 7. Donut -->
-            <div class="swiper-slide">
-              <div class="grid grid-cols-1 gap-8 bg-black rounded-bl-3xl rounded-tr-3xl p-6 border-2 border-violet-900/40 shadow-lg">
-                <div>
-                  <div class="swiper media-swiper rounded-lg overflow-hidden">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide" data-group="donut"><div ><img data-src="img/portfolio/donut_tasse.webp" class="swiper-lazy"/></div></div>
-                      <div class="swiper-slide" data-group="donut"><div ><img data-src="img/portfolio/donut.webp" class="swiper-lazy"/></div></div>
-                      <div class="swiper-slide" data-group="donut"><div ><img data-src="img/portfolio/tasse.webp" class="swiper-lazy"/></div></div>
-                    </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-pagination"></div>
-                  </div>
-                </div>
-                <div class="flex flex-col justify-center text-center px-4">
-                  <h3 class="text-xl font-semibold mb-3">Der ikonische Blender Donut</h3>
-                  <p class="text-sm text-gray-300">Mein erstes Projekt in Blender, basierend auf dem Blender Guru Tutorial – Modeling, Shading, Rendering.</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <!-- Progressbar -->
-          <div class="swiper-pagination mt-8"></div>
         </div>
-      </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="py-16 px-4 max-w-xl mx-auto scroll-mt-16" data-aos="fade-right">
-      <h2 class="text-3xl font-semibold mb-6 accent text-center">Kontakt</h2>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 md:py-32 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="section-badge inline-block px-4 py-2 rounded-bl-xl rounded-tr-xl text-sm font-medium mb-6 bg-gradient-to-r from-[#7D37C3] via-[#7D37C3] to-purple-500 shadow-[0_0_0_1px_rgba(139,92,246,0.4),0_8px_20px_rgba(124,58,237,0.35)] tracking-wide whitespace-nowrap" data-i18n="portfolio.badge">
+                    Portfolio
+                </span>
+                
+                <h2 class="section-title text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+                    <span data-i18n="portfolio.title1">Selected</span> <span class="text-[#7D37C3]" data-i18n="portfolio.title2">Works</span>
+                </h2>
+                
+                <p class="section-text text-lg max-w-2xl mx-auto" data-i18n="portfolio.subtitle">
+                    A curated collection of projects showcasing creativity and attention to detail
+                </p>
+            </div>
 
-      <div id="popup" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 translate-y-6 opacity-0 transition-all duration-500 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 pointer-events-none" role="status" aria-live="polite">
-        ✅ Vielen Dank für deine Nachricht!
-      </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Project 1 -->
+                <div class="project-card group relative">
+                    <div class="portfolio-card-bg relative aspect-[4/5] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                        <img src="img/portfolio/eispalast_logo.svg" alt="Brand Identity" class="w-full h-full object-cover" />
+                        <div class="project-overlay"></div>
+                        <div class="project-content">
+                            <span class="text-[#7D37C3] text-sm font-medium mb-2 block" data-i18n="portfolio.category1">Branding</span>
+                            <h3 class="text-white text-xl font-semibold mb-4" data-i18n="portfolio.project1">Brand Identity</h3>
+                            <button class="flex items-center gap-2 text-white/80 text-sm font-medium hover:text-white transition-colors">
+                                <span data-i18n="portfolio.view">View Project</span>
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+                <!-- Project 2 -->
+                <div class="project-card group relative">
+                    <div class="portfolio-card-bg relative aspect-[4/5] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                        <img src="img/portfolio/donut_tasse.webp" alt="3D Donut" class="w-full h-full object-cover" />
+                        <div class="project-overlay"></div>
+                        <div class="project-content">
+                            <span class="text-[#7D37C3] text-sm font-medium mb-2 block" data-i18n="portfolio.category2">Animation</span>
+                            <h3 class="text-white text-xl font-semibold mb-4" data-i18n="portfolio.project2">Motion Graphics</h3>
+                            <button class="flex items-center gap-2 text-white/80 text-sm font-medium hover:text-white transition-colors">
+                                <span data-i18n="portfolio.view">View Project</span>
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-      <form id="myForm" action="https://formspree.io/f/xblkaavo" method="POST" class="space-y-4" target="hidden_iframe" onsubmit="return handleSubmit(event);">
-        <input type="text" name="name" placeholder="Name" required class="w-full px-4 py-2 bg-black text-gray-300 rounded-bl-2xl rounded-tr-2xl border-2 border-violet-900/40" />
-        <input type="email" name="email" placeholder="E-Mail" required class="w-full px-4 py-2 bg-black text-gray-300 rounded-bl-2xl rounded-tr-2xl border-2 border-violet-900/40" />
-        <textarea name="message" rows="5" placeholder="Nachricht" required class="w-full px-4 py-2 bg-black text-gray-300 rounded-bl-2xl rounded-tr-2xl border-2 border-violet-900/40"></textarea>
-        <div id="hcaptcha-container" class="mt-2"></div>
-        <div class="flex justify-center"><button type="submit" class="bg-accent px-6 py-2 rounded-bl-xl rounded-tr-xl hover:bg-purple-700 transition hover:-translate-y-1">Senden</button></div>
-      </form>
+                <!-- Project 3 -->
+                <div class="project-card group relative">
+                    <div class="portfolio-card-bg relative aspect-[4/5] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                        <video src="img/portfolio/logo_animation.webm" alt="Logo Animation" class="w-full h-full object-contain" width="640" height="360" autoplay loop muted controls>
+                        <div class="project-overlay"></div>
+                        <div class="project-content">
+                            <span class="text-[#7D37C3] text-sm font-medium mb-2 block" data-i18n="portfolio.category3">Marketing</span>
+                            <h3 class="text-white text-xl font-semibold mb-4" data-i18n="portfolio.project3">Digital Campaign</h3>
+                            <button class="flex items-center gap-2 text-white/80 text-sm font-medium hover:text-white transition-colors">
+                                <span data-i18n="portfolio.view">View Project</span>
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-      <div class="text-center mt-6 text-sm text-white-500">
-        Oder schreibe mir direkt:
-        <a href="mailto:donatello-media@outlook.de" class="underline">donatello-media@outlook.de</a>
-      </div>
+                <!-- Project 4 -->
+                <div class="project-card group relative">
+                    <div class="portfolio-card-bg relative aspect-[4/5] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?w=800&q=80" alt="UI Design" class="w-full h-full object-cover" />
+                        <div class="project-overlay"></div>
+                        <div class="project-content">
+                            <span class="text-[#7D37C3] text-sm font-medium mb-2 block" data-i18n="portfolio.category4">Product</span>
+                            <h3 class="text-white text-xl font-semibold mb-4" data-i18n="portfolio.project4">UI Design</h3>
+                            <button class="flex items-center gap-2 text-white/80 text-sm font-medium hover:text-white transition-colors">
+                                <span data-i18n="portfolio.view">View Project</span>
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card group relative">
+                    <div class="portfolio-card-bg relative aspect-[4/5] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                        <video src="img/portfolio/DOOH Werbekampagne.mp4" alt="Digital out of Home Animation" class="w-full h-full object-cover" width="640" height="360" loop muted poster="img/portfolio/vlUaC03uNxA_thumb.jpg" controls>
+                        <div class="project-overlay"></div>
+                        <div class="project-content">
+                            <span class="text-[#7D37C3] text-sm font-medium mb-2 block" data-i18n="portfolio.category5">Film</span>
+                            <h3 class="text-white text-xl font-semibold mb-4" data-i18n="portfolio.project5">Video Production</h3>
+                            <button class="flex items-center gap-2 text-white/80 text-sm font-medium hover:text-white transition-colors">
+                                <span data-i18n="portfolio.view">View Project</span>
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card group relative">
+                    <div class="portfolio-card-bg relative aspect-[4/5] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                        <img src="img/portfolio/twitch_banner.webp" alt="Social Media" class="w-full h-full object-cover" />
+                        <div class="project-overlay"></div>
+                        <div class="project-content">
+                            <span class="text-[#7D37C3] text-sm font-medium mb-2 block" data-i18n="portfolio.category6">Content</span>
+                            <h3 class="text-white text-xl font-semibold mb-4" data-i18n="portfolio.project6">Social Media</h3>
+                            <button class="flex items-center gap-2 text-white/80 text-sm font-medium hover:text-white transition-colors">
+                                <span data-i18n="portfolio.view">View Project</span>
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-  </main>
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 md:py-32 px-6 relative">
+        <div class="skills-bg-gradient absolute inset-0"></div>
+        
+        <div class="max-w-6xl mx-auto relative">
+            <div class="text-center mb-16">
+                <span class="section-badge inline-block px-4 py-2 rounded-bl-xl rounded-tr-xl text-sm font-medium mb-6 bg-gradient-to-r from-[#7D37C3] via-[#7D37C3] to-purple-500 shadow-[0_0_0_1px_rgba(139,92,246,0.4),0_8px_20px_rgba(124,58,237,0.35)] tracking-wide whitespace-nowrap" data-i18n="skills.badge">
+                    Skills
+                </span>
+                
+                <h2 class="section-title text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+                    <span data-i18n="skills.title1">What I</span> <span class="text-[#7D37C3]" data-i18n="skills.title2">Do Best</span>
+                </h2>
+                
+                <p class="section-text text-lg max-w-2xl mx-auto" data-i18n="skills.subtitle">
+                    A versatile skill set honed through years of creative exploration
+                </p>
+            </div>
 
-  <!-- Footer -->
-  <footer class="text-center text-sm py-6 border-t border-gray-700 text-white-500">
-    <div class="flex justify-center space-x-8 mt-8 mb-12">
-      <a href="https://www.instagram.com/niklas_donatello" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-purple-800 hover:text-pink-500 transition hover:-translate-y-1">
-        <!-- svg omitted for brevity (same as before) -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zm8.13 2.5a1.12 1.12 0 110 2.25 1.12 1.12 0 010-2.25zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7z"/>
-        </svg>
-      </a>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Skill 1 -->
+                <div class="skill-card group p-8 rounded-bl-2xl rounded-tr-2xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-xl transition-all duration-500 hover:-translate-y-1">
+                    <div class="skill-icon-bg w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500">
+                        <svg class="w-7 h-7 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                        </svg>
+                    </div>
+                    
+                    <h3 class="skill-title text-xl font-semibold mb-3" data-i18n="skills.skill1">Brand Design</h3>
+                    
+                    <p class="skill-desc text-sm leading-relaxed mb-6" data-i18n="skills.skill1desc">
+                        Creating memorable brand identities that resonate with audiences
+                    </p>
+                    
+                    <div class="skill-bar-bg h-1.5 rounded-full overflow-hidden">
+                        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-[#7D37C3] to-[#A855F7]" style="width: 0;" data-width="95"></div>
+                    </div>
+                </div>
 
-      <a href="https://www.youtube.com/@Donatello-Media" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="text-purple-800 hover:text-red-600 transition hover:-translate-y-1">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M21.8 7.2a2.8 2.8 0 00-1.97-1.97C18.4 5 12 5 12 5s-6.4 0-7.83.23a2.8 2.8 0 00-1.97 1.97A29.44 29.44 0 002 12a29.44 29.44 0 00.23 4.8 2.8 2.8 0 001.97 1.97C5.6 19 12 19 12 19s6.4 0 7.83-.23a2.8 2.8 0 001.97-1.97A29.44 29.44 0 0022 12a29.44 29.44 0 00-.2-4.8zM10 15.5v-7l6 3.5-6 3.5z"/>
-        </svg>
-      </a>
+                <!-- Skill 2 -->
+                <div class="skill-card group p-8 rounded-bl-2xl rounded-tr-2xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-xl transition-all duration-500 hover:-translate-y-1">
+                    <div class="skill-icon-bg w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500">
+                        <svg class="w-7 h-7 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+                        </svg>
+                    </div>
+                    
+                    <h3 class="skill-title text-xl font-semibold mb-3" data-i18n="skills.skill2">Motion Graphics</h3>
+                    
+                    <p class="skill-desc text-sm leading-relaxed mb-6" data-i18n="skills.skill2desc">
+                        Bringing ideas to life through captivating animations
+                    </p>
+                    
+                    <div class="skill-bar-bg h-1.5 rounded-full overflow-hidden">
+                        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-[#7D37C3] to-[#A855F7]" style="width: 0;" data-width="90"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="skill-card group p-8 rounded-bl-2xl rounded-tr-2xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-xl transition-all duration-500 hover:-translate-y-1">
+                    <div class="skill-icon-bg w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500">
+                        <svg class="w-7 h-7 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                        </svg>
+                    </div>
+                    
+                    <h3 class="skill-title text-xl font-semibold mb-3" data-i18n="skills.skill3">UI/UX Design</h3>
+                    
+                    <p class="skill-desc text-sm leading-relaxed mb-6" data-i18n="skills.skill3desc">
+                        Designing intuitive and beautiful user experiences
+                    </p>
+                    
+                    <div class="skill-bar-bg h-1.5 rounded-full overflow-hidden">
+                        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-[#7D37C3] to-[#A855F7]" style="width: 0;" data-width="88"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="skill-card group p-8 rounded-bl-2xl rounded-tr-2xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-xl transition-all duration-500 hover:-translate-y-1">
+                    <div class="skill-icon-bg w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500">
+                        <svg class="w-7 h-7 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                        </svg>
+                    </div>
+                    
+                    <h3 class="skill-title text-xl font-semibold mb-3" data-i18n="skills.skill4">Illustration</h3>
+                    
+                    <p class="skill-desc text-sm leading-relaxed mb-6" data-i18n="skills.skill4desc">
+                        Custom illustrations that tell unique stories
+                    </p>
+                    
+                    <div class="skill-bar-bg h-1.5 rounded-full overflow-hidden">
+                        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-[#7D37C3] to-[#A855F7]" style="width: 0;" data-width="85"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="skill-card group p-8 rounded-bl-2xl rounded-tr-2xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-xl transition-all duration-500 hover:-translate-y-1">
+                    <div class="skill-icon-bg w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500">
+                        <svg class="w-7 h-7 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    
+                    <h3 class="skill-title text-xl font-semibold mb-3" data-i18n="skills.skill5">Web Design</h3>
+                    
+                    <p class="skill-desc text-sm leading-relaxed mb-6" data-i18n="skills.skill5desc">
+                        Modern, responsive designs for digital platforms
+                    </p>
+                    
+                    <div class="skill-bar-bg h-1.5 rounded-full overflow-hidden">
+                        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-[#7D37C3] to-[#A855F7]" style="width: 0;" data-width="92"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="skill-card group p-8 rounded-bl-2xl rounded-tr-2xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-xl transition-all duration-500 hover:-translate-y-1">
+                    <div class="skill-icon-bg w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500">
+                        <svg class="w-7 h-7 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    
+                    <h3 class="skill-title text-xl font-semibold mb-3" data-i18n="skills.skill6">Video Production</h3>
+                    
+                    <p class="skill-desc text-sm leading-relaxed mb-6" data-i18n="skills.skill6desc">
+                        Professional video content from concept to delivery
+                    </p>
+                    
+                    <div class="skill-bar-bg h-1.5 rounded-full overflow-hidden">
+                        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-[#7D37C3] to-[#A855F7]" style="width: 0;" data-width="87"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 md:py-32 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="section-badge inline-block px-4 py-2 rounded-bl-xl rounded-tr-xl text-sm font-medium mb-6 bg-gradient-to-r from-[#7D37C3] via-[#7D37C3] to-purple-500 shadow-[0_0_0_1px_rgba(139,92,246,0.4),0_8px_20px_rgba(124,58,237,0.35)] tracking-wide whitespace-nowrap" data-i18n="contact.badge">
+                    Contact
+                </span>
+                
+                <h2 class="section-title text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+                    <span data-i18n="contact.title1">Let's</span> <span class="text-[#7D37C3]" data-i18n="contact.title2">Connect</span>
+                </h2>
+                
+                <p class="section-text text-lg max-w-2xl mx-auto" data-i18n="contact.subtitle">
+                    Have a project in mind? Let's create something amazing together
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="contact-info-card p-8 rounded-bl-2xl rounded-tr-2xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-xl">
+                        <h3 class="contact-info-title text-2xl font-semibold mb-6" data-i18n="contact.getintouch">Get in Touch</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="contact-icon-bg w-12 h-12 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="contact-label text-sm font-medium mb-1" data-i18n="contact.email">Email</p>
+                                    <p class="contact-value font-medium">donatello-media@outlook.de</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="contact-icon-bg w-12 h-12 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl  flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="contact-label text-sm font-medium mb-1" data-i18n="contact.location">Location</p>
+                                    <p class="contact-value font-medium" data-i18n="contact.worldwide">Germany</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="contact-icon-bg w-12 h-12 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="contact-label text-sm font-medium mb-1" data-i18n="contact.phone">Phone</p>
+                                    <p class="contact-value font-medium">+49 (0) 162 427 58 14</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex gap-4 flex-wrap">
+                        <a href__="#" class="social-link px-4 py-2 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl text-sm font-medium transition-all duration-500 hover:-translate-y-0.5">Dribbble</a>
+                        <a href__="#" class="social-link px-4 py-2 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl text-sm font-medium transition-all duration-500 hover:-translate-y-0.5">Behance</a>
+                        <a href__="#" class="social-link px-4 py-2 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl text-sm font-medium transition-all duration-500 hover:-translate-y-0.5">LinkedIn</a>
+                        <a href__="#" class="social-link px-4 py-2 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl text-sm font-medium transition-all duration-500 hover:-translate-y-0.5">Instagram</a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div>
+                    <form onsubmit="handleFormSubmit(event)" class="contact-form-card p-8 rounded-bl-2xl rounded-tr-2xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-xl">
+                        <div class="space-y-6">
+                            <div>
+                                <label class="form-label block text-sm font-medium mb-2" data-i18n="contact.name">Your Name</label>
+                                <input 
+                                    type="text" 
+                                    name="name" 
+                                    placeholder="John Doe" 
+                                    class="form-input w-full h-12 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl px-4 transition-all duration-300"
+                                    required
+                                />
+                            </div>
+
+                            <div>
+                                <label class="form-label block text-sm font-medium mb-2" data-i18n="contact.emailaddress">Email Address</label>
+                                <input 
+                                    type="email" 
+                                    name="email" 
+                                    placeholder="john@example.com" 
+                                    class="form-input w-full h-12 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl px-4 transition-all duration-300"
+                                    required
+                                />
+                            </div>
+
+                            <div>
+                                <label class="form-label block text-sm font-medium mb-2" data-i18n="contact.message">Your Message</label>
+                                <textarea 
+                                    name="message" 
+                                    data-i18n-placeholder="contact.placeholder"
+                                    placeholder="Tell me about your project..." 
+                                    rows="5" 
+                                    class="form-input w-full rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl px-4 py-3 resize-none transition-all duration-300"
+                                    required
+                                ></textarea>
+                            </div>
+
+                            <button 
+                                type="submit" 
+                                class="w-full h-12 rounded-bl-xl rounded-tr-xl bg-gradient-to-r from-[#7D37C3] to-[#A855F7] text-white font-medium shadow-lg shadow-[#7D37C3]/30 hover:shadow-[#7D37C3]/50 hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2 hover:-translate-y-0.5"
+                            >
+                                <span data-i18n="contact.send">Send Message</span>
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-border py-8 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="h-6 flex items-center justify-center">
+                <img src="img/logo/Donatello_Logo_Wort_Bildmarke_Horizontal.svg" alt="Donatello Media Logo" class="w-full h-full object-contain">
+            </div>
+            <button onclick="openImpressum()" class="ml-1 underline transition-colors duration-200 hover:text-[#7D37C3]" aria-haspopup="dialog"><p class="footer-copyright text-sm duration-300 hover:-translate-y-0.5 hover:opacity-90" data-i18n="impressum.footer">Impressum</p></button>
+            <p class="footer-copyright text-sm" data-i18n="footer.copyright">© 2025 Donatello Media. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Impressum -->
+    <div
+    id="impressumModal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0"
+    onclick="closeImpressum(event)"
+>
+    <div
+        id="impressumContent"
+        class="relative w-full max-w-lg mx-4 rounded-bl-2xl rounded-tr-2xl bg-[#7D37C370] p-6 text-gray-200 shadow-xl transform scale-95 transition-all duration-300"
+        onclick="event.stopPropagation()"
+        role="dialog"
+        aria-modal="true"
+    >
+        <!-- Close Button -->
+        <button
+            onclick="closeImpressum()"
+            class="absolute top-4 right-4 text-gray-400 transition hover:text-[#7D37C3]"
+            aria-label="Close Impressum"
+        >
+            ✕
+        </button>
+
+        <h2 data-i18n="impressum.title" class="text-xl font-semibold mb-4"></h2>
+
+        <div class="space-y-3 text-sm leading-relaxed">
+            <p><strong data-i18n="impressum.name"></strong></p>
+            <p><span data-i18n="impressum.owner"></span>: Niklas Schubert</p>
+            <p data-i18n="impressum.address"></p>
+
+            <p>
+                <span data-i18n="impressum.email"></span>:
+                <a href="mailto:donatello-media@outlook.de" class=" underline">
+                    donatello-media@outlook.de
+                </a>
+            </p>
+        </div>
     </div>
-    © 2025 Donatello-Media · <a href="#" class="underline">Impressum</a>
-  </footer>
-
-  <!-- Back to top -->
-  <a href="#top" id="backToTop" class="hidden fixed bottom-12 right-6 bg-accent text-white px-3 py-2 z-50 rounded-br-xl rounded-tl-xl text-sm shadow-lg hover:opacity-80 transition" aria-label="Zurück nach oben">↑</a>
-
-  <!-- Fullscreen Wrapper (zuerst unsichtbar) -->
-  <div class="fullscreen-wrapper">
-    <div class="fullscreen-container">
-      <!-- Swiper für den Fullscreen -->
-      <div class="swiper fullscreen-swiper">
-        <div class="swiper-wrapper"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-
-      <!-- Schließen-Button -->
-      <button class="fullscreen-close">
-        <i data-lucide="x" class="w-8 h-8"></i>
-      </button>
     </div>
-  </div>
 
-  <div id="disclaimer-banner" class="fixed bottom-0 left-0 w-full z-40 bg-black/70 backdrop-blur-md border-t-2 border-violet-900/40">
-    <p class="mx-auto text-center">
-      Diese Webseite befindet sich derzeit im Aufbau. Inhalte, Texte und Grafiken können Platzhalter sein und dienen ausschließlich zur vorläufigen Darstellung. Es können Tippfehler oder inhaltliche Ungenauigkeiten auftreten.
-    <button id="disclaimer-accept" class="underline">Hinweis schließen</button>
-    </p>
-    
-  </div>
+    <!-- DSGVO -->
+    <div
+        id="cookieBanner"
+        class="fixed bottom-4 left-1/2 transform -translate-x-1/2 p-6 w-full max-w-xl rounded-bl-2xl rounded-tr-2xl bg-[#7D37C370] text-gray-200 shadow-xl text-center"
+    >
+        <p class="text-sm mb-3" data-i18n="cookie.text">
+            This site uses cookies to improve your experience.
+        </p>
 
-  <!-- scripts -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="https://hcaptcha.com/1/api.js" async defer></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    lucide.createIcons();
-  </script>
-
-  <script>
-  const banner = document.getElementById('disclaimer-banner');
-  const button = document.getElementById('disclaimer-accept');
-
-  // Banner nur anzeigen, wenn noch nicht akzeptiert
-  if (sessionStorage.getItem('disclaimerAccepted')) {
-    banner.style.display = 'none';
-  }
-
-  button.addEventListener('click', () => {
-    sessionStorage.setItem('disclaimerAccepted', 'true');
-    banner.style.display = 'none';
-  });
-
-</script>
+        <div class="flex gap-3 justify-center">
+            <button onclick="acceptCookies()" class="px-4 py-2 bg-[#7D37C3] rounded-bl-lg rounded-tr-lg duration-300 hover:-translate-y-0.5 hover:opacity-90">
+                OK
+            </button>
+            <button onclick="declineCookies()" class="text-sm underline duration-300 hover:-translate-y-0.5 hover:opacity-90" data-i18n="cookie.decline">
+                Decline
+            </button>
+        </div>
+    </div>
 </body>
 </html>
