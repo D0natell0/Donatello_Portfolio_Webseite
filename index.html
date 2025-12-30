@@ -660,6 +660,17 @@
                         display: inline-block;
                     }
 
+                    .bullet {
+                        position: relative;       /* für das Pseudo-Element */
+                        padding-left: 0.5em; 
+                    }
+
+                    .bullet::before {
+                        content: "•";             /* der Punkt */
+                        position: absolute;
+                        left: 0;                  /* Punkt ganz links */
+                    }
+
                 </style>
                 <p><strong data-i18n="datenschutz.hl1"></strong></p>
                 <span class="datenEinzug">
@@ -672,30 +683,30 @@
                 <p><strong data-i18n="datenschutz.name"></strong></p>
                 <p><span data-i18n="datenschutz.owner"></span>: Niklas Schubert</p>
                 <p data-i18n="datenschutz.address"></p>
-                <p><span data-i18n="datenschutz.email"></span>:<a href="mailto:donatello-media@outlook.de" class="underline">donatello-media@outlook.de</a></p><br>
+                <p><span data-i18n="datenschutz.email"></span>: <a href="mailto:donatello-media@outlook.de" class="underline">donatello-media@outlook.de</a></p><br>
                 </span>
 
                 <p><strong data-i18n="datenschutz.hl3"></strong></p>
                 <span class="datenEinzug">
                 <p data-i18n="datenschutz.text3p1"></p>
-                <p data-i18n="datenschutz.text3p2"></p>
-                <p data-i18n="datenschutz.text3p3"></p>
-                <p data-i18n="datenschutz.text3p4"></p>
-                <p data-i18n="datenschutz.text3p5"></p>
+                <p class="bullet" data-i18n="datenschutz.text3p2"></p>
+                <p class="bullet" data-i18n="datenschutz.text3p3"></p>
+                <p class="bullet" data-i18n="datenschutz.text3p4"></p>
+                <p class="bullet" data-i18n="datenschutz.text3p5"></p><br>
                 <p data-i18n="datenschutz.text3p6"></p><br>
                 </span>
 
                 <p><strong data-i18n="datenschutz.hl4"></strong></p>
                 <span class="datenEinzug">
-                <p data-i18n="datenschutz.text4p1"></p>
-                <p data-i18n="datenschutz.text4p2"></p>
-                <p data-i18n="datenschutz.text4p3"></p>
-                <p data-i18n="datenschutz.text4p4"></p>
-                <p data-i18n="datenschutz.text4p5"></p>
+                <p data-i18n="datenschutz.text4p1"></p><br>
+                <p><strong data-i18n="datenschutz.text4p2"></strong></p>
+                <p class="bullet" data-i18n="datenschutz.text4p3"></p>
+                <p class="bullet" data-i18n="datenschutz.text4p4"></p>
+                <p class="bullet" data-i18n="datenschutz.text4p5"></p><br>
                 <p><strong data-i18n="datenschutz.text4p6"></strong></p>
-                <p data-i18n="datenschutz.text4p7"></p>
+                <p data-i18n="datenschutz.text4p7"></p><br>
                 <p><strong data-i18n="datenschutz.text4p8"></strong></p>
-                <p data-i18n="datenschutz.text4p9"></p>
+                <p data-i18n="datenschutz.text4p9"></p><br>
                 <p data-i18n="datenschutz.text4p10"></p><br>
                 </span>
 
@@ -713,10 +724,10 @@
                 <p><strong data-i18n="datenschutz.hl7"></strong></p>
                 <span class="datenEinzug">
                 <p data-i18n="datenschutz.text7p1"></p>
-                <p data-i18n="datenschutz.text7p2"></p>
-                <p data-i18n="datenschutz.text7p3"></p>
-                <p data-i18n="datenschutz.text7p4"></p>
-                <p data-i18n="datenschutz.text7p5"></p>
+                <p class="bullet" data-i18n="datenschutz.text7p2"></p>
+                <p class="bullet" data-i18n="datenschutz.text7p3"></p>
+                <p class="bullet" data-i18n="datenschutz.text7p4"></p>
+                <p class="bullet" data-i18n="datenschutz.text7p5"></p><br>
                 <p data-i18n="datenschutz.text7p6"></p>
                 </span>
             </div>
