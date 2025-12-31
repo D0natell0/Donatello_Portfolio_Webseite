@@ -33,7 +33,7 @@ const translations = {
         'portfolio.project1': 'Dynamic graphics and explanatory videos',
         'portfolio.project2': 'Three-dimensional animations and visualizations',
         'portfolio.project3': 'Editing, effects, and post-production',
-        'portfolio.project4': 'Brand identity with character',
+        'portfolio.project4': 'Corporate Design with character',
         'portfolio.project5': 'Professional image optimization',
         'portfolio.project6': 'Content for all platforms',
         'portfolio.view': 'Show More',
@@ -144,15 +144,15 @@ const translations = {
         'portfolio.title2': 'Projekte',
         'portfolio.subtitle': 'Eine Zusammenstellung einiger meiner umgesetzten Projekte',
         'portfolio.category1': '2D-Animation',
-        'portfolio.category2': '3D-Animationn',
+        'portfolio.category2': '3D-Animation',
         'portfolio.category3': 'Video Bearbeitung',
-        'portfolio.category4': 'Corporate Design',
+        'portfolio.category4': 'Markendesign',
         'portfolio.category5': 'Bild Bearbeitung',
         'portfolio.category6': 'Social Media',
         'portfolio.project1': 'Dynamische Grafiken und Erklärvideos',
         'portfolio.project2': 'Dreidimensionale Animationen und Visualisierungen',
         'portfolio.project3': 'Schnitt, Effekte und Postproduktion',
-        'portfolio.project4': 'Markenauftritt mit Charakter',
+        'portfolio.project4': 'Corperate Design mit Charakter',
         'portfolio.project5': 'Professionelle Bildoptimierung',
         'portfolio.project6': 'Content für alle Plattformen',
         'portfolio.view': 'Mehr anzeigen',
@@ -502,3 +502,25 @@ function updateMove() {
 
 window.addEventListener('scroll', updateMove);
 updateMove();
+
+//Handy Hover Visible
+if (window.innerWidth < 768) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target._timeout = setTimeout(() => {
+          entry.target.classList.add('is-visible');
+        }, 2000);
+      } else {
+        clearTimeout(entry.target._timeout);
+        entry.target.classList.remove('is-visible');
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  document.querySelectorAll('.project-card').forEach(el => {
+    observer.observe(el);
+  });
+}
