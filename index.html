@@ -156,7 +156,8 @@
                 <div class="relative order-2 md:order-1">
                     <div class="relative">
                         <div class="about-img-container aspect-[4/5] rounded-bl-3xl rounded-tr-3xl overflow-hidden">
-                            <img src="img/Portrait.webp" alt="Creative Design" class="w-full h-full object-cover" />
+                            <div class="absolute inset-0 rounded-bl-3xl rounded-tr-3xl bg-gray-200 dark:bg-gray-700 animate-pulse" data-skeleton></div>
+                            <img src="img/Portrait.webp" loading="lazy" alt="Portrait von Niklas" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
                             <div class="absolute inset-0"></div>
                         </div>
                         
@@ -218,14 +219,15 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <!-- Project 1 -->
+                <!-- Project 1 2D Animation -->
                 <div class="project-card group relative">
-                    <div class="portfolio-card-bg relative aspect-[4/5] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
-                        <img src="img/portfolio/eispalast_logo.svg" alt="Brand Identity" class="w-full h-full object-cover" />
+                    <div class="portfolio-card-bg relative aspect-[4/5] bg-[#171719] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                        <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-200 dark:bg-gray-700 animate-pulse" data-skeleton></div>
+                        <video src="img/portfolio/2D Animation/logo_animation.webm" loading="lazy" alt="2D Animation" class="w-full h-full object-contain opacity-0 transition-opacity duration-300" onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()" width="640" height="360" autoplay loop muted></video>
                         <div class="project-overlay"></div>
                         <div class="project-content">
-                            <span class="text-[#7D37C3] text-sm font-medium mb-2 block" data-i18n="portfolio.category1">Branding</span>
-                            <h3 class="text-white text-xl font-semibold mb-4" data-i18n="portfolio.project1">Brand Identity</h3>
+                            <span class="text-[#7D37C3] text-sm font-medium mb-2 block" data-i18n="portfolio.category1">2D Animation</span>
+                            <h3 class="text-white text-xl font-semibold mb-4" data-i18n="portfolio.project1"></h3>
                             <button class="flex items-center gap-2 text-white/80 text-sm font-medium hover:text-white transition-colors">
                                 <span data-i18n="portfolio.view">View Project</span>
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -236,10 +238,11 @@
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- Project 2 3D Animation -->
                 <div class="project-card group relative">
                     <div class="portfolio-card-bg relative aspect-[4/5] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
-                        <img src="img/portfolio/donut_tasse.webp" alt="3D Donut" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-200 dark:bg-gray-700 animate-pulse" data-skeleton></div>
+                        <img src="img/portfolio/3D Animation/3D Animation.webp" loading="lazy" alt="3D Animation" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
                         <div class="project-overlay"></div>
                         <div class="project-content">
                             <span class="text-[#7D37C3] text-sm font-medium mb-2 block" data-i18n="portfolio.category2">Animation</span>
@@ -254,10 +257,12 @@
                     </div>
                 </div>
 
-                <!-- Project 3 -->
+                <!-- Project 3 Video Bearbeitung -->
                 <div class="project-card group relative">
                     <div class="portfolio-card-bg relative aspect-[4/5] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
-                        <video src="img/portfolio/logo_animation.webm" alt="Logo Animation" class="w-full h-full object-contain" width="640" height="360" autoplay loop muted controls>
+                        <!-- <video src="img/portfolio/logo_animation.webm" alt="Logo Animation" class="w-full h-full object-contain" width="640" height="360" autoplay loop muted poster="img/portfolio/vlUaC03uNxA_thumb.jpg" controls></video> -->
+                        <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-200 dark:bg-gray-700 animate-pulse" data-skeleton></div>
+                        <img src="img/portfolio/Video Edits/Video Editing.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
                         <div class="project-overlay"></div>
                         <div class="project-content">
                             <span class="text-[#7D37C3] text-sm font-medium mb-2 block" data-i18n="portfolio.category3">Marketing</span>
@@ -272,14 +277,15 @@
                     </div>
                 </div>
 
-                <!-- Project 4 -->
+                <!-- Project 4 Branding-->
                 <div class="project-card group relative">
                     <div class="portfolio-card-bg relative aspect-[4/5] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?w=800&q=80" alt="UI Design" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-200 dark:bg-gray-700 animate-pulse" data-skeleton></div>
+                        <img src="img/portfolio/Branding/Branding.webp" loading="lazy" alt="Branding" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
                         <div class="project-overlay"></div>
                         <div class="project-content">
                             <span class="text-[#7D37C3] text-sm font-medium mb-2 block" data-i18n="portfolio.category4">Product</span>
-                            <h3 class="text-white text-xl font-semibold mb-4" data-i18n="portfolio.project4">UI Design</h3>
+                            <h3 class="text-white text-xl font-semibold mb-4" data-i18n="portfolio.project4">Branding</h3>
                             <button class="flex items-center gap-2 text-white/80 text-sm font-medium hover:text-white transition-colors">
                                 <span data-i18n="portfolio.view">View Project</span>
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -290,10 +296,11 @@
                     </div>
                 </div>
 
-                <!-- Project 5 -->
+                <!-- Project 5 Bild Bearbeitung -->
                 <div class="project-card group relative">
                     <div class="portfolio-card-bg relative aspect-[4/5] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
-                        <video src="img/portfolio/DOOH Werbekampagne.mp4" alt="Digital out of Home Animation" class="w-full h-full object-cover" width="640" height="360" loop muted poster="img/portfolio/vlUaC03uNxA_thumb.jpg" controls>
+                        <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-200 dark:bg-gray-700 animate-pulse" data-skeleton></div>
+                        <img src="img/portfolio/Bild Edits/Pickel Retouche.webp" loading="lazy" alt="Image Editing" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
                         <div class="project-overlay"></div>
                         <div class="project-content">
                             <span class="text-[#7D37C3] text-sm font-medium mb-2 block" data-i18n="portfolio.category5">Film</span>
@@ -308,10 +315,11 @@
                     </div>
                 </div>
 
-                <!-- Project 6 -->
+                <!-- Project 6 Social Media -->
                 <div class="project-card group relative">
                     <div class="portfolio-card-bg relative aspect-[4/5] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
-                        <img src="img/portfolio/twitch_banner.webp" alt="Social Media" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-200 dark:bg-gray-700 animate-pulse" data-skeleton></div>
+                        <img src="img/portfolio/Social Media/Social Media Mockup.webp" loading="lazy" alt="Social Media" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
                         <div class="project-overlay"></div>
                         <div class="project-content">
                             <span class="text-[#7D37C3] text-sm font-medium mb-2 block" data-i18n="portfolio.category6">Content</span>
