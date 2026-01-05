@@ -23,13 +23,19 @@ body, header, button, nav {
     transition: background-color 0.8s ease, color 0.8s ease;
 }
 
+@supports (-webkit-touch-callout: none) {
+    body, header, nav, button {
+        transition: background-color 0.2s linear, color 0.2s linear;
+    }
+}
+
 body.dark-mode {
     background-color: #10071A;
-    color: #ECDAFF;
+    color: #F3EFF9;
 }
 
 body.light-mode {
-    background-color: #bb92e3;
+    background-color: #F3EFF9;
     color: #10071A;
 }
 
@@ -130,7 +136,7 @@ body.dark-mode .navbar-scrolled {
 }
 
 body.light-mode .navbar-scrolled {
-    background-color: #bb92e3; 
+    background-color: #F3EFF9; 
     border-bottom: 1px solid rgba(125, 55, 195, 0.1);
 }
 
