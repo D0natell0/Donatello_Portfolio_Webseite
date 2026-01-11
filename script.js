@@ -500,20 +500,16 @@ updateMove();
 
 //Handy Hover Visible
 if (window.innerWidth < 768) {
+  const DISPLAY_TIME = 3000;
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       const el = entry.target;
 
-      // Nur wenn noch nicht automatisch angezeigt
       if (entry.isIntersecting && !el.dataset.shown) {
         el.dataset.shown = 'true';
 
-        el.classList.add('is-visible');
-
-        // Nach X Sekunden wieder ausblenden
-        setTimeout(() => {
-          el.classList.remove('is-visible');
-        }, 3000); // z.B. 3 Sekunden
+        showTemporarily(el);
       }
     });
   }, {
@@ -523,15 +519,25 @@ if (window.innerWidth < 768) {
   document.querySelectorAll('.project-card').forEach(el => {
     observer.observe(el);
 
-    // Klick = manuelles Anzeigen
     el.addEventListener('click', () => {
-      el.classList.add('is-visible');
-
-      setTimeout(() => {
-        el.classList.remove('is-visible');
-      }, 3000);
+      showTemporarily(el);
     });
   });
+
+  function showTemporarily(el) {
+    // ⛔ alten Timeout stoppen
+    if (el._timeout) {
+      clearTimeout(el._timeout);
+    }
+
+    el.classList.add('is-visible');
+
+    // ⏱ neuen Timeout setzen
+    el._timeout = setTimeout(() => {
+      el.classList.remove('is-visible');
+      el._timeout = null;
+    }, DISPLAY_TIME);
+  }
 }
 
 //Kontakt Formular
