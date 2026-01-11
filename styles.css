@@ -206,23 +206,6 @@ body.light-mode .language-menu {
     transition: opacity 0.5s ease;
 }
 
-.project-card:hover .project-overlay,
-.project-card.is-visible .project-overlay {
-    opacity: 1;
-}
-
-.project-card:hover img,
-.project-card.is-visible img,
-.project-card:hover video,
-.project-card.is-visible video {
-    transform: scale(1.1);
-}
-
-.project-card img,
-.project-card video {
-    transition: transform 0.7s ease;
-}
-
 .project-content {
     position: absolute;
     bottom: 0;
@@ -234,8 +217,31 @@ body.light-mode .language-menu {
     transition: all 0.5s ease;
 }
 
-.project-card:hover .project-content,
+.project-card img,
+.project-card video {
+    transition: transform 0.7s ease;
+}
+
+@media (hover: hover) {
+    .project-card:hover .project-overlay,
+    .project-card:hover .project-content {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .project-card:hover img,
+    .project-card:hover video {
+        transform: scale(1.1);
+    }
+}
+
+.project-card.is-visible .project-overlay,
 .project-card.is-visible .project-content {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card.is-visible img,
+.project-card.is-visible video {
+    transform: scale(1.1);
 }

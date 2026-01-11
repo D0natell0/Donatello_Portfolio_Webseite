@@ -500,15 +500,20 @@ updateMove();
 
 //Handy Hover Visible
 if (window.innerWidth < 768) {
-  const DISPLAY_TIME = 3000;
+  let activeCard = null; // aktuell manuell angeklickte Karte
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       const el = entry.target;
 
-      if (entry.isIntersecting && !el.dataset.shown) {
-        el.dataset.shown = 'true';
-        showTemporarily(el);
+      if (entry.isIntersecting) {
+        // Scroll-In: Overlay nur temporär anzeigen, wenn nicht bereits dauerhaft sichtbar
+        if (!el.classList.contains('is-visible') || el.dataset.manual !== "true") {
+          showTemporary(el);
+        }
+      } else {
+        // Scroll-Out: Overlay immer entfernen, auch bei manuell aktiviertem Overlay
+        hideOverlay(el);
       }
     });
   }, { threshold: 0.3 });
@@ -516,23 +521,54 @@ if (window.innerWidth < 768) {
   document.querySelectorAll('.project-card').forEach(el => {
     observer.observe(el);
 
+    // Klick = Toggle dauerhaft
     el.addEventListener('click', (e) => {
       e.preventDefault();
-      el.blur();            // ✅ WICHTIG
-      showTemporarily(el);
+      el.blur();
+
+      if (el.dataset.manual === "true") {
+        // Overlay sichtbar → ausblenden
+        hideOverlay(el);
+      } else {
+        // andere aktive Karte ausblenden
+        if (activeCard && activeCard !== el) {
+          hideOverlay(activeCard);
+        }
+        showOverlay(el);
+      }
     });
   });
 
-  function showTemporarily(el) {
+  function showTemporary(el) {
+    // alten Timer stoppen
     clearTimeout(el._timeout);
 
     el.classList.add('is-visible');
 
     el._timeout = setTimeout(() => {
-      el.classList.remove('is-visible');
-    }, DISPLAY_TIME);
+      // Overlay wieder entfernen, nur wenn nicht dauerhaft manuell sichtbar
+      if (el.dataset.manual !== "true") {
+        el.classList.remove('is-visible');
+      }
+      el._timeout = null;
+    }, 3000);
+  }
+
+  function showOverlay(el) {
+    clearTimeout(el._timeout);
+    el.dataset.manual = "true";
+    el.classList.add('is-visible');
+    activeCard = el;
+  }
+
+  function hideOverlay(el) {
+    clearTimeout(el._timeout);
+    el.classList.remove('is-visible');
+    el.dataset.manual = "false";
+    if (activeCard === el) activeCard = null;
   }
 }
+
 
 //Kontakt Formular
 const form = document.getElementById('contactForm');
