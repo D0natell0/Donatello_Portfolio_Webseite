@@ -508,34 +508,28 @@ if (window.innerWidth < 768) {
 
       if (entry.isIntersecting && !el.dataset.shown) {
         el.dataset.shown = 'true';
-
         showTemporarily(el);
       }
     });
-  }, {
-    threshold: 0.3
-  });
+  }, { threshold: 0.3 });
 
   document.querySelectorAll('.project-card').forEach(el => {
     observer.observe(el);
 
-    el.addEventListener('click', () => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      el.blur();            // ✅ WICHTIG
       showTemporarily(el);
     });
   });
 
   function showTemporarily(el) {
-    // ⛔ alten Timeout stoppen
-    if (el._timeout) {
-      clearTimeout(el._timeout);
-    }
+    clearTimeout(el._timeout);
 
     el.classList.add('is-visible');
 
-    // ⏱ neuen Timeout setzen
     el._timeout = setTimeout(() => {
       el.classList.remove('is-visible');
-      el._timeout = null;
     }, DISPLAY_TIME);
   }
 }
