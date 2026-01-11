@@ -610,12 +610,17 @@
                         <!--<a href__="#" class="social-link px-4 py-2 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl text-sm font-medium transition-all duration-500 hover:-translate-y-0.5">Behance</a>-->
                         <a href="https://www.youtube.com/@Donatello-Media" target="_blank" rel="noopener noreferrer" class="social-link px-4 py-2 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl text-sm font-medium transition-all duration-500 hover:-translate-y-0.5">YouTube</a>
                         <a href="https://www.instagram.com/donatello_media/" target="_blank" rel="noopener noreferrer" class="social-link px-4 py-2 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl text-sm font-medium transition-all duration-500 hover:-translate-y-0.5">Instagram</a>
+                        <a href="https://de.fiverr.com/donatellomedia?public_mode=true" target="_blank" rel="noopener noreferrer" class="social-link px-4 py-2 rounded-bl-xl rounded-tr-xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-2xl text-sm font-medium transition-all duration-500 hover:-translate-y-0.5">Fiverr</a>
                     </div>
                 </div>
 
                 <!-- Contact Form -->
                 <div>
-                    <form onsubmit="handleFormSubmit(event)" class="contact-form-card p-8 rounded-bl-2xl rounded-tr-2xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-xl">
+                    <form id="contactForm" action="https://formspree.io/f/xblkaavo" method="POST" class="contact-form-card p-8 rounded-bl-2xl rounded-tr-2xl border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-xl">
+                        
+                        <!-- Honeypot (unsichtbar) -->
+                        <input type="text" name="_gotcha" class="hidden">
+
                         <div class="space-y-6">
                             <div>
                                 <label class="form-label block text-sm font-medium mb-2" data-i18n="contact.name">Your Name</label>
@@ -651,15 +656,21 @@
                                 ></textarea>
                             </div>
 
+                            <div id="recaptcha-container" class="mt-4"></div>
+
                             <button 
+                                id="submitBtn"
                                 type="submit" 
                                 class="w-full h-12 rounded-bl-xl rounded-tr-xl bg-gradient-to-r from-[#7D37C3] to-[#A855F7] text-white font-medium shadow-lg shadow-[#7D37C3]/30 hover:shadow-[#7D37C3]/50 hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2 hover:-translate-y-0.5"
                             >
-                                <span data-i18n="contact.send">Send Message</span>
-                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                                </svg>
+                                <span class="btn-text" data-i18n="contact.send">Send Message</span>
+                                <span class="btn-loading hidden" data-i18n="contact.sending">Wird gesendet…</span>
                             </button>
+
+                            <p class="text-xs text-gray-500 mt-2" data-i18n="contact.senddata">Mit dem Absenden erklärst du dich mit der Verarbeitung deiner Daten gemäß Datenschutzerklärung einverstanden.</p>
+
+                            <!-- Status -->
+                            <p id="formStatus" class="mt-4 text-sm" aria-live="polite"></p>
                         </div>
                     </form>
                 </div>
@@ -807,6 +818,8 @@
             </div>
         </div>
     </div>
+
+    <div id="toast" class="fixed bottom-6 right-6 bg-[#7D37C3] text-white px-4 py-3 rounded-xl shadow-xl opacity-0 pointer-events-none transition-all duration-300" role="status" aria-live="polite"></div>
 
     <!-- Cookies -->
     <!-- <div

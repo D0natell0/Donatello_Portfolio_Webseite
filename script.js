@@ -64,6 +64,12 @@ const translations = {
         'contact.message': 'Your Message',
         'contact.placeholder': 'Tell me about your idea...',
         'contact.send': 'Send Message',
+        'contact.sending': 'Sending...',
+        'contact.senddata': 'By submitting this form, you consent to the processing of your data in accordance with our privacy policy.',
+        'contact.success': '✅ Message sent successfully!',
+        'contact.error': '❌ Something went wrong.',
+        'contact.captcha': 'Please confirm you are not a robot.',
+        'contact.captchaRequired': 'Please complete the reCAPTCHA.',
         'footer.copyright': '© 2025 Donatello-Media. All rights reserved.',
         'impressum.footer': 'Imprint',
         'impressum.title': 'Imprint',
@@ -180,6 +186,12 @@ const translations = {
         'contact.message': 'Nachricht',
         'contact.placeholder': 'Erzähle mir von Deiner Idee...',
         'contact.send': 'Nachricht senden',
+        'contact.sending': 'Wird gesendet…',
+        'contact.senddata': 'Mit dem Absenden erklärst du dich mit der Verarbeitung deiner Daten gemäß Datenschutzerklärung einverstanden.',
+        'contact.success': '✅ Nachricht erfolgreich gesendet!',
+        'contact.error': '❌ Leider ist etwas schiefgelaufen.',
+        'contact.captcha': 'Bitte bestätige, dass du kein Roboter bist.',
+        'contact.captchaRequired': 'Bitte schließe das reCAPTCHA ab.',
         'footer.copyright': '© 2025 Donatello-Media. Alle Rechte vorbehalten.',
         'impressum.footer': 'Impressum',
         'impressum.title': 'Impressum',
@@ -381,17 +393,6 @@ if (skillsSection) {
     skillObserver.observe(skillsSection);
 }
 
-// Form submission
-function handleFormSubmit(event) {
-    event.preventDefault();
-    const messages = {
-        en: 'Thank you for your message! I will get back to you soon.',
-        de: 'Vielen Dank für Ihre Nachricht! Ich werde mich bald bei Ihnen melden.',
-    };
-    alert(messages[currentLanguage]);
-    event.target.reset();
-}
-
 // Initialize on load
 window.addEventListener('DOMContentLoaded', function() {
     // Initialize theme
@@ -501,13 +502,18 @@ updateMove();
 if (window.innerWidth < 768) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target._timeout = setTimeout(() => {
-          entry.target.classList.add('is-visible');
-        }, 2000);
-      } else {
-        clearTimeout(entry.target._timeout);
-        entry.target.classList.remove('is-visible');
+      const el = entry.target;
+
+      // Nur wenn noch nicht automatisch angezeigt
+      if (entry.isIntersecting && !el.dataset.shown) {
+        el.dataset.shown = 'true';
+
+        el.classList.add('is-visible');
+
+        // Nach X Sekunden wieder ausblenden
+        setTimeout(() => {
+          el.classList.remove('is-visible');
+        }, 3000); // z.B. 3 Sekunden
       }
     });
   }, {
@@ -516,5 +522,129 @@ if (window.innerWidth < 768) {
 
   document.querySelectorAll('.project-card').forEach(el => {
     observer.observe(el);
+
+    // Klick = manuelles Anzeigen
+    el.addEventListener('click', () => {
+      el.classList.add('is-visible');
+
+      setTimeout(() => {
+        el.classList.remove('is-visible');
+      }, 3000);
+    });
   });
 }
+
+//Kontakt Formular
+const form = document.getElementById('contactForm');
+const button = document.getElementById('submitBtn');
+const status = document.getElementById('formStatus');
+
+let formStartTime = Date.now();
+let spamScore = 0;
+let recaptchaLoaded = false;
+
+const toast = document.getElementById('toast');
+
+function t(key) {
+    return translations[currentLanguage]?.[key] || key;
+}
+
+//Startzeit messen
+form.addEventListener('focusin', () => {
+    if (!formStartTime) formStartTime = Date.now();
+});
+
+//Honeypot
+form.querySelector('[name="_gotcha"]')?.addEventListener('input', () => {
+    spamScore += 5;
+});
+
+//Message analysieren
+function analyzeMessage(text) {
+    const links = (text.match(/https?:\/\//g) || []).length;
+    const keywords = ['crypto', 'seo', 'viagra', 'casino'];
+
+    if (links > 1) spamScore += 3;
+    keywords.forEach(word => {
+        if (text.toLowerCase().includes(word)) spamScore += 2;
+    });
+}
+
+//Recaptcha Load
+function loadRecaptcha() {
+    if (recaptchaLoaded) return;
+    recaptchaLoaded = true;
+
+    const script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/api.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+
+    document.getElementById('recaptcha-container').classList.remove('hidden');
+}
+
+//Toast
+function showToast(message) {
+    toast.textContent = message;
+    toast.classList.remove('opacity-0', 'translate-y-4');
+    toast.classList.add('opacity-100');
+
+    setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'translate-y-4');
+    }, 3000);
+}
+
+//Submit
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // ⏱️ Zeit prüfen
+    const elapsed = (Date.now() - formStartTime) / 1000;
+    if (elapsed < 3) spamScore += 3;
+
+    analyzeMessage(form.message.value);
+
+    // 🚨 Verdacht → reCAPTCHA
+    if (spamScore >= 5 && !recaptchaLoaded) {
+        loadRecaptcha();
+        showToast(t('contact.captcha'));
+        return;
+    }
+
+    const recaptchaResponse = document.querySelector('[name="g-recaptcha-response"]');
+    if (recaptchaLoaded && (!recaptchaResponse || !recaptchaResponse.value)) {
+        showToast(t('contact.captchaRequired'));
+        return;
+    }
+
+    // ⏳ Loading-State
+    button.disabled = true;
+    button.querySelector('.btn-text').classList.add('hidden');
+    button.querySelector('.btn-loading').classList.remove('hidden');
+
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            showToast(t('contact.success'));
+            status.textContent = '';
+            form.reset();
+            spamScore = 0;
+            formStartTime = Date.now();
+        } else {
+            throw new Error();
+        }
+    } catch {
+        showToast(t('contact.error'));
+    } finally {
+        button.disabled = false;
+        button.querySelector('.btn-text').classList.remove('hidden');
+        button.querySelector('.btn-loading').classList.add('hidden');
+    }
+});
