@@ -476,6 +476,10 @@ if (window.innerWidth < 768) {
     document.querySelectorAll('.project-card').forEach(el => {
         observer.observe(el);
         el.addEventListener('click', (e) => {
+            // Overlay already visible + user tapped directly on the link → navigate
+            if (el.dataset.manual === "true" && e.target.closest('.project-link')) {
+                return;
+            }
             e.preventDefault();
             el.blur();
             if (el.dataset.manual === "true") {
@@ -584,6 +588,9 @@ if (scene && inner) {
     });
 
     scene.addEventListener('click', () => {
+        // iOS: Gyro-Berechtigung beim ersten Tap auf die Karte anfragen
+        scene._requestGyro?.();
+
         if (flipping) return;
         flipping = true;
         if (holoSweep) holoSweep.style.opacity = '0';
@@ -626,13 +633,34 @@ if (scene && inner) {
 
     if (typeof DeviceOrientationEvent !== 'undefined') {
         let baseB = null, baseG = null;
-        window.addEventListener('deviceorientation', (e) => {
-            if (!e.beta && !e.gamma) return;
+        const gyroHandler = (e) => {
+            if (e.beta === null && e.gamma === null) return;
             if (baseB === null) { baseB = e.beta; baseG = e.gamma; }
             targetY = Math.max(-20, Math.min(20, (e.gamma - baseG) * 0.9));
             targetX = Math.max(-15, Math.min(15, -(e.beta - baseB) * 0.7));
-            if (tiltLabel) tiltLabel.textContent = 'Gerät neigen zum Kippen';
-        }, { passive: true });
+        };
+
+        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+            // iOS 13+: permission must be requested from a user gesture
+            scene._gyroReady = false;
+            scene._requestGyro = () => {
+                if (scene._gyroReady) return;
+                DeviceOrientationEvent.requestPermission()
+                    .then(state => {
+                        if (state === 'granted') {
+                            scene._gyroReady = true;
+                            baseB = null; baseG = null;
+                            window.addEventListener('deviceorientation', gyroHandler, { passive: true });
+                            if (tiltLabel) tiltLabel.textContent = 'Gerät neigen zum Kippen';
+                        }
+                    })
+                    .catch(() => {});
+            };
+            if (tiltLabel) tiltLabel.textContent = 'Tippen um Gyroskop zu aktivieren';
+        } else {
+            // Android / Desktop – listener direkt hinzufügen
+            window.addEventListener('deviceorientation', gyroHandler, { passive: true });
+        }
     }
 }
 

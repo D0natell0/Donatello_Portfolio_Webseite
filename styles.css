@@ -652,6 +652,7 @@ body.light-mode .form-input {
 .card-scene {
     width: 280px; height: 400px;
     perspective: 900px;
+    -webkit-perspective: 900px;
     margin: 2rem auto;
     cursor: pointer;
     user-select: none;
@@ -660,6 +661,7 @@ body.light-mode .form-input {
     width: 100%; height: 100%;
     position: relative;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     will-change: transform;
 }
 .card-face {
@@ -667,13 +669,17 @@ body.light-mode .form-input {
     border-radius: 0 16px 0 16px;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    /* iOS Safari: translateZ forces GPU compositing so backface-visibility takes effect */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
     overflow: hidden;
     border: 1px solid rgba(125,55,195,0.4);
 }
 .card-front { background: #10071a; }
 .card-back {
     background: linear-gradient(160deg, #1a0b2e 0%, #10071a 60%, #1a0b2e 100%);
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) translateZ(0);
+    -webkit-transform: rotateY(180deg) translateZ(0);
 }
 
 @keyframes holo-sweep {
