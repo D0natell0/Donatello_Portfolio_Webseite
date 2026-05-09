@@ -8,6 +8,46 @@
     <link rel="icon" type="image/svg+xml" href="img/logo/Donatello_Logo_Bildmarke.svg">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <style>
+        /* ── Video Controls ─────────────────────────── */
+        .video-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            margin-bottom: 4px;
+        }
+        .video-ctrl-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 0 8px 0 8px;
+            background: rgba(125, 55, 195, 0.12);
+            border-bottom: 1px solid rgba(125, 55, 195, 0.35);
+            color: rgba(243, 239, 249, 0.65);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, transform 0.15s;
+        }
+        body.light-mode .video-ctrl-btn {
+            background: rgba(125, 55, 195, 0.08);
+            color: rgba(16, 7, 26, 0.6);
+        }
+        .video-ctrl-btn:hover {
+            background: rgba(125, 55, 195, 0.22);
+            color: #A855F7;
+            transform: translateY(-1px);
+        }
+        .video-ctrl-btn.active {
+            background: rgba(125, 55, 195, 0.25);
+            border-color: rgba(125, 55, 195, 0.6);
+            color: #A855F7;
+        }
+        .video-ctrl-btn svg { flex-shrink: 0; }
+    </style>
 </head>
 <body class="dark-mode">
 
@@ -101,6 +141,7 @@
                         <div class="portfolio-card-bg relative aspect-video bg-[#171719] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
                             <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
                                 <video
+                                    id="video1"
                                     class="w-full h-full object-cover opacity-0 transition-opacity duration-500"
                                     autoplay
                                     muted
@@ -121,6 +162,17 @@
                                 </a>
                             </div>
                         </div>
+                    </div>
+                    <!-- Video Controls -->
+                    <div class="video-controls">
+                        <button class="video-ctrl-btn play-pause-btn active" data-video="video1">
+                            <svg class="pause-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6"/></svg>
+                            <svg class="play-icon w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                        <button class="video-ctrl-btn sound-btn" data-video="video1">
+                            <svg class="sound-off-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
+                            <svg class="sound-on-icon w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                        </button>
                     </div>
                     <div class="py-8 md:py-8">
                         <h3 class="project-title">Intro-Animation für ArrowTVs Teilnahme am YouTube-Format Minecraft Zero. Schnell, markant, auf den Kanal zugeschnitten.</h3>
@@ -144,6 +196,7 @@
                         <div class="portfolio-card-bg relative aspect-video bg-[#171719] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
                             <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
                                 <video
+                                    id="video2"
                                     class="w-full h-full object-cover opacity-0 transition-opacity duration-500"
                                     autoplay
                                     muted
@@ -164,6 +217,17 @@
                                 </a>
                             </div>
                         </div>
+                    </div>
+                    <!-- Video Controls -->
+                    <div class="video-controls">
+                        <button class="video-ctrl-btn play-pause-btn active" data-video="video2">
+                            <svg class="pause-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6"/></svg>
+                            <svg class="play-icon w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                        <button class="video-ctrl-btn sound-btn" data-video="video2">
+                            <svg class="sound-off-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
+                            <svg class="sound-on-icon w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                        </button>
                     </div>
                     <div class="py-8 md:py-8">
                         <h3 class="project-title">Rohes Footage aus dem Boxclub, auf den Punkt geschnitten. Werbevideo für die Box-Brand RUVAAK.</h3>
@@ -187,6 +251,7 @@
                         <div class="portfolio-card-bg relative aspect-video bg-[#171719] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
                             <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
                                 <video
+                                    id="video3"
                                     class="w-full h-full object-cover opacity-0 transition-opacity duration-500"
                                     autoplay
                                     muted
@@ -207,6 +272,17 @@
                                 </a>
                             </div>
                         </div>
+                    </div>
+                    <!-- Video Controls -->
+                    <div class="video-controls">
+                        <button class="video-ctrl-btn play-pause-btn active" data-video="video3">
+                            <svg class="pause-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6"/></svg>
+                            <svg class="play-icon w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                        <button class="video-ctrl-btn sound-btn" data-video="video3">
+                            <svg class="sound-off-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
+                            <svg class="sound-on-icon w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                        </button>
                     </div>
                     <div class="py-8 md:py-8">
                         <h3 class="project-title">Intro für Tamiix ersten Blick auf Hytale – das Spiel, das Minecraft ablösen soll.</h3>
@@ -230,6 +306,7 @@
                         <div class="portfolio-card-bg relative aspect-video bg-[#171719] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
                             <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
                                 <video
+                                    id="video4"
                                     class="w-full h-full object-cover opacity-0 transition-opacity duration-500"
                                     autoplay
                                     muted
@@ -250,6 +327,17 @@
                                 </a>
                             </div>
                         </div>
+                    </div>
+                    <!-- Video Controls -->
+                    <div class="video-controls">
+                        <button class="video-ctrl-btn play-pause-btn active" data-video="video4">
+                            <svg class="pause-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6"/></svg>
+                            <svg class="play-icon w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                        <button class="video-ctrl-btn sound-btn" data-video="video4">
+                            <svg class="sound-off-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
+                            <svg class="sound-on-icon w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                        </button>
                     </div>
                     <div class="py-8 md:py-8">
                         <h3 class="project-title">Intro für ein Minecraft Bingo-Duell. Zwei Teams, ein Format. Produziert für ArrowTV.</h3>
@@ -475,5 +563,73 @@
         </div>
     </div>
 
+    <!-- Video Controls Logic -->
+    <script>
+    (function () {
+        function updateSoundBtn(btn, isMuted) {
+            if (isMuted) {
+                btn.querySelector('.sound-off-icon').classList.remove('hidden');
+                btn.querySelector('.sound-on-icon').classList.add('hidden');
+                btn.classList.remove('active');
+            } else {
+                btn.querySelector('.sound-off-icon').classList.add('hidden');
+                btn.querySelector('.sound-on-icon').classList.remove('hidden');
+                btn.classList.add('active');
+            }
+        }
+
+        function updatePlayBtn(btn, isPaused) {
+            if (isPaused) {
+                btn.querySelector('.pause-icon').classList.add('hidden');
+                btn.querySelector('.play-icon').classList.remove('hidden');
+                btn.classList.remove('active');
+            } else {
+                btn.querySelector('.pause-icon').classList.remove('hidden');
+                btn.querySelector('.play-icon').classList.add('hidden');
+                btn.classList.add('active');
+            }
+        }
+
+        // Play / Pause
+        document.querySelectorAll('.play-pause-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const vid = document.getElementById(this.dataset.video);
+                if (!vid) return;
+                vid.paused ? vid.play() : vid.pause();
+            });
+        });
+
+        // Sound – nur ein Video gleichzeitig mit Ton
+        document.querySelectorAll('.sound-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const vid = document.getElementById(this.dataset.video);
+                if (!vid) return;
+
+                if (vid.muted) {
+                    // Alle anderen stumm schalten
+                    document.querySelectorAll('video').forEach(v => {
+                        if (v.id !== this.dataset.video) {
+                            v.muted = true;
+                            const other = document.querySelector(`.sound-btn[data-video="${v.id}"]`);
+                            if (other) updateSoundBtn(other, true);
+                        }
+                    });
+                    vid.muted = false;
+                    updateSoundBtn(this, false);
+                } else {
+                    vid.muted = true;
+                    updateSoundBtn(this, true);
+                }
+            });
+        });
+
+        // Play/Pause-Button mit nativen Video-Events synchronisieren
+        document.querySelectorAll('video').forEach(vid => {
+            const btn = () => document.querySelector(`.play-pause-btn[data-video="${vid.id}"]`);
+            vid.addEventListener('play',  () => { const b = btn(); if (b) updatePlayBtn(b, false); });
+            vid.addEventListener('pause', () => { const b = btn(); if (b) updatePlayBtn(b, true);  });
+        });
+    })();
+    </script>
 </body>
 </html>
