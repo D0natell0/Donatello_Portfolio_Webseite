@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donatello Media</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/svg+xml" href="img/logo/Donatello_Logo_Bildmarke.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="dark-mode">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="/index.html" class="flex items-center gap-3 group">
+                    <div class="h-6 flex items-center justify-center">
+                        <img src="img/logo/Donatello_Logo_Wort_Bildmarke_Horizontal.svg" alt="Donatello Media Logo" class="w-full h-full object-contain">
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center gap-2">
+                    <button onclick="scrollToSection('portfolio')" class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.portfolio">Portfolio</button>
+                    <button onclick="scrollToSection('contact')" class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.contact">Contact</button>
+
+                    <!-- Language Selector -->
+                    <div class="language-dropdown ml-2">
+                        <button class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.language">Language</button>
+                        <div class="language-menu rounded-bl-xl rounded-tr-xl shadow-2xl backdrop-blur-xl overflow-hidden">
+                            <button onclick="changeLanguage('de')" class="lang-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20 flex items-center gap-2">🇩🇪 Deutsch</button>
+                            <button onclick="changeLanguage('en')" class="lang-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20 flex items-center gap-2">🇬🇧 English</button>
+                        </div>
+                    </div>
+
+                    <!-- Dark Mode Toggle -->
+                    <button onclick="toggleDarkMode()" class="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)] dark-mode-btn">
+                        <svg class="w-5 h-5 sun-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                        <svg class="w-5 h-5 moon-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center gap-3 md:hidden">
+                    <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 dark-mode-btn-mobile">
+                        <svg class="w-4 h-4 sun-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                        <svg class="w-4 h-4 moon-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 burger-btn">
+                        <svg class="w-5 h-5 hamburger-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        <svg class="w-5 h-5 close-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu md:hidden mobile-menu-bg">
+            <div class="px-6 py-6 space-y-2">
+                <button onclick="scrollToSection('about'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300" data-i18n="nav.about">About me</button>
+                <button onclick="scrollToSection('portfolio'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300" data-i18n="nav.portfolio">Portfolio</button>
+                <button onclick="scrollToSection('contact'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300" data-i18n="nav.contact">Contact</button>
+                <div class="pt-4 border-t border-[#7D37C3]/20 space-y-2">
+                    <button onclick="changeLanguage('de'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300">🇩🇪 Deutsch</button>
+                    <button onclick="changeLanguage('en'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300">🇬🇧 English</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════
+         PORTFOLIO — Videobearbeitung
+    ═══════════════════════════════════════════ -->
+    <section id="portfolio" class=" relative">
+        <div class="max-w-7xl mx-auto">
+            <div id="Divider" class="py-24 md:py-32 px-6 relative">
+                <div class="section-divider-label">
+                    <div class="section-divider-line"></div>
+                    <span class="section-divider-text"><span data-i18n="nav.portfolio.videobearbeitung">Videobearbeitung</span></span>
+                    <div class="section-divider-line"></div>
+                </div>
+
+                <!-- Project ArrowTV Minecraft Zero Intro -->
+                <div id="ArrowTVMinecraftZero" class="py-8 md:py-2 px-6 relative">
+
+                    <div class="portfolio-header">
+                    <div class="portfolio-heading-wrap">
+                        <span class="section-bg-num" style="margin-bottom:-52px">01</span>
+                        <h2 class="portfolio-h2-large">
+                            <span>BlackArrow Minecraft Zero</span><br>
+                        </h2>
+                    </div>
+                    </div>
+
+                    <div class="project-card project-card-wide group relative">
+                        <div class="portfolio-card-bg relative aspect-video bg-[#171719] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                            <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
+                                <video
+                                    class="w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                                    autoplay
+                                    muted
+                                    loop
+                                    playsinline
+                                    preload="metadata"
+                                    loading="lazy"
+                                    poster="thumbnail.jpg"
+                                    onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()">
+
+                                    <source src="img/portfolio/YouTube Intros/BlackArrowIntroOneDayVaro.webm" type="video/webm">
+                                </video>                       
+                            <div class="project-overlay"></div>
+                            <div class="project-content">
+                                <span class="project-cat" data-i18n="portfolio.category3">Videobearbeitung</span>
+                                <h3 class="project-title">Video Intro für ArrowTV</h3>
+                                <a href="https://youtu.be/0py2lD_VmLs" target="_blank" rel="noopener noreferrer" class="project-link">
+                                    <span>Original Video</span>
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project RUVAAK -->
+                 <div id="RUVAAK" class="py-8 md:py-16 px-6 relative">
+                    <div class="portfolio-header">
+                    <div class="portfolio-heading-wrap">
+                        <span class="section-bg-num" style="margin-bottom:-52px">02</span>
+                        <h2 class="portfolio-h2-large">
+                            <span>RUVAAK Werbevideo</span><br>
+                        </h2>
+                    </div>
+                    </div>
+
+                    <div class="project-card project-card-wide group relative">
+                        <div class="portfolio-card-bg relative aspect-video bg-[#171719] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                            <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
+                                <video
+                                    class="w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                                    autoplay
+                                    muted
+                                    loop
+                                    playsinline
+                                    preload="metadata"
+                                    loading="lazy"
+                                    poster="thumbnail.jpg"
+                                    onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()">
+
+                                    <source src="img/portfolio/Social Media/RUVAAK Kickbox Video.webm" type="video/webm">
+                                </video>                       
+                            <div class="project-overlay"></div>
+                            <div class="project-content">
+                                <span class="project-cat" data-i18n="portfolio.category3">Videobearbeitung</span>
+                                <h3 class="project-title">Werbevideo für RUVAAK</h3>
+                                <a href="https://youtube.com/shorts/p98MeZRP9G0?feature=share" target="_blank" rel="noopener noreferrer" class="project-link">
+                                    <span>Original Video</span>
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Tamiix Minecraft Killer Hytale -->
+                <div id="TamiixHytale" class="py-8 md:py-16 px-6 relative">
+                    <div class="portfolio-header">
+                    <div class="portfolio-heading-wrap">
+                        <span class="section-bg-num" style="margin-bottom:-52px">03</span>
+                        <h2 class="portfolio-h2-large">
+                            <span>Tamiix Hytale Intro</span><br>
+                        </h2>
+                    </div>
+                    </div>
+
+                    <div class="project-card project-card-wide group relative">
+                        <div class="portfolio-card-bg relative aspect-video bg-[#171719] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                            <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
+                                <video
+                                    class="w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                                    autoplay
+                                    muted
+                                    loop
+                                    playsinline
+                                    preload="metadata"
+                                    loading="lazy"
+                                    poster="thumbnail.jpg"
+                                    onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()">
+
+                                    <source src="img/portfolio/YouTube Intros/Tamiix Hytale Intro mit Musik.webm" type="video/webm">
+                                </video>                       
+                            <div class="project-overlay"></div>
+                            <div class="project-content">
+                                <span class="project-cat" data-i18n="portfolio.category3">Videobearbeitung</span>
+                                <h3 class="project-title">Video Intro für Tamiix</h3>
+                                <a href="https://youtu.be/NHIhmWdpMmY?si=LiMVCp24oD7ToYYw" target="_blank" rel="noopener noreferrer" class="project-link">
+                                    <span>Original Video</span>
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project ArrowTV Minecraft Bingo Intro -->
+                <div id="TamiixHytale" class="py-8 md:py-16 px-6 relative">
+                    <div class="portfolio-header">
+                    <div class="portfolio-heading-wrap">
+                        <span class="section-bg-num" style="margin-bottom:-52px">04</span>
+                        <h2 class="portfolio-h2-large">
+                            <span>ArrowTV Minecraft Bingo</span><br>
+                        </h2>
+                    </div>
+                    </div>
+
+                    <div class="project-card project-card-wide group relative">
+                        <div class="portfolio-card-bg relative aspect-video bg-[#171719] rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                            <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
+                                <video
+                                    class="w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                                    autoplay
+                                    muted
+                                    loop
+                                    playsinline
+                                    preload="metadata"
+                                    loading="lazy"
+                                    poster="thumbnail.jpg"
+                                    onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()">
+
+                                    <source src="img/portfolio/YouTube Intros/BlackArrowIntroMinecraftBingo.webm" type="video/webm">
+                                </video>                       
+                            <div class="project-overlay"></div>
+                            <div class="project-content">
+                                <span class="project-cat" data-i18n="portfolio.category3">Videobearbeitung</span>
+                                <h3 class="project-title">Video Intro für ArrowTV</h3>
+                                <a href="https://youtu.be/vLTh54_Pwrw" target="_blank" rel="noopener noreferrer" class="project-link">
+                                    <span>Original Video</span>
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CONTACT — 03 — Statement-Intro
+    ═══════════════════════════════════════════ -->
+    <section id="contact" class="py-24 md:py-32 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+
+            <!-- Section Label -->
+            <div class="section-divider-label">
+                <div class="section-divider-line"></div>
+                <span class="section-divider-text"><span data-i18n="nav.contact">Contact</span></span>
+                <div class="section-divider-line"></div>
+            </div>
+
+            <!-- Statement Heading -->
+            <div class="section-num-wrap">
+                <h2 class="contact-statement-h2">
+                    <span data-i18n="contact.title1">Meld dich</span><br>
+                    <em data-i18n="contact.title2">gerne</em>
+                </h2>
+            </div>
+
+            <p class="section-text text-lg max-w-xl mb-16 mt-4" data-i18n="contact.subtitle">
+                Du hast ein Projekt? Schreib mir einfach, ich freu mich drauf.
+            </p>
+
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <h3 class="contact-info-heading" data-i18n="contact.getintouch">So erreichst du mich</h3>
+
+                    <div class="space-y-5">
+                        <div class="contact-item">
+                            <div class="contact-icon-box">
+                                <svg class="w-5 h-5 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            </div>
+                            <div>
+                                <p class="contact-label" data-i18n="contact.email">E-Mail</p>
+                                <a href="mailto:donatello-media@outlook.de" class="contact-value hover:text-[#A855F7] transition-colors">donatello-media@outlook.de</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon-box">
+                                <svg class="w-5 h-5 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            </div>
+                            <div>
+                                <p class="contact-label" data-i18n="contact.location">Standort</p>
+                                <p class="contact-value" data-i18n="contact.worldwide">Augsburg, Deutschland</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon-box">
+                                <svg class="w-5 h-5 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                            </div>
+                            <div>
+                                <p class="contact-label" data-i18n="contact.phone">Telefon</p>
+                                <p class="contact-value">+49 (0) 162 427 58 14</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex gap-3 flex-wrap pt-2">
+                        <a href="https://www.youtube.com/@Donatello-Media" target="_blank" rel="noopener noreferrer" class="social-link">YouTube</a>
+                        <a href="https://www.instagram.com/donatello_media/" target="_blank" rel="noopener noreferrer" class="social-link">Instagram</a>
+                        <!-- <a href="https://de.fiverr.com/donatellomedia?public_mode=true" target="_blank" rel="noopener noreferrer" class="social-link">Fiverr</a> -->
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div>
+                    <form id="contactForm" action="https://formspree.io/f/xblkaavo" method="POST" class="contact-form-card">
+
+                        <!-- Honeypot -->
+                        <input type="text" name="_gotcha" class="hidden">
+
+                        <div class="space-y-5">
+                            <div>
+                                <label class="form-label" data-i18n="contact.name">Name</label>
+                                <input type="text" name="name" placeholder="Max Mustermann" class="form-input" required />
+                            </div>
+                            <div>
+                                <label class="form-label" data-i18n="contact.emailaddress">E-Mail-Adresse</label>
+                                <input type="email" name="email" placeholder="max@mustermann.com" class="form-input" required />
+                            </div>
+                            <div>
+                                <label class="form-label" data-i18n="contact.message">Nachricht</label>
+                                <textarea name="message" data-i18n-placeholder="contact.placeholder" placeholder="Erzähle mir von Deiner Idee..." rows="5" class="form-input form-textarea" required></textarea>
+                            </div>
+
+                            <div id="recaptcha-container" class="hidden mt-2"></div>
+
+                            <button id="submitBtn" type="submit" class="btn-primary w-full justify-center">
+                                <span class="btn-text" data-i18n="contact.send">Nachricht senden</span>
+                                <span class="btn-loading hidden" data-i18n="contact.sending">Wird gesendet…</span>
+                            </button>
+
+                            <p class="text-xs opacity-40 mt-2" data-i18n="contact.senddata">Mit dem Absenden erklärst du dich mit der Verarbeitung deiner Daten gemäß Datenschutzerklärung einverstanden.</p>
+                            <p id="formStatus" class="mt-2 text-sm" aria-live="polite"></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-border py-8 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="h-6 flex items-center justify-center">
+                <img src="img/logo/Donatello_Logo_Wort_Bildmarke_Horizontal.svg" alt="Donatello Media Logo" class="w-full h-full object-contain">
+            </div>
+            <button onclick="openImpressum()" class="ml-1 underline transition-colors duration-200 hover:text-[#7D37C3]" aria-haspopup="dialog">
+                <p class="footer-copyright text-sm duration-300 hover:-translate-y-0.5 hover:opacity-90" data-i18n="impressum.footer">Impressum</p>
+            </button>
+            <button onclick="openDatenschutz()" class="ml-1 underline transition-colors duration-200 hover:text-[#7D37C3]" aria-haspopup="dialog">
+                <p class="footer-copyright text-sm duration-300 hover:-translate-y-0.5 hover:opacity-90" data-i18n="datenschutz.footer">Datenschutz</p>
+            </button>
+            <p class="footer-copyright text-sm" data-i18n="footer.copyright">© 2026 Donatello-Media. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-[#7D37C3] text-white px-4 py-3 rounded-xl shadow-xl opacity-0 pointer-events-none transition-all duration-300" role="status" aria-live="polite"></div>
+
+    <!-- Impressum Modal -->
+    <div id="impressumModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0" onclick="closeImpressum(event)">
+        <div id="impressumContent" class="relative w-full max-w-lg mx-4 max-h-[85vh] rounded-bl-2xl rounded-tr-2xl bg-[#7D37C370] text-gray-200 border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-xl transform scale-95 transition-all duration-300 flex flex-col" onclick="event.stopPropagation()" role="dialog" aria-modal="true">
+            <div class="sticky top-0 z-10 bg-[#7D37C3]/80 backdrop-blur px-6 py-4 flex items-center justify-between rounded-tr-2xl">
+                <h2 data-i18n="impressum.title" class="text-xl font-semibold"></h2>
+                <button onclick="closeImpressum()" class="text-gray-300 transition hover:text-white text-xl" aria-label="Close Impressum">✕</button>
+            </div>
+            <div class="relative px-6 py-4 space-y-3 text-sm leading-relaxed overflow-y-auto">
+                <p><strong data-i18n="impressum.name"></strong></p>
+                <p><span data-i18n="impressum.owner"></span>: Niklas Schubert</p>
+                <p data-i18n="impressum.address"></p>
+                <p><span data-i18n="impressum.email"></span>: <a href="mailto:donatello-media@outlook.de" class="underline">donatello-media@outlook.de</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div id="datenschutzModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0" onclick="closeDatenschutz(event)">
+        <div id="datenschutzContent" class="relative w-full max-w-3xl mx-4 max-h-[85vh] rounded-bl-2xl rounded-tr-2xl bg-[#7D37C370] text-gray-200 border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-xl transform scale-95 transition-all duration-300 flex flex-col" onclick="event.stopPropagation()" role="dialog" aria-modal="true">
+            <div class="sticky top-0 z-10 bg-[#7D37C3]/80 backdrop-blur px-6 py-4 flex items-center justify-between rounded-tr-2xl">
+                <h2 data-i18n="datenschutz.title" class="text-xl font-semibold"></h2>
+                <button onclick="closeDatenschutz()" class="text-gray-300 transition hover:text-white text-xl" aria-label="Close Datenschutz">✕</button>
+            </div>
+            <div class="relative px-6 py-4 space-y-3 text-sm leading-relaxed overflow-y-auto my-text-area">
+                <style>
+                    .my-text-area p { margin: 0; line-height: 1.5; }
+                    .my-text-area a { text-decoration: underline; }
+                    .datenEinzug { margin-left: 1.5em; display: inline-block; }
+                    .bullet { position: relative; padding-left: 0.5em; }
+                    .bullet::before { content: "•"; position: absolute; left: 0; }
+                </style>
+                <p><strong data-i18n="datenschutz.hl1"></strong></p>
+                <span class="datenEinzug"><p data-i18n="datenschutz.text1"></p><br></span>
+                <p><strong data-i18n="datenschutz.hl2"></strong></p>
+                <span class="datenEinzug">
+                    <p data-i18n="datenschutz.text2"></p>
+                    <p><strong data-i18n="datenschutz.name"></strong></p>
+                    <p><span data-i18n="datenschutz.owner"></span>: Niklas Schubert</p>
+                    <p data-i18n="datenschutz.address"></p>
+                    <p><span data-i18n="datenschutz.email"></span>: <a href="mailto:donatello-media@outlook.de" class="underline">donatello-media@outlook.de</a></p><br>
+                </span>
+                <p><strong data-i18n="datenschutz.hl3"></strong></p>
+                <span class="datenEinzug">
+                    <p data-i18n="datenschutz.text3p1"></p>
+                    <p class="bullet" data-i18n="datenschutz.text3p2"></p>
+                    <p class="bullet" data-i18n="datenschutz.text3p3"></p>
+                    <p class="bullet" data-i18n="datenschutz.text3p4"></p>
+                    <p class="bullet" data-i18n="datenschutz.text3p5"></p><br>
+                    <p data-i18n="datenschutz.text3p6"></p><br>
+                </span>
+                <p><strong data-i18n="datenschutz.hl4"></strong></p>
+                <span class="datenEinzug">
+                    <p data-i18n="datenschutz.text4p1"></p><br>
+                    <p><strong data-i18n="datenschutz.text4p2"></strong></p>
+                    <p class="bullet" data-i18n="datenschutz.text4p3"></p>
+                    <p class="bullet" data-i18n="datenschutz.text4p4"></p>
+                    <p class="bullet" data-i18n="datenschutz.text4p5"></p>
+                    <p class="bullet" data-i18n="datenschutz.text4p6"></p><br>
+                    <p><strong data-i18n="datenschutz.text4p7"></strong></p>
+                    <p class="bullet" data-i18n="datenschutz.text4p8"></p>
+                    <p class="bullet" data-i18n="datenschutz.text4p9"></p><br>
+                    <p><strong data-i18n="datenschutz.text4p10"></strong></p>
+                    <p class="bullet" data-i18n="datenschutz.text4p11"></p>
+                    <p class="bullet" data-i18n="datenschutz.text4p12"></p><br>
+                    <p><strong data-i18n="datenschutz.text4p13"></strong></p>
+                    <p class="bullet" data-i18n="datenschutz.text4p14"></p>
+                    <p class="bullet" data-i18n="datenschutz.text4p15"></p><br>
+                    <p data-i18n="datenschutz.text4p16"></p><br>
+                </span>
+                <p><strong data-i18n="datenschutz.hl5"></strong></p>
+                <span class="datenEinzug"><p data-i18n="datenschutz.text5"></p><br></span>
+                <p><strong data-i18n="datenschutz.hl6"></strong></p>
+                <span class="datenEinzug">
+                    <p data-i18n="datenschutz.text6p1"></p>
+                    <p data-i18n="datenschutz.text6p2"></p><br>
+                </span>
+                <p><strong data-i18n="datenschutz.hl7"></strong></p>
+                <span class="datenEinzug">
+                    <p data-i18n="datenschutz.text7p1"></p>
+                    <p class="bullet" data-i18n="datenschutz.text7p2"></p>
+                    <p class="bullet" data-i18n="datenschutz.text7p3"></p>
+                    <p class="bullet" data-i18n="datenschutz.text7p4"></p>
+                    <p class="bullet" data-i18n="datenschutz.text7p5"></p><br>
+                    <p data-i18n="datenschutz.text7p6"></p>
+                </span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
