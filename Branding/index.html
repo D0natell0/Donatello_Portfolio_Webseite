@@ -8,46 +8,6 @@
     <link rel="icon" type="image/svg+xml" href="/img/logo/Donatello_Logo_Bildmarke.svg">
     <link rel="stylesheet" href="/styles.css">
     <script src="/script.js" defer></script>
-    <style>
-        /* ── Video Controls ─────────────────────────── */
-        .video-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 12px;
-            margin-bottom: 4px;
-        }
-        .video-ctrl-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            border-radius: 0 8px 0 8px;
-            background: rgba(125, 55, 195, 0.12);
-            border-bottom: 1px solid rgba(125, 55, 195, 0.35);
-            color: rgba(243, 239, 249, 0.65);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s, transform 0.15s;
-        }
-        body.light-mode .video-ctrl-btn {
-            background: rgba(125, 55, 195, 0.08);
-            color: rgba(16, 7, 26, 0.6);
-        }
-        .video-ctrl-btn:hover {
-            background: rgba(125, 55, 195, 0.22);
-            color: #A855F7;
-            transform: translateY(-1px);
-        }
-        .video-ctrl-btn.active {
-            background: rgba(125, 55, 195, 0.25);
-            border-color: rgba(125, 55, 195, 0.6);
-            color: #A855F7;
-        }
-        .video-ctrl-btn svg { flex-shrink: 0; }
-    </style>
 </head>
 <body class="dark-mode">
 
@@ -113,237 +73,228 @@
     </nav>
 
     <!-- ═══════════════════════════════════════════
-         PORTFOLIO — Videobearbeitung
+         PORTFOLIO — Branding
     ═══════════════════════════════════════════ -->
-    <section id="portfolio" class=" relative">
+    <section id="portfolio" class="py-24 md:py-32 px-6 relative">
         <div class="max-w-7xl mx-auto">
-            <div id="Divider" class="py-24 md:py-32 px-6 relative">
-                <div class="section-divider-label">
-                    <div class="section-divider-line"></div>
-                    <span class="section-divider-text"><span data-i18n="nav.portfolio.videobearbeitung">Videobearbeitung</span></span>
-                    <div class="section-divider-line"></div>
-                </div>
 
-                <!-- Project ArrowTV Minecraft Zero Intro -->
-                <div id="ArrowTVMinecraftZero" class="py-8 md:py-2 px-6 relative">
+            <!-- Section Label -->
+            <div class="section-divider-label">
+                <div class="section-divider-line"></div>
+                <span class="section-divider-text">Branding</span>
+                <div class="section-divider-line"></div>
+            </div>
 
-                    <div class="portfolio-header">
+            <!-- ═══════════════════════════════════════════ -->
+            <!-- Portfolio Eispalast Ludwigslust -->
+                <div class="portfolio-header">
                     <div class="portfolio-heading-wrap">
                         <span class="section-bg-num" style="margin-bottom:-52px">01</span>
                         <h2 class="portfolio-h2-large">
-                            <span>ArrowTV</span><br>
-                            <em>Minecraft Zero</em>
+                            <span>Branding</span><br>
+                            <em>Eispalast Ludwigslust</em>
                         </h2>
                     </div>
+                    <div class="portfolio-meta">
+                        <span class="portfolio-meta-label">Eispalast Ludwigslust · 2021</span>
                     </div>
+                </div>
 
+                <!-- Asymmetric Grid -->
+                <div class="portfolio-grid">
+
+                    <!-- Logo -->
                     <div class="project-card project-card-wide group relative">
-                        <div class="portfolio-card-bg relative aspect-video bg-[#171719] border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                        <div class="portfolio-card-bg relative aspect-video bg-[#171719]/50 border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
                             <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                                <video
-                                    id="video1"
-                                    class="w-full h-full object-cover opacity-0 transition-opacity duration-500"
-                                    autoplay
-                                    muted
-                                    loop
-                                    playsinline
-                                    preload="metadata"
-                                    loading="lazy"
-                                    poster="thumbnail.jpg"
-                                    onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()">
-
-                                    <source src="/img/portfolio/YouTube Intros/BlackArrowIntroOneDayVaro.webm" type="video/webm">
-                                </video>                       
+                            <img src="/img/portfolio/Branding/Eispalast Ludwigslust/eispalast_logo.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
                             <div class="project-overlay"></div>
                             <div class="project-content">
-                                <a href="https://youtu.be/0py2lD_VmLs" target="_blank" rel="noopener noreferrer" class="project-link">
-                                    <span>Auf YouTube ansehen</span>
-                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                                </a>
+                                <span class="project-cat" data-i18n="portfolio.eispalast.category1">Logo Design</span>
+                                <h3 class="project-title" data-i18n="portfolio.eispalast.project1">Von der Skizze zum finalen Logo. Ich entwerfe ein Konzept, von Grund auf oder exakt nach Ihren Vorstellungen. Ich setze Ihre Idee in die Tat um!</h3>
+                            </div>
+                        </div>
+                    </div> 
+                    
+                    <!-- Tasse -->
+                    <div class="project-card group relative">
+                        <div class="portfolio-card-bg relative aspect-[4/5] border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                            <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
+                            <img src="/img/portfolio/Branding/Eispalast Ludwigslust/Eispalast_Ludwigslust_Cafe_Tasse.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
+                            <div class="project-overlay"></div>
+                            <div class="project-content">
+                                <span class="project-cat" data-i18n="portfolio.eispalast.category2">Merchandise & Markenartikel</span>
+                                <h3 class="project-title" data-i18n="portfolio.eispalast.project2">Dreidimensionale Animationen</h3>
+                            </div>
+                        </div>
+                    </div> 
+                    
+                    <!-- Werbemittel -->
+                    <div class="project-card project-card-wide group relative">
+                        <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                            <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
+                            <img src="/img/portfolio/Branding/Eispalast Ludwigslust/Eispalast_Ludwigslust_Visitenkarte_und_Brief.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
+                            <div class="project-overlay"></div>
+                            <div class="project-content">
+                                <span class="project-cat" data-i18n="portfolio.eispalast.category3">Geschäftsausstattung</span>
+                                <h3 class="project-title" data-i18n="portfolio.eispalast.project3">Content für alle Plattformen</h3>
                             </div>
                         </div>
                     </div>
-                    <!-- Video Controls -->
-                    <div class="video-controls">
-                        <button class="video-ctrl-btn play-pause-btn active" data-video="video1">
-                            <svg class="pause-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6"/></svg>
-                            <svg class="play-icon w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </button>
-                        <button class="video-ctrl-btn sound-btn" data-video="video1">
-                            <svg class="sound-off-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
-                            <svg class="sound-on-icon w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
-                        </button>
+                    
+                    <!-- Plakate -->
+                    <div class="project-card group relative">
+                        <div class="portfolio-card-bg relative aspect-[4/5] border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                            <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
+                            <img src="/img/portfolio/Branding/Eispalast Ludwigslust/eispalast_plakate.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
+                            <div class="project-overlay"></div>
+                            <div class="project-content">
+                                <span class="project-cat" data-i18n="portfolio.eispalast.category4">Printmedien</span>
+                                <h3 class="project-title" data-i18n="portfolio.eispalast.project4">Schnitt, Effekte und Postproduktion</h3>                            
+                            </div>
+                        </div>
                     </div>
-                    <div class="py-8 md:py-8">
-                        <h3 class="project-title">Intro-Animation für ArrowTVs Teilnahme am YouTube-Format Minecraft Zero. Schnell, markant, auf den Kanal zugeschnitten.</h3>
-                    </div>
+                    
+                    <!-- Outdoor Werbung -->
+                    <div class="project-card project-card-wide group relative">
+                        <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                            <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
+                            <img src="/img/portfolio/Branding/Eispalast Ludwigslust/eispalast_outdoor.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
+                            <div class="project-overlay"></div>
+                            <div class="project-content">
+                                <span class="project-cat" data-i18n="portfolio.eispalast.category5">Digitalmedien</span>
+                                <h3 class="project-title" data-i18n="portfolio.eispalast.project5">Content für alle Plattformen</h3>
+                            </div>
+                        </div>
+                    </div>                
+
+                </div>
+
+            <!-- ═══════════════════════════════════════════ -->
+            <!-- Portfolio Fahrrad Rund OHG -->
+                <div class="section-divider-label py-8 relative">
                     <div class="section-divider-line"></div>
                 </div>
 
-                <!-- Project RUVAAK -->
-                 <div id="RUVAAK" class="py-2 md:py-8 px-6 relative">
-                    <div class="portfolio-header">
+                <div class="portfolio-header">
                     <div class="portfolio-heading-wrap">
                         <span class="section-bg-num" style="margin-bottom:-52px">02</span>
                         <h2 class="portfolio-h2-large">
-                            <span>RUVAAK</span><br>
-                            <em>Werbevideo</em>
+                            <span>UI-/UX-Design</span><br>
+                            <em>Fahrrad Rund OHG</em>
                         </h2>
                     </div>
+                    <div class="portfolio-meta">
+                        <span class="portfolio-meta-label">Fahrrad Rund OHG · 2022</span>
                     </div>
+                </div>
 
+                <!-- Asymmetric Grid -->
+                <div class="portfolio-grid">
+
+                    <!-- Mobil und Web -->
                     <div class="project-card project-card-wide group relative">
-                        <div class="portfolio-card-bg relative aspect-video bg-[#171719] border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                        <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
                             <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                                <video
-                                    id="video2"
-                                    class="w-full h-full object-cover opacity-0 transition-opacity duration-500"
-                                    autoplay
-                                    muted
-                                    loop
-                                    playsinline
-                                    preload="metadata"
-                                    loading="lazy"
-                                    poster="thumbnail.jpg"
-                                    onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()">
-
-                                    <source src="/img/portfolio/Social Media/RUVAAK Kickbox Video.webm" type="video/webm">
-                                </video>                       
+                            <img src="/img/portfolio/Branding/Fahrrad Rund OHG/FahrradRundOHGDesktopundMobil.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
                             <div class="project-overlay"></div>
                             <div class="project-content">
-                                <a href="https://youtube.com/shorts/p98MeZRP9G0?feature=share" target="_blank" rel="noopener noreferrer" class="project-link">
-                                    <span>Auf YouTube ansehen</span>
-                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                                </a>
+                                <span class="project-cat" data-i18n="portfolio.fahrradrund.category1">Logo Design</span>
+                                <h3 class="project-title" data-i18n="portfolio.fahrradrund.project1">Von der Skizze zum finalen Logo. Ich entwerfe ein Konzept, von Grund auf oder exakt nach Ihren Vorstellungen. Ich setze Ihre Idee in die Tat um!</h3>
                             </div>
                         </div>
-                    </div>
-                    <!-- Video Controls -->
-                    <div class="video-controls">
-                        <button class="video-ctrl-btn play-pause-btn active" data-video="video2">
-                            <svg class="pause-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6"/></svg>
-                            <svg class="play-icon w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </button>
-                        <button class="video-ctrl-btn sound-btn" data-video="video2">
-                            <svg class="sound-off-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
-                            <svg class="sound-on-icon w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
-                        </button>
-                    </div>
-                    <div class="py-8 md:py-8">
-                        <h3 class="project-title">Rohes Footage aus dem Boxclub, auf den Punkt geschnitten. Werbevideo für die Box-Brand RUVAAK.</h3>
-                    </div>
+                    </div> 
+                    
+                    <!-- Nahaufnahme -->
+                    <div class="project-card group relative">
+                        <div class="portfolio-card-bg relative aspect-[4/5] border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                            <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
+                            <img src="/img/portfolio/Branding/Fahrrad Rund OHG/FahrradRundOHGDesktop2.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
+                            <div class="project-overlay"></div>
+                            <div class="project-content">
+                                <span class="project-cat" data-i18n="portfolio.fahrradrund.category2">Merchandise & Markenartikel</span>
+                                <h3 class="project-title" data-i18n="portfolio.fahrradrund.project2">Dreidimensionale Animationen</h3>
+                            </div>
+                        </div>
+                    </div>             
+
+                </div>
+
+            <!-- ═══════════════════════════════════════════ -->
+            <!-- Weitere Logos -->
+                <div class="section-divider-label py-8 relative">
                     <div class="section-divider-line"></div>
                 </div>
 
-                <!-- Project Tamiix Minecraft Killer Hytale -->
-                <div id="TamiixHytale" class="py-2 md:py-8 px-6 relative">
-                    <div class="portfolio-header">
+                <div class="portfolio-header">
                     <div class="portfolio-heading-wrap">
                         <span class="section-bg-num" style="margin-bottom:-52px">03</span>
                         <h2 class="portfolio-h2-large">
-                            <span>Tamiix</span><br>
-                            <em>Hytale der Minecraft Killer</em>
+                            <span>Weitere </span><br>
+                            <em>Logo Konzepte</em>
                         </h2>
                     </div>
+                    <div class="portfolio-meta">
+                        <span class="portfolio-meta-label">Logo Konzepte · 2022-2026</span>
                     </div>
+                </div>
 
-                    <div class="project-card project-card-wide group relative">
-                        <div class="portfolio-card-bg relative aspect-video bg-[#171719] border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                <!-- Asymmetric Grid -->
+                <div class="portfolio-grid">
+                    
+                    <!-- FaceRelax -->
+                    <div class="project-card group relative">
+                        <div class="portfolio-card-bg relative aspect-[4/5] bg-white/50 border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
                             <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                                <video
-                                    id="video3"
-                                    class="w-full h-full object-cover opacity-0 transition-opacity duration-500"
-                                    autoplay
-                                    muted
-                                    loop
-                                    playsinline
-                                    preload="metadata"
-                                    loading="lazy"
-                                    poster="thumbnail.jpg"
-                                    onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()">
-
-                                    <source src="/img/portfolio/YouTube Intros/Tamiix Hytale Intro mit Musik.webm" type="video/webm">
-                                </video>                       
+                            <img src="/img/portfolio/Branding/Face Relax Berlin/Logo_FaceRelax_Berlin.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-contain opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
                             <div class="project-overlay"></div>
                             <div class="project-content">
-                                <a href="https://youtu.be/NHIhmWdpMmY?si=LiMVCp24oD7ToYYw" target="_blank" rel="noopener noreferrer" class="project-link">
-                                    <span>Auf YouTube ansehen</span>
-                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                                </a>
+                                <span class="project-cat" data-i18n="portfolio.facerelax.category2">FaceRelax Berlin</span>
+                                <h3 class="project-title" data-i18n="portfolio.facerelax.project2">Von der Skizze zum finalen Logo. Ich entwerfe ein Konzept, von Grund auf oder exakt nach Ihren Vorstellungen. Ich setze Ihre Idee in die Tat um!</h3>
+                            </div>
+                        </div>
+                    </div> 
+
+                    <!-- NinStationTV -->
+                    <div class="project-card group relative">
+                        <div class="portfolio-card-bg relative aspect-[4/5] bg-white/50 border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                            <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
+                            <img src="/img/portfolio/Branding/NinStationTV/Logo NinStatioTV.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-contain opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
+                            <div class="project-overlay"></div>
+                            <div class="project-content">
+                                <span class="project-cat" data-i18n="portfolio.facerelax.category2">WAV</span>
+                                <h3 class="project-title" data-i18n="portfolio.facerelax.project2">Von der Skizze zum finalen Logo. Ich entwerfe ein Konzept, von Grund auf oder exakt nach Ihren Vorstellungen. Ich setze Ihre Idee in die Tat um!</h3>
                             </div>
                         </div>
                     </div>
-                    <!-- Video Controls -->
-                    <div class="video-controls">
-                        <button class="video-ctrl-btn play-pause-btn active" data-video="video3">
-                            <svg class="pause-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6"/></svg>
-                            <svg class="play-icon w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </button>
-                        <button class="video-ctrl-btn sound-btn" data-video="video3">
-                            <svg class="sound-off-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
-                            <svg class="sound-on-icon w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
-                        </button>
-                    </div>
-                    <div class="py-8 md:py-8">
-                        <h3 class="project-title">Intro für Tamiix ersten Blick auf Hytale – das Spiel, das Minecraft ablösen soll.</h3>
-                    </div>
-                    <div class="section-divider-line"></div>
-                </div>
-
-                <!-- Project ArrowTV Minecraft Bingo Intro -->
-                <div id="TamiixHytale" class="py-2 md:py-8 px-6 relative">
-                    <div class="portfolio-header">
-                    <div class="portfolio-heading-wrap">
-                        <span class="section-bg-num" style="margin-bottom:-52px">04</span>
-                        <h2 class="portfolio-h2-large">
-                            <span>ArrowTV</span><br>
-                            <em>Minecraft Bingo</em>
-                        </h2>
-                    </div>
-                    </div>
-
-                    <div class="project-card project-card-wide group relative">
-                        <div class="portfolio-card-bg relative aspect-video bg-[#171719] border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                    
+                    <!-- Exodus -->
+                    <div class="project-card group relative">
+                        <div class="portfolio-card-bg relative aspect-[4/5] bg-[#171719]/50 border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
                             <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                                <video
-                                    id="video4"
-                                    class="w-full h-full object-cover opacity-0 transition-opacity duration-500"
-                                    autoplay
-                                    muted
-                                    loop
-                                    playsinline
-                                    preload="metadata"
-                                    loading="lazy"
-                                    poster="thumbnail.jpg"
-                                    onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()">
-
-                                    <source src="/img/portfolio/YouTube Intros/BlackArrowIntroMinecraftBingo.webm" type="video/webm">
-                                </video>                       
+                            <img src="/img/portfolio/Branding/Exodus/Logo EXODUS.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-contain opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
                             <div class="project-overlay"></div>
                             <div class="project-content">
-                                <a href="https://youtu.be/vLTh54_Pwrw" target="_blank" rel="noopener noreferrer" class="project-link">
-                                    <span>Auf YouTube ansehen</span>
-                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                                </a>
+                                <span class="project-cat" data-i18n="portfolio.facerelax.category2">Exodus</span>
+                                <h3 class="project-title" data-i18n="portfolio.facerelax.project2">Von der Skizze zum finalen Logo. Ich entwerfe ein Konzept, von Grund auf oder exakt nach Ihren Vorstellungen. Ich setze Ihre Idee in die Tat um!</h3>
+                            </div>
+                        </div>
+                    </div> 
+
+                    <!-- WAV -->
+                    <div class="project-card group relative">
+                        <div class="portfolio-card-bg relative aspect-[4/5] bg-white/50 border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
+                            <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
+                            <img src="/img/portfolio/Branding/WAV/Logo WAV.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-contain opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
+                            <div class="project-overlay"></div>
+                            <div class="project-content">
+                                <span class="project-cat" data-i18n="portfolio.facerelax.category2">WAV</span>
+                                <h3 class="project-title" data-i18n="portfolio.facerelax.project2">Von der Skizze zum finalen Logo. Ich entwerfe ein Konzept, von Grund auf oder exakt nach Ihren Vorstellungen. Ich setze Ihre Idee in die Tat um!</h3>
                             </div>
                         </div>
                     </div>
-                    <!-- Video Controls -->
-                    <div class="video-controls">
-                        <button class="video-ctrl-btn play-pause-btn active" data-video="video4">
-                            <svg class="pause-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6"/></svg>
-                            <svg class="play-icon w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </button>
-                        <button class="video-ctrl-btn sound-btn" data-video="video4">
-                            <svg class="sound-off-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
-                            <svg class="sound-on-icon w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
-                        </button>
-                    </div>
-                    <div class="py-8 md:py-8">
-                        <h3 class="project-title">Intro für ein Minecraft Bingo-Duell. Zwei Teams, ein Format. Produziert für ArrowTV.</h3>
-                    </div>
+
                 </div>
-            </div>
         </div>
     </section>
 
@@ -562,74 +513,5 @@
             </div>
         </div>
     </div>
-
-    <!-- Video Controls Logic -->
-    <script>
-    (function () {
-        function updateSoundBtn(btn, isMuted) {
-            if (isMuted) {
-                btn.querySelector('.sound-off-icon').classList.remove('hidden');
-                btn.querySelector('.sound-on-icon').classList.add('hidden');
-                btn.classList.remove('active');
-            } else {
-                btn.querySelector('.sound-off-icon').classList.add('hidden');
-                btn.querySelector('.sound-on-icon').classList.remove('hidden');
-                btn.classList.add('active');
-            }
-        }
-
-        function updatePlayBtn(btn, isPaused) {
-            if (isPaused) {
-                btn.querySelector('.pause-icon').classList.add('hidden');
-                btn.querySelector('.play-icon').classList.remove('hidden');
-                btn.classList.remove('active');
-            } else {
-                btn.querySelector('.pause-icon').classList.remove('hidden');
-                btn.querySelector('.play-icon').classList.add('hidden');
-                btn.classList.add('active');
-            }
-        }
-
-        // Play / Pause
-        document.querySelectorAll('.play-pause-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const vid = document.getElementById(this.dataset.video);
-                if (!vid) return;
-                vid.paused ? vid.play() : vid.pause();
-            });
-        });
-
-        // Sound – nur ein Video gleichzeitig mit Ton
-        document.querySelectorAll('.sound-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const vid = document.getElementById(this.dataset.video);
-                if (!vid) return;
-
-                if (vid.muted) {
-                    // Alle anderen stumm schalten
-                    document.querySelectorAll('video').forEach(v => {
-                        if (v.id !== this.dataset.video) {
-                            v.muted = true;
-                            const other = document.querySelector(`.sound-btn[data-video="${v.id}"]`);
-                            if (other) updateSoundBtn(other, true);
-                        }
-                    });
-                    vid.muted = false;
-                    updateSoundBtn(this, false);
-                } else {
-                    vid.muted = true;
-                    updateSoundBtn(this, true);
-                }
-            });
-        });
-
-        // Play/Pause-Button mit nativen Video-Events synchronisieren
-        document.querySelectorAll('video').forEach(vid => {
-            const btn = () => document.querySelector(`.play-pause-btn[data-video="${vid.id}"]`);
-            vid.addEventListener('play',  () => { const b = btn(); if (b) updatePlayBtn(b, false); });
-            vid.addEventListener('pause', () => { const b = btn(); if (b) updatePlayBtn(b, true);  });
-        });
-    })();
-    </script>
 </body>
 </html>

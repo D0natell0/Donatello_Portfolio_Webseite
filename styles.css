@@ -213,8 +213,8 @@ body.dark-mode .btn-ghost {
     border: 1px solid rgba(243, 239, 249, 0.2);
 }
 body.light-mode .btn-ghost {
-    color: #10071A;
-    border: 1px solid rgba(16, 7, 26, 0.2);
+    color: #F3EFF9;
+    border: 1px solid rgba(243, 239, 249, 0.2);
 }
 .btn-ghost:hover {
     border-color: #A855F7;
