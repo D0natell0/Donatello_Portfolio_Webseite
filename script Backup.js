@@ -33,7 +33,6 @@ const translations = {
         'portfolio.category4': 'Branding',
         'portfolio.category5': 'Image Editing',
         'portfolio.category6': 'Social Media',
-        'portfolio.filterAll': 'All',
         'portfolio.project1': 'Dynamic graphics and explainer videos',
         'portfolio.project2': 'Three-dimensional animations and visualizations',
         'portfolio.project3': 'Editing, effects, and post-production',
@@ -165,7 +164,6 @@ const translations = {
         'portfolio.category4': 'Branding',
         'portfolio.category5': 'Bildbearbeitung',
         'portfolio.category6': 'Social Media',
-        'portfolio.filterAll': 'Alle',
         'portfolio.project1': 'Dynamische Grafiken und Erklärvideos',
         'portfolio.project2': 'Dreidimensionale Animationen und Visualisierungen',
         'portfolio.project3': 'Schnitt, Effekte und Postproduktion',
@@ -761,39 +759,6 @@ if (form) {
             button.disabled = false;
             button.querySelector('.btn-text').classList.remove('hidden');
             button.querySelector('.btn-loading').classList.add('hidden');
-        }
-    });
-}
-
-// ── Portfolio Filter ────────────────────────────────
-function filterPortfolio(category) {
-    const cards = document.querySelectorAll('.portfolio-grid .project-card');
-    const buttons = document.querySelectorAll('.portfolio-filter-btn');
-
-    // Update active filter button
-    buttons.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.filter === category);
-    });
-
-    cards.forEach(card => {
-        const match = category === 'all' || card.dataset.category === category;
-        if (match) {
-            card.style.display = '';
-            // Trigger re-entrance animation
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(16px)';
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    card.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                });
-            });
-        } else {
-            card.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(8px)';
-            setTimeout(() => { card.style.display = 'none'; }, 200);
         }
     });
 }
