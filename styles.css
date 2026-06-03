@@ -251,7 +251,7 @@ body.light-mode .hero-scroll-indicator svg { color: rgba(16, 7, 26, 0.3); }
 .section-divider-line {
     flex: 1;
     height: 1px;
-    background: rgba(125, 55, 195, 0.15);
+    background: rgba(125, 55, 195, 0.5);
 }
 .section-divider-text {
     font-size: 10px;
@@ -275,8 +275,8 @@ body.light-mode .hero-scroll-indicator svg { color: rgba(16, 7, 26, 0.3); }
     pointer-events: none;
     user-select: none;
 }
-body.dark-mode  .section-bg-num { color: rgba(125, 55, 195, 0.07); }
-body.light-mode .section-bg-num { color: rgba(125, 55, 195, 0.08); }
+body.dark-mode  .section-bg-num { color: rgba(125, 55, 195, 0.3); }
+body.light-mode .section-bg-num { color: rgba(125, 55, 195, 0.3); }
 
 .section-title-new {
     font-size: clamp(28px, 4.5vw, 48px);
