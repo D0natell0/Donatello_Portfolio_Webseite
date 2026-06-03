@@ -29,16 +29,6 @@
 
             document.body.insertBefore(nav, document.body.firstChild);
 
-            // Scroll-Listener: auf Startseite normal, auf Unterseiten fest
-            const navbar = document.getElementById('navbar');
-            if (!isSubpage) {
-                window.addEventListener('scroll', function () {
-                    navbar.classList.toggle('navbar-scrolled', window.scrollY > 20);
-                }, { passive: true });
-                // Initialzustand setzen
-                navbar.classList.toggle('navbar-scrolled', window.scrollY > 20);
-            }
-
             // Sprache auf die neu injizierten Nav-Elemente anwenden
             if (typeof updateContent === 'function') {
                 updateContent();
