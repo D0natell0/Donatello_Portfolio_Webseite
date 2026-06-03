@@ -26,7 +26,18 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center gap-2">
                     <button onclick="scrollToSection('about')" class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.about">About me</button>
-                    <button onclick="scrollToSection('portfolio')" class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.portfolio">Portfolio</button>
+                    <!-- Portfolio Dropdown -->
+                    <div class="portfolio-dropdown">
+                        <button onclick="scrollToSection('portfolio')" class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.portfolio">Portfolio</button>
+                        <div class="portfolio-menu rounded-bl-xl rounded-tr-xl shadow-2xl backdrop-blur-xl overflow-hidden">
+                            <!-- <button class="portfolio-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20" data-i18n="portfolio.category1">2D-Animation</button> -->
+                            <!-- <button class="portfolio-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20" data-i18n="portfolio.category2">3D-Animation</button> -->
+                            <a href="/Video/" rel="noopener noreferrer"><button class="portfolio-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20" data-i18n="portfolio.category3">Videoschnitt</button></a>
+                            <!-- <button class="portfolio-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20" data-i18n="portfolio.category6">Social Media</button> -->
+                            <a href="/Branding/" rel="noopener noreferrer"><button class="portfolio-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20" data-i18n="portfolio.category4">Branding</button></a>
+                            <!-- <button class="portfolio-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20" data-i18n="portfolio.category5">Bildbearbeitung</button> -->
+                        </div>
+                    </div>
                     <button onclick="scrollToSection('contact')" class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.contact">Contact</button>
 
                     <!-- Language Selector -->
@@ -64,6 +75,15 @@
             <div class="px-6 py-6 space-y-2">
                 <button onclick="scrollToSection('about'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300" data-i18n="nav.about">About me</button>
                 <button onclick="scrollToSection('portfolio'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300" data-i18n="nav.portfolio">Portfolio</button>
+                <!-- Portfolio Unterkategorien (Mobile) -->
+                <div class="pl-4 space-y-1 border-l-2 border-[#7D37C3]/30 ml-4">
+                    <!-- <button class="portfolio-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20" data-i18n="portfolio.category1">2D-Animation</button> -->
+                    <!-- <button class="portfolio-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20" data-i18n="portfolio.category2">3D-Animation</button> -->
+                    <a href="/Video/" rel="noopener noreferrer"><button class="portfolio-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20" data-i18n="portfolio.category3">Videoschnitt</button></a>
+                    <!-- <button class="portfolio-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20" data-i18n="portfolio.category6">Social Media</button> -->
+                    <a href="/Branding/" rel="noopener noreferrer"><button class="portfolio-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20" data-i18n="portfolio.category4">Branding</button></a>
+                    <!-- <button class="portfolio-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20" data-i18n="portfolio.category5">Bildbearbeitung</button> -->
+                </div>
                 <button onclick="scrollToSection('contact'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300" data-i18n="nav.contact">Contact</button>
                 <div class="pt-4 border-t border-[#7D37C3]/20 space-y-2">
                     <button onclick="changeLanguage('de'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300">🇩🇪 Deutsch</button>
@@ -355,15 +375,26 @@
                 </div>
             </div>
 
+            <!-- Filter Buttons
+            <div class="portfolio-filter-bar" id="portfolioFilterBar">
+                <button class="portfolio-filter-btn active" data-filter="all" onclick="filterPortfolio('all')" data-i18n="portfolio.filterAll">Alle</button>
+                <button class="portfolio-filter-btn" data-filter="2d-animation" onclick="filterPortfolio('2d-animation')" data-i18n="portfolio.category1">2D-Animation</button>
+                <button class="portfolio-filter-btn" data-filter="3d-animation" onclick="filterPortfolio('3d-animation')" data-i18n="portfolio.category2">3D-Animation</button>
+                <button class="portfolio-filter-btn" data-filter="videoschnitt" onclick="filterPortfolio('videoschnitt')" data-i18n="portfolio.category3">Videoschnitt</button>
+                <button class="portfolio-filter-btn" data-filter="social-media" onclick="filterPortfolio('social-media')" data-i18n="portfolio.category6">Social Media</button>
+                <button class="portfolio-filter-btn" data-filter="branding" onclick="filterPortfolio('branding')" data-i18n="portfolio.category4">Branding</button>
+                <button class="portfolio-filter-btn" data-filter="bildbearbeitung" onclick="filterPortfolio('bildbearbeitung')" data-i18n="portfolio.category5">Bildbearbeitung</button>
+            </div> -->
+
             <!-- Asymmetric Grid -->
             <div class="portfolio-grid">
 
                 <!-- 2D-Animation -->
-                <div class="project-card group relative">
+                <div class="project-card group relative" data-category="2d-animation">
                     <!-- <a href="/Video/" rel="noopener noreferrer"> -->
                     <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
                         <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                        <video src="img/portfolio/2D Animation/logo_animation.webm" loading="lazy" alt="2D Animation" class="w-full h-full object-contain opacity-0 transition-opacity duration-300" onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()" width="640" height="360" autoplay loop playsinline muted></video>
+                        <video src="img/portfolio/Thumbnails/Thumbnail_2D_Animation.webm" loading="lazy" alt="2D Animation" class="w-full h-full object-contain opacity-0 transition-opacity duration-300" onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()" width="640" height="360" autoplay loop playsinline muted></video>
                         <div class="project-overlay"></div>                        
                     </div>
                     <div class="project-content">
@@ -373,11 +404,11 @@
                 </div> 
 
                 <!-- 3D Animation -->
-                <div class="project-card group relative">
+                <div class="project-card group relative" data-category="3d-animation">
                     <!-- <a href="/Video/" rel="noopener noreferrer"> -->
                     <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
                         <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                        <video src="img/portfolio/3D Animation/Donut Final Render.webm" loading="lazy" alt="3D Animation" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()" width="640" height="360" autoplay loop playsinline muted></video>
+                        <video src="img/portfolio/Thumbnails/Thumbnail_3D-Animation.webm" loading="lazy" alt="3D Animation" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()" width="640" height="360" autoplay loop playsinline muted></video>
                         <div class="project-overlay"></div>                        
                     </div>
                     <div class="project-content">
@@ -387,22 +418,22 @@
                 </div> 
 
                 <!-- Video Editing -->
-                <div class="project-card group relative">
+                <div class="project-card group relative" data-category="videoschnitt">
                     <a href="/Video/" rel="noopener noreferrer">
                     <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
                         <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                        <img src="img/portfolio/Video Edits/Video Editing.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
+                        <img src="img/portfolio/Thumbnails/Thumbnail_Videoschnitt.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
                         <div class="project-overlay"></div>                        
                     </div>
                     </a>
                 </div> 
 
                 <!-- Social Media -->
-                <div class="project-card group relative">
+                <div class="project-card group relative" data-category="social-media">
                     <!-- <a href="/Video/" rel="noopener noreferrer"> -->
                     <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
                         <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                        <video src="img/portfolio/Social Media/Social Media Mockup.webm" loading="lazy" alt="Social Media" class="w-full h-full object-contain opacity-0 transition-opacity duration-300" onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()" width="640" height="360" autoplay loop playsinline muted></video>
+                        <video src="img/portfolio/Thumbnails/Thumbnail_Social_Media.webm" loading="lazy" alt="Social Media" class="w-full h-full object-contain opacity-0 transition-opacity duration-300" onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()" width="640" height="360" autoplay loop playsinline muted></video>
                         <div class="project-overlay"></div>                        
                     </div>
                     <div class="project-content">
@@ -412,22 +443,22 @@
                 </div> 
 
                 <!-- Branding -->
-                <div class="project-card group relative">
+                <div class="project-card group relative" data-category="branding">
                     <a href="/Branding/" rel="noopener noreferrer">
                     <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
                         <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                        <img src="img/portfolio/Branding/Eispalast Ludwigslust/Eispalast_Ludwigslust_Visitenkarte_und_Brief.webp" loading="lazy" alt="Branding" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
+                        <img src="img/portfolio/Thumbnails/Thumbnail_Branding.webp" loading="lazy" alt="Branding" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
                         <div class="project-overlay"></div>                        
                     </div>
                     </a>
                 </div> 
 
                 <!-- Bildbearbeitung -->
-                <div class="project-card group relative">
+                <div class="project-card group relative" data-category="bildbearbeitung">
                     <!-- <a href="/Video/" rel="noopener noreferrer"> -->
                     <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
                         <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                        <img src="img/portfolio/Bild Edits/Pickel Retouche.webp" loading="lazy" alt="Image Editing" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
+                        <video src="img/portfolio/Thumbnails/Thumbnail_Photoedit.webm" loading="lazy" alt="Social Media" class="w-full h-full object-contain opacity-0 transition-opacity duration-300" onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()" width="640" height="360" autoplay loop playsinline muted></video>
                         <div class="project-overlay"></div>                        
                     </div>
                     <div class="project-content">

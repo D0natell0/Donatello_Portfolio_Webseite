@@ -52,65 +52,7 @@
 <body class="dark-mode">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="flex items-center justify-between h-20">
-
-                <!-- Logo -->
-                <a href="../" class="flex items-center gap-3 group">
-                    <div class="h-6 flex items-center justify-center">
-                        <img src="/img/logo/Donatello_Logo_Wort_Bildmarke_Horizontal.svg" alt="Donatello Media Logo" class="w-full h-full object-contain">
-                    </div>
-                </a>
-
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center gap-2">
-                    <button onclick="scrollToSection('portfolio')" class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.portfolio">Portfolio</button>
-                    <button onclick="scrollToSection('contact')" class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.contact">Contact</button>
-
-                    <!-- Language Selector -->
-                    <div class="language-dropdown ml-2">
-                        <button class="nav-link px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)]" data-i18n="nav.language">Language</button>
-                        <div class="language-menu rounded-bl-xl rounded-tr-xl shadow-2xl backdrop-blur-xl overflow-hidden">
-                            <button onclick="changeLanguage('de')" class="lang-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20 flex items-center gap-2">🇩🇪 Deutsch</button>
-                            <button onclick="changeLanguage('en')" class="lang-option w-full text-left px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[#7D37C3]/20 flex items-center gap-2">🇬🇧 English</button>
-                        </div>
-                    </div>
-
-                    <!-- Dark Mode Toggle -->
-                    <button onclick="toggleDarkMode()" class="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:text-[#7D37C3] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(125,55,195,0.6)] dark-mode-btn">
-                        <svg class="w-5 h-5 sun-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                        <svg class="w-5 h-5 moon-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
-                    </button>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="flex items-center gap-3 md:hidden">
-                    <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 dark-mode-btn-mobile">
-                        <svg class="w-4 h-4 sun-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                        <svg class="w-4 h-4 moon-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
-                    </button>
-                    <button onclick="toggleMobileMenu()" class="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 burger-btn">
-                        <svg class="w-5 h-5 hamburger-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-                        <svg class="w-5 h-5 close-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div class="mobile-menu md:hidden mobile-menu-bg">
-            <div class="px-6 py-6 space-y-2">
-                <button onclick="scrollToSection('about'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300" data-i18n="nav.about">About me</button>
-                <button onclick="scrollToSection('portfolio'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300" data-i18n="nav.portfolio">Portfolio</button>
-                <button onclick="scrollToSection('contact'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300" data-i18n="nav.contact">Contact</button>
-                <div class="pt-4 border-t border-[#7D37C3]/20 space-y-2">
-                    <button onclick="changeLanguage('de'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300">🇩🇪 Deutsch</button>
-                    <button onclick="changeLanguage('en'); toggleMobileMenu();" class="mobile-menu-link block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300">🇬🇧 English</button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <script src="/nav-loader.js"></script>
 
     <!-- ═══════════════════════════════════════════
          PORTFOLIO — Videobearbeitung

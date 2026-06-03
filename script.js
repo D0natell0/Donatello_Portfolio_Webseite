@@ -348,9 +348,23 @@ function scrollToTop(event) {
 }
 
 // ── Navbar Scroll Effect ────────────────────────────
+// Scroll-Effekt nur auf der Startseite – Unterseiten bleiben immer eingeblendet
+const isHomepage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+
 window.addEventListener('scroll', function() {
+    if (!isHomepage) return;
     const navbar = document.getElementById('navbar');
-    navbar.classList.toggle('navbar-scrolled', window.scrollY > 20);
+    if (navbar) navbar.classList.toggle('navbar-scrolled', window.scrollY > 20);
+}, { passive: true });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    if (isHomepage) {
+        navbar.classList.toggle('navbar-scrolled', window.scrollY > 20);
+    } else {
+        navbar.classList.add('navbar-scrolled');
+    }
 });
 
 // ── Init on Load ────────────────────────────────────
