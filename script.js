@@ -387,59 +387,75 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 // ── Impressum ───────────────────────────────────────
-const impressumModal = document.getElementById("impressumModal");
+// Modals werden per footer-loader.js asynchron geladen → lazy lookup statt
+// statischer Konstante, damit getElementById nicht null zurückgibt.
 
 function openImpressum() {
-    impressumModal.classList.remove("hidden");
+    const modal = document.getElementById("impressumModal");
+    const content = document.getElementById("impressumContent");
+    if (!modal) return;
+    modal.classList.remove("hidden");
     requestAnimationFrame(() => {
-        impressumModal.classList.add("flex", "opacity-100");
-        impressumContent.classList.add("scale-100");
+        modal.classList.add("flex", "opacity-100");
+        content.classList.add("scale-100");
     });
 }
 
 function closeImpressum(event) {
-    if (event && event.target !== impressumModal) return;
-    impressumModal.classList.remove("opacity-100");
-    impressumContent.classList.remove("scale-100");
-    setTimeout(() => impressumModal.classList.add("hidden"), 300);
+    const modal = document.getElementById("impressumModal");
+    const content = document.getElementById("impressumContent");
+    if (!modal) return;
+    if (event && event.target !== modal) return;
+    modal.classList.remove("opacity-100");
+    content.classList.remove("scale-100");
+    setTimeout(() => modal.classList.add("hidden"), 300);
 }
 
 document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && impressumModal && !impressumModal.classList.contains("hidden")) {
-        impressumModal.classList.remove("opacity-100");
-        impressumContent.classList.remove("scale-100");
-        setTimeout(() => impressumModal.classList.add("hidden"), 300);
+    const modal = document.getElementById("impressumModal");
+    const content = document.getElementById("impressumContent");
+    if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+        modal.classList.remove("opacity-100");
+        content.classList.remove("scale-100");
+        setTimeout(() => modal.classList.add("hidden"), 300);
     }
 });
 
 // ── Datenschutz ─────────────────────────────────────
-const datenschutzModal = document.getElementById("datenschutzModal");
 
 function openDatenschutz() {
-    datenschutzModal.classList.remove("hidden");
+    const modal = document.getElementById("datenschutzModal");
+    const content = document.getElementById("datenschutzContent");
+    if (!modal) return;
+    modal.classList.remove("hidden");
     document.body.classList.add("overflow-hidden");
     requestAnimationFrame(() => {
-        datenschutzModal.classList.add("flex", "opacity-100");
-        datenschutzContent.classList.add("scale-100");
+        modal.classList.add("flex", "opacity-100");
+        content.classList.add("scale-100");
     });
 }
 
 function closeDatenschutz(event) {
-    if (event && event.target !== datenschutzModal) return;
-    datenschutzModal.classList.remove("opacity-100");
-    datenschutzContent.classList.remove("scale-100");
+    const modal = document.getElementById("datenschutzModal");
+    const content = document.getElementById("datenschutzContent");
+    if (!modal) return;
+    if (event && event.target !== modal) return;
+    modal.classList.remove("opacity-100");
+    content.classList.remove("scale-100");
     setTimeout(() => {
-        datenschutzModal.classList.add("hidden");
+        modal.classList.add("hidden");
         document.body.classList.remove("overflow-hidden");
     }, 300);
 }
 
 document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && datenschutzModal && !datenschutzModal.classList.contains("hidden")) {
-        datenschutzModal.classList.remove("opacity-100");
-        datenschutzContent.classList.remove("scale-100");
+    const modal = document.getElementById("datenschutzModal");
+    const content = document.getElementById("datenschutzContent");
+    if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+        modal.classList.remove("opacity-100");
+        content.classList.remove("scale-100");
         setTimeout(() => {
-            datenschutzModal.classList.add("hidden");
+            modal.classList.add("hidden");
             document.body.classList.remove("overflow-hidden");
         }, 300);
     }

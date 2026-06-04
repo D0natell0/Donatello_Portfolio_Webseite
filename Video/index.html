@@ -47,6 +47,53 @@
             color: #A855F7;
         }
         .video-ctrl-btn svg { flex-shrink: 0; }
+
+        /* ── Volume Slider ───────────────────────────── */
+        .volume-slider-wrap {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            overflow: hidden;
+            max-width: 0;
+            opacity: 0;
+            transition: max-width 0.3s ease, opacity 0.3s ease;
+        }
+        .volume-slider-wrap.visible {
+            max-width: 110px;
+            opacity: 1;
+        }
+        .volume-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 80px;
+            height: 3px;
+            border-radius: 2px;
+            background: rgba(125, 55, 195, 0.35);
+            outline: none;
+            cursor: pointer;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #A855F7;
+            cursor: pointer;
+            transition: transform 0.15s;
+        }
+        .volume-slider::-webkit-slider-thumb:hover { transform: scale(1.3); }
+        .volume-slider::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #A855F7;
+            border: none;
+            cursor: pointer;
+        }
+        body.light-mode .volume-slider {
+            background: rgba(125, 55, 195, 0.2);
+        }
     </style>
 </head>
 <body class="dark-mode">
@@ -59,7 +106,7 @@
     ═══════════════════════════════════════════ -->
     <section id="portfolio" class=" relative">
         <div class="max-w-6xl mx-auto">
-            <div id="Divider" class="py-24 md:py-32 px-6 relative">
+            <div id="Divider" class="py-24 md:py-32 relative">
                 <div class="section-divider-label">
                     <div class="section-divider-line"></div>
                     <span class="section-divider-text"><span data-i18n="nav.portfolio.videobearbeitung">Videobearbeitung</span></span>
@@ -67,7 +114,7 @@
                 </div>
 
                 <!-- Project ArrowTV Minecraft Zero Intro -->
-                <div id="ArrowTVMinecraftZero" class="py-8 md:py-2 px-6 relative">
+                <div id="ArrowTVMinecraftZero" class="relative">
 
                     <div class="portfolio-header">
                     <div class="portfolio-heading-wrap">
@@ -115,6 +162,9 @@
                             <svg class="sound-off-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
                             <svg class="sound-on-icon w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
                         </button>
+                        <div class="volume-slider-wrap" data-video="video1">
+                            <input type="range" class="volume-slider" data-video="video1" min="0" max="1" step="0.02" value="1">
+                        </div>
                     </div>
                     <!-- <div class="py-8 md:py-8">
                         <h3 class="project-title">Intro-Animation für ArrowTVs Teilnahme am YouTube-Format Minecraft Zero. Schnell, markant, auf den Kanal zugeschnitten.</h3>
@@ -125,7 +175,7 @@
                 </div>
 
                 <!-- Project RUVAAK -->
-                 <div id="RUVAAK" class="py-2 md:py-8 px-6 relative">
+                 <div id="RUVAAK" class="relative">
                     <div class="portfolio-header">
                     <div class="portfolio-heading-wrap">
                         <span class="section-bg-num">02</span>
@@ -172,6 +222,9 @@
                             <svg class="sound-off-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
                             <svg class="sound-on-icon w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
                         </button>
+                        <div class="volume-slider-wrap" data-video="video2">
+                            <input type="range" class="volume-slider" data-video="video2" min="0" max="1" step="0.02" value="1">
+                        </div>
                     </div>
                     <!-- <div class="py-8 md:py-8">
                         <h3 class="project-title">Rohes Footage aus dem Boxclub, auf den Punkt geschnitten. Werbevideo für die Box-Brand RUVAAK.</h3>
@@ -182,7 +235,7 @@
                 </div>
 
                 <!-- Project Tamiix Minecraft Killer Hytale -->
-                <div id="TamiixHytale" class="py-2 md:py-8 px-6 relative">
+                <div id="TamiixHytale" class="py-2 md:py-8 relative">
                     <div class="portfolio-header">
                     <div class="portfolio-heading-wrap">
                         <span class="section-bg-num">03</span>
@@ -229,6 +282,9 @@
                             <svg class="sound-off-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
                             <svg class="sound-on-icon w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
                         </button>
+                        <div class="volume-slider-wrap" data-video="video3">
+                            <input type="range" class="volume-slider" data-video="video3" min="0" max="1" step="0.02" value="1">
+                        </div>
                     </div>
                     <!-- <div class="py-8 md:py-8">
                         <h3 class="project-title">Intro für Tamiix ersten Blick auf Hytale – das Spiel, das Minecraft ablösen soll.</h3>
@@ -239,7 +295,7 @@
                 </div>
 
                 <!-- Project ArrowTV Minecraft Bingo Intro -->
-                <div id="TamiixHytale" class="py-2 md:py-8 px-6 relative">
+                <div id="TamiixHytale" class="py-2 md:py-8 relative">
                     <div class="portfolio-header">
                     <div class="portfolio-heading-wrap">
                         <span class="section-bg-num">04</span>
@@ -286,6 +342,9 @@
                             <svg class="sound-off-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
                             <svg class="sound-on-icon w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
                         </button>
+                        <div class="volume-slider-wrap" data-video="video4">
+                            <input type="range" class="volume-slider" data-video="video4" min="0" max="1" step="0.02" value="1">
+                        </div>
                     </div>
                     <!-- <div class="py-8 md:py-8">
                         <h3 class="project-title">Intro für ein Minecraft Bingo-Duell. Zwei Teams, ein Format. Produziert für ArrowTV.</h3>
@@ -403,113 +462,8 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer-border py-8 px-6">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="h-6 flex items-center justify-center">
-                <img src="/img/logo/Donatello_Logo_Wort_Bildmarke_Horizontal.svg" alt="Donatello Media Logo" class="w-full h-full object-contain">
-            </div>
-            <button onclick="openImpressum()" class="ml-1 underline transition-colors duration-200 hover:text-[#7D37C3]" aria-haspopup="dialog">
-                <p class="footer-copyright text-sm duration-300 hover:-translate-y-0.5 hover:opacity-90" data-i18n="impressum.footer">Impressum</p>
-            </button>
-            <button onclick="openDatenschutz()" class="ml-1 underline transition-colors duration-200 hover:text-[#7D37C3]" aria-haspopup="dialog">
-                <p class="footer-copyright text-sm duration-300 hover:-translate-y-0.5 hover:opacity-90" data-i18n="datenschutz.footer">Datenschutz</p>
-            </button>
-            <p class="footer-copyright text-sm" data-i18n="footer.copyright">© 2026 Donatello-Media. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Toast -->
-    <div id="toast" class="fixed bottom-6 right-6 bg-[#7D37C3] text-white px-4 py-3 rounded-xl shadow-xl opacity-0 pointer-events-none transition-all duration-300" role="status" aria-live="polite"></div>
-
-    <!-- Impressum Modal -->
-    <div id="impressumModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0" onclick="closeImpressum(event)">
-        <div id="impressumContent" class="relative w-full max-w-lg mx-4 max-h-[85vh] rounded-bl-2xl rounded-tr-2xl bg-[#7D37C370] text-gray-200 border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-xl transform scale-95 transition-all duration-300 flex flex-col" onclick="event.stopPropagation()" role="dialog" aria-modal="true">
-            <div class="sticky top-0 z-10 bg-[#7D37C3]/80 backdrop-blur px-6 py-4 flex items-center justify-between rounded-tr-2xl">
-                <h2 data-i18n="impressum.title" class="text-xl font-semibold"></h2>
-                <button onclick="closeImpressum()" class="text-gray-300 transition hover:text-white text-xl" aria-label="Close Impressum">✕</button>
-            </div>
-            <div class="relative px-6 py-4 space-y-3 text-sm leading-relaxed overflow-y-auto">
-                <p><strong data-i18n="impressum.name"></strong></p>
-                <p><span data-i18n="impressum.owner"></span>: Niklas Schubert</p>
-                <p data-i18n="impressum.address"></p>
-                <p><span data-i18n="impressum.email"></span>: <a href="mailto:donatello-media@outlook.de" class="underline">donatello-media@outlook.de</a></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Datenschutz Modal -->
-    <div id="datenschutzModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0" onclick="closeDatenschutz(event)">
-        <div id="datenschutzContent" class="relative w-full max-w-3xl mx-4 max-h-[85vh] rounded-bl-2xl rounded-tr-2xl bg-[#7D37C370] text-gray-200 border-b-2 border-[#7D37C3] bg-[#7D37C320] shadow-xl transform scale-95 transition-all duration-300 flex flex-col" onclick="event.stopPropagation()" role="dialog" aria-modal="true">
-            <div class="sticky top-0 z-10 bg-[#7D37C3]/80 backdrop-blur px-6 py-4 flex items-center justify-between rounded-tr-2xl">
-                <h2 data-i18n="datenschutz.title" class="text-xl font-semibold"></h2>
-                <button onclick="closeDatenschutz()" class="text-gray-300 transition hover:text-white text-xl" aria-label="Close Datenschutz">✕</button>
-            </div>
-            <div class="relative px-6 py-4 space-y-3 text-sm leading-relaxed overflow-y-auto my-text-area">
-                <style>
-                    .my-text-area p { margin: 0; line-height: 1.5; }
-                    .my-text-area a { text-decoration: underline; }
-                    .datenEinzug { margin-left: 1.5em; display: inline-block; }
-                    .bullet { position: relative; padding-left: 0.5em; }
-                    .bullet::before { content: "•"; position: absolute; left: 0; }
-                </style>
-                <p><strong data-i18n="datenschutz.hl1"></strong></p>
-                <span class="datenEinzug"><p data-i18n="datenschutz.text1"></p><br></span>
-                <p><strong data-i18n="datenschutz.hl2"></strong></p>
-                <span class="datenEinzug">
-                    <p data-i18n="datenschutz.text2"></p>
-                    <p><strong data-i18n="datenschutz.name"></strong></p>
-                    <p><span data-i18n="datenschutz.owner"></span>: Niklas Schubert</p>
-                    <p data-i18n="datenschutz.address"></p>
-                    <p><span data-i18n="datenschutz.email"></span>: <a href="mailto:donatello-media@outlook.de" class="underline">donatello-media@outlook.de</a></p><br>
-                </span>
-                <p><strong data-i18n="datenschutz.hl3"></strong></p>
-                <span class="datenEinzug">
-                    <p data-i18n="datenschutz.text3p1"></p>
-                    <p class="bullet" data-i18n="datenschutz.text3p2"></p>
-                    <p class="bullet" data-i18n="datenschutz.text3p3"></p>
-                    <p class="bullet" data-i18n="datenschutz.text3p4"></p>
-                    <p class="bullet" data-i18n="datenschutz.text3p5"></p><br>
-                    <p data-i18n="datenschutz.text3p6"></p><br>
-                </span>
-                <p><strong data-i18n="datenschutz.hl4"></strong></p>
-                <span class="datenEinzug">
-                    <p data-i18n="datenschutz.text4p1"></p><br>
-                    <p><strong data-i18n="datenschutz.text4p2"></strong></p>
-                    <p class="bullet" data-i18n="datenschutz.text4p3"></p>
-                    <p class="bullet" data-i18n="datenschutz.text4p4"></p>
-                    <p class="bullet" data-i18n="datenschutz.text4p5"></p>
-                    <p class="bullet" data-i18n="datenschutz.text4p6"></p><br>
-                    <p><strong data-i18n="datenschutz.text4p7"></strong></p>
-                    <p class="bullet" data-i18n="datenschutz.text4p8"></p>
-                    <p class="bullet" data-i18n="datenschutz.text4p9"></p><br>
-                    <p><strong data-i18n="datenschutz.text4p10"></strong></p>
-                    <p class="bullet" data-i18n="datenschutz.text4p11"></p>
-                    <p class="bullet" data-i18n="datenschutz.text4p12"></p><br>
-                    <p><strong data-i18n="datenschutz.text4p13"></strong></p>
-                    <p class="bullet" data-i18n="datenschutz.text4p14"></p>
-                    <p class="bullet" data-i18n="datenschutz.text4p15"></p><br>
-                    <p data-i18n="datenschutz.text4p16"></p><br>
-                </span>
-                <p><strong data-i18n="datenschutz.hl5"></strong></p>
-                <span class="datenEinzug"><p data-i18n="datenschutz.text5"></p><br></span>
-                <p><strong data-i18n="datenschutz.hl6"></strong></p>
-                <span class="datenEinzug">
-                    <p data-i18n="datenschutz.text6p1"></p>
-                    <p data-i18n="datenschutz.text6p2"></p><br>
-                </span>
-                <p><strong data-i18n="datenschutz.hl7"></strong></p>
-                <span class="datenEinzug">
-                    <p data-i18n="datenschutz.text7p1"></p>
-                    <p class="bullet" data-i18n="datenschutz.text7p2"></p>
-                    <p class="bullet" data-i18n="datenschutz.text7p3"></p>
-                    <p class="bullet" data-i18n="datenschutz.text7p4"></p>
-                    <p class="bullet" data-i18n="datenschutz.text7p5"></p><br>
-                    <p data-i18n="datenschutz.text7p6"></p>
-                </span>
-            </div>
-        </div>
-    </div>
+    <!-- Footer, Toast, Impressum & Datenschutz -->
+    <script src="/footer-loader.js"></script>
 
     <!-- Video Controls Logic -->
     <script>
@@ -576,6 +530,47 @@
             const btn = () => document.querySelector(`.play-pause-btn[data-video="${vid.id}"]`);
             vid.addEventListener('play',  () => { const b = btn(); if (b) updatePlayBtn(b, false); });
             vid.addEventListener('pause', () => { const b = btn(); if (b) updatePlayBtn(b, true);  });
+        });
+
+        // Lautstärke-Slider: ein-/ausblenden beim Sound-Button
+        document.querySelectorAll('.sound-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Alle anderen Slider ausblenden
+                document.querySelectorAll('.volume-slider-wrap').forEach(wrap => {
+                    if (wrap.dataset.video !== this.dataset.video) wrap.classList.remove('visible');
+                });
+                const vid = document.getElementById(this.dataset.video);
+                const wrap = document.querySelector(`.volume-slider-wrap[data-video="${this.dataset.video}"]`);
+                if (!wrap || !vid) return;
+                wrap.classList.toggle('visible', !vid.muted);
+            });
+        });
+
+        // Slider-Eingabe → Lautstärke auf ALLE Videos übertragen
+        document.querySelectorAll('.volume-slider').forEach(slider => {
+            slider.addEventListener('input', function () {
+                const newVolume = parseFloat(this.value);
+
+                // Alle Videos auf neue Lautstärke setzen
+                document.querySelectorAll('video').forEach(v => { v.volume = newVolume; });
+
+                // Alle anderen Slider synchronisieren
+                document.querySelectorAll('.volume-slider').forEach(s => {
+                    if (s !== this) s.value = newVolume;
+                });
+
+                // Sound-Button-Status aktualisieren
+                const vid = document.getElementById(this.dataset.video);
+                const btn = document.querySelector(`.sound-btn[data-video="${this.dataset.video}"]`);
+                if (!vid || !btn) return;
+                if (newVolume === 0) {
+                    vid.muted = true;
+                    updateSoundBtn(btn, true);
+                } else if (vid.muted) {
+                    vid.muted = false;
+                    updateSoundBtn(btn, false);
+                }
+            });
         });
     })();
     </script>
