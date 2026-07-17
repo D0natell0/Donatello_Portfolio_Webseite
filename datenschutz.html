@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutz — Donatello Media</title>
+    <meta name="description" content="Datenschutz von Donatello Media.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/svg+xml" href="/assets/bildmarke.svg">
+    <link rel="stylesheet" href="/assets/style.css?v=6">
+    <script src="/assets/app.js?v=6" defer></script>
+</head>
+<body>
+    <!-- Navigation: zentral in /partials/nav.html — einmal ändern, gilt überall -->
+    <!-- include:/partials/nav.html -->
+    <nav class="nav" aria-label="Hauptnavigation">
+        <a href="/" class="nav-brand">
+            <!-- Desktop Logo -->
+            <img src="/assets/Donatello_Logo_Wort_Bildmarke_Horizontal.svg" class="logo-full" alt="Donatello Media">
+            <!-- Mobile Logo -->
+            <img src="/assets/Donatello_Logo_Bildmarke.svg" class="logo-icon" alt="Donatello Media">
+        </a>
+        <div class="nav-links">
+            <a href="/#arbeiten" class="nav-link" data-i18n="nav.index">Index</a>
+            <a href="/#ueber" class="nav-link" data-i18n="nav.about">Über</a>
+            <a href="/#kontakt" class="nav-cta" data-i18n="nav.cta">Projekt anfragen</a>
+            <span class="nav-sep" aria-hidden="true"></span>
+            <button type="button" class="nav-link nav-lang-mobile" data-setlang="de">🇩🇪 Deutsch</button>
+            <button type="button" class="nav-link nav-lang-mobile" data-setlang="en">🇬🇧 English</button>
+        </div>
+        <div class="nav-tools">
+            <button id="themeToggle" class="tool-btn" aria-label="Farbschema wechseln">
+                <svg class="icon-sun" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.36 6.36l-.7-.7M6.34 6.34l-.7-.7m12.72 0l-.7.7M6.34 17.66l-.7.7M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                <svg class="icon-moon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.35 15.35A9 9 0 018.65 3.65 9 9 0 1020.35 15.35z"/></svg>
+            </button>
+            <button type="button" id="langToggle" class="tool-btn" aria-label="Switch language" title="Sprache wechseln / Switch language">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
+                <span class="tool-label" id="langLabel">EN</span>
+            </button>
+            <button class="nav-burger" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <!-- /include -->
+
+    <main class="section" style="padding-top: calc(76px + 70px);">
+        <div class="wrap" style="max-width: 760px;">
+            <span class="eyebrow">Rechtliches</span>
+            <h1 class="display" style="font-size: clamp(32px, 5vw, 56px); margin: 18px 0 30px;">Datenschutz<span class="violet">.</span></h1>
+            <div class="about-text">
+                <p><strong>Hinweis:</strong> Bitte übernimm hier die vollständige Datenschutzerklärung
+                deiner bestehenden Seite (Hosting, Kontaktformular via Formspree, Server-Logs, Betroffenenrechte).</p>
+                <p>Die Schrift „Montserrat" wird lokal von diesem Server geladen — es findet
+                keine Verbindung zu Google Fonts oder anderen Font-Diensten statt.</p>
+                <p><strong data-i18n="datenschutz.hl1">1. Allgemeine Hinweise</strong></p>
+            <span class="datenEinzug"><p data-i18n="datenschutz.text1">Der Schutz Ihrer persönlichen Daten ist mir ein wichtiges Anliegen. Personenbezogene Daten werden auf dieser Website nur im technisch notwendigen Umfang sowie zur Bearbeitung von Anfragen verarbeitet. Eine Weitergabe an Dritte erfolgt nicht.</p><br></span>
+            <p><strong data-i18n="datenschutz.hl2">2. Verantwortlicher</strong></p>
+            <span class="datenEinzug">
+                <p data-i18n="datenschutz.text2">Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br><strong>Donatello-Media</strong><br>Inhaber: Niklas Schubert<br>Mariusstraße 16, 86199 Augsburg<br>E-Mail: <a href="mailto:donatello-media@outlook.de" class="underline">donatello-media@outlook.de</a></p><br>
+            </span>
+            <p><strong data-i18n="datenschutz.hl3">3. Zugriffsdaten (Server-Logfiles)</strong></p>
+            <span class="datenEinzug">
+                <p data-i18n="datenschutz.text3p1">Beim Besuch dieser Website werden durch den Hostinganbieter automatisch Informationen erfasst (sogenannte Server-Logfiles), z. B.:<br>• IP-Adresse (gekürzt oder anonymisiert)<br>• Datum und Uhrzeit der Anfrage<br>• Browsertyp und -version<br>• Betriebssystem</p>
+                <p data-i18n="datenschutz.text3p6">Diese Daten dienen ausschließlich der technischen Überwachung und Sicherheit der Website und werden nicht mit anderen Datenquellen zusammengeführt.</p><br>
+            </span>
+            <p><strong data-i18n="datenschutz.hl4">4. Kontaktformular</strong></p>
+            <span class="datenEinzug">
+                <p data-i18n="datenschutz.text4p1">Wenn Sie mir über das Kontaktformular Anfragen senden, werden Ihre Angaben aus dem Formular inklusive der von Ihnen angegebenen Kontaktdaten per E-Mail an mich übermittelt und zur Bearbeitung der Anfrage gespeichert.</p><br>
+                <p><strong data-i18n="datenschutz.text4p2">Verarbeitete Daten:</strong><br>
+                • Name (falls angegeben)<br>
+                • E-Mail-Adresse<br>
+                • Nachricht<br>
+                • Weitere im Formular eingegebene Angaben (optional)</p><br>
+                <p><strong data-i18n="datenschutz.text4p7">Zweck der Verarbeitung:</strong><br>
+                • Beantwortung Ihrer Anfrage<br>
+                • Kontaktaufnahme</p>
+                <p><strong data-i18n="datenschutz.text4p10">Rechtsgrundlage:</strong></p>
+                <p class="bullet" data-i18n="datenschutz.text4p11">Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen bzw. Vertragserfüllung)</p>
+                <p class="bullet" data-i18n="datenschutz.text4p12">Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO (durch das Absenden des Formulars)</p><br>
+                <p><strong data-i18n="datenschutz.text4p13">Empfänger der Daten:</strong></p>
+                <p class="bullet" data-i18n="datenschutz.text4p14">Formspree (Dienstleister zur Übermittlung der Formulardaten per E-Mail)</p>
+                <p class="bullet" data-i18n="datenschutz.text4p15">Sie selbst und der Verantwortliche (Donatello-Media)</p><br>
+                <p data-i18n="datenschutz.text4p16">Die Daten werden gelöscht, sobald Ihre Anfrage abschließend bearbeitet wurde und keine gesetzlichen Aufbewahrungspflichten bestehen.</p><br>
+            </span>
+            <p><strong data-i18n="datenschutz.hl5">5. Google Fonts</strong></p>
+            <span class="datenEinzug"><p data-i18n="datenschutz.text5">Auf dieser Website werden Schriftarten (Google Fonts) lokal eingebunden. Es findet keine Verbindung zu Servern von Google statt. Eine Übertragung personenbezogener Daten an Google erfolgt nicht.</p><br></span>
+            <p><strong data-i18n="datenschutz.hl6">6. Social-Media-Links</strong></p>
+            <span class="datenEinzug">
+                <p data-i18n="datenschutz.text6p1">Diese Website enthält Links zu externen Social-Media-Profilen (z. B. Instagram, YouTube). Beim Anklicken dieser Links verlassen Sie meine Website. Erst dann gelten die Datenschutzbestimmungen der jeweiligen Plattformen.</p>
+                <p data-i18n="datenschutz.text6p2">Es werden keine Social-Media-Plugins oder Tracking-Tools eingesetzt.</p><br>
+            </span>
+            <p><strong data-i18n="datenschutz.hl7">7. Ihre Rechte</strong></p>
+            <span class="datenEinzug">
+                <p data-i18n="datenschutz.text7p1">Sie haben jederzeit das Recht auf:</p>
+                <p class="bullet" data-i18n="datenschutz.text7p2">Auskunft über Ihre gespeicherten Daten</p>
+                <p class="bullet" data-i18n="datenschutz.text7p3">Berichtigung oder Löschung</p>
+                <p class="bullet" data-i18n="datenschutz.text7p4">Einschränkung der Verarbeitung</p>
+                <p class="bullet" data-i18n="datenschutz.text7p5">Widerspruch gegen die Verarbeitung</p><br>
+                <p data-i18n="datenschutz.text7p6">Hierzu genügt eine formlose E-Mail an die oben genannte Adresse.</p>
+            </span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer: zentral in /partials/footer.html -->
+    <!-- include:/partials/footer.html -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span>© <span id="year">2026</span> <span data-i18n="footer.tag">Donatello Media — Crafted to move.</span></span>
+            <div class="footer-links">
+                <a href="/impressum.html" data-i18n="footer.imprint">Impressum</a>
+                <a href="/datenschutz.html" data-i18n="footer.privacy">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+    <!-- /include -->
+
+</body>
+</html>

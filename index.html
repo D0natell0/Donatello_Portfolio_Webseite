@@ -3,515 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donatello Media</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/svg+xml" href="img/logo/Donatello_Logo_Bildmarke.svg">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <title>Donatello Media — Motion Design, Video & Branding</title>
+    <meta name="description" content="Donatello Media — Portfolio von Niklas Schubert: Motion Design, Videoschnitt, 3D-Animation, Branding und Bildbearbeitung.">
+    <link rel="icon" type="image/svg+xml" href="/assets/bildmarke.svg">
+    <link rel="stylesheet" href="/assets/style.css?v=6">
+    <script src="/assets/app.js?v=6" defer></script>
 </head>
-<body class="dark-mode">
-
-    <!-- Navigation -->
-    <script src="/nav-loader.js"></script>
-
-    <!-- ═══════════════════════════════════════════
-         HERO — Showreel-Hintergrund + Statement
-    ═══════════════════════════════════════════ -->
-    <section class="hero-gradient relative min-h-screen flex items-end overflow-hidden">
-
-        <!-- Showreel Video Background (dein Video hier einfügen) -->
-        <video class="hero-video-bg" src="img/background/QF Showreel Donatello-Media.webm" autoplay loop muted playsinline></video>
-
-        <!-- Statischer Gradient-Hintergrund (Fallback / bis Showreel fertig) -->
-        <div class="hero-bg-orbs">
-            <div class="hero-orb hero-orb-1"></div>
-            <div class="hero-orb hero-orb-2"></div>
+<body>
+    <!-- Navigation: zentral in /partials/nav.html — einmal ändern, gilt überall -->
+    <!-- include:/partials/nav.html -->
+    <nav class="nav" aria-label="Hauptnavigation">
+        <a href="/" class="nav-brand">
+            <!-- Desktop Logo -->
+            <img src="/assets/Donatello_Logo_Wort_Bildmarke_Horizontal.svg" class="logo-full" alt="Donatello Media">
+            <!-- Mobile Logo -->
+            <img src="/assets/Donatello_Logo_Bildmarke.svg" class="logo-icon" alt="Donatello Media">
+        </a>
+        <div class="nav-links">
+            <a href="/#arbeiten" class="nav-link" data-i18n="nav.index">Index</a>
+            <a href="/#ueber" class="nav-link" data-i18n="nav.about">Über</a>
+            <a href="/#kontakt" class="nav-cta" data-i18n="nav.cta">Projekt anfragen</a>
+            <span class="nav-sep" aria-hidden="true"></span>
+            <button type="button" class="nav-link nav-lang-mobile" data-setlang="de">🇩🇪 Deutsch</button>
+            <button type="button" class="nav-link nav-lang-mobile" data-setlang="en">🇬🇧 English</button>
         </div>
+        <div class="nav-tools">
+            <button id="themeToggle" class="tool-btn" aria-label="Farbschema wechseln">
+                <svg class="icon-sun" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.36 6.36l-.7-.7M6.34 6.34l-.7-.7m12.72 0l-.7.7M6.34 17.66l-.7.7M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                <svg class="icon-moon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.35 15.35A9 9 0 018.65 3.65 9 9 0 1020.35 15.35z"/></svg>
+            </button>
+            <button type="button" id="langToggle" class="tool-btn" aria-label="Switch language" title="Sprache wechseln / Switch language">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
+                <span class="tool-label" id="langLabel">EN</span>
+            </button>
+            <button class="nav-burger" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <!-- /include -->
 
-        <!-- Content — links unten -->
-        <div class="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-12 pb-20 pt-36">
-            <div class="max-w-4xl">
-                <!-- Eyebrow -->
-                <div class="hero-eyebrow fade-in-up" style="animation-delay:0.1s">
-                    <div class="hero-eyebrow-line"></div>
-                    <span class="hero-eyebrow-text">Video · Motion · 3D · Branding · Image</span>
-                </div>
+    <!-- ═══ HERO — Showreel in der D-Leinwand ═══
+         TODO: Showreel unter /assets/showreel.mp4 ablegen
+         (+ optional Posterbild /assets/showreel-poster.webp).
+         Ohne Datei zeigt die Leinwand den Verlauf + Bildmarke. -->
+    <header class="hero">
+        <div class="hero-canvas">
 
-                <!-- Headline -->
-                <h1 class="hero-h1 fade-in-up" style="animation-delay:0.25s">
-                    <span class="move_it hero-h1-plain" data-multiplier="-0.3">Crafted</span><br>
-                    <span class="move_it hero-h1-accent" data-multiplier="0.3">to move.</span><br>
+            <!-- Showreel als stummer Hintergrund-Loop -->
+            <video class="hero-video" src="/assets/showreel.webm" poster="/assets/showreel-poster.webp"
+                   autoplay muted loop playsinline aria-hidden="true"></video>
+            <div class="hero-shade" aria-hidden="true"></div>
+
+            <div class="hero-mark" aria-hidden="true"><svg viewBox="0 0 46.37 46.37" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M34.07,7.55h0c-1.76-1.07-3.76-1.76-5.9-1.98-.47-.04-.95-.07-1.43-.07-.37,0-.73.01-1.09.04-.36.03-.72.07-1.07.12-.7.11-1.39.27-2.05.47-.1.03-.21.06-.3.1-.2.07-.41.14-.6.22-.1.04-.2.08-.3.12-.67.28-1.31.61-1.92.98-.2.12-.39.24-.57.37-.38.26-.74.53-1.09.81-.18.14-.35.29-.51.44-.17.15-.33.31-.49.47-.05.05-.1.1-.15.16-.11.11-.21.22-.31.33-.15.17-.3.34-.44.51-.29.35-.56.71-.81,1.09-.13.19-.25.38-.37.57-.36.58-.67,1.19-.94,1.83-.18.42-.34.86-.47,1.3-.21.67-.37,1.35-.47,2.05-.06.35-.1.7-.12,1.07,0,.05,0,.11,0,.17-.02.3-.03.61-.03.92v14.13s7.22,0,7.22,0h6.92c.31,0,.62,0,.92-.03.06,0,.11,0,.17,0,.36-.03.71-.07,1.07-.12.7-.11,1.39-.26,2.05-.47.44-.14.87-.29,1.3-.47.63-.27,1.24-.58,1.83-.94.19-.12.39-.24.57-.37.38-.26.74-.53,1.09-.81.18-.14.35-.29.51-.44.11-.1.23-.21.34-.32.05-.05.1-.1.15-.15.16-.16.31-.32.47-.49.15-.17.3-.34.44-.51.29-.35.56-.71.81-1.09.13-.19.25-.38.37-.57.36-.58.67-1.19.94-1.83l.04-.1c.04-.1.08-.2.12-.3.08-.2.15-.4.22-.6.03-.1.07-.2.1-.3l.47-2.05c.05-.35.09-.71.12-1.07.03-.36.04-.72.04-1.09,0-.48-.02-.95-.07-1.42,0,0,0,0,0,0-.22-2.14-.91-4.15-1.98-5.9h0c-.59-.97-1.29-1.87-2.09-2.67s-1.69-1.5-2.66-2.09ZM33.28,15.98c.65,1.07,1.07,2.29,1.21,3.59,0,0,0,0,0,0,.03.29.04.57.04.87,0,.22,0,.44-.02.66-.02.22-.04.44-.08.65l-.29,1.25c-.02.06-.04.13-.06.19-.04.12-.09.25-.13.37-.03.06-.05.12-.07.18l-.02.06c-.17.39-.36.76-.57,1.11-.07.12-.15.23-.22.35-.16.23-.32.45-.5.66-.09.11-.18.21-.27.31s-.19.2-.28.3l-.09.09c-.06.06-.14.13-.21.19-.1.09-.2.18-.31.27-.21.18-.44.34-.66.5-.11.08-.23.15-.35.22-.35.22-.72.41-1.11.57-.26.11-.52.2-.79.29-.4.13-.82.22-1.25.29-.21.04-.43.06-.65.07-.03,0-.07,0-.1,0-.18.01-.37.02-.56.02h-4.21s-4.39,0-4.39,0v-8.6c0-.19,0-.38.02-.56,0-.03,0-.07,0-.1.02-.22.04-.44.07-.65.06-.43.16-.85.29-1.25.08-.27.18-.53.29-.79.17-.39.36-.76.57-1.11.07-.12.15-.23.22-.35.16-.23.32-.45.5-.66.09-.11.17-.21.27-.31.06-.07.13-.14.19-.21l.09-.09c.1-.1.2-.19.3-.28.1-.09.21-.18.31-.27.21-.18.43-.34.66-.5.11-.08.23-.15.35-.22.37-.23.76-.43,1.17-.6.06-.02.12-.05.18-.07.12-.05.25-.09.37-.13.06-.02.12-.04.19-.06.4-.13.82-.22,1.25-.29.21-.04.43-.06.65-.08.22-.02.44-.02.66-.02.29,0,.58.01.87.04,1.3.13,2.52.56,3.59,1.21.59.36,1.14.79,1.62,1.27s.91,1.03,1.27,1.62Z"/><path d="M46.37.71v5.51c0,3.32-2.6,6.03-5.88,6.21-1.47-2.79-3.76-5.08-6.55-6.55.09-1.58.76-3.01,1.81-4.06C36.88.69,38.43,0,40.15,0h5.51c.39,0,.71.32.71.71Z"/><path d="M15.76,8.66c-.35.35-.68.71-.99,1.08-.21,0-.41.02-.63.03-4.45.34-6.87,2.6-7.5,1.89-.79-.89,1.72-5.94,6.06-8.14,4.52-2.29,9.62-.79,12.8.64-3.68.28-7.1,1.86-9.74,4.5Z"/><path d="M37.71,30.61c2.64-2.64,4.21-6.06,4.49-9.74,1.43,3.18,2.94,8.28.64,12.79-2.2,4.33-7.25,6.84-8.14,6.06-.72-.63,1.54-3.05,1.89-7.5.02-.21.03-.42.03-.63.37-.31.74-.64,1.08-.98Z"/><path d="M11.21,19.63v6.63c-1.08-.18-2.28-.27-3.57-.16-4.45.34-6.87,2.6-7.5,1.89-.79-.89,1.72-5.94,6.06-8.14,1.64-.83,3.37-1.17,5.04-1.18-.02.32-.03.65-.03.97Z"/><path d="M26.73,35.16c.33,0,.65,0,.97-.03-.01,1.68-.35,3.4-1.18,5.04-2.2,4.33-7.25,6.84-8.14,6.06-.72-.63,1.54-3.05,1.89-7.5.1-1.29.01-2.5-.16-3.57h6.62Z"/></svg></div>
+            <div class="hero-corner" aria-hidden="true"></div>
+
+            <div class="hero-inner">
+                <span class="hero-status reveal revealed"><i></i><span data-i18n="hero.status">Verfügbar für Projekte</span></span>
+
+                <h1 class="hero-h1 display reveal revealed">
+                    <span data-i18n="hero.h1a">Bewegtbild,</span><br>
+                    <span class="outline" data-i18n="hero.h1b">das hängen</span><br>
+                    <span class="violet" data-i18n="hero.h1c">bleibt.</span>
                 </h1>
 
-                <!-- CTAs -->
-                <div class="hero-ctas fade-in-up" style="animation-delay:0.55s">
-                    <button onclick="scrollToSection('portfolio')" class="btn-primary" data-i18n="hero.ctaPrimary">Portfolio ansehen</button>
-                    <button onclick="scrollToSection('contact')" class="btn-ghost" data-i18n="hero.ctaSecondary">Projekt anfragen</button>
+                <p class="lede hero-sub reveal revealed d1" data-i18n="hero.lede">
+                    Ich bin Niklas — Mediengestalter hinter Donatello Media.
+                    Ich gestalte Motion Design, Videos, 3D und Marken,
+                    die im Kopf bleiben, nicht nur im Feed.
+                </p>
+
+                <div class="hero-ctas reveal revealed d2">
+                    <button type="button" id="showreelBtn" class="btn btn-fill">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                        <span data-i18n="hero.play">Showreel abspielen</span>
+                    </button>
+                    <a href="#arbeiten" class="btn btn-line" data-i18n="hero.cta1">Arbeiten ansehen</a>
+                </div>
+
+                <div class="hero-meta reveal revealed d3">
+                    <div><strong data-i18n="hero.m1v">Augsburg</strong><span data-i18n="hero.m1l">Standort</span></div>
+                    <div><strong data-i18n="hero.m2v">6+ Jahre</strong><span data-i18n="hero.m2l">Erfahrung</span></div>
+                    <div><strong data-i18n="hero.m3v">5 Bereiche</strong><span data-i18n="hero.m3l">Ein Anspruch</span></div>
                 </div>
             </div>
         </div>
+    </header>
 
-        <!-- Scroll Indicator -->
-        <button onclick="scrollToSection('about')" class="hero-scroll-indicator fade-in-up" style="animation-delay:1.4s" aria-label="Scroll to About">
-            <svg class="animate-bounce-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" /></svg>
-        </button>
+    <!-- Showreel-Lightbox (spielt mit Ton) -->
+    <div class="lightbox" id="showreelBox" hidden>
+        <button class="lightbox-close" id="showreelClose" aria-label="Schließen">&#10005;</button>
+        <div class="lightbox-inner">
+            <video id="showreelVideo" src="/assets/showreel.webm" poster="/assets/showreel-poster.webp"
+                   controls preload="none" playsinline></video>
+        </div>
+    </div>
+
+    <!-- ═══ PORTFOLIO ═══ -->
+    <section id="arbeiten" class="section">
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <h2 class="sec-title display"><span class="thin" data-i18n="index.t1">Mein</span> <span data-i18n="index.t2">Portfolio</span><span class="violet">.</span></h2>
+                <span class="sec-note" data-i18n="index.note">Fünf Bereiche — ein Verzeichnis</span>
+            </div>
+
+            <div class="index reveal">
+                <a href="/Motion/" class="index-row">
+                    <span class="index-num">/ 01</span>
+                    <span class="index-name" data-i18n="area.motion">Motion Design</span>
+                    <span class="index-tags" data-i18n="tags.motion">After Effects · 2D · Logo-Animation</span>
+                    <span class="index-arrow" aria-hidden="true"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/></svg></span>
+                </a>
+                <a href="/Video/" class="index-row">
+                    <span class="index-num">/ 02</span>
+                    <span class="index-name" data-i18n="area.video">Videoschnitt</span>
+                    <span class="index-tags" data-i18n="tags.video">Premiere Pro · Storytelling · Post</span>
+                    <span class="index-arrow" aria-hidden="true"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/></svg></span>
+                </a>
+                <a href="/3d/" class="index-row">
+                    <span class="index-num">/ 03</span>
+                    <span class="index-name" data-i18n="area.3d">3D-Animation</span>
+                    <span class="index-tags" data-i18n="tags.3d">Blender · Modelling · Rendering</span>
+                    <span class="index-arrow" aria-hidden="true"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/></svg></span>
+                </a>
+                <a href="/Branding/" class="index-row">
+                    <span class="index-num">/ 04</span>
+                    <span class="index-name" data-i18n="area.branding">Branding</span>
+                    <span class="index-tags" data-i18n="tags.branding">Logo · Corporate Design · Print</span>
+                    <span class="index-arrow" aria-hidden="true"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/></svg></span>
+                </a>
+                <a href="/Image/" class="index-row">
+                    <span class="index-num">/ 05</span>
+                    <span class="index-name" data-i18n="area.bild">Bildbearbeitung</span>
+                    <span class="index-tags" data-i18n="tags.bild">Retusche · Compositing · Photoshop</span>
+                    <span class="index-arrow" aria-hidden="true"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/></svg></span>
+                </a>
+            </div>
+        </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         ABOUT — 01 — Nummerierter Einstieg
-    ═══════════════════════════════════════════ -->
-    <section id="about" class="py-24 md:py-32 px-6 relative">
-        <div class="max-w-6xl mx-auto">
-
-            <!-- Section Label -->
-            <div class="section-divider-label">
-                <div class="section-divider-line"></div>
-                <span class="section-divider-text">01 — <span data-i18n="nav.about">About me</span></span>
-                <div class="section-divider-line"></div>
+    <!-- ═══ ÜBER ═══ -->
+    <section id="ueber" class="section" style="padding-top: 0;">
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <h2 class="sec-title display"><span class="thin" data-i18n="about.t1">Hinter</span> <span data-i18n="about.t2">dem D</span><span class="violet">.</span></h2>
+                <span class="sec-note" data-i18n="about.note">Niklas Schubert — Donatello Media</span>
             </div>
 
-            <!-- Big number + heading -->
-            <div class="section-num-wrap">
-                <span class="section-bg-num">01</span>
-                <h2 class="section-title-new">
-                    <em2>Still.</em2>
-                    <span>Move.</span>
-                    <em>Inspire.</em>
-                </h2>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p data-i18n="about.p1"><strong>Donatello Media ist kein Bauchladen, sondern ein Anspruch:</strong> Gestaltung, die sitzt. Als Mediengestalter verbinde ich Motion Design, Videoproduktion, 3D und Branding zu einem Stil — von der ersten Idee bis zum finalen Export.</p>
+                    <p data-i18n="about.p2">Ich arbeite mit After Effects, Premiere Pro, Blender und der Adobe-Familie — und am liebsten mit Menschen, die ihre Sache ernst nehmen, aber sich selbst nicht zu ernst.</p>
+                </div>
+                <div class="stat-stack reveal d1">
+                    <div class="stat"><b>6+</b><span data-i18n="about.s1">Jahre Erfahrung</span></div>
+                    <div class="stat"><b>20+</b><span data-i18n="about.s2">Abgeschlossene Projekte</span></div>
+                    <div class="stat"><b>10+</b><span data-i18n="about.s3">Zufriedene Kunden</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ KONTAKT — Trading Card + Formular ═══ -->
+    <section id="kontakt" class="section" style="padding-top: 0;">
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <h2 class="sec-title display"><span class="thin" data-i18n="contact.t1">Lass uns</span> <span data-i18n="contact.t2">loslegen</span><span class="violet">.</span></h2>
+                <span class="sec-note" data-i18n="contact.note">Antwort meist innerhalb von 24 h</span>
             </div>
 
-            <!-- Grid: card left, text right -->
-            <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center mt-12">
+            <div class="contact-grid">
 
-                <!-- Holographic Card -->
-                <div class="card-scene" id="cardScene">
-                    <div class="card-inner" id="cardInner">
-                        <div class="card-face card-front">
-                            <div class="corner-glow corner-tl"></div>
-                            <div class="corner-glow corner-br"></div>
-                            <div class="portrait-placeholder">
-                                <div class="absolute inset-0 rounded-bl-3xl rounded-tr-3xl bg-gray-200 dark:bg-gray-700 animate-pulse" data-skeleton></div>
-                                <img src="img/Homepage_NiklasS_2026.webp" loading="lazy" alt="Portrait von Niklas" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
-                                <div class="absolute inset-0"></div>
+                <!-- ── Trading Card ──
+                     Vorderseite: Portrait + Name. Rückseite: Kontakt & Socials.
+                     TODO: Portrait unter /assets/portrait.webp ablegen und
+                     das <img> einkommentieren, .ph entfernen. -->
+                <div class="tcard-scene reveal" id="tcardScene" role="button" tabindex="0" aria-label="Kontaktkarte umdrehen">
+                    <div class="tcard" id="tcard">
+
+                        <!-- Vorderseite -->
+                        <div class="tcard-face tcard-front">
+                            <div class="tcard-portrait">
+                                <img src="/assets/portrait.webp" alt="Portrait von Niklas Schubert">
+                                <!-- <span class="ph" data-i18n="card.portraitPh">Portrait folgt</span> -->
                             </div>
-                            <div class="portrait-gradient"></div>
-                            <div class="holo-auto"></div>
-                            <div id="glitterLayer" style="position:absolute;inset:0;z-index:4;pointer-events:none;border-radius:16px;overflow:hidden;"></div>
-                            <div class="holo-sweep" id="holoSweep"></div>
-                            <div class="flip-hint">
-                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                                Umdrehen
+                            <div class="tcard-fade"></div>
+                            <div class="tcard-sheen" aria-hidden="true"></div>
+                            <div class="tcard-holo" aria-hidden="true"></div>
+                            <div class="tcard-hint">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                                <span data-i18n="card.hint">Umdrehen</span>
                             </div>
-                            <div class="card-front-content">
-                                <div class="card-name">Niklas Schubert</div>
-                                <div class="card-title">Donatello-Media</div>
-                                <div class="card-tags">
-
-                                    <span class="tag">
-                                        <!-- Branding: Diamant/Stern -->
-                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;flex-shrink:0">
-                                            <path d="M12 2l3 7h7l-5.5 4.5 2 7L12 17l-6.5 3.5 2-7L2 9h7z"/>
-                                        </svg>
-                                        Branding
-                                    </span>
-
-                                    <span class="tag">
-                                        <!-- Motion Design: Playbutton mit Bewegungslinien -->
-                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;flex-shrink:0">
-                                            <circle cx="12" cy="12" r="9"/>
-                                            <path d="M10 8.5l6 3.5-6 3.5V8.5z" fill="currentColor" stroke="none"/>
-                                            <path d="M3 4.5Q6 3 9 5" stroke-width="1.5"/>
-                                            <path d="M21 4.5Q18 3 15 5" stroke-width="1.5"/>
-                                        </svg>
-                                        Motion Design
-                                    </span>
-
-                                    <span class="tag">
-                                        <!-- 3D Animation: Würfel -->
-                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;flex-shrink:0">
-                                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                            <path d="M2 17l10 5 10-5"/>
-                                            <path d="M2 12l10 5 10-5"/>
-                                        </svg>
-                                        3D Animation
-                                    </span>
-
-                                    <span class="tag">
-                                        <!-- Videoproduktion: Kamera -->
-                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;flex-shrink:0">
-                                            <rect x="2" y="7" width="14" height="10" rx="2"/>
-                                            <path d="M16 10l5-3v10l-5-3V10z"/>
-                                        </svg>
-                                        Videoproduktion
-                                    </span>
-
-                                    <span class="tag">
-                                        <!-- Bildbearbeitung: Bild mit Bergen -->
-                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;flex-shrink:0">
-                                            <rect x="3" y="3" width="18" height="18" rx="2"/>
-                                            <circle cx="8.5" cy="8.5" r="1.5"/>
-                                            <path d="M21 15l-5-5L5 21"/>
-                                        </svg>
-                                        Bildbearbeitung
-                                    </span>
-
+                            <div class="tcard-info">
+                                <div class="tcard-name">Niklas Schubert</div>
+                                <div class="tcard-role" data-i18n="card.role">Mediengestalter · Donatello Media</div>
+                                <div class="tcard-chips">
+                                    <span class="tcard-chip">Motion</span>
+                                    <span class="tcard-chip">Video</span>
+                                    <span class="tcard-chip">3D</span>
+                                    <span class="tcard-chip">Branding</span>
                                 </div>
                             </div>
-                            </div>
-                            <div class="card-face card-back">
-                                <div class="back-content">
-                                    <div class="back-header">Skills <span>Niklas</span></div>
-                                    <div class="skill-list">
+                        </div>
 
-                                        <div class="skill-row">
-                                            <div class="skill-label-row">
-                                                <svg width="14" height="14" viewBox="0 0 64 64" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0"><rect width="64" height="64" rx="8" fill="#1A0B2E"/><text x="12" y="44" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#D291FF">Ae</text></svg>
-                                                <span class="skill-name">After Effects</span>
-                                            </div>
-                                            <div class="skill-track"><div class="skill-fill" data-w="100"></div></div>
-                                        </div>
-
-                                        <div class="skill-row">
-                                            <div class="skill-label-row">
-                                                <svg width="14" height="14" viewBox="0 0 64 64" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0"><rect width="64" height="64" rx="8" fill="#1A0B2E"/><text x="12" y="44" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#9999FF">Pr</text></svg>
-                                                <span class="skill-name">Premiere Pro</span>
-                                            </div>
-                                            <div class="skill-track"><div class="skill-fill" data-w="95"></div></div>
-                                        </div>
-
-                                        <div class="skill-row">
-                                            <div class="skill-label-row">
-                                                <svg width="14" height="14" viewBox="0 0 128 128" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0"><path d="M66.332 70.032c.24-4.242 2.327-7.987 5.485-10.634 3.094-2.602 7.248-4.193 11.809-4.193 4.537 0 8.69 1.59 11.78 4.193 3.163 2.647 5.237 6.392 5.485 10.634.24 4.35-1.523 8.41-4.605 11.417-3.158 3.05-7.627 4.977-12.66 4.977-5.037 0-9.526-1.915-12.664-4.977-3.094-3.006-4.853-7.044-4.606-11.397z" fill="#235785"/><path d="M39.245 79.002c.028 1.66.564 4.89 1.36 7.404 1.682 5.336 4.537 10.273 8.49 14.599 4.062 4.465 9.074 8.055 14.85 10.61 6.073 2.67 12.665 4.037 19.505 4.037 6.84-.009 13.432-1.4 19.504-4.102 5.776-2.582 10.79-6.168 14.85-10.657 3.974-4.374 6.82-9.307 8.491-14.647a37 37 0 001.595-8.163c.208-2.69.12-5.405-.263-8.12a37.535 37.535 0 00-5.417-14.714c-2.574-4.15-5.916-7.76-9.89-10.813l.012-.004-39.955-30.506c-.036-.028-.068-.056-.104-.08-2.619-2.002-7.044-1.994-9.91.008-2.914 2.031-3.25 5.385-.656 7.496l-.012.008 16.682 13.484-50.789.051h-.068c-4.197.004-8.239 2.739-9.03 6.213-.82 3.521 2.035 6.46 6.412 6.46l-.008.016 25.736-.048L4.58 82.524c-.056.044-.12.088-.176.132C.069 85.95-1.33 91.446 1.4 94.9c2.778 3.522 8.666 3.546 13.047.02L39.505 74.51s-.368 2.758-.336 4.397zm64.56 9.219c-5.168 5.228-12.416 8.21-20.227 8.21-7.831.012-15.079-2.918-20.248-8.142-2.526-2.559-4.377-5.473-5.528-8.591a22.202 22.202 0 01-1.271-9.602 22.446 22.446 0 012.778-9.039c1.507-2.714 3.59-5.18 6.14-7.267 5.033-4.058 11.42-6.28 18.1-6.28 6.709-.008 13.097 2.174 18.13 6.236 2.55 2.075 4.625 4.529 6.14 7.243a22.302 22.302 0 012.774 9.043 22.313 22.313 0 01-1.271 9.598c-1.147 3.142-3.002 6.056-5.533 8.615z" fill="#e87500"/></svg>
-                                                <span class="skill-name">Blender 3D</span>
-                                            </div>
-                                            <div class="skill-track"><div class="skill-fill" data-w="95"></div></div>
-                                        </div>
-
-                                        <div class="skill-row">
-                                            <div class="skill-label-row">
-                                                <svg width="14" height="14" viewBox="0 0 64 64" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0"><rect width="64" height="64" rx="8" fill="#001E36"/><text x="12" y="44" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#31A8FF">Ps</text></svg>
-                                                <span class="skill-name">Photoshop</span>
-                                            </div>
-                                            <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
-                                        </div>
-
-                                        <div class="skill-row">
-                                            <div class="skill-label-row">
-                                                <svg width="14" height="14" viewBox="0 0 64 64" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0"><rect width="64" height="64" rx="8" fill="#330000"/><text x="14" y="44" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#FF3366">Id</text></svg>
-                                                <span class="skill-name">InDesign</span>
-                                            </div>
-                                            <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
-                                        </div>
-
-                                        <div class="skill-row">
-                                            <div class="skill-label-row">
-                                                <svg width="14" height="14" viewBox="0 0 64 64" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0"><rect width="64" height="64" rx="8" fill="#330000"/><text x="12" y="44" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#FF9A00">Ai</text></svg>
-                                                <span class="skill-name">Illustrator</span>
-                                            </div>
-                                            <div class="skill-track"><div class="skill-fill" data-w="80"></div></div>
-                                        </div>
-
-                                        <div class="skill-row">
-                                            <div class="skill-label-row">
-                                                <svg width="14" height="14" viewBox="0 0 64 64" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0"><rect width="64" height="64" rx="8" fill="#2E001E"/><text x="12" y="44" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#FF2BC2">XD</text></svg>
-                                                <span class="skill-name">Adobe XD</span>
-                                            </div>
-                                            <div class="skill-track"><div class="skill-fill" data-w="70"></div></div>
-                                        </div>
-
-                                        <div class="skill-row">
-                                            <div class="skill-label-row">
-                                                <svg width="14" height="14" viewBox="0 0 128 128" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0"><path fill="#E44D26" d="M19.037 113.876L9.032 1.661h109.936l-10.016 112.198-45.019 12.48z"/><path fill="#F16529" d="M64 116.8l36.378-10.086 8.559-95.878H64z"/><path fill="#EBEBEB" d="M64 52.455H45.788L44.53 38.361H64V24.599H29.489l.33 3.692 3.382 37.927H64zm0 35.743l-.061.017-15.327-4.14-.979-10.975H33.816l1.928 21.609 28.193 7.826.063-.017z"/><path fill="#fff" d="M63.952 52.455v13.763h16.947l-1.597 17.849-15.35 4.143v14.319l28.215-7.82.207-2.325 3.234-36.233.335-3.696h-3.708zm0-27.856v13.762h33.244l.276-3.092.628-6.978.329-3.692z"/></svg>
-                                                <span class="skill-name">HTML & CSS</span>
-                                            </div>
-                                            <div class="skill-track"><div class="skill-fill" data-w="65"></div></div>
-                                        </div>
-
-                                        <div class="skill-row">
-                                            <div class="skill-label-row">
-                                                <svg width="14" height="14" viewBox="0 0 128 128" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0"><path fill="#F0DB4F" d="M1.408 1.408h125.184v125.185H1.408z"/><path fill="#323330" d="M116.347 96.736c-.917-5.711-4.641-10.508-15.672-14.981-3.832-1.761-8.104-3.022-9.377-5.926-.452-1.69-.512-2.642-.226-3.665.821-3.32 4.784-4.355 7.925-3.403 2.023.678 3.938 2.237 5.093 4.724 5.402-3.498 5.391-3.475 9.163-5.879-1.381-2.141-2.118-3.129-3.022-4.045-3.249-3.629-7.676-5.498-14.756-5.355l-3.688.477c-3.534.893-6.902 2.748-8.877 5.235-5.926 6.724-4.236 18.492 2.975 23.335 7.104 5.332 17.54 6.545 18.873 11.531 1.297 6.104-4.486 8.08-10.234 7.378-4.236-.881-6.592-3.034-9.139-6.949-4.688 2.713-4.688 2.713-9.508 5.485 1.143 2.499 2.344 3.63 4.26 5.795 9.068 9.198 31.76 8.746 35.83-5.176.165-.478 1.261-3.666.38-8.581zM69.462 58.943H57.753l-.048 30.272c0 6.438.333 12.34-.714 14.149-1.713 3.558-6.152 3.117-8.175 2.427-2.059-1.012-3.106-2.451-4.319-4.485-.333-.584-.583-1.036-.667-1.071l-9.52 5.83c1.583 3.249 3.915 6.069 6.902 7.901 4.462 2.678 10.459 3.499 16.731 2.059 4.082-1.189 7.604-3.652 9.448-7.401 2.666-4.915 2.094-10.864 2.07-17.444.06-10.735.001-21.468.001-32.237z"/></svg>
-                                                <span class="skill-name">JavaScript</span>
-                                            </div>
-                                            <div class="skill-track"><div class="skill-fill" data-w="60"></div></div>
-                                        </div>
-
+                        <!-- Rückseite: Kontakt statt Skills -->
+                        <div class="tcard-face tcard-back">
+                            <div class="tcard-holo" aria-hidden="true"></div>
+                            <div class="tcard-back-inner">
+                                <div class="tcard-back-head">
+                                    <b data-i18n="card.backTitle">Kontakt</b>
+                                    <svg viewBox="0 0 46.37 46.37" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M34.07,7.55h0c-1.76-1.07-3.76-1.76-5.9-1.98-.47-.04-.95-.07-1.43-.07-.37,0-.73.01-1.09.04-.36.03-.72.07-1.07.12-.7.11-1.39.27-2.05.47-.1.03-.21.06-.3.1-.2.07-.41.14-.6.22-.1.04-.2.08-.3.12-.67.28-1.31.61-1.92.98-.2.12-.39.24-.57.37-.38.26-.74.53-1.09.81-.18.14-.35.29-.51.44-.17.15-.33.31-.49.47-.05.05-.1.1-.15.16-.11.11-.21.22-.31.33-.15.17-.3.34-.44.51-.29.35-.56.71-.81,1.09-.13.19-.25.38-.37.57-.36.58-.67,1.19-.94,1.83-.18.42-.34.86-.47,1.3-.21.67-.37,1.35-.47,2.05-.06.35-.1.7-.12,1.07,0,.05,0,.11,0,.17-.02.3-.03.61-.03.92v14.13s7.22,0,7.22,0h6.92c.31,0,.62,0,.92-.03.06,0,.11,0,.17,0,.36-.03.71-.07,1.07-.12.7-.11,1.39-.26,2.05-.47.44-.14.87-.29,1.3-.47.63-.27,1.24-.58,1.83-.94.19-.12.39-.24.57-.37.38-.26.74-.53,1.09-.81.18-.14.35-.29.51-.44.11-.1.23-.21.34-.32.05-.05.1-.1.15-.15.16-.16.31-.32.47-.49.15-.17.3-.34.44-.51.29-.35.56-.71.81-1.09.13-.19.25-.38.37-.57.36-.58.67-1.19.94-1.83l.04-.1c.04-.1.08-.2.12-.3.08-.2.15-.4.22-.6.03-.1.07-.2.1-.3l.47-2.05c.05-.35.09-.71.12-1.07.03-.36.04-.72.04-1.09,0-.48-.02-.95-.07-1.42,0,0,0,0,0,0-.22-2.14-.91-4.15-1.98-5.9h0c-.59-.97-1.29-1.87-2.09-2.67s-1.69-1.5-2.66-2.09ZM33.28,15.98c.65,1.07,1.07,2.29,1.21,3.59,0,0,0,0,0,0,.03.29.04.57.04.87,0,.22,0,.44-.02.66-.02.22-.04.44-.08.65l-.29,1.25c-.02.06-.04.13-.06.19-.04.12-.09.25-.13.37-.03.06-.05.12-.07.18l-.02.06c-.17.39-.36.76-.57,1.11-.07.12-.15.23-.22.35-.16.23-.32.45-.5.66-.09.11-.18.21-.27.31s-.19.2-.28.3l-.09.09c-.06.06-.14.13-.21.19-.1.09-.2.18-.31.27-.21.18-.44.34-.66.5-.11.08-.23.15-.35.22-.35.22-.72.41-1.11.57-.26.11-.52.2-.79.29-.4.13-.82.22-1.25.29-.21.04-.43.06-.65.07-.03,0-.07,0-.1,0-.18.01-.37.02-.56.02h-4.21s-4.39,0-4.39,0v-8.6c0-.19,0-.38.02-.56,0-.03,0-.07,0-.1.02-.22.04-.44.07-.65.06-.43.16-.85.29-1.25.08-.27.18-.53.29-.79.17-.39.36-.76.57-1.11.07-.12.15-.23.22-.35.16-.23.32-.45.5-.66.09-.11.17-.21.27-.31.06-.07.13-.14.19-.21l.09-.09c.1-.1.2-.19.3-.28.1-.09.21-.18.31-.27.21-.18.43-.34.66-.5.11-.08.23-.15.35-.22.37-.23.76-.43,1.17-.6.06-.02.12-.05.18-.07.12-.05.25-.09.37-.13.06-.02.12-.04.19-.06.4-.13.82-.22,1.25-.29.21-.04.43-.06.65-.08.22-.02.44-.02.66-.02.29,0,.58.01.87.04,1.3.13,2.52.56,3.59,1.21.59.36,1.14.79,1.62,1.27s.91,1.03,1.27,1.62Z"/><path d="M46.37.71v5.51c0,3.32-2.6,6.03-5.88,6.21-1.47-2.79-3.76-5.08-6.55-6.55.09-1.58.76-3.01,1.81-4.06C36.88.69,38.43,0,40.15,0h5.51c.39,0,.71.32.71.71Z"/><path d="M15.76,8.66c-.35.35-.68.71-.99,1.08-.21,0-.41.02-.63.03-4.45.34-6.87,2.6-7.5,1.89-.79-.89,1.72-5.94,6.06-8.14,4.52-2.29,9.62-.79,12.8.64-3.68.28-7.1,1.86-9.74,4.5Z"/><path d="M37.71,30.61c2.64-2.64,4.21-6.06,4.49-9.74,1.43,3.18,2.94,8.28.64,12.79-2.2,4.33-7.25,6.84-8.14,6.06-.72-.63,1.54-3.05,1.89-7.5.02-.21.03-.42.03-.63.37-.31.74-.64,1.08-.98Z"/><path d="M11.21,19.63v6.63c-1.08-.18-2.28-.27-3.57-.16-4.45.34-6.87,2.6-7.5,1.89-.79-.89,1.72-5.94,6.06-8.14,1.64-.83,3.37-1.17,5.04-1.18-.02.32-.03.65-.03.97Z"/><path d="M26.73,35.16c.33,0,.65,0,.97-.03-.01,1.68-.35,3.4-1.18,5.04-2.2,4.33-7.25,6.84-8.14,6.06-.72-.63,1.54-3.05,1.89-7.5.1-1.29.01-2.5-.16-3.57h6.62Z"/></svg>
+                                </div>
+                                <div class="tcard-lines">
+                                    <div class="tcard-line">
+                                        <span data-i18n="card.email">E-Mail</span>
+                                        <a href="mailto:donatello-media@outlook.de">donatello-media@outlook.de</a>
                                     </div>
-                                    <div class="back-flip-hint">Klicken zum Umdrehen</div>
+                                    <div class="tcard-line">
+                                        <span data-i18n="card.phone">Telefon</span>
+                                        <b>+49 (0) 162 427 58 14</b>
+                                    </div>
+                                    <div class="tcard-line">
+                                        <span data-i18n="card.location">Standort</span>
+                                        <b data-i18n="card.locationValue">Augsburg, Deutschland</b>
+                                    </div>
                                 </div>
+                                <div class="tcard-socials">
+                                    <a href="https://www.youtube.com/@Donatello-Media" target="_blank" rel="noopener noreferrer" class="tcard-social">YouTube</a>
+                                    <a href="https://www.instagram.com/donatello_media/" target="_blank" rel="noopener noreferrer" class="tcard-social">Instagram</a>
+                                </div>
+                                <div class="tcard-back-hint" data-i18n="card.backHint">Klicken zum Umdrehen</div>
                             </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <!-- Text Content -->
-                <div>
-                    <p class="section-text text-lg leading-relaxed mb-6" data-i18n="about.text1">
-                        Ich bin Niklas, Mediengestalter und Inhaber von Donatello-Media. Als Freelancer helfe ich Kunden dabei, ihre Ideen visuell auf den Punkt zu bringen, egal ob Branding, Motion Design oder Bild- und Videobearbeitung.
-                    </p>
-                    <p class="section-text text-lg leading-relaxed mb-8" data-i18n="about.text2">
-                        Ich kenne viele Programme und Bereiche aus der Praxis und lerne gerne Neues dazu. Jedes Projekt ist eine Chance, etwas zu schaffen, das wirklich sitzt.
-                    </p>
+                <!-- ── Formular ── -->
+                <form id="contactForm" class="form reveal d1" action="https://formspree.io/f/xblkaavo" method="POST">
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-                    <!-- Stats Row -->
-                    <div class="about-stats-row">
-                        <div class="about-stat">
-                            <span class="about-stat-num">6+</span>
-                            <span class="about-stat-label" data-i18n="about.statYears">Jahre Erfahrung</span>
-                        </div>
-                        <div class="about-stat">
-                            <span class="about-stat-num">20+</span>
-                            <span class="about-stat-label" data-i18n="about.statProjects">Projekte</span>
-                        </div>
-                        <div class="about-stat">
-                            <span class="about-stat-num">10+</span>
-                            <span class="about-stat-label" data-i18n="about.clients">zufriedene Kunden</span>
-                        </div>
+                    <div class="field">
+                        <label for="f-name" data-i18n="form.name">Name</label>
+                        <input id="f-name" type="text" name="name" placeholder="Max Mustermann" data-i18n-ph="form.namePh" required>
                     </div>
-                </div>
-
+                    <div class="field">
+                        <label for="f-email" data-i18n="form.email">E-Mail</label>
+                        <input id="f-email" type="email" name="email" placeholder="max@mustermann.de" data-i18n-ph="form.emailPh" required>
+                    </div>
+                    <div class="field">
+                        <label for="f-msg" data-i18n="form.msg">Projekt</label>
+                        <textarea id="f-msg" name="message" placeholder="Erzähl mir von deiner Idee …" data-i18n-ph="form.msgPh" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-fill" data-i18n="form.send">Nachricht senden</button>
+                    <p class="form-note" data-i18n="form.privacy">Mit dem Absenden stimmst du der Verarbeitung deiner Daten gemäß Datenschutzerklärung zu.</p>
+                    <p id="formStatus" class="form-note" aria-live="polite"></p>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         PORTFOLIO — 02 — Großes Heading + Asymm. Grid
-    ═══════════════════════════════════════════ -->
-    <section id="portfolio" class="py-24 md:py-32 px-6 relative">
-        <div class="max-w-6xl mx-auto">
-
-            <!-- Section Label -->
-            <div class="section-divider-label">
-                <div class="section-divider-line"></div>
-                <span class="section-divider-text">02 — <span data-i18n="nav.portfolio">Portfolio</span></span>
-                <div class="section-divider-line"></div>
-            </div>
-
-            <!-- Portfolio Header: big heading left, meta right -->
-            <div class="portfolio-header">
-                <div class="portfolio-heading-wrap">
-                    <span class="section-bg-num">02</span>
-                    <h2 class="contact-statement-h2">
-                        <span data-i18n="portfolio.title1">My</span><br>
-                        <em data-i18n="portfolio.title2">Portfolio</em>
-                    </h2>
-                </div>
-            </div>
-
-            <!-- Filter Buttons
-            <div class="portfolio-filter-bar" id="portfolioFilterBar">
-                <button class="portfolio-filter-btn active" data-filter="all" onclick="filterPortfolio('all')" data-i18n="portfolio.filterAll">Alle</button>
-                <button class="portfolio-filter-btn" data-filter="2d-animation" onclick="filterPortfolio('2d-animation')" data-i18n="portfolio.category1">2D-Animation</button>
-                <button class="portfolio-filter-btn" data-filter="3d-animation" onclick="filterPortfolio('3d-animation')" data-i18n="portfolio.category2">3D-Animation</button>
-                <button class="portfolio-filter-btn" data-filter="videoschnitt" onclick="filterPortfolio('videoschnitt')" data-i18n="portfolio.category3">Videoschnitt</button>
-                <button class="portfolio-filter-btn" data-filter="social-media" onclick="filterPortfolio('social-media')" data-i18n="portfolio.category6">Social Media</button>
-                <button class="portfolio-filter-btn" data-filter="branding" onclick="filterPortfolio('branding')" data-i18n="portfolio.category4">Branding</button>
-                <button class="portfolio-filter-btn" data-filter="bildbearbeitung" onclick="filterPortfolio('bildbearbeitung')" data-i18n="portfolio.category5">Bildbearbeitung</button>
-            </div> -->
-
-            <!-- Asymmetric Grid -->
-            <div class="portfolio-grid">
-
-                <!-- 2D-Animation -->
-                <div class="project-card group relative" data-category="2d-animation">
-                    <!-- <a href="/Video/" rel="noopener noreferrer"> -->
-                    <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
-                        <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                        <video src="img/portfolio/Thumbnails/Thumbnail_2D_Animation.webm" loading="lazy" alt="2D Animation" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()" width="640" height="360" autoplay loop playsinline muted></video>
-                        <div class="project-overlay"></div>                        
-                    </div>
-                    <div class="project-content">
-                        <span class="project-cat">Link derzeit nicht funktional</span>
-                    </div>
-                    </a>
-                </div> 
-
-                <!-- 3D Animation -->
-                <div class="project-card group relative" data-category="3d-animation">
-                    <!-- <a href="/Video/" rel="noopener noreferrer"> -->
-                    <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
-                        <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                        <video src="img/portfolio/Thumbnails/Thumbnail_3D-Animation.webm" loading="lazy" alt="3D Animation" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()" width="640" height="360" autoplay loop playsinline muted></video>
-                        <div class="project-overlay"></div>                        
-                    </div>
-                    <div class="project-content">
-                        <span class="project-cat">Link derzeit nicht funktional</span>
-                    </div>
-                    </a>
-                </div> 
-
-                <!-- Video Editing -->
-                <div class="project-card group relative" data-category="videoschnitt">
-                    <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
-                        <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                        <img src="img/portfolio/Thumbnails/Thumbnail_Videoschnitt.webp" loading="lazy" alt="Video Editing" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
-                        <div class="project-overlay"></div>                        
-                    </div>
-                    <div class="project-content">
-                        <a href="/Video/" rel="noopener noreferrer" class="project-link">
-                            <span>Videoedit</span>
-                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                        </a>
-                    </div>                
-                </div> 
-
-                <!-- Social Media -->
-                <div class="project-card group relative" data-category="social-media">
-                    <!-- <a href="/Video/" rel="noopener noreferrer"> -->
-                    <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
-                        <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                        <video src="img/portfolio/Thumbnails/Thumbnail_Social_Media.webm" loading="lazy" alt="Social Media" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()" width="640" height="360" autoplay loop playsinline muted></video>
-                        <div class="project-overlay"></div>                        
-                    </div>
-                    <div class="project-content">
-                        <span class="project-cat">Link derzeit nicht funktional</span>
-                    </div>
-                    </a>
-                </div> 
-
-                <!-- Branding -->
-                <div class="project-card group relative" data-category="branding">                    
-                    <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
-                        <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                        <img src="img/portfolio/Thumbnails/Thumbnail_Branding.webp" loading="lazy" alt="Branding" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"/>
-                        <div class="project-overlay"></div>                        
-                    </div>
-                    <div class="project-content">
-                        <a href="/Branding/" rel="noopener noreferrer" class="project-link">
-                            <span>Branding</span>
-                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                        </a>
-                    </div> 
-                </div> 
-
-                <!-- Bildbearbeitung -->
-                <div class="project-card group relative" data-category="bildbearbeitung">
-                    <!-- <a href="/Video/" rel="noopener noreferrer"> -->
-                    <div class="portfolio-card-bg relative aspect-video border-t-2 border-b-2 border-purple-500 rounded-bl-2xl rounded-tr-2xl overflow-hidden">
-                        <div class="absolute inset-0 rounded-bl-2xl rounded-tr-2xl bg-gray-700 animate-pulse" data-skeleton></div>
-                        <video src="img/portfolio/Thumbnails/Thumbnail_Photoedit.webm" loading="lazy" alt="Social Media" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onloadeddata="this.style.opacity=1; this.previousElementSibling.remove()" width="640" height="360" autoplay loop playsinline muted></video>
-                        <div class="project-overlay"></div>                        
-                    </div>
-                    <div class="project-content">
-                        <span class="project-cat">Link derzeit nicht funktional</span>
-                    </div>
-                    </a>
-                </div> 
-
+    <!-- Footer: zentral in /partials/footer.html -->
+    <!-- include:/partials/footer.html -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span>© <span id="year">2026</span> <span data-i18n="footer.tag">Donatello Media — Crafted to move.</span></span>
+            <div class="footer-links">
+                <a href="/impressum.html" data-i18n="footer.imprint">Impressum</a>
+                <a href="/datenschutz.html" data-i18n="footer.privacy">Datenschutz</a>
             </div>
         </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         CONTACT — 03 — Statement-Intro
-    ═══════════════════════════════════════════ -->
-    <section id="contact" class="py-24 md:py-32 px-6 relative">
-        <div class="max-w-6xl mx-auto">
-
-            <!-- Section Label -->
-            <div class="section-divider-label">
-                <div class="section-divider-line"></div>
-                <span class="section-divider-text">03 — <span data-i18n="nav.contact">Contact</span></span>
-                <div class="section-divider-line"></div>
-            </div>
-
-            <!-- Statement Heading -->
-            <div class="section-num-wrap">
-                <span class="section-bg-num">03</span>
-                <h2 class="contact-statement-h2">
-                    <span data-i18n="contact.title1">Meld dich</span><br>
-                    <em data-i18n="contact.title2">gerne</em>
-                </h2>
-            </div>
-
-            <p class="section-text text-lg max-w-xl mb-16 mt-4" data-i18n="contact.subtitle">
-                Du hast ein Projekt? Schreib mir einfach, ich freu mich drauf.
-            </p>
-
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
-
-                <!-- Contact Info -->
-                <div class="space-y-8">
-                    <h3 class="contact-info-heading" data-i18n="contact.getintouch">So erreichst du mich</h3>
-
-                    <div class="space-y-5">
-                        <div class="contact-item">
-                            <div class="contact-icon-box">
-                                <svg class="w-5 h-5 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                            </div>
-                            <div>
-                                <p class="contact-label" data-i18n="contact.email">E-Mail</p>
-                                <a href="mailto:donatello-media@outlook.de" class="contact-value hover:text-[#A855F7] transition-colors">donatello-media@outlook.de</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon-box">
-                                <svg class="w-5 h-5 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                            </div>
-                            <div>
-                                <p class="contact-label" data-i18n="contact.location">Standort</p>
-                                <p class="contact-value" data-i18n="contact.worldwide">Augsburg, Deutschland</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon-box">
-                                <svg class="w-5 h-5 text-[#7D37C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                            </div>
-                            <div>
-                                <p class="contact-label" data-i18n="contact.phone">Telefon</p>
-                                <p class="contact-value">+49 (0) 162 427 58 14</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Social Links -->
-                    <div class="flex gap-3 flex-wrap pt-2">
-                        <a href="https://www.youtube.com/@Donatello-Media" target="_blank" rel="noopener noreferrer" class="social-link">YouTube</a>
-                        <a href="https://www.instagram.com/donatello_media/" target="_blank" rel="noopener noreferrer" class="social-link">Instagram</a>
-                        <!-- <a href="https://de.fiverr.com/donatellomedia?public_mode=true" target="_blank" rel="noopener noreferrer" class="social-link">Fiverr</a> -->
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div>
-                    <form id="contactForm" action="https://formspree.io/f/xblkaavo" method="POST" class="contact-form-card">
-
-                        <!-- Honeypot -->
-                        <input type="text" name="_gotcha" class="hidden">
-
-                        <div class="space-y-5">
-                            <div>
-                                <label class="form-label" data-i18n="contact.name">Name</label>
-                                <input type="text" name="name" placeholder="Max Mustermann" class="form-input" required />
-                            </div>
-                            <div>
-                                <label class="form-label" data-i18n="contact.emailaddress">E-Mail-Adresse</label>
-                                <input type="email" name="email" placeholder="max@mustermann.com" class="form-input" required />
-                            </div>
-                            <div>
-                                <label class="form-label" data-i18n="contact.message">Nachricht</label>
-                                <textarea name="message" data-i18n-placeholder="contact.placeholder" placeholder="Erzähle mir von Deiner Idee..." rows="5" class="form-input form-textarea" required></textarea>
-                            </div>
-
-                            <div id="recaptcha-container" class="hidden mt-2"></div>
-
-                            <button id="submitBtn" type="submit" class="btn-primary w-full justify-center">
-                                <span class="btn-text" data-i18n="contact.send">Nachricht senden</span>
-                                <span class="btn-loading hidden" data-i18n="contact.sending">Wird gesendet…</span>
-                            </button>
-
-                            <p class="text-xs opacity-40 mt-2" data-i18n="contact.senddata">Mit dem Absenden erklärst du dich mit der Verarbeitung deiner Daten gemäß Datenschutzerklärung einverstanden.</p>
-                            <p id="formStatus" class="mt-2 text-sm" aria-live="polite"></p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Footer, Toast, Impressum & Datenschutz -->
-    <script src="/footer-loader.js"></script>
+    </footer>
+    <!-- /include -->
 
 </body>
 </html>

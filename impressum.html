@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum — Donatello Media</title>
+    <meta name="description" content="Impressum von Donatello Media.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/svg+xml" href="/assets/bildmarke.svg">
+    <link rel="stylesheet" href="/assets/style.css?v=6">
+    <script src="/assets/app.js?v=6" defer></script>
+</head>
+<body>
+    <!-- Navigation: zentral in /partials/nav.html — einmal ändern, gilt überall -->
+    <!-- include:/partials/nav.html -->
+    <nav class="nav" aria-label="Hauptnavigation">
+        <a href="/" class="nav-brand">
+            <!-- Desktop Logo -->
+            <img src="/assets/Donatello_Logo_Wort_Bildmarke_Horizontal.svg" class="logo-full" alt="Donatello Media">
+            <!-- Mobile Logo -->
+            <img src="/assets/Donatello_Logo_Bildmarke.svg" class="logo-icon" alt="Donatello Media">
+        </a>
+        <div class="nav-links">
+            <a href="/#arbeiten" class="nav-link" data-i18n="nav.index">Index</a>
+            <a href="/#ueber" class="nav-link" data-i18n="nav.about">Über</a>
+            <a href="/#kontakt" class="nav-cta" data-i18n="nav.cta">Projekt anfragen</a>
+            <span class="nav-sep" aria-hidden="true"></span>
+            <button type="button" class="nav-link nav-lang-mobile" data-setlang="de">🇩🇪 Deutsch</button>
+            <button type="button" class="nav-link nav-lang-mobile" data-setlang="en">🇬🇧 English</button>
+        </div>
+        <div class="nav-tools">
+            <button id="themeToggle" class="tool-btn" aria-label="Farbschema wechseln">
+                <svg class="icon-sun" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.36 6.36l-.7-.7M6.34 6.34l-.7-.7m12.72 0l-.7.7M6.34 17.66l-.7.7M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                <svg class="icon-moon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.35 15.35A9 9 0 018.65 3.65 9 9 0 1020.35 15.35z"/></svg>
+            </button>
+            <button type="button" id="langToggle" class="tool-btn" aria-label="Switch language" title="Sprache wechseln / Switch language">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
+                <span class="tool-label" id="langLabel">EN</span>
+            </button>
+            <button class="nav-burger" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <!-- /include -->
+
+    <main class="section" style="padding-top: calc(76px + 70px);">
+        <div class="wrap" style="max-width: 760px;">
+            <span class="eyebrow">Rechtliches</span>
+            <h1 class="display" style="font-size: clamp(32px, 5vw, 56px); margin: 18px 0 30px;">Impressum<span class="violet">.</span></h1>
+            <div class="about-text">
+                <p><strong>Angaben gemäß § 5 DDG</strong></p>
+                <p>Donatello Media<br>Inhaber: Niklas Schubert<br><!-- TODO: Straße Hausnummer, PLZ Ort eintragen --></p>
+                <p>E-Mail: <a href="mailto:donatello-media@outlook.de">donatello-media@outlook.de</a><br>Telefon: +49 (0) 162 427 58 14</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer: zentral in /partials/footer.html -->
+    <!-- include:/partials/footer.html -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span>© <span id="year">2026</span> <span data-i18n="footer.tag">Donatello Media — Crafted to move.</span></span>
+            <div class="footer-links">
+                <a href="/impressum.html" data-i18n="footer.imprint">Impressum</a>
+                <a href="/datenschutz.html" data-i18n="footer.privacy">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+    <!-- /include -->
+
+</body>
+</html>
