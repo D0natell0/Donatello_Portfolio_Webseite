@@ -6,8 +6,8 @@
     <title>Donatello Media — Motion Design, Video & Branding</title>
     <meta name="description" content="Donatello Media — Portfolio von Niklas Schubert: Motion Design, Videoschnitt, 3D-Animation, Branding und Bildbearbeitung.">
     <link rel="icon" type="image/svg+xml" href="/assets/bildmarke.svg">
-    <link rel="stylesheet" href="/assets/style.css?v=6">
-    <script src="/assets/app.js?v=6" defer></script>
+    <link rel="stylesheet" href="/assets/style.css?v=8">
+    <script src="/assets/app.js?v=8" defer></script>
 </head>
 <body>
     <!-- Navigation: zentral in /partials/nav.html — einmal ändern, gilt überall -->
@@ -248,6 +248,30 @@
                     <div class="field">
                         <label for="f-email" data-i18n="form.email">E-Mail</label>
                         <input id="f-email" type="email" name="email" placeholder="max@mustermann.de" data-i18n-ph="form.emailPh" required>
+                    </div>
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="f-produkt" data-i18n="form.produkt">Bereich</label>
+                            <select id="f-produkt" name="Bereich">
+                                <option value="" data-i18n="form.produktEmpty">Bitte wählen</option>
+                                <option value="Motion Design" data-i18n="area.motion">Motion Design</option>
+                                <option value="Videoschnitt" data-i18n="area.video">Videoschnitt</option>
+                                <option value="3D-Animation" data-i18n="area.3d">3D-Animation</option>
+                                <option value="Branding" data-i18n="area.branding">Branding</option>
+                                <option value="Bildbearbeitung" data-i18n="area.bild">Bildbearbeitung</option>
+                                <option value="Sonstiges / weiß noch nicht" data-i18n="form.produktOther">Sonstiges / weiß noch nicht</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="f-paket" data-i18n="form.paket">Paket</label>
+                            <select id="f-paket" name="Paket">
+                                <option value="" data-i18n="form.paketEmpty">Bitte wählen</option>
+                                <option value="Start" data-i18n="form.paketStart">Start</option>
+                                <option value="Studio" data-i18n="form.paketStudio">Studio</option>
+                                <option value="Signature" data-i18n="form.paketSignature">Signature</option>
+                                <option value="Weiß ich noch nicht" data-i18n="form.paketUnsure">Weiß ich noch nicht</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="field">
                         <label for="f-msg" data-i18n="form.msg">Projekt</label>

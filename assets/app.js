@@ -69,6 +69,15 @@
 
             'form.name': 'Name',
             'form.namePh': 'Max Mustermann',
+            'form.produkt': 'Bereich',
+            'form.produktEmpty': 'Bitte wählen',
+            'form.produktOther': 'Sonstiges / weiß noch nicht',
+            'form.paket': 'Paket',
+            'form.paketEmpty': 'Bitte wählen',
+            'form.paketStart': 'Start',
+            'form.paketStudio': 'Studio',
+            'form.paketSignature': 'Signature',
+            'form.paketUnsure': 'Weiß ich noch nicht',
             'form.email': 'E-Mail',
             'form.emailPh': 'max@mustermann.de',
             'form.msg': 'Projekt',
@@ -92,6 +101,73 @@
             'sub.ctaA': 'Sowas brauchst du auch?',
             'sub.ctaB': 'Lass uns reden',
             'sub.ph': 'Medien folgen',
+            'price.eyebrow': 'Pakete & Preise',
+            'price.t1': 'Fair',
+            'price.t2': 'kalkuliert',
+            'price.lede': 'Drei Pakete — vom schnellen Einstieg bis zur kompletten Produktion. Alle Preise sind Einstiegspreise und richten sich nach Umfang und Material.',
+            'price.from': 'ab',
+            'price.request': 'Auf Anfrage',
+            'price.badge': 'Beliebt',
+            'price.cta': 'Anfragen',
+            'price.ctaSig': 'Beratung anfragen',
+            'price.note': 'Alle Preise verstehen sich als Richtwerte zzgl. USt. — das finale Angebot gibt\u2019s nach einem kurzen, kostenlosen Briefing.',
+            'price.ctaA': 'Nicht sicher, welches Paket passt?',
+            'price.ctaB': 'Lass uns kurz reden',
+            'price.sig.d': 'Maßgeschneidert — für alles, was aus dem Rahmen fällt.',
+            'price.sig.f1': 'Konzept gemeinsam entwickelt',
+            'price.sig.f2': 'Umfang & Leistungen nach Absprache',
+            'price.sig.f3': 'Laufende Betreuung möglich',
+            'price.sig.f4': 'Persönliches Angebot in 24 h',
+            'price.video.d1': 'Der schnelle Schnitt für Social Media — aus deinem Material wird ein fertiger Clip.',
+            'price.video.f1a': '1 Video bis ca. 60 Sekunden',
+            'price.video.f1b': 'Schnitt, Musik & Basis-Farbkorrektur',
+            'price.video.f1c': 'Export für 1 Plattform (z. B. Reels)',
+            'price.video.f1d': '1 Korrekturschleife',
+            'price.video.d2': 'Der runde Auftritt — mit Motion-Elementen und Feinschliff bis ins Detail.',
+            'price.video.f2a': '1 Video bis ca. 3–5 Minuten',
+            'price.video.f2b': 'Sounddesign & Color Grading',
+            'price.video.f2c': 'Animierte Bauchbinden & Untertitel',
+            'price.video.f2d': '2 Korrekturschleifen',
+            'price.motion.d1': 'Der schnelle Einstieg — deine Marke kommt in Bewegung.',
+            'price.motion.f1a': 'Logo-Animation bis ca. 10 Sekunden',
+            'price.motion.f1b': 'Sounddesign inklusive',
+            'price.motion.f1c': 'Exporte für Web & Social Media',
+            'price.motion.f1d': '1 Korrekturschleife',
+            'price.motion.d2': 'Das komplette Motion-Paket — vom Storyboard bis zum Sound.',
+            'price.motion.f2a': 'Erklärvideo oder Animation bis ca. 60 Sek.',
+            'price.motion.f2b': 'Storyboard & Stilfindung inklusive',
+            'price.motion.f2c': 'Voiceover-Einbindung & Sounddesign',
+            'price.motion.f2d': '2 Korrekturschleifen',
+            'price.3d.d1': 'Dein Produkt oder Logo als hochwertiges 3D-Bild.',
+            'price.3d.f1a': '1 Produkt-Still oder kurzer Loop',
+            'price.3d.f1b': 'Modelling & Texturing inklusive',
+            'price.3d.f1c': 'Rendering in 4K',
+            'price.3d.f1d': '1 Korrekturschleife',
+            'price.3d.d2': 'Die komplette 3D-Animation — von der Szene bis zum finalen Render.',
+            'price.3d.f2a': 'Animation bis ca. 30 Sekunden',
+            'price.3d.f2b': 'Szenenaufbau, Licht & Kamerafahrt',
+            'price.3d.f2c': 'Sounddesign inklusive',
+            'price.3d.f2d': '2 Korrekturschleifen',
+            'price.branding.d1': 'Das Fundament deiner Marke — Logo und Farbwelt aus einem Guss.',
+            'price.branding.f1a': 'Logo-Design (2 Entwürfe, 1 Ausarbeitung)',
+            'price.branding.f1b': 'Farbwelt & Schriftempfehlung',
+            'price.branding.f1c': 'Alle Dateiformate für Print & Web',
+            'price.branding.f1d': '2 Korrekturschleifen',
+            'price.branding.d2': 'Der komplette Markenauftritt — konsistent bis zur Visitenkarte.',
+            'price.branding.f2a': 'Logo-System mit Varianten',
+            'price.branding.f2b': 'Geschäftsausstattung (Visitenkarte, Briefbogen)',
+            'price.branding.f2c': 'Mini-Styleguide als PDF',
+            'price.branding.f2d': 'Social-Media-Basispaket',
+            'price.bild.d1': 'Professionelle Retusche — fair pro Bild kalkuliert.',
+            'price.bild.f1a': 'Beauty- oder Produktretusche, pro Bild',
+            'price.bild.f1b': 'Farb- & Belichtungskorrektur',
+            'price.bild.f1c': 'Freisteller auf Wunsch',
+            'price.bild.f1d': 'Lieferung in 2–3 Werktagen',
+            'price.bild.d2': 'Bildserien und Composings mit aufwendiger Bearbeitung.',
+            'price.bild.f2a': 'Serie bis 10 Bilder oder 1 Composing',
+            'price.bild.f2b': 'Einheitlicher Farblook',
+            'price.bild.f2c': 'Druck- & Web-Export',
+            'price.bild.f2d': '2 Korrekturschleifen',
             'lede.motion': 'Logo-Animationen, Erklärfilme und Titelsequenzen — Bewegung mit Absicht. Jedes Keyframe hat einen Grund, jeder Schnitt einen Rhythmus.',
             'lede.video': 'Vom Rohmaterial zum fertigen Film: Schnitt, Farbkorrektur und Postproduktion mit Fokus auf Storytelling und Timing.',
             'lede.3d': 'Modelling, Texturing, Animation und Rendering in Blender — von stilisierten Szenen bis zu realistischen Visualisierungen.',
@@ -155,6 +231,15 @@
 
             'form.name': 'Name',
             'form.namePh': 'Jane Doe',
+            'form.produkt': 'Category',
+            'form.produktEmpty': 'Please select',
+            'form.produktOther': 'Something else / not sure yet',
+            'form.paket': 'Package',
+            'form.paketEmpty': 'Please select',
+            'form.paketStart': 'Start',
+            'form.paketStudio': 'Studio',
+            'form.paketSignature': 'Signature',
+            'form.paketUnsure': 'Not sure yet',
             'form.email': 'Email',
             'form.emailPh': 'jane@doe.com',
             'form.msg': 'Project',
@@ -178,6 +263,73 @@
             'sub.ctaA': 'Need something like this?',
             'sub.ctaB': 'Let\u2019s talk',
             'sub.ph': 'Media coming soon',
+            'price.eyebrow': 'Packages & Pricing',
+            'price.t1': 'Fairly',
+            'price.t2': 'priced',
+            'price.lede': 'Three packages — from a quick start to full production. All prices are starting points and depend on scope and material.',
+            'price.from': 'from',
+            'price.request': 'On request',
+            'price.badge': 'Popular',
+            'price.cta': 'Enquire',
+            'price.ctaSig': 'Request consultation',
+            'price.note': 'All prices are guide prices plus VAT — you\u2019ll get the final quote after a short, free briefing.',
+            'price.ctaA': 'Not sure which package fits?',
+            'price.ctaB': 'Let\u2019s have a quick chat',
+            'price.sig.d': 'Tailor-made — for everything beyond the standard.',
+            'price.sig.f1': 'Concept developed together',
+            'price.sig.f2': 'Scope & services by agreement',
+            'price.sig.f3': 'Ongoing support available',
+            'price.sig.f4': 'Personal quote within 24 h',
+            'price.video.d1': 'The quick edit for social media — your footage becomes a finished clip.',
+            'price.video.f1a': '1 video up to approx. 60 seconds',
+            'price.video.f1b': 'Editing, music & basic color correction',
+            'price.video.f1c': 'Export for 1 platform (e.g. Reels)',
+            'price.video.f1d': '1 revision round',
+            'price.video.d2': 'The polished result — with motion elements and fine-tuning down to the detail.',
+            'price.video.f2a': '1 video up to approx. 3–5 minutes',
+            'price.video.f2b': 'Sound design & color grading',
+            'price.video.f2c': 'Animated lower thirds & subtitles',
+            'price.video.f2d': '2 revision rounds',
+            'price.motion.d1': 'The quick start — your brand starts moving.',
+            'price.motion.f1a': 'Logo animation up to approx. 10 seconds',
+            'price.motion.f1b': 'Sound design included',
+            'price.motion.f1c': 'Exports for web & social media',
+            'price.motion.f1d': '1 revision round',
+            'price.motion.d2': 'The full motion package — from storyboard to sound.',
+            'price.motion.f2a': 'Explainer or animation up to approx. 60 sec.',
+            'price.motion.f2b': 'Storyboard & style development included',
+            'price.motion.f2c': 'Voiceover integration & sound design',
+            'price.motion.f2d': '2 revision rounds',
+            'price.3d.d1': 'Your product or logo as a high-quality 3D visual.',
+            'price.3d.f1a': '1 product still or short loop',
+            'price.3d.f1b': 'Modelling & texturing included',
+            'price.3d.f1c': '4K rendering',
+            'price.3d.f1d': '1 revision round',
+            'price.3d.d2': 'The complete 3D animation — from scene to final render.',
+            'price.3d.f2a': 'Animation up to approx. 30 seconds',
+            'price.3d.f2b': 'Scene setup, lighting & camera moves',
+            'price.3d.f2c': 'Sound design included',
+            'price.3d.f2d': '2 revision rounds',
+            'price.branding.d1': 'Your brand\u2019s foundation — logo and colors from one mold.',
+            'price.branding.f1a': 'Logo design (2 drafts, 1 final)',
+            'price.branding.f1b': 'Color palette & font recommendation',
+            'price.branding.f1c': 'All file formats for print & web',
+            'price.branding.f1d': '2 revision rounds',
+            'price.branding.d2': 'The complete brand identity — consistent down to the business card.',
+            'price.branding.f2a': 'Logo system with variants',
+            'price.branding.f2b': 'Stationery (business card, letterhead)',
+            'price.branding.f2c': 'Mini style guide as PDF',
+            'price.branding.f2d': 'Social media starter kit',
+            'price.bild.d1': 'Professional retouching — fairly priced per image.',
+            'price.bild.f1a': 'Beauty or product retouching, per image',
+            'price.bild.f1b': 'Color & exposure correction',
+            'price.bild.f1c': 'Cut-outs on request',
+            'price.bild.f1d': 'Delivery in 2–3 working days',
+            'price.bild.d2': 'Image series and composites with advanced editing.',
+            'price.bild.f2a': 'Series up to 10 images or 1 composite',
+            'price.bild.f2b': 'Consistent color look',
+            'price.bild.f2c': 'Print & web export',
+            'price.bild.f2d': '2 revision rounds',
             'lede.motion': 'Logo animations, explainer films and title sequences — motion with intent. Every keyframe has a reason, every cut a rhythm.',
             'lede.video': 'From raw footage to finished film: editing, color grading and post-production with a focus on storytelling and timing.',
             'lede.3d': 'Modelling, texturing, animation and rendering in Blender — from stylised scenes to realistic visualisations.',
@@ -439,6 +591,65 @@
     /* Theme-Klasse so früh wie möglich setzen (kein Aufblitzen) */
     if (localStorage.getItem('dm-theme') === 'light') document.body.classList.add('light');
 
+
+    /* ══════════════════════════════════════════════════════════
+       EXKLUSIV-TON — maximal ein Video/Audio mit Ton gleichzeitig.
+       Alle Medien laufen parallel (stumm); sobald bei einem der
+       Ton aktiviert wird (Klick auf Lautsprecher-Icon in den
+       nativen Controls oder Lautstärke hochgedreht), werden
+       automatisch alle anderen Medien auf der Seite stummgeschaltet.
+    ══════════════════════════════════════════════════════════ */
+    function initExclusiveAudio() {
+        function muteOthers(active) {
+            document.querySelectorAll('video, audio').forEach(el => {
+                if (el !== active && !el.muted) el.muted = true;
+            });
+        }
+        function onSound(e) {
+            const el = e.target;
+            if (!(el instanceof HTMLMediaElement)) return;
+            if (el.muted || el.volume === 0 || el.paused) return;
+            muteOthers(el);
+        }
+        document.addEventListener('volumechange', onSound, true);
+        document.addEventListener('play', onSound, true);
+    }
+
+
+    /* ══════════════════════════════════════════════════════════
+       FORMULAR-VORBEFÜLLUNG — Klick auf ein Paket einer Unterseite
+       (z.B. /Video/ -> Studio-Button) führt zu
+       /?produkt=video&paket=studio#kontakt. Hier werden die
+       beiden Dropdowns im Kontaktformular entsprechend vorbelegt,
+       danach wird die URL wieder sauber auf /#kontakt gekürzt.
+    ══════════════════════════════════════════════════════════ */
+    function initFormPrefill() {
+        const params = new URLSearchParams(window.location.search);
+        const produkt = params.get('produkt');
+        const paket = params.get('paket');
+        if (!produkt && !paket) return;
+
+        const PRODUKT_MAP = {
+            motion: 'Motion Design', video: 'Videoschnitt', '3d': '3D-Animation',
+            branding: 'Branding', bild: 'Bildbearbeitung'
+        };
+        const PAKET_MAP = { start: 'Start', studio: 'Studio', signature: 'Signature' };
+
+        const selProdukt = document.getElementById('f-produkt');
+        const selPaket = document.getElementById('f-paket');
+        if (selProdukt && PRODUKT_MAP[produkt]) selProdukt.value = PRODUKT_MAP[produkt];
+        if (selPaket && PAKET_MAP[paket]) selPaket.value = PAKET_MAP[paket];
+
+        /* URL aufräumen, Sprungmarke zum Kontaktformular behalten */
+        const clean = window.location.pathname + (window.location.hash || '#kontakt');
+        window.history.replaceState({}, '', clean);
+
+        /* Anchor-Sprung nachholen, falls der Browser vor dem Query-Cleanup
+           schon (falsch) gescrollt hat */
+        const target = document.getElementById('kontakt');
+        if (target) target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    }
+
     async function boot() {
         await loadIncludes();   /* Nav & Footer zuerst — Toggles leben dort */
         initTheme();
@@ -446,8 +657,10 @@
         initReveal();
         initNav();
         initForm();
+        initFormPrefill();
         initCard();
         initShowreel();
+        initExclusiveAudio();
         initYear();
     }
     if (document.readyState === 'loading') {
