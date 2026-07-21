@@ -1133,3 +1133,21 @@ body.light .icon-moon { display: block; }
 .price-note { font-size: 12px; color: var(--ink-35); margin-top: 22px; text-align: center; }
 .price-section .cta-band { margin-top: 40px; }
 .price-section .cta-band h2 { font-size: clamp(20px, 3vw, 32px); }
+
+/* ══════════════════════════════════════════════════════════════
+   HEADLINE-D — ersetzt den violetten Satzpunkt am Ende von
+   Überschriften durch das D-Bullet-Element (wie in .eyebrow und
+   .price-list), für Konsistenz mit dem Rest der Seite.
+   em-basiert, damit die Größe automatisch zur jeweiligen
+   Überschrift passt (Hero, Section-Title, Card-Titel, ...).
+══════════════════════════════════════════════════════════════ */
+.dot-d {
+    display: inline-block;
+    width: 0.22em;
+    height: 0.22em;
+    min-width: 6px;
+    min-height: 6px;
+    margin-left: 0.12em;
+    border-radius: 100% 100% 100% 0;   /* rund, außer unten links */
+    background: var(--violet);
+}
