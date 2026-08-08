@@ -1,0 +1,17 @@
+{
+  "booster": [
+    {
+      "id": "neuer_booster_1785928602849",
+      "name": "Neuer Booster",
+      "preis": 100,
+      "kartenProPack": 5,
+      "freischaltSchalter": 0,
+      "pool": [
+        {
+          "kartenId": "Elemental_Gemstone_Earth",
+          "gewicht": 1
+        }
+      ]
+    }
+  ]
+}

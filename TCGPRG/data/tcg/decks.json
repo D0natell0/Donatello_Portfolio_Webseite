@@ -1,0 +1,514 @@
+{
+  "decks": [
+    {
+      "id": "Elemental_Starter",
+      "name": "Elemental Starter",
+      "typ": "spieler",
+      "karten": [
+        {
+          "kartenId": "Elemental_Gemstone_Fire",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Gemstone_Water",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Gemstone_Wind",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Gemstone_Earth",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Spirit_Fire_Blazia",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Spirit_Ice_Helida",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Spirit_Wind_Tempestia",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Spirit_Earth_Tellia",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Titan_Ignis",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Titan_Aquos",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Titan_Ventoss",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Titan_Tellia",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Titan_Tellia_kopie_kopie",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Ember_Sprite",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Tide_Sprite",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Gale_Sprite",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Stone_Sprite",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Flame_Warden",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Frost_Warden",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Storm_Warden",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Mountain_Warden",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Fireball",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Tidal_Wave",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Cyclone",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Earthquake",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Blade",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Ward",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Sage",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Guardian",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Oracle",
+          "anzahl": 1
+        }
+      ]
+    },
+    {
+      "id": "Rivale",
+      "name": "Rivalen Deck",
+      "typ": "npc",
+      "karten": [
+        {
+          "kartenId": "Elemental_Gemstone_Fire",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Gemstone_Water",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Gemstone_Wind",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Gemstone_Earth",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Spirit_Fire_Blazia",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Spirit_Ice_Helida",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Spirit_Wind_Tempestia",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Spirit_Earth_Tellia",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Titan_Ignis",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Titan_Aquos",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Titan_Ventoss",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Titan_Tellia",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Titan_Tellia_kopie_kopie",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Ember_Sprite",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Tide_Sprite",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Gale_Sprite",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Stone_Sprite",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Flame_Warden",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Frost_Warden",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Storm_Warden",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Mountain_Warden",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Fireball",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Tidal_Wave",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Cyclone",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Earthquake",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Blade",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Ward",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Sage",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Guardian",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Elemental_Oracle",
+          "anzahl": 1
+        }
+      ],
+      "actorPortrait": "1Prota"
+    },
+    {
+      "id": "Untote",
+      "name": "Untote",
+      "typ": "npc",
+      "karten": [
+        {
+          "kartenId": "Skeletal_Servant",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Bone_Archer",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Shambling_Corpse",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Grave_Ghoul",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Wailing_Banshee",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Crypt_Crawler",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Rotting_Zombie",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Restless_Spirit",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Bone_Golem",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Plague_Bearer",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Soul_Harvester",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Grim_Reaper_Acolyte",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Wraith_Lord",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Death_Knight",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Cursed_Revenant",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Skeleton_Warlord",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Vampiric_Count",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Grave_Warden",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Phantom_Assassin",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Bone_Dragon",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Grave_Sigil_Valgor",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Grave_Sigil_Lilith",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Grave_Sigil_Mortis",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Necromancer_Valgor",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Grave_Empress_Lilith",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Death_King_Mortis",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Raise_Dead_Ritual",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Cursed_Ground",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Withering_Curse",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Ghostly_Search",
+          "anzahl": 1
+        }
+      ],
+      "actorPortrait": "1Prota Test"
+    },
+    {
+      "id": "Maschinen_Starter",
+      "name": "Maschinen",
+      "typ": "spieler",
+      "karten": [
+        {
+          "kartenId": "Scout_Bot",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Gear_Grinder",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Armor_Plate_Bot",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Assault_Drone",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Missile_Platform",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Factory_Core",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Railgun_Walker",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Steel_Colossus",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Repair_Drone",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Sentry_Bot",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Turret_Bot",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Salvage_Bot",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Heavy_Strider",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Energy_Cell",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Overclock_Signal",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Emergency_Patch",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Recon_Scan",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "EMP_Burst",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Precision_Strike",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Reinforced_Plating",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Overdrive_Core",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Targeting_Module",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Power_Coupling",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Core_Unit_Alpha",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Core_Unit_Beta",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Core_Unit_Gamma",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Titan_Omega_MK1",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "War_Machine_Prime",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Siege_Titan",
+          "anzahl": 1
+        },
+        {
+          "kartenId": "Iron_Sovereign",
+          "anzahl": 1
+        }
+      ]
+    }
+  ]
+}

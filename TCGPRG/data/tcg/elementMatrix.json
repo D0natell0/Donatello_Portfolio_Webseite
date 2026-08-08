@@ -1,0 +1,34 @@
+{
+  "regeln": [
+    {
+      "angreifer": "Feuer",
+      "verteidiger": "Erde",
+      "modifikator": 1
+    },
+    {
+      "angreifer": "Wasser",
+      "verteidiger": "Feuer",
+      "modifikator": 1
+    },
+    {
+      "angreifer": "Wind",
+      "verteidiger": "Wasser",
+      "modifikator": 1
+    },
+    {
+      "angreifer": "Erde",
+      "verteidiger": "Wind",
+      "modifikator": 1
+    },
+    {
+      "angreifer": "Licht",
+      "verteidiger": "Finsternis",
+      "modifikator": 1
+    },
+    {
+      "angreifer": "Finsternis",
+      "verteidiger": "Licht",
+      "modifikator": 1
+    }
+  ]
+}
