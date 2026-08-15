@@ -127,7 +127,7 @@
     align-items:center;
     justify-content:22%;
     text-align:center;
-    padding:0 20px;
+    padding:0 50px;
     transition: transform .2s ease-out;
   }
   .intro-layer .eyebrow{ opacity:.9; }
@@ -136,7 +136,7 @@
     font-size:1.35rem;
     font-style:italic;
     color:var(--cream-dim);
-    margin:50 auto;
+    margin:0 auto;
     transition: color .3s ease, transform .3s ease;
   }
   .intro-layer:hover p{
@@ -189,7 +189,7 @@
   }
 
   .reveal-btn-wrap{
-    position:absolute; left:0; right:0; bottom:9%;
+    position:absolute; left:0; right:0; bottom:40%;
     z-index:6;
     display:flex; justify-content:center;
     transition:opacity .6s ease, transform .6s ease;
@@ -217,8 +217,11 @@
     z-index:6; color:var(--cream-dim); font-size:.75rem;
     letter-spacing:.3em; text-transform:uppercase;
     display:flex; flex-direction:column; align-items:center; gap:8px;
-    opacity:.8;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .8s ease .2s;
   }
+  .hero.revealed .scroll-cue{ opacity:.8; }
   .scroll-cue .stick{ width:1px; height:36px; background:linear-gradient(var(--gold),transparent); animation:scrollcue 2s infinite; }
   @keyframes scrollcue{ 0%{opacity:0; transform:scaleY(.2);} 40%{opacity:1;} 100%{opacity:0; transform:scaleY(1);} }
 
@@ -415,12 +418,25 @@
     display:block; margin-bottom:8px; letter-spacing:.08em; text-transform:uppercase;
     font-size:.8rem; color:var(--gold);
   }
-  .field input[type="text"], .field input[type="number"]{
+  .field input[type="text"], .field input[type="number"], .field textarea{
     width:100%; padding:12px 14px; border-radius:8px;
     border:1px solid var(--wood-600); background:var(--wood-950); color:var(--cream);
     font-family:var(--body-font); font-size:1.05rem;
   }
-  .field input:focus{ outline:2px solid var(--gold); }
+  .field textarea{ resize:vertical; min-height:80px; }
+  .field input:focus, .field textarea:focus{ outline:2px solid var(--gold); }
+  .meal-per-guest{ display:flex; flex-direction:column; gap:18px; }
+  .guest-meal{
+    padding:14px 16px;
+    border:1px solid rgba(201,162,74,.25);
+    border-radius:10px;
+    background:rgba(244,236,216,.02);
+  }
+  .guest-meal-label{
+    display:block; margin-bottom:10px;
+    font-size:.85rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--cream-dim);
+  }
   .radio-group{ display:flex; flex-wrap:wrap; gap:14px; }
   .radio-pill{
     flex:1 1 auto; text-align:center;
@@ -445,6 +461,62 @@
     color:var(--gold-light);
   }
   .success-msg.show{ display:block; }
+  .error-msg{
+    display:none; text-align:center; padding:20px; margin-top:20px;
+    border:1px solid var(--wood-600); border-radius:10px; background:rgba(107,74,44,.15);
+    color:var(--cream-dim);
+  }
+  .error-msg.show{ display:block; }
+  .error-msg a{ color:var(--gold-light); }
+  .submit-btn:disabled{ opacity:.6; cursor:not-allowed; transform:none !important; }
+
+  /* ============ SPEISEKARTE MODAL ============ */
+  button.maps-link{ font-family:var(--body-font); cursor:pointer; background:transparent; }
+  .menu-modal{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(10,7,4,.85);
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .35s ease;
+    padding:24px;
+  }
+  .menu-modal.open{ opacity:1; visibility:visible; pointer-events:auto; }
+  .menu-modal-inner{
+    position:relative;
+    max-width:520px; width:100%;
+    max-height:85vh; overflow-y:auto;
+    background: linear-gradient(180deg, var(--wood-800), var(--wood-900));
+    border:1px solid var(--gold);
+    border-radius:16px;
+    padding:44px clamp(20px,5vw,46px) 38px;
+    box-shadow:var(--shadow-strong);
+    transform:scale(.94) translateY(10px);
+    transition:transform .35s ease;
+  }
+  .menu-modal.open .menu-modal-inner{ transform:scale(1) translateY(0); }
+  .menu-modal h3{
+    text-align:center; color:var(--gold-light); font-size:1.7rem;
+  }
+  .menu-modal .divider{ margin:16px auto 30px; }
+  .menu-course{
+    text-align:center;
+    margin-bottom:28px;
+    padding-bottom:24px;
+    border-bottom:1px solid rgba(201,162,74,.25);
+  }
+  .menu-course:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .menu-course .course-label{
+    display:block; letter-spacing:.3em; text-transform:uppercase;
+    font-size:.72rem; color:var(--gold); margin-bottom:8px;
+  }
+  .menu-course h4{
+    font-family:var(--serif); font-size:1.25rem; color:var(--cream); margin-bottom:8px;
+  }
+  .menu-course p{ color:var(--cream-dim); font-style:italic; margin:0; }
+  .menu-modal-close{
+    position:absolute; top:16px; right:20px; color:var(--cream);
+    font-size:1.8rem; cursor:pointer; background:none; border:none; line-height:1;
+  }
 
   /* ============ INFO / QA ============ */
   #info{
@@ -586,6 +658,30 @@
   <img src="" alt="" id="lightboxImg">
 </div>
 
+<!-- ================= SPEISEKARTE MODAL ================= -->
+<div class="menu-modal" id="menuModal">
+  <div class="menu-modal-inner">
+    <button class="menu-modal-close" id="menuModalClose">&times;</button>
+    <h3>Unsere Speisekarte</h3>
+    <div class="divider"></div>
+    <div class="menu-course">
+      <span class="course-label">Vorspeise</span>
+      <h4>Kürbiscremesuppe</h4>
+      <p>mit geröstetem Kernöl und knusprigen Brotcroutons</p>
+    </div>
+    <div class="menu-course">
+      <span class="course-label">Hauptgang</span>
+      <h4>Geschmortes Rinderbäckchen</h4>
+      <p>an Rotweinjus mit Kartoffelgratin und Herbstgemüse &ndash; auf Wunsch auch als Fisch- oder vegane Variante</p>
+    </div>
+    <div class="menu-course">
+      <span class="course-label">Dessert</span>
+      <h4>Warmer Apfelstrudel</h4>
+      <p>mit Vanilleeis und Zimtsauce</p>
+    </div>
+  </div>
+</div>
+
 <!-- ================= COUNTDOWN ================= -->
 <section id="countdown-section">
   <span class="eyebrow">Der große Tag</span>
@@ -605,7 +701,10 @@
     <span class="eyebrow">RSVP</span>
     <h2 class="section-title">Wir freuen uns auf <span>eure Zusage</span></h2>
     <p class="section-sub">Bitte gebt uns bis zum 01.02.2027 Bescheid, damit wir alles wunderbar planen können.</p>
-    <form class="rsvp-form" id="rsvpForm">
+    <form class="rsvp-form" id="rsvpForm" action="https://formsubmit.co/niklasschubert34@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Neue RSVP-Zusage – Oxana &amp; Niklas">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
       <div class="field">
         <label for="guestName">Name(n)</label>
         <input type="text" id="guestName" name="guestName" placeholder="z.B. Julia und Tom Schmidt" required>
@@ -614,17 +713,19 @@
         <label for="guestCount">Anzahl Gäste</label>
         <input type="number" id="guestCount" name="guestCount" min="1" max="10" value="1" required>
       </div>
+      <input type="hidden" name="essenswunsch_uebersicht" id="mealSummaryField" value="">
       <div class="field">
-        <label>Essenswunsch</label>
-        <div class="radio-group" id="mealGroup">
-          <label class="radio-pill"><input type="radio" name="meal" value="Fleisch" checked>Fleisch</label>
-          <label class="radio-pill"><input type="radio" name="meal" value="Fisch">Fisch</label>
-          <label class="radio-pill"><input type="radio" name="meal" value="Vegan">Vegan</label>
-        </div>
+        <label>Essenswunsch pro Gast</label>
+        <div class="meal-per-guest" id="mealPerGuest"></div>
+      </div>
+      <div class="field">
+        <label for="allergies">Unverträglichkeiten / Anmerkungen</label>
+        <textarea id="allergies" name="allergies" rows="3" placeholder="z.B. Nussallergie, Laktoseintoleranz, Glutenfrei ... (bitte den Namen der Person dazuschreiben)"></textarea>
       </div>
       <button type="submit" class="submit-btn">Zusage senden</button>
-      <p class="form-note">Hinweis: Dies ist derzeit eine Demo-Version des Formulars &ndash; eine echte Übermittlung folgt in Kürze.</p>
+      <p class="form-note">Eure Angaben werden direkt per E-Mail an uns übermittelt.</p>
       <div class="success-msg" id="successMsg">Danke euch von Herzen! Eure Rückmeldung wurde erfasst. 🌿</div>
+      <div class="error-msg" id="errorMsg">Es gab leider ein Problem beim Senden. Schreibt uns gerne direkt an <a href="mailto:niklasschubert34@gmail.com">niklasschubert34@gmail.com</a>.</div>
     </form>
   </div>
 </section>
@@ -648,7 +749,7 @@
         <h3>Speisekarte</h3>
         <p>Regionale, saisonale Küche</p>
         <p>Fleisch &middot; Fisch &middot; Vegane Option</p>
-        <a class="maps-link" href="#" target="_blank" rel="noopener">Speisekarte ansehen</a>
+        <button type="button" class="maps-link" id="menuBtn">Speisekarte ansehen</button>
       </div>
       <div class="info-card">
         <div class="icon">👗</div>
@@ -667,15 +768,15 @@
       </div>
       <div class="qa-item">
         <button class="qa-question"><span>Dürfen wir Kinder mitbringen?</span><span class="plus">+</span></button>
-        <div class="qa-answer"><p>Wir feiern diesen Tag am liebsten nur unter Erwachsenen &ndash; für Verständnis danken wir euch sehr.</p></div>
+        <div class="qa-answer"><p>Bringt sehr gerne eure Kinder mit. Für eine Spielecke, sowie einen Rückzugsort wird gesorgt.</p></div>
       </div>
       <div class="qa-item">
         <button class="qa-question"><span>Gibt es Übernachtungsmöglichkeiten?</span><span class="plus">+</span></button>
-        <div class="qa-answer"><p>In der Nähe gibt es mehrere Hotels &ndash; eine Empfehlungsliste schicken wir euch rechtzeitig zu.</p></div>
+        <div class="qa-answer"><p>Direkt vor Ort gibt es wenige Schlafplätze. <br>Wer eine Unterkunft benötigt, soll sich bitte rechtzeitig bei uns melden.</p></div>
       </div>
       <div class="qa-item">
         <button class="qa-question"><span>Bis wann sollen wir zusagen?</span><span class="plus">+</span></button>
-        <div class="qa-answer"><p>Bitte füllt das Formular oben bis spätestens 01.02.2027 aus.</p></div>
+        <div class="qa-answer"><p>Für eine bessere Planung füllt bitte das Formular oben bis spätestens 01.02.2027 aus.</p></div>
       </div>
     </div>
   </div>
@@ -685,7 +786,7 @@
 <footer>
   <div class="footer-photo" id="footerPhoto"></div>
   <span class="script-names">Oxana &amp; Niklas</span>
-  <p>Wir können es kaum erwarten, diesen besonderen Tag mit euch zu teilen. Danke, dass ihr ein Teil unserer Geschichte seid &ndash; wir freuen uns riesig auf euch!</p>
+  <p>Wir können es kaum erwarten, diesen besonderen Tag mit euch zu teilen. Danke, dass ihr ein Teil unserer Geschichte seid und wir freuen uns sehr auf euch!</p>
   <div class="fine">Bis bald im Gut Sulz &middot; 27.03.2027</div>
 </footer>
 
@@ -743,6 +844,36 @@
   hero.addEventListener('mouseleave', () => { mouseX = 0; mouseY = 0; applyParallax(); });
   applyParallax();
 
+  /* ---------- Gyroskop-Parallax für Smartphones (ersetzt Hover) ---------- */
+  let gyroActive = false;
+  let gyroBase = null;
+  function handleOrientation(e){
+    if(e.gamma === null || e.beta === null) return;
+    // Beim ersten Signal die aktuelle Neigung als Nullpunkt merken,
+    // damit der Effekt unabhängig davon funktioniert, wie das Handy gehalten wird.
+    if(!gyroBase){ gyroBase = { gamma: e.gamma, beta: e.beta }; }
+    const gamma = e.gamma - gyroBase.gamma; // links/rechts kippen
+    const beta = e.beta - gyroBase.beta;    // vor/zurück kippen
+    mouseX = Math.max(-0.5, Math.min(0.5, gamma / 45 * 0.5));
+    mouseY = Math.max(-0.5, Math.min(0.5, beta / 45 * 0.5));
+    applyParallax();
+  }
+  function attachGyro(){
+    if(gyroActive) return;
+    gyroActive = true;
+    window.addEventListener('deviceorientation', handleOrientation, true);
+  }
+  function initGyroParallax(){
+    if(typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function'){
+      // iOS 13+ verlangt eine Erlaubnis, die nur nach einer Nutzer-Interaktion angefragt werden darf
+      DeviceOrientationEvent.requestPermission().then(state => {
+        if(state === 'granted') attachGyro();
+      }).catch(() => {});
+    } else if('DeviceOrientationEvent' in window){
+      attachGyro();
+    }
+  }
+
   /* ---------- Scroll-Sperre bis zur Enthüllung ---------- */
   const htmlEl = document.documentElement;
   function blockScrollKeys(e){
@@ -768,6 +899,7 @@
   document.getElementById('revealBtn').addEventListener('click', () => {
     hero.classList.add('revealed');
     unlockScroll();
+    initGyroParallax();
   });
 
   /* ---------- Fotowand: Emblem + Fotos fliegen beim Scroll rein ---------- */
@@ -795,11 +927,11 @@
 
   /* ---------- Story Diashow ---------- */
   const storyData = [
-    {label:'Der erste Blick', year:'Sommer 2019', text:'Auf einer Geburtstagsparty trafen sich unsere Blicke zum ersten Mal – und keiner von uns hat seitdem wieder weggeschaut.'},
-    {label:'Das erste Date', year:'Herbst 2019', text:'Ein Spaziergang durch den Wald, viel zu lange Gespräche und der erste gemeinsame Sonnenuntergang.'},
-    {label:'Der erste Urlaub', year:'2020', text:'Gemeinsam die Berge erklimmen und feststellen: mit dir will ich noch viele weitere Gipfel bezwingen.'},
-    {label:'Der Einzug', year:'2021', text:'Aus zwei Wohnungen wurde ein Zuhause – unser kleines grünes Nest.'},
-    {label:'Der Antrag', year:'2025', text:'Unter alten Bäumen, bei Kerzenschein – die Frage aller Fragen, und ein glasklares Ja.'}
+    {label:'Der erste Blick', year:'Sommer 2018', text:'Auf einer Geburtstagsparty trafen sich unsere Blicke zum ersten Mal – und keiner von uns hat seitdem wieder weggeschaut.'},
+    {label:'Das erste Date', year:'28.04.2019', text:'Pommes bei MCs, ein Spaziergang am Kuhsee, lange Gespräche und der erste gemeinsame Sonnenuntergang.'},
+    {label:'Der erste Urlaub', year:'18.08.2020', text:'Der erste große gemeinsame Urlaub in Kroatien.'},
+    {label:'Der Einzug', year:'01.07.2021', text:'Aus zwei Wohnungen wurde ein Zuhause, unsere erste Wohnung in Haunstetten.'},
+    {label:'Der Antrag', year:'02.02.2026', text:'Am selben Ort wie beim ersten Date, die Frage aller Fragen, und ein glasklares Ja.'}
   ];
   const track = document.getElementById('slideTrack');
   const dotsWrap = document.getElementById('slideDots');
@@ -868,20 +1000,100 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  /* ---------- RSVP Formular (Demo) ---------- */
-  document.querySelectorAll('#mealGroup .radio-pill').forEach(pill => {
-    const input = pill.querySelector('input');
-    if(input.checked) pill.classList.add('checked');
-    input.addEventListener('change', () => {
-      document.querySelectorAll('#mealGroup .radio-pill').forEach(p => p.classList.remove('checked'));
-      pill.classList.add('checked');
-    });
-  });
+  /* ---------- RSVP Formular: Essenswunsch pro Gast ---------- */
+  const guestCountInput = document.getElementById('guestCount');
+  const mealPerGuest = document.getElementById('mealPerGuest');
+  const MEAL_OPTIONS = ['Fleisch','Fisch','Vegan'];
 
-  document.getElementById('rsvpForm').addEventListener('submit', (e) => {
+  function attachMealPillListeners(scope){
+    scope.querySelectorAll('.guest-radio-group').forEach(group => {
+      group.querySelectorAll('.radio-pill').forEach(pill => {
+        const input = pill.querySelector('input');
+        input.addEventListener('change', () => {
+          group.querySelectorAll('.radio-pill').forEach(p => p.classList.remove('checked'));
+          pill.classList.add('checked');
+        });
+      });
+    });
+  }
+
+  function getCurrentMealSelections(){
+    const map = {};
+    mealPerGuest.querySelectorAll('.guest-radio-group').forEach(group => {
+      const idx = group.dataset.guest;
+      const checked = group.querySelector('input:checked');
+      map[idx] = checked ? checked.value : 'Fleisch';
+    });
+    return map;
+  }
+
+  function renderMealFields(count){
+    const prev = getCurrentMealSelections();
+    mealPerGuest.innerHTML = '';
+    for(let i = 1; i <= count; i++){
+      const selected = prev[i] || 'Fleisch';
+      const wrap = document.createElement('div');
+      wrap.className = 'guest-meal';
+      const pillsHtml = MEAL_OPTIONS.map(opt => {
+        const isChecked = opt === selected;
+        return `<label class="radio-pill${isChecked ? ' checked' : ''}"><input type="radio" name="meal_gast_${i}" value="${opt}"${isChecked ? ' checked' : ''}>${opt}</label>`;
+      }).join('');
+      wrap.innerHTML = `<span class="guest-meal-label">Gast ${i}</span><div class="radio-group guest-radio-group" data-guest="${i}">${pillsHtml}</div>`;
+      mealPerGuest.appendChild(wrap);
+    }
+    attachMealPillListeners(mealPerGuest);
+  }
+
+  function clampGuestCount(){
+    let n = parseInt(guestCountInput.value, 10);
+    if(isNaN(n) || n < 1) n = 1;
+    if(n > 10) n = 10;
+    guestCountInput.value = n;
+    return n;
+  }
+
+  guestCountInput.addEventListener('input', () => renderMealFields(clampGuestCount()));
+  guestCountInput.addEventListener('blur', () => renderMealFields(clampGuestCount()));
+  renderMealFields(clampGuestCount());
+
+  function buildMealSummary(){
+    const counts = {};
+    mealPerGuest.querySelectorAll('.guest-radio-group input:checked').forEach(inp => {
+      counts[inp.value] = (counts[inp.value] || 0) + 1;
+    });
+    return Object.entries(counts).map(([k, v]) => `${v}x ${k}`).join(', ') || 'keine Angabe';
+  }
+
+  const RSVP_EMAIL = 'niklasschubert34@gmail.com';
+  document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    document.getElementById('successMsg').classList.add('show');
-    e.target.querySelector('.submit-btn').textContent = 'Danke für eure Zusage!';
+    const form = e.target;
+    const btn = form.querySelector('.submit-btn');
+    const successMsg = document.getElementById('successMsg');
+    const errorMsg = document.getElementById('errorMsg');
+    const originalText = btn.textContent;
+    successMsg.classList.remove('show');
+    errorMsg.classList.remove('show');
+    document.getElementById('mealSummaryField').value = buildMealSummary();
+    btn.disabled = true;
+    btn.textContent = 'Wird gesendet ...';
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/' + RSVP_EMAIL, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if(!res.ok) throw new Error('Netzwerkfehler');
+      successMsg.classList.add('show');
+      btn.textContent = 'Danke für eure Zusage!';
+      form.reset();
+      guestCountInput.value = 1;
+      renderMealFields(1);
+    } catch(err){
+      errorMsg.classList.add('show');
+      btn.disabled = false;
+      btn.textContent = originalText;
+    }
   });
 
   /* ---------- Q&A Akkordeon ---------- */
@@ -892,6 +1104,12 @@
       if(!wasOpen) item.classList.add('open');
     });
   });
+
+  /* ---------- Speisekarte Modal ---------- */
+  const menuModal = document.getElementById('menuModal');
+  document.getElementById('menuBtn').addEventListener('click', () => menuModal.classList.add('open'));
+  document.getElementById('menuModalClose').addEventListener('click', () => menuModal.classList.remove('open'));
+  menuModal.addEventListener('click', (e) => { if(e.target === menuModal) menuModal.classList.remove('open'); });
 
   /* ---------- Footer-Foto Platzhalter ---------- */
   document.getElementById('footerPhoto').innerHTML = `<img src="${placeholder(6,'')}" alt="Oxana und Niklas">`;
