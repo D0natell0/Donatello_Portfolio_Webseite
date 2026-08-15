@@ -1052,7 +1052,17 @@
     return n;
   }
 
-  guestCountInput.addEventListener('input', () => renderMealFields(clampGuestCount()));
+  // Während der Eingabe (z.B. auf dem Handy ohne Pfeiltasten) darf das Feld
+  // kurzzeitig leer sein oder außerhalb der Grenzen liegen, damit man die
+  // Zahl erst löschen und neu eintippen kann. Fest begrenzt wird erst beim
+  // Verlassen des Feldes (blur).
+  guestCountInput.addEventListener('input', () => {
+    const raw = guestCountInput.value;
+    if(raw === '') return;
+    const n = parseInt(raw, 10);
+    if(isNaN(n)) return;
+    renderMealFields(Math.min(10, Math.max(1, n)));
+  });
   guestCountInput.addEventListener('blur', () => renderMealFields(clampGuestCount()));
   renderMealFields(clampGuestCount());
 
@@ -1067,6 +1077,7 @@
   const RSVP_EMAIL = 'niklasschubert34@gmail.com';
   document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
     e.preventDefault();
+    renderMealFields(clampGuestCount());
     const form = e.target;
     const btn = form.querySelector('.submit-btn');
     const successMsg = document.getElementById('successMsg');
