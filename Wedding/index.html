@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="de" class="lock-scroll">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxana &amp; Niklas – Wir heiraten!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wood-950:#1c130d;
+    --wood-900:#271a11;
+    --wood-800:#3a2717;
+    --wood-700:#4d341f;
+    --wood-600:#6b4a2c;
+    --green-950:#0d1710;
+    --green-900:#132217;
+    --green-800:#1c3324;
+    --green-700:#254531;
+    --green-600:#335c41;
+    --gold:#c9a24a;
+    --gold-light:#e6cc8f;
+    --cream:#f4ecd8;
+    --cream-dim:#dcccA4;
+    --shadow-strong: 0 25px 60px rgba(0,0,0,.55);
+    --serif: 'Playfair Display', serif;
+    --body-font: 'Cormorant Garamond', serif;
+    --script: 'Great Vibes', cursive;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background: var(--wood-950);
+    color: var(--cream);
+    font-family: var(--body-font);
+    font-size:19px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  /* Scroll erst freigeben, wenn die Namen enthüllt wurden */
+  html.lock-scroll, html.lock-scroll body{
+    overflow:hidden !important;
+    height:100%;
+    overscroll-behavior:none;
+  }
+  h1,h2,h3{ font-family: var(--serif); font-weight:700; margin:0; }
+  a{color:var(--gold-light);}
+  img{max-width:100%;display:block;}
+  .section-inner{max-width:1100px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:var(--body-font);
+    letter-spacing:.35em;
+    text-transform:uppercase;
+    font-size:14px;
+    color:var(--gold);
+    margin-bottom:14px;
+    margin-top:54px;
+    display:block;
+    text-align:center;
+  }
+  .section-title{
+    text-align:center;
+    font-size:clamp(2rem,5vw,3.2rem);
+    color:var(--cream);
+    margin-bottom:8px;
+  }
+  .section-title span{color:var(--gold);}
+  .section-sub{
+    text-align:center;
+    max-width:600px;
+    margin:0 auto 50px;
+    color:var(--cream-dim);
+    font-style:italic;
+    font-size:1.15rem;
+  }
+  .divider{
+    width:90px;height:2px;margin:22px auto 40px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  }
+
+  /* ============ HERO / PARALLAX HEADER ============ */
+  .hero{
+    position:relative;
+    height:100vh;
+    min-height:640px;
+    overflow:hidden;
+    background:var(--wood-950);
+    perspective: 1200px;
+  }
+  .parallax-layer{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    will-change:transform;
+  }
+  /* Ebene 0 - statischer Hintergrund */
+  .layer-bg{
+    background:
+      radial-gradient(ellipse at 50% 20%, rgba(201,162,74,.18), transparent 55%),
+      linear-gradient(180deg, var(--green-950) 0%, var(--wood-950) 55%, var(--wood-900) 100%);
+    z-index:1;
+  }
+  .layer-bg::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image: repeating-linear-gradient(115deg, rgba(255,255,255,.02) 0 2px, transparent 2px 26px);
+    opacity:.5;
+  }
+  /* Ebene 1 - Berge/Wald Silhouette, parallax + hover */
+  .layer-1{
+    z-index:2;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    transition: transform .25s ease-out;
+  }
+  .layer-1 svg{ width:110%; height:60%; }
+  .layer-1:hover{ filter:brightness(1.12); }
+
+  /* Ebene 2 - Einleitungstext, parallax + hover */
+  .intro-layer{
+    z-index:3;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:22%;
+    text-align:center;
+    padding:0 20px;
+    transition: transform .2s ease-out;
+  }
+  .intro-layer .eyebrow{ opacity:.9; }
+  .intro-layer p{
+    max-width:560px;
+    font-size:1.35rem;
+    font-style:italic;
+    color:var(--cream-dim);
+    margin:50 auto;
+    transition: color .3s ease, transform .3s ease;
+  }
+  .intro-layer:hover p{
+    color:var(--gold-light);
+    transform:translateY(-4px) scale(1.02);
+  }
+
+  /* Ebene 3 - Blätter/Zweige Overlay, parallax */
+  .layer-leaves{ z-index:5; pointer-events:none; }
+  .leaf-corner{ position:absolute; width:260px; opacity:.9; filter:drop-shadow(0 10px 18px rgba(0,0,0,.5)); }
+  .leaf-corner.tl{ top:-20px; left:-30px; transform:rotate(-8deg); }
+  .leaf-corner.tr{ top:-30px; right:-40px; transform:scaleX(-1) rotate(-10deg); }
+  .leaf-corner.bl{ bottom:-40px; left:-20px; transform:scaleY(-1) rotate(6deg); opacity:.75;}
+  .leaf-corner.br{ bottom:-50px; right:-30px; transform:scale(-1,-1) rotate(4deg); opacity:.75;}
+
+  /* Namen-Ebene: hinter dem Zoom-Parallax versteckt, erscheint bei Klick */
+  .names-stage{
+    position:absolute; inset:0;
+    z-index:4;
+    display:flex; align-items:center; justify-content:center;
+    pointer-events:none;
+  }
+  .names-zoom{
+    position:relative;
+    text-align:center;
+    transform: scale(2.6);
+    opacity:0;
+    filter: blur(6px);
+    transition: transform 1.4s cubic-bezier(.19,1,.22,1), opacity 1.1s ease, filter 1.1s ease;
+  }
+  .hero.revealed .names-zoom{
+    transform: scale(1);
+    opacity:1;
+    filter: blur(0);
+  }
+  .names-zoom .script-names{
+    font-family: var(--script);
+    font-size: clamp(3.2rem, 9vw, 6.5rem);
+    color: var(--gold-light);
+    text-shadow: 0 6px 30px rgba(0,0,0,.6);
+    line-height:1;
+  }
+  .names-zoom .amp{ color:var(--gold); }
+  .names-zoom .sub-date{
+    margin-top:10px;
+    letter-spacing:.4em;
+    text-transform:uppercase;
+    font-size:.85rem;
+    color:var(--cream-dim);
+  }
+
+  .reveal-btn-wrap{
+    position:absolute; left:0; right:0; bottom:9%;
+    z-index:6;
+    display:flex; justify-content:center;
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .hero.revealed .reveal-btn-wrap{ opacity:0; transform:translateY(20px); pointer-events:none; }
+  .reveal-btn{
+    font-family:var(--body-font);
+    font-size:1.05rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--wood-950);
+    background:linear-gradient(135deg,var(--gold-light),var(--gold));
+    border:none;
+    padding:14px 34px;
+    border-radius:40px;
+    cursor:pointer;
+    box-shadow:0 12px 26px rgba(0,0,0,.4);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .reveal-btn:hover{ transform:translateY(-3px) scale(1.03); box-shadow:0 16px 32px rgba(0,0,0,.5); }
+  .reveal-btn:active{ transform:translateY(0) scale(.98); }
+
+  .scroll-cue{
+    position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
+    z-index:6; color:var(--cream-dim); font-size:.75rem;
+    letter-spacing:.3em; text-transform:uppercase;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    opacity:.8;
+  }
+  .scroll-cue .stick{ width:1px; height:36px; background:linear-gradient(var(--gold),transparent); animation:scrollcue 2s infinite; }
+  @keyframes scrollcue{ 0%{opacity:0; transform:scaleY(.2);} 40%{opacity:1;} 100%{opacity:0; transform:scaleY(1);} }
+
+  /* ============ PHOTOWALL / SHRINK SECTION ============ */
+  .photowall-section{
+    position:relative;
+    background: linear-gradient(180deg, var(--wood-900), var(--wood-800) 40%, var(--green-900));
+    padding:140px 20px 120px;
+    overflow:hidden;
+  }
+  .shrink-emblem{
+    width:120px;height:120px;margin:0 auto 40px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--green-700), var(--green-950));
+    border:2px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow: var(--shadow-strong);
+    transform:scale(.6);
+    opacity:0;
+    transition: transform 1s cubic-bezier(.19,1,.22,1), opacity 1s ease;
+  }
+  .shrink-emblem.in-view{ transform:scale(1); opacity:1; }
+  .shrink-emblem svg{ width:52px;height:52px; }
+
+  .photowall-grid{
+    position:relative;
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:22px;
+    padding-top:20px;
+  }
+  .fly-photo{
+    aspect-ratio: 3/4;
+    border-radius:6px;
+    overflow:hidden;
+    border:6px solid var(--cream);
+    box-shadow: var(--shadow-strong);
+    opacity:0;
+    transition: transform 1s cubic-bezier(.19,1,.22,1), opacity 1s ease;
+  }
+  .fly-photo img{ width:100%;height:100%;object-fit:cover; }
+  .fly-photo.from-left{ transform: translateX(-140px) rotate(-10deg); }
+  .fly-photo.from-right{ transform: translateX(140px) rotate(10deg); }
+  .fly-photo.from-top{ transform: translateY(-120px) rotate(6deg); }
+  .fly-photo.from-bottom{ transform: translateY(120px) rotate(-6deg); }
+  .fly-photo.in-view{ opacity:1; transform: translate(0,0) rotate(var(--tilt,0deg)); }
+
+  /* ============ STORY / SLIDESHOW ============ */
+  #story{
+    background: linear-gradient(180deg, var(--green-900), var(--green-950));
+    padding:120px 0 130px;
+    position:relative;
+  }
+  .slideshow{
+    position:relative;
+    max-width:780px;
+    margin:0 auto;
+  }
+  .slide-track{
+    position:relative;
+    height:560px;
+  }
+  .slide{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center;
+    justify-content:center;
+    opacity:0; visibility:hidden;
+    transform:scale(.92);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .slide.active{ opacity:1; visibility:visible; transform:scale(1); }
+
+  .polaroid{
+    background:var(--cream);
+    padding:16px 16px 60px;
+    border-radius:3px;
+    box-shadow: var(--shadow-strong);
+    transform:rotate(var(--rot,-2deg));
+    cursor:zoom-in;
+    transition:transform .35s ease, box-shadow .35s ease;
+    width:min(78vw,340px);
+  }
+  .polaroid:hover{ transform:rotate(0deg) scale(1.035); box-shadow:0 30px 70px rgba(0,0,0,.6); }
+  .polaroid .frame{
+    width:100%; aspect-ratio:1/1; overflow:hidden; background:var(--wood-800);
+  }
+  .polaroid .frame img{ width:100%;height:100%;object-fit:cover; }
+  .polaroid figcaption{
+    color:var(--wood-900);
+    font-family:var(--script);
+    font-size:1.5rem;
+    text-align:center;
+    margin-top:12px;
+  }
+  .slide-caption{
+    max-width:480px;
+    margin:22px auto 0;
+    text-align:center;
+    color:var(--cream-dim);
+    font-style:italic;
+  }
+  .slide-year{
+    display:inline-block; margin-top:10px;
+    color:var(--gold); letter-spacing:.3em; font-size:.8rem; text-transform:uppercase;
+  }
+
+  .slide-nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:46px;height:46px;border-radius:50%;
+    background:rgba(244,236,216,.08);
+    border:1px solid var(--gold);
+    color:var(--gold-light);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer; font-size:1.3rem;
+    transition:background .25s ease, transform .25s ease;
+    user-select:none;
+  }
+  .slide-nav:hover{ background:rgba(201,162,74,.25); transform:translateY(-50%) scale(1.08); }
+  .slide-nav.prev{ left:-6px; }
+  .slide-nav.next{ right:-6px; }
+  @media (max-width:820px){
+    .slide-nav.prev{ left:4px; } .slide-nav.next{ right:4px; }
+  }
+
+  .slide-dots{ display:flex; justify-content:center; gap:10px; margin-top:26px; }
+  .slide-dots button{
+    width:10px;height:10px;border-radius:50%;border:1px solid var(--gold);
+    background:transparent; cursor:pointer; padding:0;
+    transition:background .25s ease, transform .25s ease;
+  }
+  .slide-dots button.active{ background:var(--gold); transform:scale(1.2); }
+
+  .lightbox{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(10,7,4,.92);
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .35s ease;
+    padding:30px;
+  }
+  .lightbox.open{ opacity:1; visibility:visible; pointer-events:auto; }
+  .lightbox img{ max-width:min(90vw,700px); max-height:80vh; border:10px solid var(--cream); box-shadow:var(--shadow-strong); border-radius:2px;}
+  .lightbox-close{
+    position:absolute; top:24px; right:30px; color:var(--cream);
+    font-size:2rem; cursor:pointer; background:none; border:none; line-height:1;
+  }
+
+  /* ============ COUNTDOWN ============ */
+  #countdown-section{
+    background: linear-gradient(180deg, var(--wood-900), var(--wood-950));
+    padding:120px 20px;
+    text-align:center;
+  }
+  .the-date{
+    font-family:var(--serif); font-size:clamp(1.8rem,4vw,2.6rem);
+    color:var(--gold-light); margin:6px 0 50px; letter-spacing:.05em;
+  }
+  .countdown{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:20px;
+  }
+  .countdown .box{
+    background: var(--green-900);
+    border:1px solid var(--gold);
+    border-radius:10px;
+    min-width:110px;
+    padding:22px 18px;
+    box-shadow:var(--shadow-strong);
+  }
+  .countdown .num{
+    font-family:var(--serif); font-size:2.6rem; color:var(--gold-light); font-weight:700;
+  }
+  .countdown .label{
+    margin-top:6px; text-transform:uppercase; letter-spacing:.2em; font-size:.75rem; color:var(--cream-dim);
+  }
+
+  /* ============ RSVP FORM ============ */
+  #rsvp{
+    background: linear-gradient(180deg, var(--green-950), var(--green-900));
+    padding:120px 20px;
+  }
+  .rsvp-form{
+    max-width:620px;
+    margin:0 auto;
+    background: rgba(244,236,216,.03);
+    border:1px solid rgba(201,162,74,.35);
+    border-radius:16px;
+    padding:44px clamp(20px,5vw,52px);
+    box-shadow:var(--shadow-strong);
+  }
+  .field{ margin-bottom:26px; }
+  .field label{
+    display:block; margin-bottom:8px; letter-spacing:.08em; text-transform:uppercase;
+    font-size:.8rem; color:var(--gold);
+  }
+  .field input[type="text"], .field input[type="number"]{
+    width:100%; padding:12px 14px; border-radius:8px;
+    border:1px solid var(--wood-600); background:var(--wood-950); color:var(--cream);
+    font-family:var(--body-font); font-size:1.05rem;
+  }
+  .field input:focus{ outline:2px solid var(--gold); }
+  .radio-group{ display:flex; flex-wrap:wrap; gap:14px; }
+  .radio-pill{
+    flex:1 1 auto; text-align:center;
+    border:1px solid var(--wood-600); border-radius:30px; padding:11px 18px;
+    cursor:pointer; transition:.2s ease; user-select:none; font-size:.95rem;
+  }
+  .radio-pill input{ display:none; }
+  .radio-pill:hover{ border-color:var(--gold); }
+  .radio-pill.checked{ background:var(--gold); color:var(--wood-950); border-color:var(--gold); font-weight:600; }
+  .submit-btn{
+    width:100%; padding:15px; border:none; border-radius:40px;
+    background:linear-gradient(135deg,var(--gold-light),var(--gold));
+    color:var(--wood-950); font-family:var(--body-font); font-size:1.1rem; letter-spacing:.08em;
+    text-transform:uppercase; cursor:pointer; font-weight:600;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .submit-btn:hover{ transform:translateY(-2px); box-shadow:0 14px 26px rgba(0,0,0,.4); }
+  .form-note{ text-align:center; color:var(--cream-dim); font-size:.85rem; margin-top:14px; font-style:italic; }
+  .success-msg{
+    display:none; text-align:center; padding:20px; margin-top:20px;
+    border:1px solid var(--gold); border-radius:10px; background:rgba(201,162,74,.1);
+    color:var(--gold-light);
+  }
+  .success-msg.show{ display:block; }
+
+  /* ============ INFO / QA ============ */
+  #info{
+    background: linear-gradient(180deg, var(--wood-950), var(--wood-900));
+    padding:120px 20px;
+  }
+  .info-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:26px; margin-bottom:70px;
+  }
+  .info-card{
+    background:var(--wood-800); border:1px solid rgba(201,162,74,.3);
+    border-radius:14px; padding:32px 26px; text-align:center;
+    box-shadow:var(--shadow-strong);
+    transition:transform .3s ease;
+  }
+  .info-card:hover{ transform:translateY(-6px); }
+  .info-card .icon{ font-size:2rem; margin-bottom:14px; }
+  .info-card h3{ color:var(--gold-light); font-size:1.3rem; margin-bottom:10px; }
+  .info-card p{ color:var(--cream-dim); margin:4px 0; }
+  .maps-link{
+    display:inline-block; margin-top:14px; padding:9px 20px; border-radius:24px;
+    border:1px solid var(--gold); color:var(--gold-light); text-decoration:none; font-size:.9rem;
+    letter-spacing:.06em; transition:.2s ease;
+  }
+  .maps-link:hover{ background:var(--gold); color:var(--wood-950); }
+
+  .qa-list{ max-width:760px; margin:0 auto; }
+  .qa-item{
+    border-bottom:1px solid rgba(201,162,74,.25);
+  }
+  .qa-question{
+    width:100%; text-align:left; background:none; border:none; color:var(--cream);
+    font-family:var(--serif); font-size:1.15rem; padding:20px 4px; cursor:pointer;
+    display:flex; justify-content:space-between; align-items:center; gap:14px;
+  }
+  .qa-question .plus{ color:var(--gold); font-size:1.4rem; transition:transform .3s ease; }
+  .qa-item.open .qa-question .plus{ transform:rotate(45deg); }
+  .qa-answer{
+    max-height:0; overflow:hidden; transition:max-height .4s ease;
+    color:var(--cream-dim); padding:0 4px;
+  }
+  .qa-item.open .qa-answer{ max-height:220px; padding-bottom:20px; }
+
+  /* ============ FOOTER ============ */
+  footer{
+    background: var(--green-950);
+    padding:90px 20px 50px;
+    text-align:center;
+    border-top:1px solid rgba(201,162,74,.3);
+  }
+  .footer-photo{
+    width:170px; height:170px; border-radius:50%; margin:0 auto 26px;
+    border:4px solid var(--gold); overflow:hidden; box-shadow:var(--shadow-strong);
+  }
+  .footer-photo img{ width:100%;height:100%;object-fit:cover; }
+  footer .script-names{
+    font-family:var(--script); font-size:2.6rem; color:var(--gold-light); margin-bottom:14px; display:block;
+  }
+  footer p{ color:var(--cream-dim); max-width:480px; margin:0 auto; }
+  footer .fine{ margin-top:34px; font-size:.8rem; opacity:.6; letter-spacing:.15em; text-transform:uppercase; }
+
+  @media (max-width:640px){
+    .slide-track{ height:600px; }
+    .countdown .box{ min-width:80px; padding:16px 10px; }
+    .countdown .num{ font-size:1.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO / PARALLAX HEADER ================= -->
+<header class="hero" id="hero">
+  <div class="parallax-layer layer-bg"></div>
+
+  <div class="parallax-layer layer-1" data-depth="0.25" id="layer1">
+    <svg viewBox="0 0 1200 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 400 L0 260 Q150 180 300 250 T600 220 T900 260 T1200 200 L1200 400 Z" fill="#1c3324"/>
+      <path d="M0 400 L0 320 Q200 260 400 310 T800 300 T1200 300 L1200 400 Z" fill="#13221f"/>
+    </svg>
+  </div>
+
+  <div class="names-stage">
+    <div class="names-zoom" id="namesZoom">
+      <div class="script-names">Oxana <span class="amp">&amp;</span> Niklas</div>
+      <div class="sub-date">27. März 2027 &middot; Gut Sulz</div>
+    </div>
+  </div>
+
+  <div class="parallax-layer intro-layer" data-depth="0.12" id="introLayer">
+    <span class="eyebrow">Wir sagen Ja</span>
+    <p>Zwischen dunklem Holz, altem Baumbestand und dem Duft von Tannengrün beginnt unsere Geschichte ein neues Kapitel &ndash; und wir würden uns freuen, wenn ihr diesen Tag mit uns feiert.</p>
+  </div>
+
+  <div class="parallax-layer layer-leaves" data-depth="0.4" id="leavesLayer">
+    <svg class="leaf-corner tl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><g fill="#0d1710" stroke="#335c41" stroke-width="2"><path d="M10 10 C60 20 90 60 80 110 C60 90 20 70 10 10Z"/><path d="M20 40 C70 30 110 55 100 100 C70 80 40 70 20 40Z"/><path d="M5 80 C50 75 80 100 70 140 C45 120 20 110 5 80Z"/></g></svg>
+    <svg class="leaf-corner tr" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><g fill="#0d1710" stroke="#335c41" stroke-width="2"><path d="M10 10 C60 20 90 60 80 110 C60 90 20 70 10 10Z"/><path d="M20 40 C70 30 110 55 100 100 C70 80 40 70 20 40Z"/></g></svg>
+    <svg class="leaf-corner bl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><g fill="#0d1710" stroke="#335c41" stroke-width="2"><path d="M10 10 C60 20 90 60 80 110 C60 90 20 70 10 10Z"/></g></svg>
+    <svg class="leaf-corner br" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><g fill="#0d1710" stroke="#335c41" stroke-width="2"><path d="M10 10 C60 20 90 60 80 110 C60 90 20 70 10 10Z"/><path d="M20 40 C70 30 110 55 100 100 C70 80 40 70 20 40Z"/></g></svg>
+  </div>
+
+  <div class="reveal-btn-wrap">
+    <button class="reveal-btn" id="revealBtn">Unsere Namen enthüllen</button>
+  </div>
+
+  <div class="scroll-cue"><span>Scrollen</span><span class="stick"></span></div>
+</header>
+
+<!-- ================= PHOTOWALL / SHRINK ================= -->
+<section class="photowall-section" id="photowall">
+  <div class="section-inner">
+    <div class="shrink-emblem" id="shrinkEmblem">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#c9a24a" stroke-width="1.4"><path d="M12 21s-8-5.2-8-11.2C4 6 6.5 4 9.2 4 10.9 4 12 5 12 5s1.1-1 2.8-1C17.5 4 20 6 20 9.8 20 15.8 12 21 12 21z"/></svg>
+    </div>
+    <span class="eyebrow">Ein paar Erinnerungen</span>
+    <h2 class="section-title">Momente, die uns geformt haben</h2>
+    <div class="divider"></div>
+    <div class="photowall-grid" id="photowallGrid"></div>
+  </div>
+</section>
+
+<!-- ================= STORY / SLIDESHOW ================= -->
+<section id="story">
+  <div class="section-inner">
+    <span class="eyebrow">Rückblick</span>
+    <h2 class="section-title">Unsere <span>Geschichte</span></h2>
+    <p class="section-sub">Von der ersten Begegnung bis zum Antrag &ndash; klickt euch durch unsere kleine Zeitreise.</p>
+    <div class="slideshow">
+      <div class="slide-track" id="slideTrack"></div>
+      <div class="slide-nav prev" id="prevSlide">&#10094;</div>
+      <div class="slide-nav next" id="nextSlide">&#10095;</div>
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">&times;</button>
+  <img src="" alt="" id="lightboxImg">
+</div>
+
+<!-- ================= COUNTDOWN ================= -->
+<section id="countdown-section">
+  <span class="eyebrow">Der große Tag</span>
+  <h2 class="section-title">Save the <span>Date</span></h2>
+  <div class="the-date">27. März 2027</div>
+  <div class="countdown" id="countdown">
+    <div class="box"><div class="num" id="cd-days">00</div><div class="label">Tage</div></div>
+    <div class="box"><div class="num" id="cd-hours">00</div><div class="label">Stunden</div></div>
+    <div class="box"><div class="num" id="cd-mins">00</div><div class="label">Minuten</div></div>
+    <div class="box"><div class="num" id="cd-secs">00</div><div class="label">Sekunden</div></div>
+  </div>
+</section>
+
+<!-- ================= RSVP ================= -->
+<section id="rsvp">
+  <div class="section-inner">
+    <span class="eyebrow">RSVP</span>
+    <h2 class="section-title">Wir freuen uns auf <span>eure Zusage</span></h2>
+    <p class="section-sub">Bitte gebt uns bis zum 01.02.2027 Bescheid, damit wir alles wunderbar planen können.</p>
+    <form class="rsvp-form" id="rsvpForm">
+      <div class="field">
+        <label for="guestName">Name(n)</label>
+        <input type="text" id="guestName" name="guestName" placeholder="z.B. Julia und Tom Schmidt" required>
+      </div>
+      <div class="field">
+        <label for="guestCount">Anzahl Gäste</label>
+        <input type="number" id="guestCount" name="guestCount" min="1" max="10" value="1" required>
+      </div>
+      <div class="field">
+        <label>Essenswunsch</label>
+        <div class="radio-group" id="mealGroup">
+          <label class="radio-pill"><input type="radio" name="meal" value="Fleisch" checked>Fleisch</label>
+          <label class="radio-pill"><input type="radio" name="meal" value="Fisch">Fisch</label>
+          <label class="radio-pill"><input type="radio" name="meal" value="Vegan">Vegan</label>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Zusage senden</button>
+      <p class="form-note">Hinweis: Dies ist derzeit eine Demo-Version des Formulars &ndash; eine echte Übermittlung folgt in Kürze.</p>
+      <div class="success-msg" id="successMsg">Danke euch von Herzen! Eure Rückmeldung wurde erfasst. 🌿</div>
+    </form>
+  </div>
+</section>
+
+<!-- ================= INFO / QA ================= -->
+<section id="info">
+  <div class="section-inner">
+    <span class="eyebrow">Gut zu wissen</span>
+    <h2 class="section-title">Location <span>&amp; Details</span></h2>
+    <div class="divider"></div>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="icon">📍</div>
+        <h3>Location</h3>
+        <p>Gut Sulz</p>
+        <p>Gut Sulz 1, 86692 Münster</p>
+        <a class="maps-link" href="https://maps.app.goo.gl/779hUHjspxdLRBiz7" target="_blank" rel="noopener">Auf Google Maps öffnen</a>
+      </div>
+      <div class="info-card">
+        <div class="icon">🍽️</div>
+        <h3>Speisekarte</h3>
+        <p>Regionale, saisonale Küche</p>
+        <p>Fleisch &middot; Fisch &middot; Vegane Option</p>
+        <a class="maps-link" href="#" target="_blank" rel="noopener">Speisekarte ansehen</a>
+      </div>
+      <div class="info-card">
+        <div class="icon">👗</div>
+        <h3>Dresscode</h3>
+        <p>Festlich &amp; Waldgrün-Töne</p>
+        <p>Bitte auf festes Schuhwerk achten &ndash; wir feiern im Grünen</p>
+      </div>
+    </div>
+
+    <h2 class="section-title" style="margin-top:80px;">Fragen &amp; <span>Antworten</span></h2>
+    <div class="divider"></div>
+    <div class="qa-list" id="qaList">
+      <div class="qa-item open">
+        <button class="qa-question"><span>Gibt es Parkmöglichkeiten vor Ort?</span><span class="plus">+</span></button>
+        <div class="qa-answer"><p>Ja, direkt bei Gut Sulz  steht ein kostenfreier Parkplatz für alle Gäste zur Verfügung.</p></div>
+      </div>
+      <div class="qa-item">
+        <button class="qa-question"><span>Dürfen wir Kinder mitbringen?</span><span class="plus">+</span></button>
+        <div class="qa-answer"><p>Wir feiern diesen Tag am liebsten nur unter Erwachsenen &ndash; für Verständnis danken wir euch sehr.</p></div>
+      </div>
+      <div class="qa-item">
+        <button class="qa-question"><span>Gibt es Übernachtungsmöglichkeiten?</span><span class="plus">+</span></button>
+        <div class="qa-answer"><p>In der Nähe gibt es mehrere Hotels &ndash; eine Empfehlungsliste schicken wir euch rechtzeitig zu.</p></div>
+      </div>
+      <div class="qa-item">
+        <button class="qa-question"><span>Bis wann sollen wir zusagen?</span><span class="plus">+</span></button>
+        <div class="qa-answer"><p>Bitte füllt das Formular oben bis spätestens 01.02.2027 aus.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="footer-photo" id="footerPhoto"></div>
+  <span class="script-names">Oxana &amp; Niklas</span>
+  <p>Wir können es kaum erwarten, diesen besonderen Tag mit euch zu teilen. Danke, dass ihr ein Teil unserer Geschichte seid &ndash; wir freuen uns riesig auf euch!</p>
+  <div class="fine">Bis bald im Gut Sulz &middot; 27.03.2027</div>
+</footer>
+
+<script>
+(function(){
+
+  /* ---------- Platzhalter-Bildgenerator (inline SVG als Data-URI) ---------- */
+  const palette = [
+    ['#3a2717','#1c3324'], ['#254531','#4d341f'], ['#1c130d','#335c41'],
+    ['#4d341f','#0d1710'], ['#13221f','#6b4a2c'], ['#1c3324','#271a11'],
+    ['#3a2717','#13221f'], ['#254531','#1c130d']
+  ];
+  function placeholder(idx, label){
+    const [c1,c2] = palette[idx % palette.length];
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="500" height="600">
+      <defs>
+        <linearGradient id="g${idx}" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="${c1}"/>
+          <stop offset="100%" stop-color="${c2}"/>
+        </linearGradient>
+      </defs>
+      <rect width="500" height="600" fill="url(#g${idx})"/>
+      <circle cx="250" cy="250" r="70" fill="none" stroke="#c9a24a" stroke-width="3" opacity="0.85"/>
+      <path d="M250 210 C270 190 310 200 310 235 C310 265 250 305 250 305 C250 305 190 265 190 235 C190 200 230 190 250 210Z" fill="#c9a24a" opacity="0.85"/>
+      <text x="250" y="420" font-family="Georgia, serif" font-size="26" fill="#f4ecd8" text-anchor="middle" opacity="0.85">${label}</text>
+    </svg>`;
+    return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg)));
+  }
+
+  /* ---------- Hero Parallax (Scroll + Maus-Hover) ---------- */
+  const hero = document.getElementById('hero');
+  const layer1 = document.getElementById('layer1');
+  const introLayer = document.getElementById('introLayer');
+  const leavesLayer = document.getElementById('leavesLayer');
+
+  let scrollY = 0, mouseX = 0, mouseY = 0;
+
+  function applyParallax(){
+    const heroRect = hero.getBoundingClientRect();
+    const visibleRatio = Math.max(0, Math.min(1, 1 - (-heroRect.top / heroRect.height)));
+    const scrollOffset = Math.min(scrollY, heroRect.height);
+
+    layer1.style.transform = `translateY(${scrollOffset * 0.25}px) translateX(${mouseX * 10}px)`;
+    introLayer.style.transform = `translateY(${scrollOffset * 0.12}px) translateX(${mouseX * 16}px)`;
+    leavesLayer.style.transform = `translateY(${scrollOffset * -0.15}px) translateX(${mouseX * -14}px) scale(${1 + scrollOffset/3000})`;
+  }
+
+  window.addEventListener('scroll', () => { scrollY = window.scrollY; applyParallax(); }, {passive:true});
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    mouseX = ((e.clientX - rect.left) / rect.width - 0.5);
+    mouseY = ((e.clientY - rect.top) / rect.height - 0.5);
+    applyParallax();
+  });
+  hero.addEventListener('mouseleave', () => { mouseX = 0; mouseY = 0; applyParallax(); });
+  applyParallax();
+
+  /* ---------- Scroll-Sperre bis zur Enthüllung ---------- */
+  const htmlEl = document.documentElement;
+  function blockScrollKeys(e){
+    const keys = ['ArrowDown','ArrowUp','PageDown','PageUp',' ','Spacebar','Home','End'];
+    if(keys.includes(e.key)){ e.preventDefault(); }
+  }
+  function blockScrollEvent(e){ e.preventDefault(); }
+  function lockScroll(){
+    htmlEl.classList.add('lock-scroll');
+    window.addEventListener('wheel', blockScrollEvent, {passive:false});
+    window.addEventListener('touchmove', blockScrollEvent, {passive:false});
+    window.addEventListener('keydown', blockScrollKeys, {passive:false});
+  }
+  function unlockScroll(){
+    htmlEl.classList.remove('lock-scroll');
+    window.removeEventListener('wheel', blockScrollEvent);
+    window.removeEventListener('touchmove', blockScrollEvent);
+    window.removeEventListener('keydown', blockScrollKeys);
+  }
+  lockScroll();
+
+  /* ---------- Namen-Reveal Button ---------- */
+  document.getElementById('revealBtn').addEventListener('click', () => {
+    hero.classList.add('revealed');
+    unlockScroll();
+  });
+
+  /* ---------- Fotowand: Emblem + Fotos fliegen beim Scroll rein ---------- */
+  const grid = document.getElementById('photowallGrid');
+  const dirs = ['from-left','from-right','from-top','from-bottom'];
+  const wallCount = 8;
+  for(let i=0;i<wallCount;i++){
+    const div = document.createElement('div');
+    const dir = dirs[i % dirs.length];
+    const tilt = (Math.random()*10 - 5).toFixed(1);
+    div.className = `fly-photo ${dir}`;
+    div.style.setProperty('--tilt', tilt+'deg');
+    div.style.transitionDelay = (i * 0.09) + 's';
+    div.innerHTML = `<img src="${placeholder(i, 'Erinnerung '+(i+1))}" alt="Erinnerung ${i+1}">`;
+    grid.appendChild(div);
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('in-view'); }
+    });
+  }, {threshold:0.2});
+
+  document.querySelectorAll('.fly-photo, .shrink-emblem').forEach(el => io.observe(el));
+
+  /* ---------- Story Diashow ---------- */
+  const storyData = [
+    {label:'Der erste Blick', year:'Sommer 2019', text:'Auf einer Geburtstagsparty trafen sich unsere Blicke zum ersten Mal – und keiner von uns hat seitdem wieder weggeschaut.'},
+    {label:'Das erste Date', year:'Herbst 2019', text:'Ein Spaziergang durch den Wald, viel zu lange Gespräche und der erste gemeinsame Sonnenuntergang.'},
+    {label:'Der erste Urlaub', year:'2020', text:'Gemeinsam die Berge erklimmen und feststellen: mit dir will ich noch viele weitere Gipfel bezwingen.'},
+    {label:'Der Einzug', year:'2021', text:'Aus zwei Wohnungen wurde ein Zuhause – unser kleines grünes Nest.'},
+    {label:'Der Antrag', year:'2025', text:'Unter alten Bäumen, bei Kerzenschein – die Frage aller Fragen, und ein glasklares Ja.'}
+  ];
+  const track = document.getElementById('slideTrack');
+  const dotsWrap = document.getElementById('slideDots');
+  let current = 0;
+
+  storyData.forEach((s, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'slide' + (i===0 ? ' active' : '');
+    const rot = (i % 2 === 0) ? '-3deg' : '3deg';
+    slide.innerHTML = `
+      <figure class="polaroid" style="--rot:${rot}" data-idx="${i}">
+        <div class="frame"><img src="${placeholder(i, s.label)}" alt="${s.label}"></div>
+        <figcaption>${s.label}</figcaption>
+      </figure>
+      <p class="slide-caption">${s.text}<br><span class="slide-year">${s.year}</span></p>
+    `;
+    track.appendChild(slide);
+
+    const dot = document.createElement('button');
+    if(i===0) dot.className = 'active';
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsWrap.appendChild(dot);
+  });
+
+  const slides = () => track.querySelectorAll('.slide');
+  const dots = () => dotsWrap.querySelectorAll('button');
+
+  function goToSlide(i){
+    const s = slides();
+    current = (i + s.length) % s.length;
+    s.forEach((el, idx) => el.classList.toggle('active', idx === current));
+    dots().forEach((el, idx) => el.classList.toggle('active', idx === current));
+  }
+  document.getElementById('prevSlide').addEventListener('click', () => goToSlide(current - 1));
+  document.getElementById('nextSlide').addEventListener('click', () => goToSlide(current + 1));
+
+  /* ---------- Lightbox ---------- */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  track.addEventListener('click', (e) => {
+    const fig = e.target.closest('.polaroid');
+    if(!fig) return;
+    const img = fig.querySelector('img');
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('open');
+  });
+  document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.classList.remove('open'); });
+
+  /* ---------- Countdown ---------- */
+  const weddingDate = new Date('2027-03-27T14:00:00');
+  function updateCountdown(){
+    const now = new Date();
+    let diff = weddingDate - now;
+    if(diff < 0) diff = 0;
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff / (1000*60*60)) % 24);
+    const mins = Math.floor((diff / (1000*60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+    document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  /* ---------- RSVP Formular (Demo) ---------- */
+  document.querySelectorAll('#mealGroup .radio-pill').forEach(pill => {
+    const input = pill.querySelector('input');
+    if(input.checked) pill.classList.add('checked');
+    input.addEventListener('change', () => {
+      document.querySelectorAll('#mealGroup .radio-pill').forEach(p => p.classList.remove('checked'));
+      pill.classList.add('checked');
+    });
+  });
+
+  document.getElementById('rsvpForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('successMsg').classList.add('show');
+    e.target.querySelector('.submit-btn').textContent = 'Danke für eure Zusage!';
+  });
+
+  /* ---------- Q&A Akkordeon ---------- */
+  document.querySelectorAll('.qa-item').forEach(item => {
+    item.querySelector('.qa-question').addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.qa-item').forEach(i => i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  /* ---------- Footer-Foto Platzhalter ---------- */
+  document.getElementById('footerPhoto').innerHTML = `<img src="${placeholder(6,'')}" alt="Oxana und Niklas">`;
+
+})();
+</script>
+</body>
+</html>
