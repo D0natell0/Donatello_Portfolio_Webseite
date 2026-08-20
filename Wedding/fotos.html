@@ -339,18 +339,35 @@
     else if(e.key === 'Escape') galleryLightbox.classList.remove('open');
   });
 
-  // Wischen auf Touch-Geräten
+  // Wischen auf Touch-Geräten: nur horizontal (links/rechts) erlaubt, damit
+  // dabei nicht gleichzeitig die Seite im Hintergrund hoch-/runtergescrollt wird.
   let touchStartX = null;
+  let touchStartY = null;
   galleryLightbox.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
   }, {passive:true});
+  galleryLightbox.addEventListener('touchmove', (e) => {
+    // Solange die Lightbox offen ist, blockieren wir das Scrollen der
+    // dahinterliegenden Seite komplett – links/rechts wischen wird separat
+    // per touchstart/touchend ausgewertet und braucht kein sichtbares
+    // Verschieben, daher kann das Standardverhalten hier immer verhindert werden.
+    if(galleryLightbox.classList.contains('open')){
+      e.preventDefault();
+    }
+  }, {passive:false});
   galleryLightbox.addEventListener('touchend', (e) => {
     if(touchStartX === null) return;
     const deltaX = e.changedTouches[0].clientX - touchStartX;
+    const deltaY = e.changedTouches[0].clientY - touchStartY;
     const SWIPE_THRESHOLD = 40;
-    if(deltaX > SWIPE_THRESHOLD) showPrevPhoto();
-    else if(deltaX < -SWIPE_THRESHOLD) showNextPhoto();
+    // Nur werten, wenn die Bewegung überwiegend horizontal war.
+    if(Math.abs(deltaX) > Math.abs(deltaY)){
+      if(deltaX > SWIPE_THRESHOLD) showPrevPhoto();
+      else if(deltaX < -SWIPE_THRESHOLD) showNextPhoto();
+    }
     touchStartX = null;
+    touchStartY = null;
   }, {passive:true});
 
   function showConfigWarning(message){
