@@ -119,6 +119,24 @@
     position:absolute; top:24px; right:30px; color:var(--cream);
     font-size:2rem; cursor:pointer; background:none; border:none; line-height:1;
   }
+  .lightbox-nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:50px; height:50px; border-radius:50%;
+    background:rgba(244,236,216,.08);
+    border:1px solid var(--gold);
+    color:var(--gold-light);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:1.4rem;
+    transition:background .25s ease, transform .25s ease;
+  }
+  .lightbox-nav:hover{ background:rgba(201,162,74,.25); }
+  .lightbox-nav.prev{ left:14px; }
+  .lightbox-nav.next{ right:14px; }
+  @media (max-width:640px){
+    .lightbox-nav{ width:42px; height:42px; font-size:1.15rem; }
+    .lightbox-nav.prev{ left:6px; }
+    .lightbox-nav.next{ right:6px; }
+  }
 
   /* ============ GÄSTE-FOTOS ============ */
   #guest-photos{
@@ -234,6 +252,8 @@
 
 <div class="lightbox" id="galleryLightbox">
   <button class="lightbox-close" id="galleryLightboxClose">&times;</button>
+  <button class="lightbox-nav prev" id="lightboxPrev">&#10094;</button>
+  <button class="lightbox-nav next" id="lightboxNext">&#10095;</button>
   <img src="" alt="" id="galleryLightboxImg">
 </div>
 
@@ -276,6 +296,62 @@
   const configWarning = document.getElementById('configWarning');
   const galleryLightbox = document.getElementById('galleryLightbox');
   const galleryLightboxImg = document.getElementById('galleryLightboxImg');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+
+  // Aktuelle Foto-Liste + Position, damit man im Lightbox-Vollbild per
+  // Pfeiltasten/Wischen/Buttons zum nächsten bzw. vorherigen Foto kommt.
+  let currentPhotos = [];
+  let currentIndex = 0;
+
+  function showLightboxPhoto(){
+    const data = currentPhotos[currentIndex];
+    if(!data) return;
+    galleryLightboxImg.src = data.url;
+    galleryLightboxImg.alt = data.name || 'Gastfoto';
+    const multiple = currentPhotos.length > 1;
+    lightboxPrev.style.display = multiple ? 'flex' : 'none';
+    lightboxNext.style.display = multiple ? 'flex' : 'none';
+  }
+  function openLightbox(index){
+    currentIndex = index;
+    showLightboxPhoto();
+    galleryLightbox.classList.add('open');
+  }
+  function showNextPhoto(){
+    if(!currentPhotos.length) return;
+    currentIndex = (currentIndex + 1) % currentPhotos.length;
+    showLightboxPhoto();
+  }
+  function showPrevPhoto(){
+    if(!currentPhotos.length) return;
+    currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
+    showLightboxPhoto();
+  }
+
+  lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); showNextPhoto(); });
+  lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); showPrevPhoto(); });
+
+  document.addEventListener('keydown', (e) => {
+    if(!galleryLightbox.classList.contains('open')) return;
+    if(e.key === 'ArrowRight') showNextPhoto();
+    else if(e.key === 'ArrowLeft') showPrevPhoto();
+    else if(e.key === 'Escape') galleryLightbox.classList.remove('open');
+  });
+
+  // Wischen auf Touch-Geräten
+  let touchStartX = null;
+  galleryLightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, {passive:true});
+  galleryLightbox.addEventListener('touchend', (e) => {
+    if(touchStartX === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX;
+    const SWIPE_THRESHOLD = 40;
+    if(deltaX > SWIPE_THRESHOLD) showPrevPhoto();
+    else if(deltaX < -SWIPE_THRESHOLD) showNextPhoto();
+    touchStartX = null;
+  }, {passive:true});
 
   function showConfigWarning(message){
     if(message) configWarning.textContent = message;
@@ -373,22 +449,25 @@
     onSnapshot(galleryQuery, (snapshot) => {
       if(snapshot.empty){
         guestGallery.innerHTML = '<p class="gallery-empty">Hier erscheinen bald die ersten Fotos unserer Gäste ...</p>';
+        currentPhotos = [];
         return;
       }
+      currentPhotos = snapshot.docs.map(d => d.data());
       guestGallery.innerHTML = '';
-      snapshot.forEach((docSnap) => {
-        const data = docSnap.data();
+      currentPhotos.forEach((data, index) => {
         const fig = document.createElement('figure');
         fig.className = 'polaroid';
         fig.style.setProperty('--rot', (Math.random()*6-3).toFixed(1)+'deg');
         fig.innerHTML = `<div class="frame"><img src="${data.url}" alt="${data.name || 'Gastfoto'}" loading="lazy"></div>`;
-        fig.addEventListener('click', () => {
-          galleryLightboxImg.src = data.url;
-          galleryLightboxImg.alt = data.name || 'Gastfoto';
-          galleryLightbox.classList.add('open');
-        });
+        fig.addEventListener('click', () => openLightbox(index));
         guestGallery.appendChild(fig);
       });
+      // Falls die Galerie aktualisiert wird, während der Lightbox offen ist,
+      // bleibt das aktuell angezeigte Foto stimmig statt auf ein falsches zu springen.
+      if(galleryLightbox.classList.contains('open')){
+        currentIndex = Math.min(currentIndex, currentPhotos.length - 1);
+        showLightboxPhoto();
+      }
     }, (err) => {
       console.error(err);
       guestGallery.innerHTML = '<p class="gallery-empty">Die Galerie konnte nicht geladen werden.</p>';
