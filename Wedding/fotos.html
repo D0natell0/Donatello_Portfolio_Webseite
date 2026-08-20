@@ -92,6 +92,7 @@
 
   /* ============ POLAROID / LIGHTBOX (für die Galerie) ============ */
   .polaroid{
+    margin:0; /* Browser-Standard für <figure> ist sonst 1em 40px */
     background:var(--cream);
     padding:16px 16px 60px;
     border-radius:3px;
@@ -134,6 +135,9 @@
     text-align:center;
   }
   .upload-dropzone{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     border:2px dashed var(--gold);
     border-radius:12px;
     padding:36px 20px;
@@ -248,17 +252,17 @@
      zeigt einen Hinweis an, statt Fehler zu werfen. -->
 <script type="module">
   const firebaseConfig = {
-    apiKey: "AIzaSyDa-j1JhW6So1RepJMEtGuc2rjC7Gb0zGM",
-    authDomain: "hochzeitsfotos-846ad.firebaseapp.com",
-    projectId: "hochzeitsfotos-846ad",
-    storageBucket: "hochzeitsfotos-846ad.firebasestorage.app",
-    messagingSenderId: "273539420491",
-    appId: "1:273539420491:web:f63b760ed7395b378fd8ce"
+    apiKey: "DEIN_API_KEY",
+    authDomain: "DEIN_PROJEKT.firebaseapp.com",
+    projectId: "DEIN_PROJEKT",
+    storageBucket: "DEIN_PROJEKT.appspot.com",
+    messagingSenderId: "DEINE_SENDER_ID",
+    appId: "DEINE_APP_ID"
   };
 
   const cloudinaryConfig = {
-    cloudName: "qhagoice",
-    uploadPreset: "Hochzeitsfotos"
+    cloudName: "DEIN_CLOUDINARY_CLOUD_NAME",
+    uploadPreset: "DEIN_UPLOAD_PRESET"
   };
 
   const isConfigured = !!firebaseConfig.apiKey && !firebaseConfig.apiKey.startsWith('DEIN_')

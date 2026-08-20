@@ -297,6 +297,7 @@
   .slide.active{ opacity:1; visibility:visible; transform:scale(1); }
 
   .polaroid{
+    margin:0; /* Browser-Standard für <figure> ist sonst 1em 40px */
     background:var(--cream);
     padding:16px 16px 60px;
     border-radius:3px;
@@ -433,9 +434,16 @@
     background:rgba(244,236,216,.02);
   }
   .guest-meal-label{
-    display:block; margin-bottom:10px;
+    display:block; margin-bottom:14px;
     font-size:.85rem; letter-spacing:.08em; text-transform:uppercase;
     color:var(--cream-dim);
+  }
+  .guest-subgroup{ margin-top:16px; }
+  .guest-subgroup:first-of-type{ margin-top:0; }
+  .guest-subgroup-label{
+    display:block; margin-bottom:8px;
+    font-size:.75rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--gold);
   }
   .radio-group{ display:flex; flex-wrap:wrap; gap:14px; }
   .radio-pill{
@@ -584,6 +592,13 @@
     .countdown .box{ min-width:80px; padding:16px 10px; }
     .countdown .num{ font-size:1.9rem; }
   }
+
+  .footer-photolink{
+    display:inline-block; margin-top:26px; padding:9px 22px; border-radius:24px;
+    border:1px solid var(--gold); color:var(--gold-light); text-decoration:none; font-size:.85rem;
+    letter-spacing:.05em; transition:.2s ease;
+  }
+  .footer-photolink:hover{ background:var(--gold); color:var(--wood-950); }
 </style>
 </head>
 <body>
@@ -714,8 +729,9 @@
         <input type="number" id="guestCount" name="guestCount" min="1" max="10" value="1" required>
       </div>
       <input type="hidden" name="essenswunsch_uebersicht" id="mealSummaryField" value="">
+      <input type="hidden" name="getraenke_uebersicht" id="drinkSummaryField" value="">
       <div class="field">
-        <label>Essenswunsch pro Gast</label>
+        <label>Essenswunsch &amp; Getränke pro Gast</label>
         <div class="meal-per-guest" id="mealPerGuest"></div>
       </div>
       <div class="field">
@@ -788,6 +804,7 @@
   <span class="script-names">Oxana &amp; Niklas</span>
   <p>Wir können es kaum erwarten, diesen besonderen Tag mit euch zu teilen. Danke, dass ihr ein Teil unserer Geschichte seid und wir freuen uns sehr auf euch!</p>
   <div class="fine">Bis bald im Gut Sulz &middot; 27.03.2027</div>
+  <a class="footer-photolink" href="fotos.html">📷 Fotos hochladen</a>
 </footer>
 
 <script>
@@ -1000,18 +1017,26 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  /* ---------- RSVP Formular: Essenswunsch pro Gast ---------- */
+  /* ---------- RSVP Formular: Essenswunsch & Getränke pro Gast ---------- */
   const guestCountInput = document.getElementById('guestCount');
   const mealPerGuest = document.getElementById('mealPerGuest');
   const MEAL_OPTIONS = ['Fleisch','Fisch','Vegan'];
+  const DRINK_OPTIONS = ['Bier','Wein','Sekt','Vodka','Kein Alkohol'];
 
-  function attachMealPillListeners(scope){
-    scope.querySelectorAll('.guest-radio-group').forEach(group => {
+  // Radio-Pills (Essenswunsch: genau eine Auswahl) und Checkbox-Pills
+  // (Getränke: Mehrfachauswahl) teilen sich dieselbe .radio-pill-Optik,
+  // verhalten sich aber je nach input-Typ unterschiedlich.
+  function attachPillListeners(scope){
+    scope.querySelectorAll('.guest-radio-group, .guest-drink-group').forEach(group => {
       group.querySelectorAll('.radio-pill').forEach(pill => {
         const input = pill.querySelector('input');
         input.addEventListener('change', () => {
-          group.querySelectorAll('.radio-pill').forEach(p => p.classList.remove('checked'));
-          pill.classList.add('checked');
+          if(input.type === 'radio'){
+            group.querySelectorAll('.radio-pill').forEach(p => p.classList.remove('checked'));
+            pill.classList.add('checked');
+          } else {
+            pill.classList.toggle('checked', input.checked);
+          }
         });
       });
     });
@@ -1027,21 +1052,49 @@
     return map;
   }
 
+  function getCurrentDrinkSelections(){
+    const map = {};
+    mealPerGuest.querySelectorAll('.guest-drink-group').forEach(group => {
+      const idx = group.dataset.guest;
+      map[idx] = Array.from(group.querySelectorAll('input:checked')).map(inp => inp.value);
+    });
+    return map;
+  }
+
   function renderMealFields(count){
-    const prev = getCurrentMealSelections();
+    const prevMeals = getCurrentMealSelections();
+    const prevDrinks = getCurrentDrinkSelections();
     mealPerGuest.innerHTML = '';
     for(let i = 1; i <= count; i++){
-      const selected = prev[i] || 'Fleisch';
+      const selectedMeal = prevMeals[i] || 'Fleisch';
+      const selectedDrinks = prevDrinks[i] || [];
       const wrap = document.createElement('div');
       wrap.className = 'guest-meal';
-      const pillsHtml = MEAL_OPTIONS.map(opt => {
-        const isChecked = opt === selected;
+
+      const mealPillsHtml = MEAL_OPTIONS.map(opt => {
+        const isChecked = opt === selectedMeal;
         return `<label class="radio-pill${isChecked ? ' checked' : ''}"><input type="radio" name="meal_gast_${i}" value="${opt}"${isChecked ? ' checked' : ''}>${opt}</label>`;
       }).join('');
-      wrap.innerHTML = `<span class="guest-meal-label">Gast ${i}</span><div class="radio-group guest-radio-group" data-guest="${i}">${pillsHtml}</div>`;
+
+      const drinkPillsHtml = DRINK_OPTIONS.map(opt => {
+        const isChecked = selectedDrinks.includes(opt);
+        return `<label class="radio-pill${isChecked ? ' checked' : ''}"><input type="checkbox" name="getraenke_gast_${i}[]" value="${opt}"${isChecked ? ' checked' : ''}>${opt}</label>`;
+      }).join('');
+
+      wrap.innerHTML = `
+        <span class="guest-meal-label">Gast ${i}</span>
+        <div class="guest-subgroup">
+          <span class="guest-subgroup-label">Essenswunsch</span>
+          <div class="radio-group guest-radio-group" data-guest="${i}">${mealPillsHtml}</div>
+        </div>
+        <div class="guest-subgroup">
+          <span class="guest-subgroup-label">Getränke (Mehrfachauswahl möglich)</span>
+          <div class="radio-group guest-drink-group" data-guest="${i}">${drinkPillsHtml}</div>
+        </div>
+      `;
       mealPerGuest.appendChild(wrap);
     }
-    attachMealPillListeners(mealPerGuest);
+    attachPillListeners(mealPerGuest);
   }
 
   function clampGuestCount(){
@@ -1063,7 +1116,15 @@
     if(isNaN(n)) return;
     renderMealFields(Math.min(10, Math.max(1, n)));
   });
-  guestCountInput.addEventListener('blur', () => renderMealFields(clampGuestCount()));
+  // Nur neu aufbauen, wenn sich die Anzahl der Gästekarten dadurch wirklich
+  // ändert – sonst könnte ein Klick auf eine Gast-Kachel direkt nach dem
+  // Verlassen des Zahlenfelds durch den Neuaufbau "verschluckt" werden.
+  guestCountInput.addEventListener('blur', () => {
+    const clamped = clampGuestCount();
+    if(mealPerGuest.querySelectorAll('.guest-meal').length !== clamped){
+      renderMealFields(clamped);
+    }
+  });
   renderMealFields(clampGuestCount());
 
   function buildMealSummary(){
@@ -1072,6 +1133,15 @@
       counts[inp.value] = (counts[inp.value] || 0) + 1;
     });
     return Object.entries(counts).map(([k, v]) => `${v}x ${k}`).join(', ') || 'keine Angabe';
+  }
+
+  function buildDrinkSummary(){
+    const counts = {};
+    mealPerGuest.querySelectorAll('.guest-drink-group input:checked').forEach(inp => {
+      counts[inp.value] = (counts[inp.value] || 0) + 1;
+    });
+    const entries = Object.entries(counts);
+    return entries.length ? entries.map(([k, v]) => `${v}x ${k}`).join(', ') : 'keine Angabe';
   }
 
   const RSVP_EMAIL = 'niklasschubert34@gmail.com';
@@ -1086,6 +1156,7 @@
     successMsg.classList.remove('show');
     errorMsg.classList.remove('show');
     document.getElementById('mealSummaryField').value = buildMealSummary();
+    document.getElementById('drinkSummaryField').value = buildDrinkSummary();
     btn.disabled = true;
     btn.textContent = 'Wird gesendet ...';
     try {
@@ -1127,5 +1198,6 @@
 
 })();
 </script>
+
 </body>
 </html>
