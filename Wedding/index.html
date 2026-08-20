@@ -1026,6 +1026,8 @@
   // Radio-Pills (Essenswunsch: genau eine Auswahl) und Checkbox-Pills
   // (Getränke: Mehrfachauswahl) teilen sich dieselbe .radio-pill-Optik,
   // verhalten sich aber je nach input-Typ unterschiedlich.
+  const NO_ALCOHOL_OPTION = 'Kein Alkohol';
+
   function attachPillListeners(scope){
     scope.querySelectorAll('.guest-radio-group, .guest-drink-group').forEach(group => {
       group.querySelectorAll('.radio-pill').forEach(pill => {
@@ -1036,6 +1038,29 @@
             pill.classList.add('checked');
           } else {
             pill.classList.toggle('checked', input.checked);
+            // "Kein Alkohol" schließt alle anderen Getränke aus (und umgekehrt):
+            // beide Richtungen sind über dieselbe Gruppe gegenseitig exklusiv.
+            if(group.classList.contains('guest-drink-group')){
+              const isNoAlcohol = input.value === NO_ALCOHOL_OPTION;
+              if(isNoAlcohol && input.checked){
+                group.querySelectorAll('.radio-pill').forEach(p => {
+                  const otherInput = p.querySelector('input');
+                  if(otherInput !== input && otherInput.checked){
+                    otherInput.checked = false;
+                    p.classList.remove('checked');
+                  }
+                });
+              } else if(!isNoAlcohol && input.checked){
+                const noAlcoholPill = Array.from(group.querySelectorAll('.radio-pill')).find(p => p.querySelector('input').value === NO_ALCOHOL_OPTION);
+                if(noAlcoholPill){
+                  const noAlcoholInput = noAlcoholPill.querySelector('input');
+                  if(noAlcoholInput.checked){
+                    noAlcoholInput.checked = false;
+                    noAlcoholPill.classList.remove('checked');
+                  }
+                }
+              }
+            }
           }
         });
       });
