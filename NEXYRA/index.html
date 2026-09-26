@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download NEXYRA — Donatello Media</title>
+    <meta name="description" content="Donatello Media — privater Download.">
+    <!-- Unverlinkte Seite: nicht indexieren, keinen Links folgen, nicht im Archiv -->
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="referrer" content="no-referrer">
+    <link rel="icon" type="image/svg+xml" href="/assets/bildmarke.svg">
+    <link rel="stylesheet" href="/assets/style.css?v=9">
+    <script src="/assets/app.js?v=9" defer></script>
+    <style>
+        /* ── Seiten-eigene Bausteine, im Stil von .price-card / .work-media ── */
+        .dl-card {
+            position: relative;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: clamp(18px, 3vw, 36px);
+            padding: clamp(24px, 4vw, 44px);
+            border: 1px solid var(--vio-30);
+            border-radius: var(--d-lg);
+            background: radial-gradient(circle at 85% 15%, var(--vio-30), transparent 55%), var(--vio-14);
+            overflow: hidden;
+        }
+        .dl-card::after {
+            content: ''; position: absolute; left: 0; bottom: 0;
+            width: 48px; height: 48px;
+            border-left: 2px solid var(--violet); border-bottom: 2px solid var(--violet);
+        }
+        .dl-icon {
+            width: clamp(56px, 7vw, 76px); aspect-ratio: 1;
+            display: grid; place-items: center;
+            border-radius: var(--d-sm);
+            background: var(--violet); color: var(--lavender);
+        }
+        .dl-icon svg { width: 46%; height: 46%; }
+        .dl-name { font-size: clamp(18px, 2.2vw, 24px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; }
+        .dl-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+        .dl-card .btn { white-space: nowrap; }
+        @media (max-width: 760px) {
+            .dl-card { grid-template-columns: auto 1fr; }
+            .dl-card .btn { grid-column: 1 / -1; justify-content: center; }
+        }
+        .dl-note { font-size: 12px; color: var(--ink-35); margin-top: 18px; }
+
+        /* ── Browser-Demo (RPG Maker MV Web-Export) ── */
+        .demo-section { margin-top: clamp(60px, 10vh, 110px); }
+        .demo-section[hidden] { display: none; }
+        .demo-frame {
+            position: relative;
+            aspect-ratio: 816 / 624;            /* MV-Standardauflösung */
+            max-height: 80vh;
+            margin: 0 auto;
+            border: 1px solid var(--line);
+            border-radius: var(--d-md);
+            background: radial-gradient(circle at 70% 20%, var(--vio-30), transparent 55%), var(--vio-14);
+            overflow: hidden;
+        }
+        .demo-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #000; }
+        .demo-start {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+            color: var(--ink-60); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+        }
+        .demo-start .btn { font-size: 14px; }
+        .demo-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 14px 6px 0; }
+        .demo-bar span { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-35); }
+        .demo-bar .btn { padding: 10px 20px; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <!-- Navigation: zentral in /partials/nav.html — einmal ändern, gilt überall -->
+    <!-- include:/partials/nav.html -->
+    <nav class="nav" aria-label="Hauptnavigation">
+        <a href="/" class="nav-brand">
+            <!-- Desktop Logo -->
+            <img src="/assets/Donatello_Logo_Wort_Bildmarke_Horizontal.svg" class="logo-full" alt="Donatello Media">
+            <!-- Mobile Logo -->
+            <img src="/assets/Donatello_Logo_Bildmarke.svg" class="logo-icon" alt="Donatello Media">
+        </a>
+        <div class="nav-links">
+            <a href="/#arbeiten" class="nav-link" data-i18n="nav.index">Index</a>
+            <a href="/#ueber" class="nav-link" data-i18n="nav.about">Über</a>
+            <a href="/#kontakt" class="nav-cta" data-i18n="nav.cta">Projekt anfragen</a>
+            <span class="nav-sep" aria-hidden="true"></span>
+            <button type="button" class="nav-link nav-lang-mobile" data-setlang="de">🇩🇪 Deutsch</button>
+            <button type="button" class="nav-link nav-lang-mobile" data-setlang="en">🇬🇧 English</button>
+        </div>
+        <div class="nav-tools">
+            <button id="themeToggle" class="tool-btn" aria-label="Farbschema wechseln">
+                <svg class="icon-sun" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.36 6.36l-.7-.7M6.34 6.34l-.7-.7m12.72 0l-.7.7M6.34 17.66l-.7.7M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                <svg class="icon-moon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.35 15.35A9 9 0 018.65 3.65 9 9 0 1020.35 15.35z"/></svg>
+            </button>
+            <button type="button" id="langToggle" class="tool-btn" aria-label="Switch language" title="Sprache wechseln / Switch language">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
+                <span class="tool-label" id="langLabel">EN</span>
+            </button>
+            <button class="nav-burger" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <!-- /include -->
+
+    <!-- ═══ HERO ═══ -->
+    <header class="sub-hero">
+        <span class="sub-hero-num" aria-hidden="true">DL</span>
+        <div class="wrap">
+            <span class="eyebrow reveal revealed" data-dl="eyebrow">Privater Download</span>
+            <!-- TODO: Projektname eintragen -->
+            <h1 class="display reveal revealed">Projekt-Download<span class="violet dot-d" aria-hidden="true"></span></h1>
+            <p class="lede reveal revealed d1" data-dl="lede">Schön, dass du hier bist. Diese Seite ist nur über den direkten Link erreichbar — unten findest du die aktuelle Version zum Herunterladen.</p>
+            <div class="sub-tags reveal revealed d2">
+                <span class="sub-tag">RPG Maker MV</span>
+                <span class="sub-tag">Windows</span>
+                <span class="sub-tag" data-dl="tagBuild">Testversion</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="section">
+        <div class="wrap">
+
+            <!-- ═══ DOWNLOAD ═══
+                 Google Drive: Datei → Teilen → "Jeder mit dem Link" → Link kopieren
+                 und unten in data-drive einfügen. Der Link wird automatisch in einen
+                 Direkt-Download umgewandelt. Name, Größe und Version von Hand pflegen. -->
+            <section class="reveal" aria-labelledby="dlName">
+                <div class="dl-card">
+                    <div class="dl-icon" aria-hidden="true">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg>
+                    </div>
+                    <div>
+                        <div class="dl-name" id="dlName">NEXYRA.zip</div><!-- TODO: Dateiname -->
+                        <div class="dl-meta">
+                            <span class="sub-tag">ZIP</span>
+                            <span class="sub-tag" id="dlSize">980 MB</span><!-- TODO: Größe -->
+                            <span class="sub-tag">v0.1</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-fill" id="dlBtn" rel="noopener noreferrer"
+                       data-drive="https://drive.google.com/file/d/1RCYFM8RWZQ0_tspvw3-8UHgW_T55FdiK/view?usp=sharing">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg>
+                        <span data-dl="btn">Herunterladen</span>
+                    </a>
+                </div>
+                <p class="dl-note" data-dl="note">ZIP entpacken und Game.exe starten. Bitte den Link nicht weitergeben.</p>
+            </section>
+
+            <!-- ═══ BROWSER-DEMO ═══
+                 Erscheint automatisch, sobald ./demo/index.html existiert
+                 (RPG Maker MV: Datei → Bereitstellung → "Webbrowser/Android/iOS",
+                 Ausgabeordner-Inhalt nach ./demo/ kopieren). -->
+            <section class="demo-section" id="demo" hidden>
+                <div class="sec-head reveal">
+                    <h2 class="sec-title display"><span class="thin" data-dl="demoT1">Direkt im Browser</span> <span data-dl="demoT2">spielen</span><span class="violet dot-d" aria-hidden="true"></span></h2>
+                    <span class="sec-note">Demo</span>
+                </div>
+                <div class="demo-frame reveal" id="demoFrame">
+                    <div class="demo-start" id="demoStart">
+                        <button type="button" class="btn btn-fill" id="demoPlay">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
+                            <span data-dl="play">Demo starten</span>
+                        </button>
+                        <span data-dl="demoHint">Tastatur oder Gamepad · Ton an</span>
+                    </div>
+                </div>
+                <div class="demo-bar">
+                    <span data-dl="demoSave">Spielstände werden nur in diesem Browser gespeichert</span>
+                    <button type="button" class="btn btn-line" id="demoFull" data-dl="full">Vollbild</button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer: zentral in /partials/footer.html -->
+    <!-- include:/partials/footer.html -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span>© <span id="year">2026</span> <span data-i18n="footer.tag">Donatello Media — Crafted to move.</span></span>
+            <div class="footer-links">
+                <a href="/impressum.html" data-i18n="footer.imprint">Impressum</a>
+                <a href="/datenschutz.html" data-i18n="footer.privacy">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+    <!-- /include -->
+
+    <script>
+    (function () {
+        /* ── Seiten-eigene Texte (DE/EN) — folgt dem globalen Sprach-Toggle,
+              ohne dass die Seite in app.js auftaucht ── */
+        var TXT = {
+            de: {
+                eyebrow: 'Privater Download',
+                lede: 'Schön, dass du hier bist. Diese Seite ist nur über den direkten Link erreichbar — unten findest du die aktuelle Version zum Herunterladen.',
+                tagBuild: 'Testversion',
+                btn: 'Herunterladen',
+                note: 'ZIP entpacken und Game.exe starten. Bitte den Link nicht weitergeben.',
+                demoT1: 'Direkt im Browser', demoT2: 'spielen',
+                play: 'Demo starten',
+                demoHint: 'Tastatur oder Gamepad · Ton an',
+                demoSave: 'Spielstände werden nur in diesem Browser gespeichert',
+                full: 'Vollbild'
+            },
+            en: {
+                eyebrow: 'Private download',
+                lede: 'Glad you made it. This page is only reachable via its direct link — grab the latest build below.',
+                tagBuild: 'Test build',
+                btn: 'Download',
+                note: 'Unzip and run Game.exe. Please don’t share the link.',
+                demoT1: 'Play right in', demoT2: 'your browser',
+                play: 'Start demo',
+                demoHint: 'Keyboard or gamepad · sound on',
+                demoSave: 'Save games are stored in this browser only',
+                full: 'Fullscreen'
+            }
+        };
+        function applyTxt() {
+            var l = document.documentElement.lang === 'en' ? 'en' : 'de';
+            document.querySelectorAll('[data-dl]').forEach(function (el) {
+                var v = TXT[l][el.getAttribute('data-dl')];
+                if (v) el.textContent = v;
+            });
+        }
+        new MutationObserver(applyTxt).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+        applyTxt();
+
+        /* ── Google-Drive-Freigabelink → Direkt-Download
+              akzeptiert …/file/d/<ID>/view, …/open?id=<ID>, …/uc?id=<ID> oder nur die ID.
+              confirm=t überspringt die Virenscan-Zwischenseite bei großen Dateien. ── */
+        var dl = document.getElementById('dlBtn');
+        if (dl) {
+            var raw = (dl.getAttribute('data-drive') || '').trim();
+            var m = raw.match(/\/d\/([\w-]{20,})/) || raw.match(/[?&]id=([\w-]{20,})/) || raw.match(/^([\w-]{20,})$/);
+            if (m) {
+                dl.href = 'https://drive.usercontent.google.com/download?id=' + m[1] + '&export=download&confirm=t';
+            } else {
+                dl.setAttribute('aria-disabled', 'true');
+                dl.style.opacity = '0.45';
+                dl.style.pointerEvents = 'none';
+                console.warn('Download: Kein gültiger Google-Drive-Link in data-drive eingetragen.');
+            }
+        }
+
+        /* ── Browser-Demo: nur einblenden, wenn ./demo/ existiert;
+              iframe erst beim Klick laden (Ladezeit + Audio-Autoplay-Regeln) ── */
+        var sec = document.getElementById('demo');
+        var frame = document.getElementById('demoFrame');
+        var src = './demo/index.html';
+        fetch(src, { method: 'HEAD', cache: 'no-cache' }).then(function (r) {
+            if (r.ok) sec.hidden = false;
+        }).catch(function () {});
+
+        document.getElementById('demoPlay').addEventListener('click', function () {
+            var f = document.createElement('iframe');
+            f.src = src;
+            f.title = 'Spiel-Demo';
+            f.allow = 'autoplay; fullscreen; gamepad';
+            f.allowFullscreen = true;
+            f.addEventListener('load', function () { try { f.contentWindow.focus(); } catch (e) { f.focus(); } });
+            document.getElementById('demoStart').remove();
+            frame.appendChild(f);
+        });
+        document.getElementById('demoFull').addEventListener('click', function () {
+            var el = frame.querySelector('iframe') || frame;
+            (el.requestFullscreen || el.webkitRequestFullscreen || function () {}).call(el);
+        });
+        /* Klick ins Spiel → Tastaturfokus zurück ins iframe */
+        frame.addEventListener('pointerdown', function () {
+            var f = frame.querySelector('iframe'); if (f) f.focus();
+        });
+    })();
+    </script>
+</body>
+</html>
