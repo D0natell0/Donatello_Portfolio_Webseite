@@ -37,6 +37,15 @@
             background: var(--violet); color: var(--lavender);
         }
         .dl-icon svg { width: 46%; height: 46%; }
+        .dl-mark { width: clamp(64px, 8vw, 92px); height: auto; filter: drop-shadow(0 6px 18px rgba(125, 55, 195, 0.35)); }
+
+        /* ── Hero mit NEXYRA-Logo ── */
+        .nx-hero { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: clamp(24px, 4vw, 60px); }
+        .nx-logo { width: clamp(260px, 34vw, 470px); height: auto; filter: drop-shadow(0 10px 40px rgba(125, 55, 195, 0.35)); }
+        @media (max-width: 900px) {
+            .nx-hero { grid-template-columns: 1fr; }
+            .nx-logo { order: -1; width: min(340px, 82%); }
+        }
         .dl-name { font-size: clamp(18px, 2.2vw, 24px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; }
         .dl-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
         .dl-card .btn { white-space: nowrap; }
@@ -105,8 +114,8 @@
 
     <!-- ═══ HERO ═══ -->
     <header class="sub-hero">
-        <span class="sub-hero-num" aria-hidden="true">DL</span>
-        <div class="wrap">
+        <div class="wrap nx-hero">
+            <div>
             <span class="eyebrow reveal revealed" data-dl="eyebrow">Privater Download</span>
             <!-- TODO: Projektname eintragen -->
             <h1 class="display reveal revealed">Projekt-Download<span class="violet dot-d" aria-hidden="true"></span></h1>
@@ -116,6 +125,8 @@
                 <span class="sub-tag">Windows</span>
                 <span class="sub-tag" data-dl="tagBuild">Testversion</span>
             </div>
+            </div>
+            <img src="./Nexyra_Wort_Bild_Logo.svg" class="nx-logo reveal revealed d1" alt="NEXYRA">
         </div>
     </header>
 
@@ -128,11 +139,9 @@
                  Direkt-Download umgewandelt. Name, Größe und Version von Hand pflegen. -->
             <section class="reveal" aria-labelledby="dlName">
                 <div class="dl-card">
-                    <div class="dl-icon" aria-hidden="true">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg>
-                    </div>
+                    <img src="./NEXYRA_BILDMARKE.svg" class="dl-mark" alt="" aria-hidden="true">
                     <div>
-                        <div class="dl-name" id="dlName">NEXYRA.zip</div><!-- TODO: Dateiname -->
+                        <div class="dl-name" id="dlName">NEXYRA DEMO</div><!-- TODO: Dateiname -->
                         <div class="dl-meta">
                             <span class="sub-tag">ZIP</span>
                             <span class="sub-tag" id="dlSize">980 MB</span><!-- TODO: Größe -->
